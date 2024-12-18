@@ -8,7 +8,6 @@
 - [✅ 스택](#✅-스택)
 - [ℹ️ 페이지 소개](#ℹ️-페이지-소개)
 - [🧱 아키텍처](#📌-아키텍처)
-- [🌱 개선 사항 업데이트](#🌱-개선-사항-업데이트)
 
 ### 👉 서비스 소개
 
@@ -30,6 +29,7 @@ https://mr-cryp.vercel.app
     <img src="https://img.shields.io/badge/Redux Toolkit-764ABC?style=flat-square&logo=redux&logoColor=white">
 </div>
 <div>
+    <img src="https://img.shields.io/badge/TailwindCSS-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white">
     <img src="https://img.shields.io/badge/MUI-007FFF?style=flat-square&logo=mui&logoColor=white">
     <img src="https://img.shields.io/badge/Highcharts-405473?style=flat-square&logo=highcharts&logoColor=white">
 </div>
@@ -119,13 +119,11 @@ https://github.com/user-attachments/assets/d7214a8b-574c-4c07-a4d4-1eca32909bb4
 
 ## 🧱 아키텍처
 
-![아키텍처](https://github.com/user-attachments/assets/d0bb7db8-3d71-4eb5-9401-d5c7a122f368)
+![image](https://github.com/user-attachments/assets/0186b3ef-daaa-4d6b-8401-bedc5b02c507)
 
-### 설명
+### Highcharts
 
-**highcharts**
-
-![highcharts](https://github.com/user-attachments/assets/078744cc-479d-44e3-bbdd-b9ae97606912)
+![Highcharts](https://github.com/user-attachments/assets/078744cc-479d-44e3-bbdd-b9ae97606912)
 
 https://api.highcharts.com/highstock/plotOptions.candlestick
 
@@ -137,7 +135,7 @@ Chart.js, D3.js, Recharts와 같은 라이브러리를 뒤로 하고 highcharts�
 2. 브라우저 호환성이 뛰어납니다. IE부터 파이어폭스, 사파리, 엣지, 크롬 모두 안정적으로 호환됩니다.
 3. CSS 스타일 속성을 이용하여 highcharts에서 지원하는 요소의 사이즈, 컬러 등의 커스터마이징이 다양하게 가능합니다.
 
-**MUI**
+### MUI
 
 https://mui.com/material-ui/all-components/
 
@@ -145,7 +143,7 @@ MUI는 이미 잘 만들어진 디자인과 애니메이션을 가진 UI 컴포�
 부트스트랩과 스타일 컴포넌트를 혼합해둔 성격을 띄고 있으며 리액트를 사용한 프로젝트에서 개발하는데에 매우 효율적입니다.<br>
 또한 러닝 커브가 낮고 제공하는 컴포넌트 종류가 다양할 뿐만 아니라 커스터마이징 정도도 높은 수준입니다.<br>
 
-**Redux Toolkit**
+### Redux Toolkit
 
 기존의 Redux의 러닝 커브를 낮추고 장점은 극대화시킨 전역 상태관리 라이브러리입니다.<br>
 미스터 크립의 거래 - 차트 페이지에서 마켓 리스트의 특정 마켓을 선택하면,<br>
@@ -154,7 +152,7 @@ MUI는 이미 잘 만들어진 디자인과 애니메이션을 가진 UI 컴포�
 상위 컴포넌트인 chart.jsx에서 useState를 이용하여 props drilling으로 하위 컴포넌트에 전달하지 않고<br>
 상태를 중앙에서 관리함으로써 코드 가독성을 높이고, 불필요한 렌더링을 줄여 성능 최적화에 도움이 됩니다.<br>
 
-**Next.js 14**
+### Next.js
 
 미스터 크립은 원래 리액트로만 만들어진 프로젝트였습니다.<br>
 기존엔 use-upbit-api라는 라이브러리를 사용하여 업비트의 웹소켓 API를 호출하여<br>
@@ -162,7 +160,3 @@ MUI는 이미 잘 만들어진 디자인과 애니메이션을 가진 UI 컴포�
 하지만 서비스 배포 후 CORS 에러가 발생하는 것을 알게 되었고 이를 해결하기 위해서 <br>
 use-upbit-api를 사용하는 방식을 포기하고 NextJS의 API 라우트를 사용하여<br>
 서버사이드에서 REST API 호출 및 렌더링을 하는 방법으로 CORS 에러를 해결하였습니다.<br>
-
-## 🌱 업데이트 예정
-
-sx props를 styled 설정으로 변경하여 
