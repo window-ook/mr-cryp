@@ -19,29 +19,29 @@
 https://mr-cryp.vercel.app
 
 ## ✅ 스택
-<div>
+<div style='display:flex; align-items:center'>
     <img src="https://img.shields.io/badge/Next.js-000000?style=flat-square&logo=next.js&logoColor=white">
     <img src="https://img.shields.io/badge/React.js-61DAFB?style=flat-square&logo=react&logoColor=black">
     <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black">
 </div>
-<div>
+<div style='display:flex; align-items:center'>
     <img src="https://img.shields.io/badge/React Query-FF4154?style=flat-square&logo=reactquery&logoColor=white">
     <img src="https://img.shields.io/badge/Redux Toolkit-764ABC?style=flat-square&logo=redux&logoColor=white">
 </div>
-<div>
+<div style='display:flex; align-items:center'>
     <img src="https://img.shields.io/badge/TailwindCSS-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white">
     <img src="https://img.shields.io/badge/MUI-007FFF?style=flat-square&logo=mui&logoColor=white">
     <img src="https://img.shields.io/badge/Highcharts-405473?style=flat-square&logo=highcharts&logoColor=white">
 </div>
-<div>
+<div style='display:flex; align-items:center'>
     <img src="https://img.shields.io/badge/Upbit API-0052CC?style=flat-square&logo=upbit&logoColor=white">
     <img src="https://img.shields.io/badge/Youtube API-FF0000?style=flat-square&logo=youtube&logoColor=white">
     <img src="https://img.shields.io/badge/Naver API-03C75A?style=flat-square&logo=naver&logoColor=white">
 </div>
-<div>
+<div style='display:flex; align-items:center'>
     <img src="https://img.shields.io/badge/ESLint-4B32C3?style=flat-square&logo=eslint&logoColor=white">
 </div>
-<div>
+<div style='display:flex; align-items:center'>
     <img src="https://img.shields.io/badge/Vercel-000000?style=flat-square&logo=vercel&logoColor=white">
 </div><br/>
 
