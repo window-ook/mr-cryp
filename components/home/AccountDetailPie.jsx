@@ -5,8 +5,8 @@ import { Box, styled } from '@mui/system';
 import dynamic from 'next/dynamic';
 
 const PieChart = dynamic(
-  () => import('@mui/x-charts/PieChart').then((mod) => mod.PieChart),
-  { ssr: false }
+  () => import('@mui/x-charts/PieChart').then(mod => mod.PieChart),
+  { ssr: false },
 );
 
 const AccountChartBox = styled(Box)(() => ({
