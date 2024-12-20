@@ -26,7 +26,7 @@ function Orderbook({ marketCodes }) {
   const [isConnected, setIsConnected] = useState(false);
   const [orderbookData, setOrderbookData] = useState([]);
   const [currentCode, setCurrentCode] = useState(
-    marketCodes.length > 0 ? marketCodes[0].market : 'KRW-BTC',
+    marketCodes?.length ? marketCodes[0]?.market : 'KRW-BTC',
   );
 
   useEffect(() => {

@@ -22,6 +22,10 @@ const StyledTableContainer = styled(TableContainer)(() => ({
   backgroundColor: globalColors.white,
 }));
 
+const EditedDescriptionTypo = styled(DescriptionTypo)(() => ({
+  color: globalColors.white,
+}));
+
 export default function MarketList({ codeMap, tickers }) {
   const [searchKeyword, setSearchKeyword] = useState('');
 
@@ -69,16 +73,24 @@ export default function MarketList({ codeMap, tickers }) {
           <thead className="sticky top-0 z-10 bg-main">
             <tr>
               <th className="w-[6.75rem] py-[0.25rem]">
-                <DescriptionTypo fontSize={12}>코인</DescriptionTypo>
+                <EditedDescriptionTypo fontSize={12}>
+                  코인
+                </EditedDescriptionTypo>
               </th>
               <th className="w-[4rem] py-[0.25rem]">
-                <DescriptionTypo fontSize={12}>현재가</DescriptionTypo>
+                <EditedDescriptionTypo fontSize={12}>
+                  현재가
+                </EditedDescriptionTypo>
               </th>
               <th className="w-[4rem] py-[0.25rem]">
-                <DescriptionTypo fontSize={12}>전일대비</DescriptionTypo>
+                <EditedDescriptionTypo fontSize={12}>
+                  전일대비
+                </EditedDescriptionTypo>
               </th>
               <th className="w-[4rem] py-[0.25rem]">
-                <DescriptionTypo fontSize={12}>거래대금</DescriptionTypo>
+                <EditedDescriptionTypo fontSize={12}>
+                  거래대금
+                </EditedDescriptionTypo>
               </th>
             </tr>
           </thead>

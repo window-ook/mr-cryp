@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { setOpen } from '@/utils/redux/chartSlice';
-import { DescriptionTypo } from '@/defaultTheme';
+import { HeadTypo } from '@/defaultTheme';
 import axios from 'axios';
 import dynamic from 'next/dynamic';
 import MarketListContainer from '@/components/trade/chart/marketList/MarketListContainer';
@@ -56,7 +56,7 @@ export default function Chart({ marketCodes }) {
 
   return (
     <div className="mt-12 mb-12">
-      <div className="container mx-auto max-w-[75rem] h-[58rem] border border-gray-300 shadow-md">
+      <div className="container mx-auto max-w-[75rem] h-[58rem] border border-gray-300 shadow-mainShadow">
         <div className="flex flex-wrap">
           {/* Left */}
           <div className="w-full md:w-3/12">
@@ -73,7 +73,7 @@ export default function Chart({ marketCodes }) {
                 className="absolute right-2 top-2 bg-main shadow-md p-2 rounded-lg hover:opacity-60 transition duration-200 ease-in"
                 onClick={handleOpen}
               >
-                <DescriptionTypo>주문하기</DescriptionTypo>
+                <HeadTypo>주문하기</HeadTypo>
               </button>
             </div>
 

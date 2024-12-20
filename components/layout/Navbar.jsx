@@ -151,7 +151,7 @@ export default function NavBar({
   const isOverMd = useMediaQuery('(min-width:900px)');
   const NavbarMenu = ['홈', '비전', '거래'];
   const settings = ['프로필 정보', '로그아웃'];
-  const subNavbarMenu = ['실시간 오더북', '실시간 거래 내역', '차트'];
+  const subNavbarMenu = ['오더북', '거래 내역', '차트'];
 
   return (
     <AppBar

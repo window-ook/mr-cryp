@@ -1,13 +1,6 @@
-import { DescriptionTypo, NGTypo, PriceTypo } from '@/defaultTheme';
+import { DescriptionTypo, HeadTypo, NGTypo, PriceTypo } from '@/defaultTheme';
 import { styled } from '@mui/system';
 import { globalColors } from '@/globalColors';
-
-const HeadTypo = styled(DescriptionTypo)(() => ({
-  fontSize: '1.25rem',
-  '@media (max-width:900px)': {
-    fontSize: '0.688rem',
-  },
-}));
 
 export default function TradeHistory({ tradeData }) {
   const timestampToTime = timestamp => {
@@ -18,7 +11,7 @@ export default function TradeHistory({ tradeData }) {
 
   return (
     <div className="max-w-[62.5rem] h-[28.1rem] overflow-auto bg-white">
-      {tradeData?.length > 0 && (
+      {tradeData?.length && (
         <table className="w-full">
           <thead className="sticky top-0 z-10 bg-main">
             <tr>

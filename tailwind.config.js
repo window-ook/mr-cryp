@@ -19,6 +19,9 @@ module.exports = {
         market_code: '#8c8b88',
         list_hover: '#e1e3e1',
       },
+      boxShadow: {
+        mainShadow: '0px 3px 10px #ff63ac',
+      },
       screens: {
         'max-1180': { max: '1180px' },
         'max-900': { max: '900px' },

@@ -1,4 +1,5 @@
 import { DescriptionTypo, SubTitle, theme } from '@/defaultTheme';
+import { globalColors } from '@/globalColors';
 import { Grid } from '@mui/material';
 import { Box, styled } from '@mui/system';
 import Information from '@/components/vision/videos/Information';
@@ -20,6 +21,7 @@ const ContentsBox = styled(Box)(() => ({
   flexDirection: { xs: 'column', md: 'row' },
   border: `0.25rem solid ${theme.palette.primary.main}`,
   padding: '1rem',
+  boxShadow: globalColors.shadow_box,
 }));
 
 export default function Vision() {
@@ -36,7 +38,7 @@ export default function Vision() {
                 },
               }}
             >
-              가상자산 관련 정보
+              코인 거래 도움 자료
             </SubTitle>
             <DescriptionTypo>
               코인에 대한 정보와 거래 서비스 이용 방법을 확인하세요 😊
@@ -45,7 +47,7 @@ export default function Vision() {
           <Information />
         </Grid>
         <Grid item xs={12}>
-          <ContentsBox sx={{ boxShadow: 3 }}>
+          <ContentsBox>
             <Grid container spacing={2}>
               <Grid item xs={12} md={6}>
                 <VideosContainer />

@@ -17,7 +17,6 @@ export default function VideosContainer() {
       const response = await axios.get('/api/videos', {
         params: { keyword: '코인 추천' },
       });
-      console.log(response.data);
       return response.data;
     },
     refetchOnWindowFocus: false,

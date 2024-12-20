@@ -1,6 +1,7 @@
 import { memo } from 'react';
 import {
   DescriptionTypo,
+  HeadTypo,
   NGTypo,
   PriceTypo,
   TableContainer,
@@ -48,13 +49,13 @@ function OrderbookTable({
             <thead className="alone-thead">
               <tr>
                 <th className="alone-table-th">
-                  <DescriptionTypo>매도 물량</DescriptionTypo>
+                  <HeadTypo>매도 물량</HeadTypo>
                 </th>
                 <th className="alone-table-th">
-                  <DescriptionTypo>가격</DescriptionTypo>
+                  <HeadTypo>가격</HeadTypo>
                 </th>
                 <th className="alone-table-th">
-                  <DescriptionTypo>매수 물량</DescriptionTypo>
+                  <HeadTypo>매수 물량</HeadTypo>
                 </th>
               </tr>
             </thead>

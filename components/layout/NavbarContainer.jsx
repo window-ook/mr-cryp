@@ -77,8 +77,8 @@ export default function NavBarContainer() {
   /** 서브메뉴 토글 */
   const handleToggleSubMenu = subMenu => {
     setActiveSubMenu(subMenu);
-    if (subMenu === '실시간 거래 내역') router.push('/trade/tradeHistory');
-    if (subMenu === '실시간 오더북') router.push('/trade/orderbook');
+    if (subMenu === '거래 내역') router.push('/trade/tradeHistory');
+    if (subMenu === '오더북') router.push('/trade/orderbook');
     if (subMenu === '차트') router.push('/trade/chart');
   };
 
