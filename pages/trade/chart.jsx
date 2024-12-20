@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { setOpen } from '@/utils/redux/chartSlice';
-import { DescriptionTypo, HeadTypo } from '@/defaultTheme';
+import { HeadTypo } from '@/defaultTheme';
 import axios from 'axios';
 import dynamic from 'next/dynamic';
 import MarketListContainer from '@/components/trade/chart/marketList/MarketListContainer';

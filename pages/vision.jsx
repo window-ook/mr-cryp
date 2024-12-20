@@ -1,10 +1,10 @@
 import { DescriptionTypo, SubTitle, theme } from '@/defaultTheme';
+import { globalColors } from '@/globalColors';
 import { Grid } from '@mui/material';
 import { Box, styled } from '@mui/system';
 import Information from '@/components/vision/videos/Information';
 import VideosContainer from '@/components/vision/videos/VideosContainer';
 import ArticlesContainer from '@/components/vision/articles/ArticlesContainer';
-import { globalColors } from '@/globalColors';
 
 const VisionBox = styled(Box)(() => ({
   display: 'flex',
