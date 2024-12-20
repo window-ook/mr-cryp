@@ -33,7 +33,7 @@ export let theme = createTheme({
     MuiCssBaseline: {
       styleOverrides: `
         body {
-          background-color: ${globalColors.skyblue['300']}; 
+          background-color: ${globalColors.white}; 
         }
       `,
     },
@@ -95,7 +95,7 @@ export const SubTitle = styled(Typography)(() => ({
   fontSize: '2rem',
   fontFamily: 'NEXON Lv1 Gothic OTF',
   fontWeight: 'bold',
-  color: globalColors.white,
+  color: theme.palette.primary.main,
   textShadow: globalColors.shadow_text,
   marginBottom: '0.125rem',
   '@media (max-width:900px)': {
@@ -110,9 +110,12 @@ export const SubTitle = styled(Typography)(() => ({
  */
 export const DescriptionTypo = styled(Typography)(() => ({
   fontFamily: 'NEXON Lv1 Gothic OTF',
-  color: globalColors.white,
+  color: globalColors.black,
   textShadow: globalColors.shadow_text,
   fontWeight: 'bold',
+  '@media (max-width:900px)': {
+    fontSize: '0.5rem',
+  },
 }));
 
 /**
@@ -142,7 +145,22 @@ export const LogoTypo = styled(Typography)(() => ({
 }));
 
 /**
- * flex center Box
+ * 테이블 헤드 타이포그래피
+ * @returns {import('@mui/system').StyledComponent<import('@mui/material').TypographyProps>}
+ */
+export const HeadTypo = styled(Typography)(() => ({
+  fontFamily: 'NEXON Lv1 Gothic OTF',
+  fontWeight: 'bold',
+  fontSize: '1.25rem',
+  color: globalColors.white,
+  textShadow: globalColors.shadow_text,
+  '@media (max-width:900px)': {
+    fontSize: '0.688rem',
+  },
+}));
+
+/**
+ * flex:center Box
  * @returns {import('@mui/system').StyledComponent<import('@mui/material').BoxProps>}
  */
 export const FlexCenterBox = styled(Box)(() => ({
@@ -161,6 +179,7 @@ export const TableContainer = styled(Box)(() => ({
   backgroundColor: globalColors.white,
   borderRadius: '0.5rem',
   overflow: 'hidden',
+  boxShadow: globalColors.shadow_box,
   '@media (max-width:900px)': {
     maxWidth: '50rem',
     marginLeft: '1rem',
@@ -170,16 +189,5 @@ export const TableContainer = styled(Box)(() => ({
     maxWidth: '30rem',
     marginLeft: '1rem',
     marginRight: '1rem',
-  },
-}));
-
-/**
- * 테이블 헤드 타이포그래피
- * @returns {import('@mui/system').StyledComponent<import('@mui/material').TypographyProps>}
- */
-export const HeadTypo = styled(DescriptionTypo)(() => ({
-  fontSize: '1.25rem',
-  '@media (max-width:900px)': {
-    fontSize: '0.688rem',
   },
 }));

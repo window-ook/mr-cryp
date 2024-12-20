@@ -17,7 +17,6 @@ export default function ArticlesContainer() {
       const response = await axios.get('/api/articles', {
         params: { keyword: '코인' },
       });
-      console.log(response.data);
       return response.data;
     },
     refetchOnWindowFocus: false,

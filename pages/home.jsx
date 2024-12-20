@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Box, styled } from '@mui/system';
 import { DescriptionTypo, SubTitle } from '@/defaultTheme';
+import { globalColors } from '@/globalColors';
 import axios from 'axios';
 import AccountMarketFlow from '@/components/home/AccountMarketFlow';
 import AccountBalanceFlow from '@/components/home/AccountBalanceFlow';
@@ -19,6 +20,10 @@ const HomeBox = styled(Box)(() => ({
     flexDirection: 'column',
     width: '40%',
   },
+}));
+
+const PieBox = styled(Box)(() => ({
+  boxShadow: globalColors.shadow_box,
 }));
 
 const FlowBox = styled(Box)(() => ({
@@ -72,8 +77,10 @@ export default function Home() {
     <HomeBox>
       <Box>
         <SubTitle sx={{ mb: '1.25rem' }}>내 보유 자산</SubTitle>
-        <AccountDetailPie balance={balance} />
-        <AccountDetailTable balance={balance} />
+        <PieBox>
+          <AccountDetailPie balance={balance} />
+          <AccountDetailTable balance={balance} />
+        </PieBox>
       </Box>
       <FlowBox>
         <div>

@@ -26,7 +26,7 @@ function TradeHistory({ marketCodes }) {
   const [isConnected, setIsConnected] = useState(false);
   const [tradeData, setTradeData] = useState([]);
   const [currentCode, setCurrentCode] = useState(
-    marketCodes.length > 0 ? marketCodes[0].market : 'KRW-BTC',
+    marketCodes?.length ? marketCodes[0]?.market : 'KRW-BTC',
   );
 
   useEffect(() => {

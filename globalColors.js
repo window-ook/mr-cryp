@@ -27,4 +27,5 @@ export const globalColors = {
   color_failure: '#c92031',
 
   shadow_text: '2px 2px 4px rgba(0, 0, 0, 0.7)',
+  shadow_box: '0px 3px 10px #ff63ac',
 };

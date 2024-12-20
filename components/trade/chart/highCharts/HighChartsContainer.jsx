@@ -197,7 +197,7 @@ export default function HighChartsGrid() {
   );
 
   useEffect(() => {
-    if (candles.length > 0) {
+    if (candles?.length) {
       candles.sort((a, b) => a.timestamp - b.timestamp);
       const ohlc = candles.map(candle => [
         candle.timestamp,
