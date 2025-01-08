@@ -28,10 +28,10 @@
     "glob": "^11.0.0",
     "highcharts": "^11.4.7",
     "highcharts-react-official": "^3.2.1",
-    "next": "latest",
+    "next": "^15.1.4",
     "next-redux-wrapper": "^8.1.0",
-    "react": "latest",
-    "react-dom": "latest",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
     "react-redux": "^9.1.2"
   },
   "devDependencies": {

@@ -22,12 +22,8 @@ const OrderModal = dynamic(
   },
 );
 
-function HighChartGrid() {
-  return (
-    <div>
-      <HighStockChart />
-    </div>
-  );
+function HighChartContainer() {
+  return <HighStockChart />;
 }
 
 export async function getStaticProps() {
@@ -68,7 +64,7 @@ export default function Chart({ marketCodes }) {
             <MarketDetailContainer marketCodes={marketCodes} />
 
             <div className="relative">
-              <HighChartGrid />
+              <HighChartContainer />
               <button
                 className="absolute right-2 top-2 bg-main shadow-md p-2 rounded-lg hover:opacity-60 transition duration-200 ease-in"
                 onClick={handleOpen}
