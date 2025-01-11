@@ -1,5 +1,4 @@
-import { DescriptionTypo, HeadTypo, NGTypo, PriceTypo } from '@/defaultTheme';
-import { styled } from '@mui/system';
+import { HeadTypo, NGTypo, PriceTypo } from '@/defaultTheme';
 import { globalColors } from '@/globalColors';
 
 export default function TradeHistory({ tradeData }) {
