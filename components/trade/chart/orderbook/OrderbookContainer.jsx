@@ -5,14 +5,16 @@ import axios from 'axios';
 import Orderbook from '@/components/trade/chart/orderbook/Orderbook';
 
 function OrderbookContainer() {
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const [orderbookData, setOrderbookData] = useState([]);
   const code = useSelector(state => state.chart.code);
   const intervalTime = useSelector(state => state.chart.intervalTime);
 
   useEffect(() => {
     if (code) {
+      let firstLoad = true;
       const fetchOrderbookData = async () => {
+        if (firstLoad) setIsLoading(true);
         try {
           const response = await axios.get(`/api/orderbook/${code}`);
           const data = response.data;
@@ -20,7 +22,10 @@ function OrderbookContainer() {
         } catch (error) {
           console.error('실시간 오더북 데이터 다운로드 에러: ', error);
         } finally {
-          setIsLoading(false);
+          if (firstLoad) {
+            setIsLoading(false);
+            firstLoad = false;
+          }
         }
       };
 
@@ -30,9 +35,7 @@ function OrderbookContainer() {
     }
   }, [code, intervalTime]);
 
-  if (isLoading) {
-    return <LinearProgress color="primary" />;
-  }
+  if (isLoading) return <LinearProgress color="primary" />;
 
   return <Orderbook orderbookData={orderbookData} />;
 }
