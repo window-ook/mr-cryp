@@ -22,7 +22,7 @@ export async function getStaticProps() {
 }
 
 function TradeHistory({ marketCodes }) {
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const [isConnected, setIsConnected] = useState(false);
   const [tradeData, setTradeData] = useState([]);
   const [currentCode, setCurrentCode] = useState(
@@ -31,8 +31,7 @@ function TradeHistory({ marketCodes }) {
 
   useEffect(() => {
     if (currentCode) {
-      setTradeData([]);
-
+      setIsLoading(true);
       const fetchTradeData = async () => {
         try {
           const response = await axios.get(`/api/trade/${currentCode}`);
@@ -47,9 +46,8 @@ function TradeHistory({ marketCodes }) {
             );
 
             const updatedTradeData = [...newData.reverse(), ...prevTradeData]
-              .slice(0, 20)
-              .reverse();
-
+              .sort((a, b) => b.sequential_id - a.sequential_id)
+              .slice(0, 20);
             return updatedTradeData;
           });
         } catch (error) {
@@ -59,7 +57,7 @@ function TradeHistory({ marketCodes }) {
           setIsConnected(true);
         }
       };
-
+      setTradeData([0]);
       fetchTradeData();
       const interval = setInterval(fetchTradeData, 3000);
       return () => clearInterval(interval);
