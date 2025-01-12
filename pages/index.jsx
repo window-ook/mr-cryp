@@ -75,6 +75,10 @@ export default function Root({ KAKAO_CLIENT_ID, NAVER_CLIENT_ID }) {
     <main>
       <Head>
         <title>미스터 크립 Mr.cryp</title>
+        <meta
+          name="google-site-verification"
+          content="3HPbFBzWiEOsYaEh2ZfL_U_vgYagKrqu09DJBOSXnBk"
+        />
       </Head>
       <Grid container component="main" sx={{ height: '100vh' }}>
         <CssBaseline />
