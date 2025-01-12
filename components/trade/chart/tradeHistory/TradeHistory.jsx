@@ -1,5 +1,6 @@
 import { HeadTypo, NGTypo, PriceTypo } from '@/defaultTheme';
 import { globalColors } from '@/globalColors';
+import { CircularProgress } from '@mui/material';
 
 export default function TradeHistory({ tradeData }) {
   const timestampToTime = timestamp => {
@@ -9,41 +10,41 @@ export default function TradeHistory({ tradeData }) {
   };
 
   return (
-    <div className="max-w-[62.5rem] h-[28.1rem] overflow-auto bg-white">
-      {tradeData?.length && (
-        <table className="w-full">
-          <thead className="sticky top-0 z-10 bg-main">
-            <tr>
-              <th className="py-[0.25rem] bg-main">
-                <HeadTypo>체결 시간</HeadTypo>
-              </th>
-              <th className="py-[0.25rem] bg-main">
-                <HeadTypo>체결 가격</HeadTypo>
-              </th>
-              <th className="py-[0.25rem] bg-main">
-                <HeadTypo>체결량</HeadTypo>
-              </th>
-              <th className="py-[0.25rem] bg-main">
-                <HeadTypo>체결금액</HeadTypo>
-              </th>
-            </tr>
-          </thead>
-          <tbody>
+    <div className="max-w-[62.5rem] h-[28.1rem] overflow-y-scroll bg-white">
+      <table className="w-full">
+        <thead className="h-[2.5rem] sticky top-0 z-10 bg-main">
+          <tr>
+            <th className="py-[0.25rem] w-1/4">
+              <HeadTypo>체결 시간</HeadTypo>
+            </th>
+            <th className="py-[0.25rem] w-1/4">
+              <HeadTypo>체결 가격</HeadTypo>
+            </th>
+            <th className="py-[0.25rem] w-1/4">
+              <HeadTypo>체결량</HeadTypo>
+            </th>
+            <th className="py-[0.25rem] w-1/4">
+              <HeadTypo>체결금액</HeadTypo>
+            </th>
+          </tr>
+        </thead>
+        {tradeData?.length && tradeData[0] !== 0 ? (
+          <tbody className="min-h-[25.6rem]">
             {tradeData.slice().map(data => (
               <tr
                 key={`${data.sequential_id}-${data.timestamp}-${Math.random()}`}
               >
-                <td className="table-cell border-b-[0.063rem] border-color:rgba(224, 224, 224, 1)] border-solid text-center">
+                <td className="table-cell w-1/4 border-b-[0.063rem] border-color:rgba(224, 224, 224, 1)] border-solid text-center">
                   <NGTypo fontSize={12}>
                     {timestampToTime(data.timestamp)}
                   </NGTypo>
                 </td>
-                <td className="table-cell border-b-[0.063rem] border-color:rgba(224, 224, 224, 1)] border-solid text-center">
+                <td className="table-cell w-1/4 border-b-[0.063rem] border-color:rgba(224, 224, 224, 1)] border-solid text-center">
                   <NGTypo fontSize={12}>
                     {Number(data.trade_price).toLocaleString()}원
                   </NGTypo>
                 </td>
-                <td className="table-cell border-b-[0.063rem] border-color:rgba(224, 224, 224, 1)] border-solid text-center">
+                <td className="table-cell w-1/4 border-b-[0.063rem] border-color:rgba(224, 224, 224, 1)] border-solid text-center">
                   <PriceTypo
                     fontSize={12}
                     color={
@@ -55,7 +56,7 @@ export default function TradeHistory({ tradeData }) {
                     {data.trade_volume}
                   </PriceTypo>
                 </td>
-                <td className="table-cell border-b-[0.063rem] border-color:rgba(224, 224, 224, 1)] border-solid text-center">
+                <td className="table-cell w-1/4 border-b-[0.063rem] border-color:rgba(224, 224, 224, 1)] border-solid text-center">
                   <PriceTypo
                     fontSize={12}
                     color={
@@ -73,8 +74,16 @@ export default function TradeHistory({ tradeData }) {
               </tr>
             ))}
           </tbody>
-        </table>
-      )}
+        ) : (
+          <tbody>
+            <tr>
+              <td>
+                <CircularProgress color="primary" />
+              </td>
+            </tr>
+          </tbody>
+        )}
+      </table>
     </div>
   );
 }

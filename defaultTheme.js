@@ -111,7 +111,7 @@ export const SubTitle = styled(Typography)(() => ({
 export const DescriptionTypo = styled(Typography)(() => ({
   fontFamily: 'NEXON Lv1 Gothic OTF',
   color: globalColors.black,
-  textShadow: globalColors.shadow_text,
+  // textShadow: globalColors.shadow_text,
   fontWeight: 'bold',
   '@media (max-width:900px)': {
     fontSize: '0.5rem',
