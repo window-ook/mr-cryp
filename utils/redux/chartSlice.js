@@ -10,11 +10,11 @@ const initialState = {
 };
 
 /**
-  @method setCode : 마켓 코드 저장
-  @method setRate : 등락율 저장
-  @method setPrevPrice : 전날 종가 저장
-  @method setCurrPrice : 현재가 저장
-  @method setOpen : 모달 오픈 저장
+  @method setCode 마켓 코드
+  @method setRate 등락율
+  @method setPrevPrice 전날 종가
+  @method setCurrPrice 현재가
+  @method setOpen 모달 오픈
  */
 const chartSlice = createSlice({
   name: 'chartSlice',

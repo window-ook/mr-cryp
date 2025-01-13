@@ -1,5 +1,6 @@
-let auth; // 전역 변수로 선언하여 한 번만 초기화되도록
+let auth;
 
+// 초기화 함수
 export async function initializeFirebase() {
   if (!auth) {
     const { initializeApp, getApps } = await import('firebase/app');
@@ -20,7 +21,7 @@ export async function initializeFirebase() {
 }
 
 export async function loginGoogle() {
-  await initializeFirebase(); // 초기화 함수 호출
+  await initializeFirebase();
   const { signInWithPopup, GoogleAuthProvider } = await import('firebase/auth');
 
   return signInWithPopup(auth, auth.provider).then(result => {
@@ -37,7 +38,7 @@ export async function loginGoogle() {
 }
 
 export async function logoutGoogle() {
-  await initializeFirebase(); // 초기화 함수 호출
+  await initializeFirebase();
   const { signOut } = await import('firebase/auth');
 
   try {
@@ -48,7 +49,7 @@ export async function logoutGoogle() {
 }
 
 export async function onUserStateChange(callback) {
-  await initializeFirebase(); // 초기화 함수 호출
+  await initializeFirebase();
   const { onAuthStateChanged } = await import('firebase/auth');
 
   onAuthStateChanged(auth, user => {
