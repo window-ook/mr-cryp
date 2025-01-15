@@ -8,6 +8,7 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import SocialLoginButton from '@/components/layout/SocialLoginButton';
 import Image from 'next/image';
 import Head from 'next/head';
+import TestLoginButton from '@/components/layout/TestLoginButton';
 
 const ButtonsBox = styled(Box)(() => ({
   my: 8,
@@ -48,7 +49,7 @@ function Copyright(props) {
   return (
     <NGTypo variant="body2" color="text.secondary" align="center" {...props}>
       {'Copyrights All reserved © '}
-      <Link color="inherit" href="https://github.com/window-ook/mr-cryp-next">
+      <Link color="inherit" href="https://github.com/window-ook/mr-cryp">
         Mr.Cryp
       </Link>{' '}
       {new Date().getFullYear()}
@@ -123,6 +124,7 @@ export default function Root({ KAKAO_CLIENT_ID, NAVER_CLIENT_ID }) {
               bgColor={'#00c73d'}
               fontColor={'#fff'}
             />
+            <TestLoginButton />
             <Copyright sx={{ mt: 5 }} />
           </ButtonsBox>
         </Grid>

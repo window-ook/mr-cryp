@@ -6,15 +6,12 @@ export default function ProtectedRoute({ children }) {
   const router = useRouter();
   const [open, setOpen] = useState(false);
   const [message, setMessage] = useState('');
-  const [userId, setUserId] = useState(null);
 
   useEffect(() => {
     if (process.env.NEXT_PUBLIC_IS_TESTING === 'true') return;
 
-    const storedUserId = localStorage.getItem('userId');
-    setUserId(storedUserId);
-
-    if (!storedUserId) {
+    const userId = localStorage.getItem('userId');
+    if (!userId) {
       setOpen(true);
       setMessage('로그인이 필요합니다');
       setTimeout(() => {
