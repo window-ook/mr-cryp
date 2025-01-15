@@ -168,13 +168,7 @@ export default function NavBar({
         >
           {isOverMd ? (
             <Box sx={{ display: 'flex' }}>
-              <OverMdLogoTypo
-                noWrap
-                component="a"
-                href="#app-bar-with-responsive-menu"
-              >
-                Mr.Cryp
-              </OverMdLogoTypo>
+              <OverMdLogoTypo noWrap>Mr.Cryp</OverMdLogoTypo>
               <OverMdBox>
                 {NavbarMenu.map(page => (
                   <NavbarButton
@@ -233,13 +227,7 @@ export default function NavBar({
                   ))}
                 </Menu>
               </UnderMdBox>
-              <UnderMdLogoTypo
-                noWrap
-                component="a"
-                href="#app-bar-with-responsive-menu"
-              >
-                Mr.Cryp
-              </UnderMdLogoTypo>
+              <UnderMdLogoTypo noWrap>Mr.Cryp</UnderMdLogoTypo>
             </Box>
           )}
 
