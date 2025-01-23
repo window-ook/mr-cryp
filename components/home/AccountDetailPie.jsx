@@ -27,11 +27,6 @@ const AccountChartBox = styled(Box)(() => ({
 
 export default function AccountDetailPie({ balance }) {
   const [pieParams, setPieParams] = useState({ width: 600, height: 300 });
-  const palette = [
-    theme.palette.primary.main,
-    theme.palette.secondary.main,
-    globalColors.jade['400'],
-  ];
 
   useEffect(() => {
     const updateChartSize = () => {
@@ -51,6 +46,12 @@ export default function AccountDetailPie({ balance }) {
 
     return () => window.removeEventListener('resize', updateChartSize);
   }, []);
+
+  const palette = [
+    theme.palette.primary.main,
+    theme.palette.secondary.main,
+    globalColors.jade['400'],
+  ];
 
   return (
     <AccountChartBox sx={{ boxShadow: 3 }}>

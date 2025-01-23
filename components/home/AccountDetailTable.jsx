@@ -1,6 +1,7 @@
 import { theme, NGTypo } from '@/defaultTheme';
 import { globalColors } from '@/globalColors';
 import {
+  Box,
   Table,
   TableBody,
   TableCell,
@@ -9,8 +10,26 @@ import {
   TableRow,
   Paper,
 } from '@mui/material';
-import HoldingRatio from './HoldingRatio';
-import HoldingAmount from './HoldingAmount';
+
+function HoldingAmount({ balance, price }) {
+  return (
+    <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+      <NGTypo>보유수량(평가금액)</NGTypo>
+      <NGTypo fontWeight={'bold'}>
+        {parseFloat(parseFloat(price) * balance).toLocaleString()} KRW
+      </NGTypo>
+    </Box>
+  );
+}
+
+function HoldingRatio({ percentage }) {
+  return (
+    <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+      <NGTypo>보유비중</NGTypo>
+      <NGTypo fontWeight={'bold'}>{percentage.toFixed(2)}%</NGTypo>
+    </Box>
+  );
+}
 
 export default function AccountDetailTable({ balance }) {
   const totalBalance = balance.reduce(

@@ -17,6 +17,6 @@ export default async function handler(req, res) {
   } catch (error) {
     res
       .status(500)
-      .json({ error: '실시간 거래 내역을 가져오는 데에 실패했습니다.' });
+      .json({ error: '실시간 오더북을 가져오는 데에 실패했습니다.' });
   }
 }
