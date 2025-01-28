@@ -16,16 +16,16 @@ import { globalColors } from '@/globalColors';
 export let theme = createTheme({
   palette: {
     primary: {
-      main: globalColors.hotpink['400'],
-      light: globalColors.hotpink['300'],
-      dark: globalColors.hotpink['500'],
-      contrastText: globalColors.vanilla['300'],
+      main: globalColors.hotpink[400],
+      light: globalColors.hotpink[300],
+      dark: globalColors.hotpink[500],
+      contrastText: globalColors.vanilla[300],
     },
     secondary: {
-      main: globalColors.vanilla['400'],
-      light: globalColors.vanilla['300'],
-      dark: globalColors.vanilla['500'],
-      constrastText: globalColors.hotpink['300'],
+      main: globalColors.vanilla[400],
+      light: globalColors.vanilla[300],
+      dark: globalColors.vanilla[500],
+      constrastText: globalColors.hotpink[300],
     },
   },
 
@@ -36,12 +36,6 @@ export let theme = createTheme({
           background-color: ${globalColors.white}; 
         }
       `,
-    },
-    // 타이포그래피
-    MuiTypography: {
-      defaultProps: {
-        fontFamily: 'ChoseonGu',
-      },
     },
     // 버튼
     MuiButton: {
@@ -160,16 +154,6 @@ export const HeadTypo = styled(Typography)(() => ({
 }));
 
 /**
- * flex:center Box
- * @returns {import('@mui/system').StyledComponent<import('@mui/material').BoxProps>}
- */
-export const FlexCenterBox = styled(Box)(() => ({
-  display: 'flex',
-  justifyContent: 'space-between',
-  alignItems: 'center',
-}));
-
-/**
  * 테이블 컨테이너
  * @returns {import('@mui/system').StyledComponent<import('@mui/material').BoxProps>}
  */
@@ -190,4 +174,14 @@ export const TableContainer = styled(Box)(() => ({
     marginLeft: '1rem',
     marginRight: '1rem',
   },
+}));
+
+/**
+ * flex:center Box
+ * @returns {import('@mui/system').StyledComponent<import('@mui/material').BoxProps>}
+ */
+export const FlexCenterBox = styled(Box)(() => ({
+  display: 'flex',
+  justifyContent: 'space-between',
+  alignItems: 'center',
 }));
