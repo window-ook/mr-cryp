@@ -12,7 +12,6 @@ import {
   Tooltip,
 } from '@mui/material';
 import { styled } from '@mui/system';
-import ArticleIcon from '@mui/icons-material/Article';
 import LinkIcon from '@mui/icons-material/Link';
 import IosShareIcon from '@mui/icons-material/IosShare';
 
@@ -29,12 +28,27 @@ const ArticledCard = styled(Card)(({ theme }) => ({
 }));
 
 export default function Articles({ articles, open, handleOpen, handleClose }) {
+  const formatPubDate = pubDate => {
+    const date = new Date(pubDate);
+    const year = date.getFullYear();
+    const month = date.getMonth() + 1;
+    const day = date.getDate();
+    const hour = date.getHours();
+    const minute = date.getMinutes();
+    return `${year}년 ${month}월 ${day}일 ${hour}시 ${minute}분`;
+  };
+
+  const formattedArticles = articles.map(article => ({
+    ...article,
+    pubDate: formatPubDate(article.pubDate),
+  }));
+
   return (
     <div>
       <SubTitle>TODAY NEWS</SubTitle>
       <DescriptionTypo>오늘은 어떤 뉴스가 올라왔을까요?</DescriptionTypo>
       <Grid container spacing={2} sx={{ mb: 2 }}>
-        {articles.map(article => {
+        {formattedArticles.map(article => {
           const title = article.title
             .replace(/<b>|<\/b>/g, '')
             .replace(/&quot;/g, '')
@@ -47,13 +61,13 @@ export default function Articles({ articles, open, handleOpen, handleClose }) {
             <Grid item xs={12} sm={6} key={article.link}>
               <ArticledCard key={article.link} sx={{ boxShadow: 2 }}>
                 <CardHeader
-                  avatar={<ArticleIcon sx={{ fontSize: 30 }} />}
                   title={
                     <NGTypo fontWeight={'bold'} fontSize={20}>
                       {title}
                     </NGTypo>
                   }
                 />
+                <span className="pl-4 text-sm font-ng">{article.pubDate}</span>
                 <CardContent
                   sx={{
                     maxHeight: '6.25rem',

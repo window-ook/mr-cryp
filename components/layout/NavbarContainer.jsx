@@ -6,19 +6,24 @@ import NavBar from './Navbar';
 
 export default function NavBarContainer() {
   const [anchorElNav, setAnchorElNav] = useState(null);
-  const [anchorElUser, setAnchorElUser] = useState(null);
+  const [anchorSignout, setAnchorSignout] = useState(null);
   const [activePage, setActivePage] = useState('홈');
   const [activeSubMenu, setActiveSubMenu] = useState('');
   const [open, setOpen] = useState(false);
+  const [imgUrl, setImgUrl] = useState('');
+  const [nickname, setNickname] = useState('');
+
+  const router = useRouter();
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  const router = useRouter();
-
   useEffect(() => {
-    const activePage = localStorage.getItem('activePage');
-    if (activePage) setActivePage(activePage);
+    if (typeof window !== 'undefined') {
+      setImgUrl(localStorage.getItem('imgUrl'));
+      setNickname(localStorage.getItem('nickname'));
+      setActivePage(localStorage.getItem('activePage'));
+    }
   }, []);
 
   const handleLogout = async () => {
@@ -26,10 +31,7 @@ export default function NavBarContainer() {
       const socialType = localStorage.getItem('socialType');
       const accessToken = localStorage.getItem('accessToken');
 
-      if (socialType === 'Google') {
-        logoutGoogle();
-      }
-
+      if (socialType === 'Google') logoutGoogle();
       if (socialType === 'Kakao') {
         await axios.post(
           'https://kapi.kakao.com/v1/user/logout',
@@ -56,15 +58,12 @@ export default function NavBarContainer() {
   };
 
   /** 로그아웃 혹은 프로필 정보 모달 열기 */
-  const handleCloseUserMenu = action => {
-    setAnchorElUser(null);
-    if (action === '로그아웃') handleLogout();
-    if (action === '프로필 정보') {
-      handleOpen();
-    }
+  const handleCloseSignout = () => {
+    setAnchorSignout(null);
+    handleLogout();
   };
 
-  /** 페이지 메뉴 토글 */
+  /** 페이지 이동 */
   const handleCloseNavMenu = page => {
     setAnchorElNav(null);
     setActivePage(page);
@@ -82,28 +81,27 @@ export default function NavBarContainer() {
     if (subMenu === '차트') router.push('/trade/chart');
   };
 
-  /** 반응형 xs 메뉴바 클릭 -> 드롭다운 */
-  const handleOpenNavMenu = event => {
-    setAnchorElNav(event.currentTarget);
-  };
+  /** XS 크기일 때 네브바 활성화 드롭다운 */
+  const handleOpenNavMenu = event => setAnchorElNav(event.currentTarget);
 
-  /** 유저 프로필 사진 클릭 -> 드롭다운 */
-  const handleOpenUserMenu = event => {
-    setAnchorElUser(event.currentTarget);
-  };
+  /** 로그아웃 버튼 활성화 드롭다운 */
+  const handleOpenSignout = event => setAnchorSignout(event.currentTarget);
 
   const props = {
     handleOpenNavMenu,
     handleCloseNavMenu,
-    handleOpenUserMenu,
-    handleCloseUserMenu,
+    handleOpenSignout,
+    handleCloseSignout,
+    handleOpen,
     handleClose,
     handleToggleSubMenu,
     activePage,
     activeSubMenu,
     anchorElNav,
-    anchorElUser,
+    anchorSignout,
     open,
+    imgUrl,
+    nickname,
   };
 
   return <NavBar {...props} />;

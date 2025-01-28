@@ -1,18 +1,22 @@
 import { globalColors } from '@/globalColors';
 import { LogoTypo } from '@/defaultTheme';
+import {
+  Avatar,
+  Box,
+  Button,
+  AppBar,
+  Toolbar,
+  IconButton,
+  Typography,
+  Container,
+  Tooltip,
+  Menu,
+  MenuItem,
+} from '@mui/material';
 import { styled, useMediaQuery } from '@mui/system';
-import ProfileModal from '@/components/layout/ProfileModal';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import Menu from '@mui/material/Menu';
+import NotificationsNoneIcon from '@mui/icons-material/NotificationsNoneSharp';
 import MenuIcon from '@mui/icons-material/Menu';
-import Container from '@mui/material/Container';
-import Button from '@mui/material/Button';
-import Tooltip from '@mui/material/Tooltip';
-import MenuItem from '@mui/material/MenuItem';
+import NotificationModal from './NotificationModal';
 
 const NavTypo = styled(Typography)(() => ({
   fontFamily: 'SBAggroB',
@@ -117,9 +121,9 @@ const SubNavbarButtonTypo = styled(NavTypo)(({}) => ({
 
 const UserMenuTypo = styled(NavTypo)(({ theme }) => ({
   padding: 0,
-  color: globalColors.white[400],
+  color: globalColors.white,
   textShadow: globalColors.shadow_text,
-  fontSize: '2rem',
+  fontSize: '1.5rem',
   minHeight: '1.5rem',
 
   '&:hover': {
@@ -135,23 +139,48 @@ const UserMenuTypo = styled(NavTypo)(({ theme }) => ({
   },
 }));
 
+const ProfileImage = styled(Avatar)(() => ({
+  width: '2.5rem',
+  height: '2.5rem',
+  '@media (max-width:450px)': {
+    width: '1.5rem',
+    height: '1.5rem',
+  },
+  '@media (max-width:175px)': {
+    display: 'none',
+  },
+}));
+
+const NotificationIcon = styled(NotificationsNoneIcon)(() => ({
+  fontSize: '2.5rem',
+  color: globalColors.white,
+  transition: 'color ease 200ms',
+  '&:hover': {
+    color: globalColors.vanilla[400],
+    cursor: 'pointer',
+  },
+}));
+
 export default function NavBar({
   handleOpenNavMenu,
   handleCloseNavMenu,
-  handleOpenUserMenu,
-  handleCloseUserMenu,
+  handleOpenSignout,
+  handleCloseSignout,
+  handleOpen,
   handleClose,
   handleToggleSubMenu,
   activePage,
   activeSubMenu,
   anchorElNav,
-  anchorElUser,
+  anchorSignout,
   open,
+  imgUrl,
+  nickname,
 }) {
   const isOverMd = useMediaQuery('(min-width:900px)');
   const NavbarMenu = ['홈', '비전', '거래'];
-  const settings = ['프로필 정보', '로그아웃'];
   const subNavbarMenu = ['오더북', '거래 내역', '차트'];
+  const settings = ['로그아웃'];
 
   return (
     <AppBar
@@ -167,7 +196,7 @@ export default function NavBar({
           }}
         >
           {isOverMd ? (
-            <Box sx={{ display: 'flex' }}>
+            <Box sx={{ display: 'flex', alignItems: 'center' }}>
               <OverMdLogoTypo noWrap>Mr.Cryp</OverMdLogoTypo>
               <OverMdBox>
                 {NavbarMenu.map(page => (
@@ -176,6 +205,9 @@ export default function NavBar({
                     onClick={() => handleCloseNavMenu(page)}
                   >
                     <NavbarButtonTypo>{page}</NavbarButtonTypo>
+                    <div
+                      className={`h-1 w-full rounded-xl shadow-black shadow-lg ${activePage === page ? ' bg-white' : ''}`}
+                    />
                   </NavbarButton>
                 ))}
               </OverMdBox>
@@ -233,15 +265,24 @@ export default function NavBar({
 
           {/* 유저 메뉴 */}
           <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="프로필 / 로그아웃">
-              <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                <UserMenuTypo onClick={handleOpenUserMenu}>프로필</UserMenuTypo>
-              </Box>
-            </Tooltip>
+            <div className="flex items-center gap-3">
+              <div className="relative">
+                <div className="absolute left-4 bottom-6 w-5 h-5 rounded-[100%] bg-red-500 text-center">
+                  <span className="font-ng font-bold">1</span>
+                </div>
+                <NotificationIcon onClick={handleOpen} />
+              </div>
+              <ProfileImage alt="프로필 이미지" src={imgUrl} />
+              <Tooltip title="로그아웃">
+                <UserMenuTypo onClick={handleOpenSignout}>
+                  {nickname || 'TESTER'}, hi!
+                </UserMenuTypo>
+              </Tooltip>
+            </div>
             <Menu
               sx={{ mt: '2.5rem' }}
               id="menu-appbar"
-              anchorEl={anchorElUser}
+              anchorEl={anchorSignout}
               anchorOrigin={{
                 vertical: 'top',
                 horizontal: 'right',
@@ -251,13 +292,13 @@ export default function NavBar({
                 vertical: 'top',
                 horizontal: 'right',
               }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
+              open={Boolean(anchorSignout)}
+              onClose={handleCloseSignout}
             >
               {settings.map(setting => (
                 <MenuItem
                   key={setting}
-                  onClick={() => handleCloseUserMenu(setting)}
+                  onClick={() => handleCloseSignout(setting)}
                 >
                   <Typography textAlign="center">{setting}</Typography>
                 </MenuItem>
@@ -274,7 +315,10 @@ export default function NavBar({
                 key={page}
                 onClick={() => handleToggleSubMenu(page)}
                 sx={{
-                  color: activeSubMenu === page ? 'secondary.light' : 'white',
+                  color:
+                    activeSubMenu === page
+                      ? 'secondary.light'
+                      : globalColors.white,
                 }}
               >
                 <SubNavbarButtonTypo>{page}</SubNavbarButtonTypo>
@@ -283,7 +327,7 @@ export default function NavBar({
           </SubNavbar>
         )}
       </Container>
-      <ProfileModal open={open} handleClose={handleClose} />
+      <NotificationModal open={open} handleClose={handleClose} />
     </AppBar>
   );
 }

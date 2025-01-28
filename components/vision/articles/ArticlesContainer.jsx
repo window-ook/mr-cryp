@@ -20,7 +20,7 @@ export default function ArticlesContainer() {
       return response.data;
     },
     refetchOnWindowFocus: false,
-    staleTime: 1000 * 60 * 5,
+    staleTime: 1000 * 60 * 10,
   });
 
   if (isPending) return <PendingSkeleton />;
