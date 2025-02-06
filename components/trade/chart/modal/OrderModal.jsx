@@ -21,24 +21,22 @@ const ModalBox = styled(Box)(() => ({
   borderColor: theme.palette.primary.main,
   boxShadow: '1.5rem',
   padding: '0.25rem',
+  overflowY: 'auto',
+  maxHeight: '90vh',
 }));
 
 export default function OrderModal({ handleClose }) {
-  const [value, setValue] = useState('1');
-  const [orders, setOrders] = useState([]);
+  const [value, setValue] = useState('1'); // 주문수량
+  const [orders, setOrders] = useState([]); // 주문내역
   const open = useSelector(state => state.chart.open);
 
-  const addOrder = newOrder => {
+  const addOrder = newOrder =>
     setOrders(prevOrders => [...prevOrders, newOrder]);
-  };
 
-  const removeOrder = index => {
+  const removeOrder = index =>
     setOrders(prevOrders => prevOrders.filter((order, i) => i !== index));
-  };
 
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
+  const handleChange = (event, newValue) => setValue(newValue);
 
   const askablePrice = orders
     .filter(order => order.type === '매수')

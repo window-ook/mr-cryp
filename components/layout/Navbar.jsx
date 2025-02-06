@@ -1,20 +1,21 @@
 import { globalColors } from '@/globalColors';
 import { LogoTypo } from '@/defaultTheme';
 import {
+  AppBar,
   Avatar,
   Box,
   Button,
-  AppBar,
-  Toolbar,
-  IconButton,
-  Typography,
   Container,
+  IconButton,
+  Toolbar,
+  Typography,
   Tooltip,
   Menu,
   MenuItem,
 } from '@mui/material';
-import { styled, useMediaQuery } from '@mui/system';
+import { styled } from '@mui/system';
 import NotificationsNoneIcon from '@mui/icons-material/NotificationsNoneSharp';
+import SearchIcon from '@mui/icons-material/Search';
 import MenuIcon from '@mui/icons-material/Menu';
 import NotificationModal from './NotificationModal';
 
@@ -41,6 +42,8 @@ const NavbarButtonTypo = styled(NavTypo)(({}) => ({
 
 const OverMdBox = styled(Box)(({ theme }) => ({
   display: 'flex',
+  alignItems: 'center',
+  gap: '1rem',
   flexGrow: 1,
   [theme.breakpoints.down('md')]: {
     display: 'none',
@@ -166,9 +169,14 @@ export default function NavBar({
   handleCloseNavMenu,
   handleOpenSignout,
   handleCloseSignout,
+  handleSignout,
   handleOpen,
   handleClose,
   handleToggleSubMenu,
+  handleKeywordSearch,
+  setNewKeyword,
+  navbarMenu,
+  subNavbarMenu,
   activePage,
   activeSubMenu,
   anchorElNav,
@@ -176,12 +184,8 @@ export default function NavBar({
   open,
   imgUrl,
   nickname,
+  isOverMd,
 }) {
-  const isOverMd = useMediaQuery('(min-width:900px)');
-  const NavbarMenu = ['홈', '비전', '거래'];
-  const subNavbarMenu = ['오더북', '거래 내역', '차트'];
-  const settings = ['로그아웃'];
-
   return (
     <AppBar
       position="static"
@@ -199,7 +203,7 @@ export default function NavBar({
             <Box sx={{ display: 'flex', alignItems: 'center' }}>
               <OverMdLogoTypo noWrap>Mr.Cryp</OverMdLogoTypo>
               <OverMdBox>
-                {NavbarMenu.map(page => (
+                {navbarMenu.map(page => (
                   <NavbarButton
                     key={page}
                     onClick={() => handleCloseNavMenu(page)}
@@ -210,6 +214,22 @@ export default function NavBar({
                     />
                   </NavbarButton>
                 ))}
+                <div className="flex items-center gap-1 mb-2">
+                  <input
+                    type="text"
+                    alt="마켓 검색하기"
+                    placeholder="마켓 검색하기"
+                    onKeyDown={e => {
+                      if (e.key === 'Enter') handleKeywordSearch();
+                    }}
+                    onChange={e => setNewKeyword(e.target.value)}
+                    className="w-[11rem] h-[2rem] pl-3 rounded-lg text-black"
+                  />
+                  <SearchIcon
+                    sx={{ color: globalColors.white, cursor: 'pointer' }}
+                    onClick={handleKeywordSearch}
+                  />
+                </div>
               </OverMdBox>
             </Box>
           ) : (
@@ -247,7 +267,7 @@ export default function NavBar({
                     display: { xs: 'block', md: 'none' },
                   }}
                 >
-                  {NavbarMenu.map(page => (
+                  {navbarMenu.map(page => (
                     <MenuItem
                       key={page}
                       onClick={() => handleCloseNavMenu(page)}
@@ -295,14 +315,9 @@ export default function NavBar({
               open={Boolean(anchorSignout)}
               onClose={handleCloseSignout}
             >
-              {settings.map(setting => (
-                <MenuItem
-                  key={setting}
-                  onClick={() => handleCloseSignout(setting)}
-                >
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
+              <MenuItem onClick={handleSignout}>
+                <Typography textAlign="center">로그아웃</Typography>
+              </MenuItem>
             </Menu>
           </Box>
         </Toolbar>

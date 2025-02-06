@@ -7,6 +7,7 @@ const initialState = {
   prevPrice: null,
   currPrice: null,
   open: false,
+  keyword: '',
 };
 
 /**
@@ -38,9 +39,18 @@ const chartSlice = createSlice({
     setOpen: (state, action) => {
       state.open = action.payload;
     },
+    setKeyword: (state, action) => {
+      state.keyword = action.payload;
+    },
   },
 });
 
-export const { setCode, setRate, setPrevPrice, setCurrPrice, setOpen } =
-  chartSlice.actions;
+export const {
+  setCode,
+  setRate,
+  setPrevPrice,
+  setCurrPrice,
+  setOpen,
+  setKeyword,
+} = chartSlice.actions;
 export default chartSlice.reducer;

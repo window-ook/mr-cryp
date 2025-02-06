@@ -1,5 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
+import { useDispatch } from 'react-redux';
+import { setKeyword } from '@/utils/redux/chartSlice';
+import { useMediaQuery } from '@mui/system';
 import { logoutGoogle } from '@/utils/firebase';
 import axios from 'axios';
 import NavBar from './Navbar';
@@ -12,8 +15,16 @@ export default function NavBarContainer() {
   const [open, setOpen] = useState(false);
   const [imgUrl, setImgUrl] = useState('');
   const [nickname, setNickname] = useState('');
+  const [newKeyword, setNewKeyword] = useState('');
 
   const router = useRouter();
+
+  const dispatch = useDispatch();
+
+  const isOverMd = useMediaQuery('(min-width:900px)');
+
+  const navbarMenu = ['홈', '비전', '거래'];
+  const subNavbarMenu = ['오더북', '거래 내역', '차트'];
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -26,7 +37,7 @@ export default function NavBarContainer() {
     }
   }, []);
 
-  const handleLogout = async () => {
+  const handleSignout = async () => {
     try {
       const socialType = localStorage.getItem('socialType');
       const accessToken = localStorage.getItem('accessToken');
@@ -58,10 +69,7 @@ export default function NavBarContainer() {
   };
 
   /** 로그아웃 혹은 프로필 정보 모달 열기 */
-  const handleCloseSignout = () => {
-    setAnchorSignout(null);
-    handleLogout();
-  };
+  const handleCloseSignout = () => setAnchorSignout(null);
 
   /** 페이지 이동 */
   const handleCloseNavMenu = page => {
@@ -69,8 +77,8 @@ export default function NavBarContainer() {
     setActivePage(page);
     localStorage.setItem('activePage', page);
     if (page === '홈') router.push('/home');
-    if (page === '거래') router.push('/trade');
     if (page === '비전') router.push('/vision');
+    if (page === '거래') router.push('/trade');
   };
 
   /** 서브메뉴 토글 */
@@ -79,6 +87,13 @@ export default function NavBarContainer() {
     if (subMenu === '거래 내역') router.push('/trade/tradeHistory');
     if (subMenu === '오더북') router.push('/trade/orderbook');
     if (subMenu === '차트') router.push('/trade/chart');
+  };
+
+  /** 네브바에서 키워드로 검색 */
+  const handleKeywordSearch = () => {
+    dispatch(setKeyword(newKeyword));
+    setActivePage('거래');
+    router.push('/trade/chart');
   };
 
   /** XS 크기일 때 네브바 활성화 드롭다운 */
@@ -91,10 +106,15 @@ export default function NavBarContainer() {
     handleOpenNavMenu,
     handleCloseNavMenu,
     handleOpenSignout,
+    handleSignout,
     handleCloseSignout,
     handleOpen,
     handleClose,
     handleToggleSubMenu,
+    handleKeywordSearch,
+    setNewKeyword,
+    navbarMenu,
+    subNavbarMenu,
     activePage,
     activeSubMenu,
     anchorElNav,
@@ -102,6 +122,8 @@ export default function NavBarContainer() {
     open,
     imgUrl,
     nickname,
+    newKeyword,
+    isOverMd,
   };
 
   return <NavBar {...props} />;
