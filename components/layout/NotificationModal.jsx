@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Avatar, Box, Modal } from '@mui/material';
 import { NGTypo, theme } from '@/defaultTheme';
 import { styled } from '@mui/system';
+import { globalColors } from '@/globalColors';
 
 const ModalBox = styled(Box)(() => ({
   display: 'flex',
@@ -39,7 +40,11 @@ export default function NotificationModal({ open, handleClose }) {
     >
       <ModalBox>
         <ProfileBox>
-          <span>KRW-BTC 0.0023(₩3414599.04)주문 체결되었습니다.</span>
+          <span className="text-sm">
+            KRW-BTC <span className="text-red-500">0.0023</span>
+            (₩3414599.04) 주문 체결되었습니다. (2025-01-31 17:07:25)
+          </span>
+          <div className={`bg-[#e1e3e1] h-1 w-full rounded-3xl`}></div>
         </ProfileBox>
       </ModalBox>
     </Modal>

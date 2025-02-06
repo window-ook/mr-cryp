@@ -53,73 +53,73 @@ const ResetButton = styled(Button)(() => ({
 
 export default function ModalPanel({ value, addOrder, askablePrice }) {
   const code = useSelector(state => state.chart.code);
-  const currPrice = useSelector(state => state.chart.currPrice);
-  const bidableCash = 3000000;
+  const currPrice = useSelector(state => state.chart.currPrice); // 선택한 마켓의 현재가
+
   const [selectedValue, setSelectedValue] = useState('a');
-  const [price, setPrice] = useState(currPrice || 0);
-  const [balance, setBalance] = useState(1);
-  const [accPrice, setAccPrice] = useState(0);
-  const [open, setOpen] = useState(false);
+  const [bidableCash, setBidableCash] = useState(3000000);
+  const [price, setPrice] = useState(currPrice || 0); // 지정가 가격
+  const [balance, setBalance] = useState(1); // 주문수량
+  const [accPrice, setAccPrice] = useState(0); // 가격 * 주문수량
+  const [open, setOpen] = useState(false); // 좌측 하단 알림 오픈
   const [success, setSuccess] = useState('');
 
-  const handleRadio = event => {
-    setSelectedValue(event.target.value);
-  };
+  const handleRadio = event => setSelectedValue(event.target.value);
 
   const handlePriceIncrement = () => {
-    setPrice(prevPrice => Math.max(0, parseFloat(prevPrice) + 1000));
+    setPrice(prevPrice => {
+      const incrementedPrice = Math.max(1, parseFloat(prevPrice) + price * 0.1);
+      const maxPrice = currPrice * 1.1;
+      return Math.min(incrementedPrice, maxPrice);
+    });
   };
 
   const handlePriceDecrement = () => {
-    setPrice(prevPrice => Math.max(0, parseFloat(prevPrice) - 1000));
+    setPrice(prevPrice => {
+      const decrementedPrice = Math.max(1, parseFloat(prevPrice) - price * 0.1);
+      const minPrice = currPrice * 0.9;
+      return Math.max(decrementedPrice, minPrice);
+    });
   };
 
   const handlePriceChange = event => {
     if (!isNaN(event.target.value)) {
-      setPrice(Math.max(0, parseFloat(event.target.value)));
+      const inputPrice = Math.max(0, parseFloat(event.target.value));
+      const minPrice = currPrice * 0.9;
+      const maxPrice = currPrice * 1.1;
+      setPrice(Math.min(Math.max(inputPrice, minPrice), maxPrice));
     }
     if (event.target.value.length === 0) setPrice(0);
   };
 
-  const handleBalanceIncrement = () => {
-    setBalance(prevBalance => Math.max(0, parseFloat(prevBalance) + 1));
-  };
+  const handleBalanceIncrement = () =>
+    setBalance(prevBalance => Math.max(0, prevBalance + 1));
 
-  const handleBalanceDecrement = () => {
-    setBalance(prevBalance => Math.max(0, parseFloat(prevBalance) - 1));
-  };
+  const handleBalanceDecrement = () =>
+    setBalance(prevBalance => Math.max(0, prevBalance - 1));
 
   const handleBalanceChange = event => {
-    if (!isNaN(event.target.value)) {
-      setBalance(Math.max(0, parseFloat(event.target.value)));
-    }
-    if (event.target.value.length === 0) setBalance(0);
+    let input = event.target.value;
+    if (!isNaN(input) && /^(\d+(\.\d*)?|\.\d+)?$/.test(input))
+      setBalance(input);
+    if (input.length === 0) setBalance(0);
   };
 
-  const handleOpen = async () => {
-    try {
-      if (bidableCash > accPrice && accPrice > 0) {
-        setSuccess('success');
-      } else {
-        setSuccess('error');
-      }
-      setOpen(true);
-    } catch (err) {
-      console.error(err);
-    }
+  const handleAlertOpen = () => {
+    if (bidableCash > accPrice && accPrice > 0) setSuccess('success');
+    else setSuccess('error');
+    setOpen(true);
   };
 
-  const handleClose = reason => {
-    if (reason === 'clickaway') {
-      return;
-    }
+  const handleAlertClose = reason => {
+    if (reason === 'clickaway') return;
     setOpen(false);
   };
 
+  const handleBidableCash = () => setBidableCash(bidableCash - accPrice);
+
   const handleReset = () => {
-    setPrice(0);
+    setPrice(currPrice);
     setBalance(1);
-    setAccPrice(0);
   };
 
   const handleOrder = () => {
@@ -142,9 +142,10 @@ export default function ModalPanel({ value, addOrder, askablePrice }) {
     }
   };
 
-  const handleButtonClick = () => {
+  const handleSubmit = () => {
     handleOrder();
-    handleOpen();
+    handleAlertOpen();
+    handleBidableCash();
     handleReset();
   };
 
@@ -237,10 +238,7 @@ export default function ModalPanel({ value, addOrder, askablePrice }) {
           <FlexCenterBox>
             <MobileModalTypo>주문가능</MobileModalTypo>
             <MobileModalTypo>
-              {value === '1'
-                ? parseFloat(bidableCash).toLocaleString()
-                : parseFloat(askablePrice).toLocaleString()}{' '}
-              KRW
+              {value === '1' ? parseFloat(bidableCash).toLocaleString() : 0} KRW
             </MobileModalTypo>
           </FlexCenterBox>
           {/* 매수가격 / 매도가격 */}
@@ -293,11 +291,7 @@ export default function ModalPanel({ value, addOrder, askablePrice }) {
           {/* 버튼 */}
           <FlexCenterBox>
             <Tooltip title="초기화">
-              <ResetButton
-                onClick={() => {
-                  handleReset();
-                }}
-              >
+              <ResetButton onClick={handleReset}>
                 <RestoreIcon />
               </ResetButton>
             </Tooltip>
@@ -309,7 +303,7 @@ export default function ModalPanel({ value, addOrder, askablePrice }) {
                     width: '5rem',
                   },
                 }}
-                onClick={() => handleButtonClick()}
+                onClick={handleSubmit}
               >
                 {value === '1' ? (
                   <NGTypo fontWeight={'bold'}>매수</NGTypo>
@@ -319,8 +313,16 @@ export default function ModalPanel({ value, addOrder, askablePrice }) {
               </Button>
             </Tooltip>
           </FlexCenterBox>
-          <Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
-            <Alert onClose={handleClose} severity={success} variant="filled">
+          <Snackbar
+            open={open}
+            autoHideDuration={3000}
+            onClose={handleAlertClose}
+          >
+            <Alert
+              onClose={handleAlertClose}
+              severity={success}
+              variant="filled"
+            >
               {success === 'success'
                 ? '주문했습니다'
                 : '주문총액을 다시 확인해주세요'}

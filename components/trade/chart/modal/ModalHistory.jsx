@@ -31,24 +31,14 @@ const CancelButton = styled(Button)(() => ({
 
 export default function ModalHistory({ value, orders, removeOrder }) {
   const [selectedValue, setSelectedValue] = useState('a');
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(false); // 좌측 하단 알림 오픈
 
-  const handleRadio = event => {
-    setSelectedValue(event.target.value);
-  };
+  const handleRadio = event => setSelectedValue(event.target.value);
 
-  const handleOpen = async () => {
-    try {
-      setOpen(true);
-    } catch (err) {
-      console.error(err);
-    }
-  };
+  const handleOpen = () => setOpen(true);
 
   const handleClose = reason => {
-    if (reason === 'clickaway') {
-      return;
-    }
+    if (reason === 'clickaway') return;
     setOpen(false);
   };
 
@@ -135,7 +125,7 @@ export default function ModalHistory({ value, orders, removeOrder }) {
                         <CellTypo>{order.orderQuantity}</CellTypo>
                       </TableCell>
                       <TableCell rowSpan={2}>
-                        <CancelButton onClick={() => handleCancel(index)}>
+                        <CancelButton onClick={handleCancel(index)}>
                           취소
                         </CancelButton>
                       </TableCell>

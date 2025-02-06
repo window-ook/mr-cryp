@@ -1,10 +1,11 @@
-import { useState, useMemo } from 'react';
-import { useDispatch } from 'react-redux';
+import { useMemo } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   setCode,
   setRate,
   setPrevPrice,
   setCurrPrice,
+  setKeyword,
 } from '@/utils/redux/chartSlice';
 import { DescriptionTypo, NGTypo, PriceTypo } from '@/defaultTheme';
 import { globalColors } from '@/globalColors';
@@ -27,9 +28,24 @@ const EditedDescriptionTypo = styled(DescriptionTypo)(() => ({
 }));
 
 export default function MarketList({ codeMap, tickers }) {
-  const [searchKeyword, setSearchKeyword] = useState('');
-
   const dispatch = useDispatch();
+
+  const keyword = useSelector(state => state.chart.keyword);
+
+  const filteredTickers = useMemo(() => {
+    return tickers.filter(ticker => {
+      const marketName = codeMap[ticker.code] || codeMap[ticker.market];
+      return (
+        (marketName && marketName.includes(keyword.toLowerCase())) ||
+        (ticker.code &&
+          ticker.code.toLowerCase().includes(keyword.toLowerCase())) ||
+        (ticker.market &&
+          ticker.market.toLowerCase().includes(keyword.toLowerCase()))
+      );
+    });
+  }, [tickers, keyword, codeMap]);
+
+  const handleSearchChange = e => dispatch(setKeyword(e.target.value));
 
   const handleRowClick = (code, rate, prevPrice, currPrice) => {
     dispatch(setCode(code));
@@ -38,27 +54,14 @@ export default function MarketList({ codeMap, tickers }) {
     dispatch(setCurrPrice(currPrice));
   };
 
-  const filteredTickers = useMemo(() => {
-    return tickers.filter(ticker => {
-      const marketName = codeMap[ticker.code] || codeMap[ticker.market];
-      return (
-        (marketName && marketName.includes(searchKeyword.toLowerCase())) ||
-        (ticker.code &&
-          ticker.code.toLowerCase().includes(searchKeyword.toLowerCase())) ||
-        (ticker.market &&
-          ticker.market.toLowerCase().includes(searchKeyword.toLowerCase()))
-      );
-    });
-  }, [tickers, searchKeyword, codeMap]);
-
   return (
     <>
       <TextField
         label="마켓 검색하기"
         id="outlined"
         fullWidth
-        value={searchKeyword}
-        onChange={e => setSearchKeyword(e.target.value)}
+        value={keyword}
+        onChange={handleSearchChange}
         InputProps={{
           endAdornment: (
             <InputAdornment position="end">
