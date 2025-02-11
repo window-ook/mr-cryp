@@ -46,6 +46,13 @@ export default function AccountDetailTable({ balance }) {
         margin: 0,
         borderTopLeftRadius: 0,
         borderTopRightRadius: 0,
+        '@media (max-width:700px)': {
+          width: '100%',
+        },
+
+        '@media (max-width:500px)': {
+          width: '100%',
+        },
       }}
     >
       <Table>
