@@ -1,6 +1,12 @@
 import { useEffect, useState } from 'react';
-import { LineChart } from '@mui/x-charts/LineChart';
+import { DescriptionTypo } from '@/defaultTheme';
 import axios from 'axios';
+import dynamic from 'next/dynamic';
+
+const LineChart = dynamic(
+  () => import('@mui/x-charts/LineChart').then(mod => mod.LineChart),
+  { ssr: false },
+);
 
 export default function AccountMarketFlow({ flowSize }) {
   const [ripple, setRipple] = useState([]);
@@ -33,14 +39,17 @@ export default function AccountMarketFlow({ flowSize }) {
   }, []);
 
   return (
-    <LineChart
-      width={flowSize.width}
-      height={flowSize.height}
-      series={[
-        { data: etherium, label: '이더리움' },
-        { data: ripple, label: '리플' },
-      ]}
-      xAxis={[{ scaleType: 'point', data: xLabels }]}
-    />
+    <div>
+      <DescriptionTypo>보유 코인 시세 변동 (단위: 1000 KRW)</DescriptionTypo>
+      <LineChart
+        width={flowSize.width}
+        height={flowSize.height}
+        series={[
+          { data: etherium, label: '이더리움' },
+          { data: ripple, label: '리플' },
+        ]}
+        xAxis={[{ scaleType: 'point', data: xLabels }]}
+      />
+    </div>
   );
 }

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Box, styled } from '@mui/system';
-import { DescriptionTypo, SubTitle } from '@/defaultTheme';
+import { SubTitle } from '@/defaultTheme';
 import { globalColors } from '@/globalColors';
 import axios from 'axios';
 import AccountMarketFlow from '@/components/home/AccountMarketFlow';
@@ -11,25 +11,30 @@ import AccountDetailPie from '@/components/home/AccountDetailPie';
 const HomeBox = styled(Box)(() => ({
   width: '80%',
   height: '100%',
-  margin: '4rem auto 4rem auto',
+  margin: '1rem auto',
+  padding: '1rem',
   display: 'flex',
+  gap: '2rem',
   justifyContent: 'center',
   alignItems: 'center',
-  gap: '4rem',
-  '@media (max-width:1075px)': {
+  '@media (max-width:1000px)': {
     flexDirection: 'column',
-    width: '40%',
   },
 }));
 
 const PieBox = styled(Box)(() => ({
-  boxShadow: globalColors.shadow_box,
-}));
-
-const FlowBox = styled(Box)(() => ({
   display: 'flex',
   flexDirection: 'column',
-  gap: 10,
+  alginItems: 'center',
+  boxShadow: globalColors.shadow_box,
+  width: '100%',
+  '@media (max-width:820px)': {
+    '& *': { fontSize: '0.6rem' },
+  },
+  '@media (max-width:700px)': {
+    width: '100%',
+    font: '1rem',
+  },
 }));
 
 export default function Home() {
@@ -51,13 +56,12 @@ export default function Home() {
 
     const updateChartSize = () => {
       const width = window.innerWidth;
-
       if (width > 1400) {
         setFlowSize({ width: 600, height: 300 });
-      } else if (width > 1350) {
-        setFlowSize({ width: 400, height: 200 });
       } else if (width > 450) {
-        setFlowSize({ width: 300, height: 150 });
+        setFlowSize({ width: 450, height: 225 });
+      } else {
+        setFlowSize({ width: 250, height: 150 });
       }
     };
 
@@ -75,25 +79,22 @@ export default function Home() {
 
   return (
     <HomeBox>
-      <Box>
-        <SubTitle sx={{ mb: '1.25rem' }}>내 보유 자산</SubTitle>
+      <div>
+        <div className="h-[4rem]">
+          <SubTitle>내 보유 자산</SubTitle>
+        </div>
         <PieBox>
           <AccountDetailPie balance={balance} />
           <AccountDetailTable balance={balance} />
         </PieBox>
-      </Box>
-      <FlowBox>
-        <div>
-          <DescriptionTypo>보유 자산 변동 (단위: 1000 KRW)</DescriptionTypo>
+      </div>
+      <div className="h-[100%]">
+        <div className="h-[4rem]" />
+        <div className="flex flex-col max-1400:gap-[2rem]">
           <AccountBalanceFlow totalBalance={totalBalance} flowSize={flowSize} />
-        </div>
-        <div>
-          <DescriptionTypo>
-            보유 코인 시세 변동 (단위: 1000 KRW)
-          </DescriptionTypo>
           <AccountMarketFlow flowSize={flowSize} />
         </div>
-      </FlowBox>
+      </div>
     </HomeBox>
   );
 }

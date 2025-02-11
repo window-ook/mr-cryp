@@ -35,7 +35,7 @@ const NavbarButton = styled(Button)(() => ({
 const NavbarButtonTypo = styled(NavTypo)(({}) => ({
   textShadow: globalColors.shadow_text,
   fontSize: '2rem',
-  '@media (max-width:1100px)': {
+  '@media (max-width:1220px)': {
     fontSize: '1.5rem',
   },
 }));
@@ -111,7 +111,7 @@ const SubNavbarButtonTypo = styled(NavTypo)(({}) => ({
   '&:hover': {
     textShadow: 'none',
   },
-  '@media (max-width:1100px)': {
+  '@media (max-width:1220px)': {
     fontSize: '1.5rem',
   },
   '@media (max-width:900px)': {
@@ -134,7 +134,12 @@ const UserMenuTypo = styled(NavTypo)(({ theme }) => ({
     cursor: 'pointer',
     transition: 'opacity 0.3s ease',
   },
-
+  '@media (max-width:1220px)': {
+    fontSize: '1rem',
+  },
+  '@media (max-width:500px)': {
+    display: 'none',
+  },
   [theme.breakpoints.down('sm')]: {
     fontSize: '1.125rem',
     lineHeight: '1rem',
@@ -158,6 +163,9 @@ const NotificationIcon = styled(NotificationsNoneIcon)(() => ({
   fontSize: '2.5rem',
   color: globalColors.white,
   transition: 'color ease 200ms',
+  '@media (max-width:1220px)': {
+    fontSize: '2rem',
+  },
   '&:hover': {
     color: globalColors.vanilla[400],
     cursor: 'pointer',
@@ -214,7 +222,7 @@ export default function NavBar({
                     />
                   </NavbarButton>
                 ))}
-                <div className="flex items-center gap-1 mb-2">
+                <div className="hidden select-1120:flex select-1120:items-center select-1120:gap-1 select-1120:mb-2">
                   <input
                     type="text"
                     alt="마켓 검색하기"
@@ -286,8 +294,8 @@ export default function NavBar({
           {/* 유저 메뉴 */}
           <Box sx={{ flexGrow: 0 }}>
             <div className="flex items-center gap-3">
-              <div className="relative">
-                <div className="absolute left-4 bottom-6 w-5 h-5 rounded-[100%] bg-red-500 text-center">
+              <div className="relative hidden md:block">
+                <div className="absolute left-4 bottom-6 w-5 h-5 rounded-[100%] bg-red-500 text-center max-[1200px]:w-3 max-[1200px]:h-3">
                   <span className="font-ng font-bold">1</span>
                 </div>
                 <NotificationIcon onClick={handleOpen} />

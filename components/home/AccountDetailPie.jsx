@@ -9,7 +9,7 @@ const PieChart = dynamic(
   { ssr: false },
 );
 
-const AccountChartBox = styled(Box)(() => ({
+const AccountPieBox = styled(Box)(() => ({
   display: 'flex',
   justifyContent: 'center',
   backgroundColor: globalColors.white,
@@ -20,8 +20,16 @@ const AccountChartBox = styled(Box)(() => ({
   borderColor: theme.palette.primary.main,
 
   '@media (max-width:1075px)': {
-    width: '25rem',
+    width: '100%',
     padding: '0.25rem 2rem 0.25rem 2rem',
+  },
+
+  '@media (max-width:700px)': {
+    width: '100%',
+  },
+
+  '@media (max-width:500px)': {
+    width: '100%',
   },
 }));
 
@@ -38,6 +46,8 @@ export default function AccountDetailPie({ balance }) {
         setPieParams({ width: 500, height: 200 });
       } else if (width > 1075) {
         setPieParams({ width: 400, height: 200 });
+      } else if (width > 500) {
+        setPieParams({ width: 200, height: 100 });
       }
     };
 
@@ -54,7 +64,7 @@ export default function AccountDetailPie({ balance }) {
   ];
 
   return (
-    <AccountChartBox sx={{ boxShadow: 3 }}>
+    <AccountPieBox sx={{ boxShadow: 3 }}>
       <PieChart
         colors={palette}
         series={[
@@ -83,6 +93,6 @@ export default function AccountDetailPie({ balance }) {
         ]}
         {...pieParams}
       />
-    </AccountChartBox>
+    </AccountPieBox>
   );
 }
