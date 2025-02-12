@@ -22,7 +22,7 @@ export async function getStaticProps() {
 }
 
 function Orderbook({ marketCodes }) {
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const [isConnected, setIsConnected] = useState(false);
   const [orderbookData, setOrderbookData] = useState([]);
   const [currentCode, setCurrentCode] = useState(
@@ -31,6 +31,7 @@ function Orderbook({ marketCodes }) {
 
   useEffect(() => {
     if (currentCode) {
+      setIsLoading(true);
       const fetchOrderbookData = async () => {
         try {
           const response = await axios.get(`/api/orderbook/${currentCode}`);
