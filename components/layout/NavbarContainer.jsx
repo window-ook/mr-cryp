@@ -33,7 +33,7 @@ export default function NavBarContainer() {
     if (typeof window !== 'undefined') {
       setImgUrl(localStorage.getItem('imgUrl'));
       setNickname(localStorage.getItem('nickname'));
-      setActivePage(localStorage.getItem('activePage'));
+      setActivePage(sessionStorage.getItem('activePage'));
     }
   }, []);
 
@@ -61,7 +61,7 @@ export default function NavBarContainer() {
       localStorage.removeItem('userId');
       localStorage.removeItem('imgUrl');
       localStorage.removeItem('nickname');
-      localStorage.removeItem('activePage');
+      sessionStorage.removeItem('activePage');
       router.push('/');
     } catch (error) {
       console.error('로그아웃 에러');
@@ -75,7 +75,7 @@ export default function NavBarContainer() {
   const handleCloseNavMenu = page => {
     setAnchorElNav(null);
     setActivePage(page);
-    localStorage.setItem('activePage', page);
+    sessionStorage.setItem('activePage', page);
     if (page === '홈') router.push('/home');
     if (page === '비전') router.push('/vision');
     if (page === '거래') router.push('/trade');

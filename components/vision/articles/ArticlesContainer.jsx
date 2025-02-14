@@ -15,7 +15,7 @@ export default function ArticlesContainer() {
     queryKey: ['articles'],
     queryFn: async () => {
       const response = await axios.get('/api/articles', {
-        params: { keyword: '코인' },
+        params: { keyword: '코인', count: 12 },
       });
       return response.data;
     },
@@ -33,7 +33,7 @@ export default function ArticlesContainer() {
     );
   }
 
-  const handleOpen = async link => {
+  const handleCopyLink = async link => {
     try {
       await navigator.clipboard.writeText(link);
       setOpen(true);
@@ -53,7 +53,7 @@ export default function ArticlesContainer() {
     <Articles
       articles={articles}
       open={open}
-      handleOpen={handleOpen}
+      handleCopyLink={handleCopyLink}
       handleClose={handleClose}
     />
   );

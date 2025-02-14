@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { setOpen } from '@/utils/redux/chartSlice';
 import { HeadTypo } from '@/defaultTheme';
-import axios from 'axios';
+import Upbit from '@/lib/upbit';
 import dynamic from 'next/dynamic';
 import MarketListContainer from '@/components/trade/chart/marketList/MarketListContainer';
 import MarketDetailContainer from '@/components/trade/chart/marketDetail/MarketDetailContainer';
@@ -27,21 +27,20 @@ function HighChartContainer() {
 }
 
 export async function getStaticProps() {
-  const domain = process.env.NEXT_PUBLIC_API_URL;
+  const upbit = new Upbit();
   let marketCodes = [];
 
   try {
-    const response = await axios.get(`${domain}/api/marketCodes`);
-    marketCodes = response.data.marketCodes;
+    marketCodes = (await upbit.marketCodes()) || [];
   } catch (error) {
-    console.error(error);
+    console.error('🚨 마켓 코드 요청 실패:', error.message);
   }
 
   return {
     props: {
       marketCodes,
     },
-    revalidate: 60 * 10,
+    revalidate: 3600,
   };
 }
 
@@ -54,12 +53,12 @@ export default function Chart({ marketCodes }) {
     <div className="mt-12 mb-12">
       <div className="container mx-auto max-w-[75rem] h-[58rem] border border-gray-300 shadow-mainShadow">
         <div className="flex flex-wrap">
-          {/* Left */}
+          {/* 1열 */}
           <div className="w-full md:w-3/12">
             <MarketListContainer marketCodes={marketCodes} />
           </div>
 
-          {/* Right */}
+          {/* 2열 */}
           <div className="w-full md:w-9/12">
             <MarketDetailContainer marketCodes={marketCodes} />
 

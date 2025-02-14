@@ -19,12 +19,12 @@ function MarketListContainer({ marketCodes }) {
 
   useEffect(() => {
     if (marketCodes) {
-      const filtered = marketCodes
-        .filter(code => code.market.includes('KRW'))
-        .map(code => code.market);
       const fetchTickers = async () => {
         try {
-          const codesString = filtered.join(',');
+          const codesString = marketCodes
+            .filter(code => code.market.includes('KRW'))
+            .map(code => code.market)
+            .join(',');
           const response = await axios.get(`/api/tickers?codes=${codesString}`);
           const data = await response.data;
           setTickers(data);
@@ -41,9 +41,7 @@ function MarketListContainer({ marketCodes }) {
     }
   }, [marketCodes, intervalTime]);
 
-  if (isLoading) {
-    return <LinearProgress color="primary" />;
-  }
+  if (isLoading) return <LinearProgress color="primary" />;
 
   return <MarketList tickers={tickers} codeMap={codeMap} />;
 }

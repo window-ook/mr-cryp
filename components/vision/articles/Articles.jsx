@@ -1,34 +1,8 @@
-import { theme, DescriptionTypo, NGTypo, SubTitle } from '@/defaultTheme';
-import { globalColors } from '@/globalColors';
-import {
-  Card,
-  CardHeader,
-  CardContent,
-  CardActions,
-  IconButton,
-  Grid,
-  Snackbar,
-  Alert,
-  Tooltip,
-} from '@mui/material';
-import { styled } from '@mui/system';
-import LinkIcon from '@mui/icons-material/Link';
-import IosShareIcon from '@mui/icons-material/IosShare';
+import { DescriptionTypo, SubTitle } from '@/defaultTheme';
+import { Snackbar, Alert } from '@mui/material';
 
-const ArticledCard = styled(Card)(({ theme }) => ({
-  height: '100%',
-  border: '0.5rem solid',
-  borderColor: theme.palette.primary.dark,
-  backgroundColor: globalColors.white,
-  display: 'flex',
-  flexDirection: 'column',
-  gap: '0.8rem',
-  justifyContent: 'space-between',
-  transform: 'translateY(1.25rem)',
-}));
-
-export default function Articles({ articles, open, handleOpen, handleClose }) {
-  const formatPubDate = pubDate => {
+export default function Articles({ articles, open, handleClose }) {
+  const formatDate = pubDate => {
     const date = new Date(pubDate);
     const year = date.getFullYear();
     const month = date.getMonth() + 1;
@@ -40,76 +14,54 @@ export default function Articles({ articles, open, handleOpen, handleClose }) {
 
   const formattedArticles = articles.map(article => ({
     ...article,
-    pubDate: formatPubDate(article.pubDate),
+    pubDate: formatDate(article.pubDate),
   }));
 
   return (
-    <div>
-      <SubTitle>TODAY NEWS</SubTitle>
-      <DescriptionTypo>오늘은 어떤 뉴스가 올라왔을까요?</DescriptionTypo>
-      <Grid container spacing={2} sx={{ mb: 2 }}>
-        {formattedArticles.map(article => {
+    <div className="flex flex-col">
+      <div>
+        <SubTitle>TODAY NEWS</SubTitle>
+        <DescriptionTypo>오늘은 어떤 뉴스가 올라왔을까요?</DescriptionTypo>
+      </div>
+      <div className="grid grid-cols-2 gap-2">
+        {formattedArticles.slice(0, 6).map(article => {
           const title = article.title
-            .replace(/<b>|<\/b>/g, '')
-            .replace(/&quot;/g, '')
-            .slice(0, 20);
-          const description = article.description
             .replace(/<b>|<\/b>/g, '')
             .replace(/&quot;/g, '');
 
           return (
-            <Grid item xs={12} sm={6} key={article.link}>
-              <ArticledCard key={article.link} sx={{ boxShadow: 2 }}>
-                <CardHeader
-                  title={
-                    <NGTypo fontWeight={'bold'} fontSize={20}>
-                      {title}
-                    </NGTypo>
-                  }
-                />
-                <span className="pl-4 text-sm font-ng">{article.pubDate}</span>
-                <CardContent
-                  sx={{
-                    maxHeight: '6.25rem',
-                    overflow: 'flow',
-                    flexGrow: 1,
-                  }}
+            <div key={article.link}>
+              <div className="flex">
+                <span
+                  className="whitespace-nowrap overflow-hidden text-ellipsis cursor-pointer hover:opacity-50"
+                  onClick={() => window.open(article.originallink, '_blank')}
                 >
-                  <NGTypo>{`${description.substring(0, 30)}...`}</NGTypo>
-                </CardContent>
-                <CardActions
-                  sx={{
-                    width: '100%',
-                    alignSelf: 'flex-end',
-                    pt: 0,
-                  }}
-                >
-                  <Tooltip title="기사로 이동">
-                    <IconButton
-                      aria-label="move"
-                      onClick={() =>
-                        window.open(article.originallink, '_blank')
-                      }
-                    >
-                      <IosShareIcon
-                        sx={{ color: theme.palette.primary.dark }}
-                      />
-                    </IconButton>
-                  </Tooltip>
-                  <Tooltip title="링크 복사">
-                    <IconButton
-                      aria-label="share"
-                      onClick={() => handleOpen(article.link)}
-                    >
-                      <LinkIcon sx={{ color: globalColors.skyblue['500'] }} />
-                    </IconButton>
-                  </Tooltip>
-                </CardActions>
-              </ArticledCard>
-            </Grid>
+                  {title}
+                </span>
+              </div>
+            </div>
           );
         })}
-      </Grid>
+        {formattedArticles.slice(6).map(article => {
+          const title = article.title
+            .replace(/<b>|<\/b>/g, '')
+            .replace(/&quot;/g, '');
+
+          return (
+            <div key={article.link}>
+              <div className="flex">
+                <span
+                  className="whitespace-nowrap overflow-hidden text-ellipsis cursor-pointer hover:opacity-50"
+                  onClick={() => window.open(article.originallink, '_blank')}
+                >
+                  {title}
+                </span>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+
       <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
         <Alert onClose={handleClose} severity="success" variant="filled">
           링크가 클립보드에 복사되었습니다

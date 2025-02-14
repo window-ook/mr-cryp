@@ -1,4 +1,5 @@
 import { memo } from 'react';
+import { DescriptionTypo, SubTitle } from '@/defaultTheme';
 import Grid from '@mui/material/Grid';
 import VideoCard from './VideoCard';
 
@@ -22,22 +23,34 @@ const Information = () => {
       title: '코인 차트 보는법',
       linkUrl: `https://youtube.com/watch?v=KSsA92e0GK8`,
     },
+    {
+      id: 4,
+      src: 'https://i.ytimg.com/vi/KSsA92e0GK8/hqdefault.jpg',
+      title: '뭘까요',
+      linkUrl: `https://youtube.com/watch?v=KSsA92e0GK8`,
+    },
   ];
 
   return (
-    <Grid container spacing={2} sx={{ py: 2, px: 3 }}>
-      {information.map(item => (
-        <Grid key={item.id} item xs={12} sm={4}>
-          <VideoCard
-            width={480}
-            height={300}
-            src={item.src}
-            title={item.title}
-            linkUrl={item.linkUrl}
-          />
-        </Grid>
-      ))}
-    </Grid>
+    <div>
+      <SubTitle className="text-xl font-bold">코인 거래 도움 자료</SubTitle>
+      <DescriptionTypo className="text-gray-600">
+        코인에 대한 정보와 거래 서비스 이용 방법을 확인하세요 😊
+      </DescriptionTypo>
+      <Grid container spacing={2}>
+        {information.map(item => (
+          <Grid key={item.id} item xs={12} sm={6}>
+            <VideoCard
+              width={480}
+              height={300}
+              src={item.src}
+              title={item.title}
+              linkUrl={item.linkUrl}
+            />
+          </Grid>
+        ))}
+      </Grid>
+    </div>
   );
 };
 
