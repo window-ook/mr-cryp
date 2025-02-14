@@ -1,16 +1,12 @@
 import Upbit from '@/lib/upbit';
 
 export default async function handler(req, res) {
-  const { codes } = req.query;
-
-  const upbit = new Upbit();
-
-  if (!codes) {
-    return res.status(400).json({ error: '마켓 코드들이 필요합니다' });
-  }
+  if (!req.query.codes)
+    return res.status(400).json({ error: '마켓 코드가 필요합니다' });
 
   try {
-    const response = await upbit.currentPrice(codes);
+    const upbit = new Upbit();
+    const response = await upbit.currentPrice(req.query.codes);
     const data = await response.data;
     res.status(200).json(data);
   } catch (error) {

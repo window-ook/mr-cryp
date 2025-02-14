@@ -3,6 +3,8 @@ import axios from 'axios';
 export default async function handler(req, res) {
   const { token } = req.body;
 
+  if (!token) return res.status(400).json({ error: '토큰이 필요합니다' });
+
   try {
     const response = await axios.get('https://openapi.naver.com/v1/nid/me', {
       headers: {

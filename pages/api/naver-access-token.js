@@ -2,8 +2,9 @@ import axios from 'axios';
 
 export default async function handler(req, res) {
   const { authCode } = req.body;
-  const NAVER_CLIENT_ID = process.env.NEXT_NAVER_CLIENT_ID;
-  const NAVER_CLIENT_SECRET = process.env.NEXT_NAVER_CLIENT_SECRET;
+
+  if (!authCode)
+    return res.status(400).json({ error: '인증 코드가 필요합니다' });
 
   try {
     const state = crypto.randomUUID();
@@ -11,8 +12,8 @@ export default async function handler(req, res) {
       'https://nid.naver.com/oauth2.0/token',
       new URLSearchParams({
         grant_type: 'authorization_code',
-        client_id: NAVER_CLIENT_ID,
-        client_secret: NAVER_CLIENT_SECRET,
+        client_id: process.env.NEXT_NAVER_CLIENT_ID,
+        client_secret: process.env.NEXT_NAVER_CLIENT_SECRET,
         code: authCode,
         state: encodeURIComponent(state),
       }),

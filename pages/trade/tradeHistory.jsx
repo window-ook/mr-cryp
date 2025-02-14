@@ -1,14 +1,17 @@
 import { memo, useEffect, useState } from 'react';
 import axios from 'axios';
+import Upbit from '@/lib/upbit';
 import TradeHistoryTable from '@/components/trade/tradeHistory/TradeHistoryTable';
 
 export async function getStaticProps() {
-  const domain = process.env.NEXT_PUBLIC_API_URL;
+  const upbit = new Upbit();
   let marketCodes = [];
 
   try {
-    const response = await axios.get(`${domain}/api/marketCodes`);
-    marketCodes = response.data.marketCodes.slice(0, 200);
+    const rawMarketCodes = await upbit.marketCodes();
+    marketCodes = Array.isArray(rawMarketCodes)
+      ? rawMarketCodes.slice(0, 200)
+      : [];
   } catch (error) {
     console.error(error);
   }
@@ -17,7 +20,7 @@ export async function getStaticProps() {
     props: {
       marketCodes,
     },
-    revalidate: 60,
+    revalidate: 3600,
   };
 }
 
@@ -34,7 +37,7 @@ function TradeHistory({ marketCodes }) {
       setIsLoading(true);
       const fetchTradeData = async () => {
         try {
-          const response = await axios.get(`/api/trade/${currentCode}`);
+          const response = await axios.get(`/api/trade-history/${currentCode}`);
           const data = response.data;
 
           setTradeData(prevTradeData => {

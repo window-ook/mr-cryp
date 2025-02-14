@@ -3,9 +3,11 @@ import Upbit from '@/lib/upbit';
 export default async function handler(req, res) {
   const { type, ticker, count, unit, to } = req.query;
 
-  const upbit = new Upbit();
+  if (!type || !ticker || !count)
+    return res.status(400).json({ error: 'type, ticker, count는 필수입니다' });
 
   try {
+    const upbit = new Upbit();
     let data;
     switch (type) {
       case '1min':

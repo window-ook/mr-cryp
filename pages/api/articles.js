@@ -1,17 +1,20 @@
 import axios from 'axios';
 
 export default async function handler(req, res) {
-  const { keyword } = req.query;
-  const textEncoder = new TextEncoder();
-  const encoded = textEncoder.encode(keyword);
+  const { keyword, count } = req.query;
+
+  if (!keyword || !count)
+    return res.status(400).json({ error: '키워드, 기사 개수가 필요합니다' });
 
   try {
+    const textEncoder = new TextEncoder();
+    const encoded = textEncoder.encode(keyword);
     const response = await axios.get(
       'https://openapi.naver.com/v1/search/news.json?',
       {
         params: {
           query: encoded,
-          display: 12,
+          display: count,
           start: 1,
           sort: 'sim',
         },

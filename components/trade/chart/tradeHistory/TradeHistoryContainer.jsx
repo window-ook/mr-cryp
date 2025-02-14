@@ -15,7 +15,7 @@ function TradeHistoryContainer() {
       if (code !== currentCode) setCurrentCode(code);
       const fetchTradeData = async () => {
         try {
-          const response = await axios.get(`/api/trade/${code}`);
+          const response = await axios.get(`/api/trade-history/${code}`);
           const data = response.data;
           setTradeData(prevTradeData => {
             const newData = data.filter(
