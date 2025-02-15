@@ -99,6 +99,18 @@ export const SubTitle = styled(Typography)(() => ({
 }));
 
 /**
+ * 비전 페이지 전용 서브 타이틀
+ * @type {import('@mui/system').StyledComponent<import('@mui/material').TypographyProps>}
+ */
+export const VisionSubTitle = styled(SubTitle)(() => ({
+  fontSize: '1.5rem',
+  '@media (max-width:900px)': {
+    fontSize: '1.5rem',
+    lineHeight: '0.075rem',
+  },
+}));
+
+/**
  * 디스크립션
  * @type {import('@mui/system').StyledComponent<import('@mui/material').TypographyProps>}
  */

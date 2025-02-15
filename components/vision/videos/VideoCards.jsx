@@ -1,14 +1,11 @@
-import { SubTitle, DescriptionTypo, NGTypo } from '@/defaultTheme';
+import { VisionSubTitle, NGTypo } from '@/defaultTheme';
 import { Grid, Box } from '@mui/material';
 import VideoCard from './VideoCard';
 
 export default function VideoCards({ videos, theme }) {
   return (
     <div className="w-full">
-      <SubTitle>TREND 🔥</SubTitle>
-      <DescriptionTypo>
-        코인에 대한 실시간 트렌드를 확인해보세요!
-      </DescriptionTypo>
+      <VisionSubTitle>TREND NOW</VisionSubTitle>
       <Grid container spacing={2}>
         {videos.map(video => (
           <Grid item xs={12} sm={3} key={video?.id}>

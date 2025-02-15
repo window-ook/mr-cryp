@@ -40,6 +40,19 @@ module.exports = {
         'max-500': { max: '500px' },
         'select-1120': '1120px',
       },
+
+      keyframes: {
+        fadeInOut: {
+          '0%': { opacity: 0, transform: 'translateY(10px)' },
+          '10%': { opacity: 1, transform: 'translateY(0)' },
+          '90%': { opacity: 1, transform: 'translateY(0)' },
+          '100%': { opacity: 0, transform: 'translateY(-10px)' },
+        },
+      },
+
+      animation: {
+        'fade-in-out': 'fadeInOut 4.95s ease-in-out infinite',
+      },
     },
   },
   plugins: [],

@@ -1,16 +1,29 @@
 import { LinearProgress } from '@mui/material';
-
+import { VisionSubTitle } from '@/defaultTheme';
 import useExchangeRate from '@/hooks/useExchangeRateQuery';
 
 export default function ExchangeRate() {
   const { data: exchangeRateData, isLoading, error } = useExchangeRate();
 
-  if (isLoading) return <LinearProgress color="primary" />;
+  if (isLoading)
+    return (
+      <>
+        <VisionSubTitle>실시간 환율</VisionSubTitle>
+        <LinearProgress color="primary" />
+      </>
+    );
 
-  if (error) return <p>{error.message}</p>;
+  if (error)
+    return (
+      <>
+        <VisionSubTitle>실시간 환율</VisionSubTitle>
+        <p>{error.message}</p>
+      </>
+    );
 
   return (
     <div>
+      <VisionSubTitle>실시간 환율</VisionSubTitle>
       <ul className="flex gap-4">
         {Array.isArray(exchangeRateData) &&
           exchangeRateData.map(item => (

@@ -32,35 +32,31 @@ export default function Vision({ marketCodes }) {
       <div className="w-4/5 grid grid-cols-[3fr,2fr] gap-6 h-full">
         {/* 1행 - 실시간 환율 */}
         <section className="col-span-2 p-4 rounded-lg bg-gray-100 shadow h-full">
-          <h2 className="font-bold text-lg">실시간 환율</h2>
           <ExchangeRate />
         </section>
 
         {/* 2행 - 시황 소식 & TODAY NEWS (1열) */}
-        <section className="col-start-1 grid grid-rows-2 gap-4 h-full">
+        <section className="col-start-1 grid grid-rows-[auto, 1fr] gap-4 h-full">
           {/* 시황 소식 */}
-          <div className="p-4 bg-gray-300 rounded-lg shadow h-full">
-            <h2 className="font-bold text-lg">시황 소식</h2>
+          <section className="p-4 bg-sky-200 rounded-lg shadow">
             <MarketSituation />
-          </div>
+          </section>
 
           {/* TODAY NEWS */}
-          <div className="p-4 bg-gray-100 rounded-lg shadow h-full">
+          <section className="p-4 bg-gray-100 rounded-lg shadow h-full">
             <ArticlesContainer />
-          </div>
+          </section>
         </section>
 
         {/* 2행 - 오늘 급등 코인 & 이번주 급등 코인 (2열) */}
         <section className="col-start-2 grid grid-cols-2 gap-4 h-full">
           {/* 오늘 급등 코인 */}
-          <div className="p-4 bg-gray-200 rounded-lg shadow h-full">
-            <h2 className="font-bold text-lg">오늘 급등 코인</h2>
+          <div className="p-4 bg-gray-100 rounded-lg shadow h-full">
             <DailyRised marketCodes={marketCodes} />
           </div>
 
           {/* 이번주 급등 코인 */}
-          <div className="p-4 bg-gray-200 rounded-lg shadow h-full">
-            <h2 className="font-bold text-lg">이번주 급등 코인</h2>
+          <div className="p-4 bg-gray-100 rounded-lg shadow h-full">
             <WeeklyRised marketCodes={marketCodes} />
           </div>
         </section>
