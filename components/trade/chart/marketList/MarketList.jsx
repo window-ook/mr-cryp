@@ -101,7 +101,7 @@ export default function MarketList({ codeMap, tickers }) {
             {filteredTickers &&
               filteredTickers.map(ticker => (
                 <tr
-                  className="hover:bg-list_hover hover:cursor-pointer"
+                  className="hover:bg-list_hover cursor-pointer"
                   key={`${ticker.acc_trade_price} + ${ticker.signed_change_rate}`}
                   onClick={() => {
                     handleRowClick(

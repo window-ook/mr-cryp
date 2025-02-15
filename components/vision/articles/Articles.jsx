@@ -1,4 +1,4 @@
-import { DescriptionTypo, SubTitle } from '@/defaultTheme';
+import { VisionSubTitle } from '@/defaultTheme';
 import { Snackbar, Alert } from '@mui/material';
 
 export default function Articles({ articles, open, handleClose }) {
@@ -18,10 +18,9 @@ export default function Articles({ articles, open, handleClose }) {
   }));
 
   return (
-    <div className="flex flex-col">
+    <>
       <div>
-        <SubTitle>TODAY NEWS</SubTitle>
-        <DescriptionTypo>오늘은 어떤 뉴스가 올라왔을까요?</DescriptionTypo>
+        <VisionSubTitle>TODAY NEWS</VisionSubTitle>
       </div>
       <div className="grid grid-cols-2 gap-2">
         {formattedArticles.slice(0, 6).map(article => {
@@ -30,15 +29,13 @@ export default function Articles({ articles, open, handleClose }) {
             .replace(/&quot;/g, '');
 
           return (
-            <div key={article.link}>
-              <div className="flex">
-                <span
-                  className="whitespace-nowrap overflow-hidden text-ellipsis cursor-pointer hover:opacity-50"
-                  onClick={() => window.open(article.originallink, '_blank')}
-                >
-                  {title}
-                </span>
-              </div>
+            <div key={article.link} className="flex pb-2">
+              <span
+                className="whitespace-nowrap overflow-hidden text-ellipsis font-ng cursor-pointer hover:opacity-50 transition-all duration-200 ease-in-out"
+                onClick={() => window.open(article.originallink, '_blank')}
+              >
+                {title}
+              </span>
             </div>
           );
         })}
@@ -48,15 +45,13 @@ export default function Articles({ articles, open, handleClose }) {
             .replace(/&quot;/g, '');
 
           return (
-            <div key={article.link}>
-              <div className="flex">
-                <span
-                  className="whitespace-nowrap overflow-hidden text-ellipsis cursor-pointer hover:opacity-50"
-                  onClick={() => window.open(article.originallink, '_blank')}
-                >
-                  {title}
-                </span>
-              </div>
+            <div key={article.link} className="flex pb-2">
+              <span
+                className="whitespace-nowrap overflow-hidden text-ellipsis font-ng cursor-pointer hover:opacity-50 transition-all duration-200 ease-in-out"
+                onClick={() => window.open(article.originallink, '_blank')}
+              >
+                {title}
+              </span>
             </div>
           );
         })}
@@ -67,6 +62,6 @@ export default function Articles({ articles, open, handleClose }) {
           링크가 클립보드에 복사되었습니다
         </Alert>
       </Snackbar>
-    </div>
+    </>
   );
 }

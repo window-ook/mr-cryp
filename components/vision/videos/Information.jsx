@@ -1,6 +1,5 @@
 import { memo } from 'react';
-import { DescriptionTypo, SubTitle } from '@/defaultTheme';
-import Grid from '@mui/material/Grid';
+import { VisionSubTitle } from '@/defaultTheme';
 import VideoCard from './VideoCard';
 
 const Information = () => {
@@ -25,21 +24,18 @@ const Information = () => {
     },
     {
       id: 4,
-      src: 'https://i.ytimg.com/vi/KSsA92e0GK8/hqdefault.jpg',
+      src: 'https://i.ytimg.com/vi/E6Hn-WGAe44/hqdefault.jpg',
       title: '뭘까요',
-      linkUrl: `https://youtube.com/watch?v=KSsA92e0GK8`,
+      linkUrl: `https://youtu.be/E6Hn-WGAe44?si=-nhE8nYfGyCu0ZtJ`,
     },
   ];
 
   return (
-    <div>
-      <SubTitle className="text-xl font-bold">코인 거래 도움 자료</SubTitle>
-      <DescriptionTypo className="text-gray-600">
-        코인에 대한 정보와 거래 서비스 이용 방법을 확인하세요 😊
-      </DescriptionTypo>
-      <Grid container spacing={2}>
+    <div className="relative">
+      <VisionSubTitle className="font-bold">코인 거래 도움 자료</VisionSubTitle>
+      <div className="grid grid-cols-2 gap-6">
         {information.map(item => (
-          <Grid key={item.id} item xs={12} sm={6}>
+          <div key={item.id}>
             <VideoCard
               width={480}
               height={300}
@@ -47,9 +43,12 @@ const Information = () => {
               title={item.title}
               linkUrl={item.linkUrl}
             />
-          </Grid>
+          </div>
         ))}
-      </Grid>
+      </div>
+      <span className="absolute right-0 py-2 text-xl font-bold font-ng">
+        © Mr.cryp
+      </span>
     </div>
   );
 };
