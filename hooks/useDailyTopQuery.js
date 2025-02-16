@@ -17,12 +17,10 @@ const fetchDailyTickers = async marketCodes => {
 };
 
 export function useDailyTopQuery(marketCodes) {
-  const { data: tickers = [], isLoading } = useQuery({
+  return useQuery({
     queryKey: ['daily-tickers', marketCodes],
     queryFn: () => fetchDailyTickers(marketCodes),
     staleTime: 1000 * 60 * 60,
-    enabled: !!marketCodes && marketCodes.length > 0,
+    enabled: !!marketCodes,
   });
-
-  return { tickers, isLoading };
 }

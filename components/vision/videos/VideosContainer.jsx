@@ -1,29 +1,18 @@
-import { useQuery } from '@tanstack/react-query';
+import { useTrendVideosQuery } from '@/hooks/useTrendVideosQuery';
 import { useTheme } from '@mui/material/styles';
 import { Alert } from '@mui/material';
-import axios from 'axios';
 import PendingSkeleton from '../shared/PendingSkeleton';
 import VideoCards from './VideoCards';
 
 export default function VideosContainer() {
   const theme = useTheme();
   const {
-    isPending,
-    data: videos,
+    data: videos = [],
+    isLoading,
     error,
-  } = useQuery({
-    queryKey: ['videos'],
-    queryFn: async () => {
-      const response = await axios.get('/api/videos', {
-        params: { keyword: '코인 추천' },
-      });
-      return response.data;
-    },
-    refetchOnWindowFocus: false,
-    staleTime: 1000 * 60 * 5,
-  });
+  } = useTrendVideosQuery('코인 추천');
 
-  if (isPending) return <PendingSkeleton />;
+  if (isLoading) return <PendingSkeleton />;
 
   if (error) {
     return (

@@ -12,8 +12,8 @@ export default function useSituationsQuery() {
   return useQuery({
     queryKey: ['situation'],
     queryFn: fetchSituations,
-    staleTime: 1000 * 60 * 10, // 1시간
-    cacheTime: 1000 * 60 * 10, // 1시간
+    staleTime: 1000 * 60 * 10,
+    cacheTime: 1000 * 60 * 10,
     refetchOnWindowFocus: false,
   });
 }
