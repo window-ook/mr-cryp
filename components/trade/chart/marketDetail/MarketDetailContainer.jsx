@@ -19,23 +19,20 @@ export default function MarketDetailContainer({ marketCodes }) {
   }, [marketCodes]);
 
   useEffect(() => {
-    if (code) {
-      const fetchTicker = async () => {
-        try {
-          const response = await axios.get(`/api/tickers?codes=${code}`);
-          const data = await response.data;
-          setTicker(...data);
-        } catch (error) {
-          console.error('마켓 디테일 다운로드 오류: ', error);
-        } finally {
-          setIsLoading(false);
-        }
-      };
-
-      fetchTicker();
-      const interval = setInterval(fetchTicker, intervalTime);
-      return () => clearInterval(interval);
-    }
+    if (!code) return;
+    const fetchTicker = async () => {
+      try {
+        const response = await axios.get(`/api/tickers?codes=${code}`);
+        setTicker(...response.data);
+      } catch (error) {
+        console.error('마켓 디테일 다운로드 오류: ', error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    fetchTicker();
+    const interval = setInterval(fetchTicker, intervalTime);
+    return () => clearInterval(interval);
   }, [code, intervalTime]);
 
   const numColor =

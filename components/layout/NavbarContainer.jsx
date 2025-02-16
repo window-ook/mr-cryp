@@ -73,10 +73,10 @@ export default function NavBarContainer() {
     }
   };
 
-  /** 로그아웃 혹은 프로필 정보 모달 열기 */
+  /** 로그아웃 드롭다운 닫기 */
   const handleCloseSignout = () => setAnchorSignout(null);
 
-  /** 페이지 이동 */
+  /** 페이지 이동 (XS: 메뉴 드롭다운 닫기 추가) */
   const handleCloseNavMenu = page => {
     setAnchorElNav(null);
     setActivePage(page);
@@ -86,7 +86,7 @@ export default function NavBarContainer() {
     if (page === '거래') router.push('/trade');
   };
 
-  /** 서브 메뉴 토글 */
+  /** 거래 서브 메뉴 */
   const handleToggleSubMenu = subMenu => {
     setActiveSubMenu(subMenu);
     if (subMenu === '거래 내역') router.push('/trade/tradeHistory');
@@ -94,17 +94,17 @@ export default function NavBarContainer() {
     if (subMenu === '차트') router.push('/trade/chart');
   };
 
-  /** 네브바 키워드로 검색 */
+  /** 키워드 검색 */
   const handleKeywordSearch = () => {
     dispatch(setKeyword(newKeyword));
     setActivePage('거래');
     router.push('/trade/chart');
   };
 
-  /** XS: 페이지 리스트 드롭다운 */
+  /** XS 메뉴 드롭다운 열기 */
   const handleOpenNavMenu = event => setAnchorElNav(event.currentTarget);
 
-  /** 로그아웃 드롭다운 */
+  /** 로그아웃 드롭다운 열기 */
   const handleOpenSignout = event => setAnchorSignout(event.currentTarget);
 
   const props = {

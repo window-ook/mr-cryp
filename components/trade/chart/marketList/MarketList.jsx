@@ -1,16 +1,8 @@
 import { useMemo } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import {
-  setCode,
-  setRate,
-  setPrevPrice,
-  setCurrPrice,
-  setKeyword,
-} from '@/utils/redux/chartSlice';
-import { DescriptionTypo, NGTypo, PriceTypo } from '@/defaultTheme';
-import { globalColors } from '@/globalColors';
-import { TableContainer, TextField, InputAdornment } from '@mui/material';
 import { styled } from '@mui/system';
+import { globalColors } from '@/globalColors';
+import { DescriptionTypo, NGTypo, PriceTypo } from '@/defaultTheme';
+import { TableContainer, TextField, InputAdornment } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 
 const StyledTableContainer = styled(TableContainer)(() => ({
@@ -27,11 +19,13 @@ const EditedDescriptionTypo = styled(DescriptionTypo)(() => ({
   color: globalColors.white,
 }));
 
-export default function MarketList({ codeMap, tickers }) {
-  const dispatch = useDispatch();
-
-  const keyword = useSelector(state => state.chart.keyword);
-
+export default function MarketList({
+  keyword,
+  codeMap,
+  tickers,
+  handleRowClick,
+  handleSearchChange,
+}) {
   const filteredTickers = useMemo(() => {
     return tickers.filter(ticker => {
       const marketName = codeMap[ticker.code] || codeMap[ticker.market];
@@ -44,15 +38,6 @@ export default function MarketList({ codeMap, tickers }) {
       );
     });
   }, [tickers, keyword, codeMap]);
-
-  const handleSearchChange = e => dispatch(setKeyword(e.target.value));
-
-  const handleRowClick = (code, rate, prevPrice, currPrice) => {
-    dispatch(setCode(code));
-    dispatch(setRate(rate));
-    dispatch(setPrevPrice(prevPrice));
-    dispatch(setCurrPrice(currPrice));
-  };
 
   return (
     <>

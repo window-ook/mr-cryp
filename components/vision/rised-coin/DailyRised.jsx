@@ -2,7 +2,7 @@ import { useDispatch } from 'react-redux';
 import { useRouter } from 'next/router';
 import { useDailyTopQuery } from '@/hooks/useDailyTopQuery';
 import { memo, useMemo } from 'react';
-import { setKeyword } from '@/utils/redux/chartSlice';
+import { setCode, setKeyword } from '@/utils/redux/chartSlice';
 import { LinearProgress } from '@mui/material';
 import { VisionSubTitle } from '@/defaultTheme';
 
@@ -15,9 +15,11 @@ function DailyRised({ marketCodes }) {
 
   const codeMap = useMemo(() => {
     const map = {};
-    marketCodes.forEach(item => {
-      map[item.market] = item.korean_name;
-    });
+    marketCodes
+      .filter(code => code.market.includes('KRW'))
+      .forEach(item => {
+        map[item.market] = item.korean_name;
+      });
     return map;
   }, [marketCodes]);
 
@@ -38,9 +40,17 @@ function DailyRised({ marketCodes }) {
       .slice(0, 10);
   }, [tickers, codeMap]);
 
-  const handleKeywordSearch = coinName => {
+  const handleClickCoin = coinName => {
     dispatch(setKeyword(coinName));
-    router.push('/trade/chart');
+    const marketCode = Object.entries(codeMap).find(
+      ([code, name]) => name === coinName,
+    )?.[0];
+    if (marketCode) {
+      dispatch(setCode(marketCode));
+      setTimeout(() => {
+        router.push('/trade/chart');
+      }, 100);
+    }
   };
 
   if (isLoading) return <LinearProgress color="primary" />;
@@ -59,7 +69,7 @@ function DailyRised({ marketCodes }) {
                 <span className="w-8 text-left font-ng">{i + 1}</span>
                 <span
                   className="flex-1 font-ng font-bold text-left truncate cursor-pointer"
-                  onClick={() => handleKeywordSearch(coin.name)}
+                  onClick={() => handleClickCoin(coin.name)}
                 >
                   {coin.name}
                 </span>
