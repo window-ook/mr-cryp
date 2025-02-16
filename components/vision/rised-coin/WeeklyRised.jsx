@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { useRouter } from 'next/router';
 import { memo, useMemo } from 'react';
-import { setCode, setKeyword } from '@/utils/redux/chartSlice';
+import { setCode } from '@/utils/redux/chartSlice';
 import { LinearProgress } from '@mui/material';
 import { useWeeklyTopQuery } from '@/hooks/useWeeklyTopQuery';
 import { VisionSubTitle } from '@/defaultTheme';
@@ -47,7 +47,6 @@ function WeeklyRised({ marketCodes }) {
   }, [tickers, weeklyCandles, codeMap]);
 
   const handleClickCoin = coinName => {
-    dispatch(setKeyword(coinName));
     const marketCode = Object.entries(codeMap).find(
       ([code, name]) => name === coinName,
     )?.[0];

@@ -1,3 +1,4 @@
+import { getExchangeRates } from '@/utils/exchange-rate';
 import Upbit from '@/lib/upbit';
 import Information from '@/components/vision/videos/Information';
 import VideosContainer from '@/components/vision/videos/VideosContainer';
@@ -11,9 +12,11 @@ export async function getStaticProps() {
   const upbit = new Upbit();
 
   let marketCodes = [];
+  let exchangeRates = [];
 
   try {
-    marketCodes = marketCodes = (await upbit.marketCodes()) || [];
+    marketCodes = (await upbit.marketCodes()) || [];
+    exchangeRates = (await getExchangeRates()) || [];
   } catch (error) {
     console.error('🚨 데이터 요청 실패:', error);
   }
@@ -21,18 +24,19 @@ export async function getStaticProps() {
   return {
     props: {
       marketCodes,
+      exchangeRates,
     },
     revalidate: 3600,
   };
 }
 
-export default function Vision({ marketCodes }) {
+export default function Vision({ marketCodes, exchangeRates }) {
   return (
     <div className="py-6 flex flex-col items-center w-full h-full">
       <div className="w-4/5 grid grid-cols-[3fr,2fr] gap-6 h-full">
         {/* 1행 - 실시간 환율 */}
         <section className="col-start-1 p-4 rounded-lg bg-gray-100 shadow h-full">
-          <ExchangeRate />
+          <ExchangeRate exchangeRates={exchangeRates} />
         </section>
 
         <section className="col-start-2 row-span-2 grid grid-cols-2 gap-4 h-full">
