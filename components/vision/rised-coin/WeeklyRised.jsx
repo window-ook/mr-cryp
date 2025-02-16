@@ -1,10 +1,17 @@
+import { useDispatch } from 'react-redux';
+import { useRouter } from 'next/router';
 import { memo, useMemo } from 'react';
+import { setKeyword } from '@/utils/redux/chartSlice';
 import { LinearProgress } from '@mui/material';
 import { useWeeklyTopQuery } from '@/hooks/useWeeklyTopQuery';
-import { DescriptionTypo, VisionSubTitle } from '@/defaultTheme';
+import { VisionSubTitle } from '@/defaultTheme';
 
 function WeeklyRised({ marketCodes }) {
   const { tickers, weeklyCandles, isLoading } = useWeeklyTopQuery(marketCodes);
+
+  const dispatch = useDispatch();
+
+  const router = useRouter();
 
   const codeMap = useMemo(() => {
     const map = {};
@@ -37,6 +44,11 @@ function WeeklyRised({ marketCodes }) {
       .slice(0, 10); // Top 10 선정
   }, [tickers, weeklyCandles, codeMap]);
 
+  const handleKeywordSearch = coinName => {
+    dispatch(setKeyword(coinName));
+    router.push('/trade/chart');
+  };
+
   if (isLoading) return <LinearProgress color="primary" />;
 
   return (
@@ -50,16 +62,17 @@ function WeeklyRised({ marketCodes }) {
               className="w-full flex justify-between items-center"
             >
               <div className="w-full flex items-center">
-                <DescriptionTypo className="w-8 text-left">
-                  {i + 1}
-                </DescriptionTypo>
-                <DescriptionTypo className="flex-1 text-left truncate">
+                <span className="w-8 text-left font-ng">{i + 1}</span>
+                <span
+                  className="flex-1 font-ng font-bold text-left truncate cursor-pointer"
+                  onClick={() => handleKeywordSearch(coin.name)}
+                >
                   {coin.name}
-                </DescriptionTypo>
+                </span>
               </div>
-              <DescriptionTypo className="w-20 text-right text-red-500">
+              <span className="w-24 font-ng font-bold text-right text-red-500">
                 +{coin.changeRate.toFixed(2)}%
-              </DescriptionTypo>
+              </span>
             </div>
           ))
         ) : (

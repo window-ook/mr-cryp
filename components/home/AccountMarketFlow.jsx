@@ -15,27 +15,33 @@ export default function AccountMarketFlow({ flowSize }) {
   const xLabels = ['8월', '9월', '10월', '11월', '12월', '1월'];
 
   useEffect(() => {
-    const fetchMonthlyData = async (ticker, setData) => {
+    const fetchMonthlyData = async () => {
       try {
-        const response = await axios.get('/api/candles', {
-          params: {
-            type: 'months',
-            ticker,
-            count: 6,
-          },
-        });
+        const tickers = ['KRW-ETH', 'KRW-XRP'];
 
-        const monthlyData = response.data.map(
-          candle => candle.trade_price / 1000,
+        const responses = await Promise.all(
+          tickers.map(ticker =>
+            axios.get('/api/candles', {
+              params: {
+                type: 'months',
+                ticker,
+                count: 6,
+              },
+            }),
+          ),
         );
-        setData(monthlyData);
+
+        const [ethData, xrpData] = responses.map(response =>
+          response.data.map(candle => candle.trade_price / 1000),
+        );
+
+        setEtherium(ethData), setRipple(xrpData);
       } catch (error) {
-        console.error(`월봉 데이터 다운로드 중 에러 발생 (${ticker}):`, error);
+        console.error('월봉 데이터 다운로드 중 에러 발생:', error);
       }
     };
 
-    fetchMonthlyData('KRW-ETH', setEtherium);
-    fetchMonthlyData('KRW-XRP', setRipple);
+    fetchMonthlyData();
   }, []);
 
   return (

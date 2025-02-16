@@ -1,10 +1,17 @@
-import { memo, useMemo } from 'react';
-import { LinearProgress } from '@mui/material';
+import { useDispatch } from 'react-redux';
+import { useRouter } from 'next/router';
 import { useDailyTopQuery } from '@/hooks/useDailyTopQuery';
-import { DescriptionTypo, VisionSubTitle } from '@/defaultTheme';
+import { memo, useMemo } from 'react';
+import { setKeyword } from '@/utils/redux/chartSlice';
+import { LinearProgress } from '@mui/material';
+import { VisionSubTitle } from '@/defaultTheme';
 
 function DailyRised({ marketCodes }) {
   const { tickers, isLoading } = useDailyTopQuery(marketCodes);
+
+  const dispatch = useDispatch();
+
+  const router = useRouter();
 
   const codeMap = useMemo(() => {
     const map = {};
@@ -31,6 +38,11 @@ function DailyRised({ marketCodes }) {
       .slice(0, 10);
   }, [tickers, codeMap]);
 
+  const handleKeywordSearch = coinName => {
+    dispatch(setKeyword(coinName));
+    router.push('/trade/chart');
+  };
+
   if (isLoading) return <LinearProgress color="primary" />;
 
   return (
@@ -43,20 +55,18 @@ function DailyRised({ marketCodes }) {
               key={coin.market}
               className="w-full flex justify-between items-center"
             >
-              {/* 인덱스 & 코인명 */}
               <div className="w-full flex">
-                <DescriptionTypo className="w-8 text-left">
-                  {i + 1}
-                </DescriptionTypo>
-                <DescriptionTypo className="flex-1 text-left truncate">
+                <span className="w-8 text-left font-ng">{i + 1}</span>
+                <span
+                  className="flex-1 font-ng font-bold text-left truncate cursor-pointer"
+                  onClick={() => handleKeywordSearch(coin.name)}
+                >
                   {coin.name}
-                </DescriptionTypo>
+                </span>
               </div>
-
-              {/* 상승률 */}
-              <DescriptionTypo className="w-24 text-right text-red-500">
+              <span className="w-24 font-ng font-bold text-right text-red-500">
                 +{coin.changeRate.toFixed(2)}%
-              </DescriptionTypo>
+              </span>
             </div>
           ))
         ) : (
