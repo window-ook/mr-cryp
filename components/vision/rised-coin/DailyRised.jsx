@@ -7,7 +7,7 @@ import { LinearProgress } from '@mui/material';
 import { VisionSubTitle } from '@/defaultTheme';
 
 function DailyRised({ marketCodes }) {
-  const { tickers, isLoading } = useDailyTopQuery(marketCodes);
+  const { data: tickers, isLoading } = useDailyTopQuery(marketCodes);
 
   const dispatch = useDispatch();
 
@@ -24,7 +24,7 @@ function DailyRised({ marketCodes }) {
   }, [marketCodes]);
 
   const risingCoins = useMemo(() => {
-    if (!tickers.length) return [];
+    if (!tickers) return [];
 
     return tickers
       .map(ticker => ({

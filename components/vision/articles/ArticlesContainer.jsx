@@ -1,27 +1,16 @@
 import { useState } from 'react';
-import { useQuery } from '@tanstack/react-query';
+import { useTrendArticlesQuery } from '@/hooks/useTrendArticlesQuery';
 import { Alert } from '@mui/material';
-import axios from 'axios';
-import PendingSkeleton from '../shared/PendingSkeleton';
 import Articles from './Articles';
+import PendingSkeleton from '../shared/PendingSkeleton';
 
 export default function ArticlesContainer() {
   const [open, setOpen] = useState(false);
   const {
-    data: articles,
+    data: articles = [],
     error,
     isPending,
-  } = useQuery({
-    queryKey: ['articles'],
-    queryFn: async () => {
-      const response = await axios.get('/api/articles', {
-        params: { keyword: '코인', count: 12 },
-      });
-      return response.data;
-    },
-    refetchOnWindowFocus: false,
-    staleTime: 1000 * 60 * 10,
-  });
+  } = useTrendArticlesQuery('코인', 12);
 
   if (isPending) return <PendingSkeleton />;
 
