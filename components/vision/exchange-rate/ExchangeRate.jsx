@@ -22,23 +22,23 @@ export default function ExchangeRate() {
     );
 
   return (
-    <div>
-      <VisionSubTitle>실시간 환율</VisionSubTitle>
-      <ul className="flex gap-4">
-        {Array.isArray(exchangeRateData) &&
-          exchangeRateData.map(item => (
-            <li key={item.currency}>
-              <span>{item.currency}</span>
-              <span>{item.rate}</span>
-              {!!item.changeRate && (
-                <span>
-                  ({item.changeRate > 0 ? '▲' : '▼'}{' '}
-                  {item.changeRate.toFixed(2)}%)
-                </span>
-              )}
+    <>
+      <VisionSubTitle>오늘 환율</VisionSubTitle>
+      <ul className="flex justify-stretch">
+        {exchangeRateData?.rates?.map(item => {
+          const currency = Object.keys(item)[0];
+          const value = item[currency];
+
+          return (
+            <li key={currency}>
+              <span className="font-ng">
+                <span className="font-bold">{currency}</span> {value.toFixed(2)}
+                원
+              </span>
             </li>
-          ))}
+          );
+        })}
       </ul>
-    </div>
+    </>
   );
 }

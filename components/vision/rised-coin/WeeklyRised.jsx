@@ -64,7 +64,7 @@ function WeeklyRised({ marketCodes }) {
   return (
     <>
       <VisionSubTitle>이번주 급등 코인</VisionSubTitle>
-      <div className="flex flex-col space-y-4">
+      <div className="flex flex-col space-y-6 pt-2">
         {risingCoins.length > 0 ? (
           risingCoins.map((coin, i) => (
             <div
