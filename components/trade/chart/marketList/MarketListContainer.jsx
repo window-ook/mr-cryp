@@ -1,5 +1,12 @@
 import { memo, useMemo, useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  setCode,
+  setRate,
+  setPrevPrice,
+  setCurrPrice,
+  setKeyword,
+} from '@/utils/redux/chartSlice';
 import { LinearProgress } from '@mui/material';
 import axios from 'axios';
 import MarketList from './MarketList';
@@ -7,7 +14,12 @@ import MarketList from './MarketList';
 function MarketListContainer({ marketCodes }) {
   const [isLoading, setIsLoading] = useState(true);
   const [tickers, setTickers] = useState([]);
+
+  const dispatch = useDispatch();
+
   const intervalTime = useSelector(state => state.chart.intervalTime);
+
+  const keyword = useSelector(state => state.chart.keyword);
 
   const codeMap = useMemo(() => {
     const map = {};
@@ -41,8 +53,26 @@ function MarketListContainer({ marketCodes }) {
     }
   }, [marketCodes, intervalTime]);
 
+  const handleSearchChange = e => dispatch(setKeyword(e.target.value));
+
+  const handleRowClick = (code, rate, prevPrice, currPrice) => {
+    dispatch(setCode(code));
+    dispatch(setRate(rate));
+    dispatch(setPrevPrice(prevPrice));
+    dispatch(setCurrPrice(currPrice));
+  };
+
+  const props = {
+    keyword,
+    tickers,
+    codeMap,
+    handleRowClick,
+    handleSearchChange,
+  };
+
   if (isLoading) return <LinearProgress color="primary" />;
 
-  return <MarketList tickers={tickers} codeMap={codeMap} />;
+  return <MarketList {...props} />;
 }
+
 export default memo(MarketListContainer);

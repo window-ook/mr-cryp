@@ -173,6 +173,8 @@ const NotificationIcon = styled(NotificationsNoneIcon)(() => ({
 }));
 
 export default function NavBar({
+  getActivePage,
+  setNewKeyword,
   handleOpenNavMenu,
   handleCloseNavMenu,
   handleOpenSignout,
@@ -182,7 +184,6 @@ export default function NavBar({
   handleClose,
   handleToggleSubMenu,
   handleKeywordSearch,
-  setNewKeyword,
   navbarMenu,
   subNavbarMenu,
   activePage,
@@ -218,7 +219,9 @@ export default function NavBar({
                   >
                     <NavbarButtonTypo>{page}</NavbarButtonTypo>
                     <div
-                      className={`h-1 w-full rounded-xl shadow-black shadow-lg ${activePage === page ? ' bg-white' : ''}`}
+                      className={`h-1 w-full rounded-xl shadow-black shadow-lg ${
+                        getActivePage() === page ? 'bg-white' : ''
+                      }`}
                     />
                   </NavbarButton>
                 ))}

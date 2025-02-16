@@ -26,16 +26,21 @@ export default function NavBarContainer() {
   const navbarMenu = ['홈', '비전', '거래'];
   const subNavbarMenu = ['오더북', '거래 내역', '차트'];
 
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const getActivePage = () => {
+    if (router.pathname.startsWith('/vision')) return '비전';
+    if (router.pathname.startsWith('/trade')) return '거래';
+    return '홈';
+  };
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
       setImgUrl(localStorage.getItem('imgUrl'));
       setNickname(localStorage.getItem('nickname'));
-      setActivePage(sessionStorage.getItem('activePage'));
     }
   }, []);
+
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
   const handleSignout = async () => {
     try {
@@ -68,10 +73,10 @@ export default function NavBarContainer() {
     }
   };
 
-  /** 로그아웃 혹은 프로필 정보 모달 열기 */
+  /** 로그아웃 드롭다운 닫기 */
   const handleCloseSignout = () => setAnchorSignout(null);
 
-  /** 페이지 이동 */
+  /** 페이지 이동 (XS: 메뉴 드롭다운 닫기 추가) */
   const handleCloseNavMenu = page => {
     setAnchorElNav(null);
     setActivePage(page);
@@ -81,7 +86,7 @@ export default function NavBarContainer() {
     if (page === '거래') router.push('/trade');
   };
 
-  /** 서브메뉴 토글 */
+  /** 거래 서브 메뉴 */
   const handleToggleSubMenu = subMenu => {
     setActiveSubMenu(subMenu);
     if (subMenu === '거래 내역') router.push('/trade/tradeHistory');
@@ -89,20 +94,22 @@ export default function NavBarContainer() {
     if (subMenu === '차트') router.push('/trade/chart');
   };
 
-  /** 네브바에서 키워드로 검색 */
+  /** 키워드 검색 */
   const handleKeywordSearch = () => {
     dispatch(setKeyword(newKeyword));
     setActivePage('거래');
     router.push('/trade/chart');
   };
 
-  /** XS 크기일 때 네브바 활성화 드롭다운 */
+  /** XS 메뉴 드롭다운 열기 */
   const handleOpenNavMenu = event => setAnchorElNav(event.currentTarget);
 
-  /** 로그아웃 버튼 활성화 드롭다운 */
+  /** 로그아웃 드롭다운 열기 */
   const handleOpenSignout = event => setAnchorSignout(event.currentTarget);
 
   const props = {
+    getActivePage,
+    setNewKeyword,
     handleOpenNavMenu,
     handleCloseNavMenu,
     handleOpenSignout,
@@ -112,7 +119,6 @@ export default function NavBarContainer() {
     handleClose,
     handleToggleSubMenu,
     handleKeywordSearch,
-    setNewKeyword,
     navbarMenu,
     subNavbarMenu,
     activePage,

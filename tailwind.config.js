@@ -42,16 +42,16 @@ module.exports = {
       },
 
       keyframes: {
-        fadeInOut: {
-          '0%': { opacity: 0, transform: 'translateY(10px)' },
+        marquee: {
+          '0%': { opacity: 0, transform: 'translateY(20px)' },
           '10%': { opacity: 1, transform: 'translateY(0)' },
           '90%': { opacity: 1, transform: 'translateY(0)' },
-          '100%': { opacity: 0, transform: 'translateY(-10px)' },
+          '100%': { opacity: 0, transform: 'translateY(-20px)' },
         },
       },
 
       animation: {
-        'fade-in-out': 'fadeInOut 4.95s ease-in-out infinite',
+        marquee: 'marquee 5s linear infinite',
       },
     },
   },
