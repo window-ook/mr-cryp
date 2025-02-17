@@ -1,7 +1,7 @@
 import { memo, useEffect, useState } from 'react';
 import axios from 'axios';
 import Upbit from '@/lib/upbit';
-import OrderbookTable from '@/components/trade/orderbook/OrderbookTable';
+import OrderbookUI from '@/components/trade/orderbook/OrderbookUI';
 
 export async function getStaticProps() {
   const upbit = new Upbit();
@@ -55,7 +55,7 @@ function Orderbook({ marketCodes }) {
   }, [currentCode]);
 
   return (
-    <OrderbookTable
+    <OrderbookUI
       orderbookData={orderbookData}
       isConnected={isConnected}
       currentCode={currentCode}

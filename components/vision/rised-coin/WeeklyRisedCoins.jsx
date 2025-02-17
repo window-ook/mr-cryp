@@ -1,12 +1,12 @@
+import { memo, useMemo } from 'react';
 import { useDispatch } from 'react-redux';
 import { useRouter } from 'next/router';
-import { memo, useMemo } from 'react';
+import { useWeeklyTopQuery } from '@/hooks/useWeeklyTopQuery';
 import { setCode } from '@/utils/redux/chartSlice';
 import { LinearProgress } from '@mui/material';
-import { useWeeklyTopQuery } from '@/hooks/useWeeklyTopQuery';
 import { VisionSubTitle } from '@/defaultTheme';
 
-function WeeklyRised({ marketCodes }) {
+function WeeklyRisedCoins({ marketCodes }) {
   const { tickers, weeklyCandles, isLoading } = useWeeklyTopQuery(marketCodes);
 
   const dispatch = useDispatch();
@@ -42,7 +42,7 @@ function WeeklyRised({ marketCodes }) {
         };
       })
       .filter(Boolean) // null 값 제거
-      .sort((a, b) => b.changeRate - a.changeRate) // 정렬
+      .sort((a, b) => b.changeRate - a.changeRate)
       .slice(0, 10); // Top 10 선정
   }, [tickers, weeklyCandles, codeMap]);
 
@@ -63,23 +63,25 @@ function WeeklyRised({ marketCodes }) {
   return (
     <>
       <VisionSubTitle>이번주 급등 코인</VisionSubTitle>
-      <div className="flex flex-col space-y-6 pt-2">
+      <div className="flex flex-col space-y-6 pt-2 overflow-hidden">
         {risingCoins.length > 0 ? (
           risingCoins.map((coin, i) => (
             <div
               key={coin.market}
-              className="w-full flex justify-between items-center"
+              className="w-full flex justify-between items-center "
             >
               <div className="w-full flex items-center">
-                <span className="w-8 text-left font-ng">{i + 1}</span>
+                <span className="w-8 text-left font-ng max-[1580px]:text-sm max-[1525px]:text-xs">
+                  {i + 1}
+                </span>
                 <span
-                  className="flex-1 font-ng font-bold text-left truncate cursor-pointer"
+                  className="flex-1 font-ng font-bold text-left truncate cursor-pointer max-[1580px]:text-sm max-[1525px]:text-xs"
                   onClick={() => handleClickCoin(coin.name)}
                 >
                   {coin.name}
                 </span>
               </div>
-              <span className="w-24 font-ng font-bold text-right text-red-500">
+              <span className="w-24 font-ng font-bold text-right text-red-500 max-[1580px]:text-sm max-[1525px]:text-xs">
                 +{coin.changeRate.toFixed(2)}%
               </span>
             </div>
@@ -92,4 +94,4 @@ function WeeklyRised({ marketCodes }) {
   );
 }
 
-export default memo(WeeklyRised);
+export default memo(WeeklyRisedCoins);

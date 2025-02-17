@@ -6,7 +6,7 @@ import { setCode } from '@/utils/redux/chartSlice';
 import { LinearProgress } from '@mui/material';
 import { VisionSubTitle } from '@/defaultTheme';
 
-function DailyRised({ marketCodes }) {
+function DailyRisedCoins({ marketCodes }) {
   const { data: tickers, isLoading } = useDailyTopQuery(marketCodes);
 
   const dispatch = useDispatch();
@@ -56,8 +56,10 @@ function DailyRised({ marketCodes }) {
 
   return (
     <>
-      <VisionSubTitle>오늘 급등 코인</VisionSubTitle>
-      <div className="flex flex-col space-y-6 pt-2">
+      <div className="flex gap-1 items-end">
+        <VisionSubTitle>오늘 급등 코인</VisionSubTitle>
+      </div>
+      <div className="flex flex-col space-y-6 pt-2 overflow-hidden">
         {risingCoins.length > 0 ? (
           risingCoins.map((coin, i) => (
             <div
@@ -65,15 +67,17 @@ function DailyRised({ marketCodes }) {
               className="w-full flex justify-between items-center"
             >
               <div className="w-full flex">
-                <span className="w-8 text-left font-ng">{i + 1}</span>
+                <span className="w-8 text-left font-ng max-[1580px]:text-sm max-[1525px]:text-xs">
+                  {i + 1}
+                </span>
                 <span
-                  className="flex-1 font-ng font-bold text-left truncate cursor-pointer"
+                  className="flex-1 font-ng font-bold text-left truncate cursor-pointer max-[1580px]:text-sm max-[1525px]:text-xs"
                   onClick={() => handleClickCoin(coin.name)}
                 >
                   {coin.name}
                 </span>
               </div>
-              <span className="w-24 font-ng font-bold text-right text-red-500">
+              <span className="w-24 font-ng font-bold text-right text-red-500 max-[1580px]:text-sm max-[1525px]:text-xs">
                 +{coin.changeRate.toFixed(2)}%
               </span>
             </div>
@@ -86,4 +90,4 @@ function DailyRised({ marketCodes }) {
   );
 }
 
-export default memo(DailyRised);
+export default memo(DailyRisedCoins);

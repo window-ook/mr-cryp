@@ -50,7 +50,7 @@ export default function Home() {
         let fetched = response.data;
         setBalance(fetched);
       } catch (error) {
-        console.log('계좌 현황 다운로드 에러: ', error);
+        console.error('계좌 현황 다운로드 에러: ', error);
       }
     };
 
@@ -90,7 +90,7 @@ export default function Home() {
       </div>
       <div className="h-[100%]">
         <div className="h-[4rem]" />
-        <div className="flex flex-col max-1400:gap-[2rem]">
+        <div className="flex flex-col max-[1400px]:gap-[3rem]">
           <AccountBalanceFlow totalBalance={totalBalance} flowSize={flowSize} />
           <AccountMarketFlow flowSize={flowSize} />
         </div>

@@ -124,7 +124,7 @@ const initialOptions = {
   },
 };
 
-export default function HighChartsGrid() {
+export default function HighChartsProvider() {
   const [options, setOptions] = useState(initialOptions);
   const [candles, setCandles] = useState([]);
 

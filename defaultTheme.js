@@ -94,7 +94,6 @@ export const SubTitle = styled(Typography)(() => ({
   marginBottom: '0.125rem',
   '@media (max-width:900px)': {
     fontSize: '1.5rem',
-    lineHeight: '0.075rem',
   },
 }));
 
@@ -104,9 +103,12 @@ export const SubTitle = styled(Typography)(() => ({
  */
 export const VisionSubTitle = styled(SubTitle)(() => ({
   fontSize: '1.5rem',
-  '@media (max-width:900px)': {
-    fontSize: '1.5rem',
-    lineHeight: '0.075rem',
+  '@media (max-width:1400px)': {
+    fontSize: '1rem',
+  },
+
+  '@media (max-width:1100px)': {
+    fontSize: '0.7rem',
   },
 }));
 

@@ -25,7 +25,7 @@ export default async function handler(req, res) {
       priority: 0.8,
     },
     {
-      url: 'https://mr-cryp.vercel.app/trade/tradeHistory',
+      url: 'https://mr-cryp.vercel.app/trade/trade-history',
       lastModified: new Date().toISOString(),
       changeFrequency: 'weekly',
       priority: 0.6,

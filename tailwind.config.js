@@ -32,12 +32,6 @@ module.exports = {
       },
 
       screens: {
-        'max-1400': { max: '1400px' },
-        'max-1180': { max: '1180px' },
-        'max-1120': { max: '1120px' },
-        'max-1000': { max: '1000px' },
-        'max-900': { max: '900px' },
-        'max-500': { max: '500px' },
         'select-1120': '1120px',
       },
 

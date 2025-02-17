@@ -85,7 +85,7 @@ https://github.com/user-attachments/assets/81dae91e-90cd-4d26-b002-9b69d880d3bc
 
 ### 거래: 거래 내역
 
-![page_tradeHistory](https://github.com/user-attachments/assets/8e369dae-4959-4286-a557-fef284f1a0d4)
+![page_trade-history](https://github.com/user-attachments/assets/8e369dae-4959-4286-a557-fef284f1a0d4)
 
 마켓별 실시간 거래 내역을 보여주는 페이지입니다.<br>
 마켓 코드 셀렉터로 원하는 마켓 코드를 선택할 수 있습니다.<br>

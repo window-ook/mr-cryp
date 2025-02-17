@@ -298,8 +298,10 @@ export default function NavBar({
           <Box sx={{ flexGrow: 0 }}>
             <div className="flex items-center gap-3">
               <div className="relative hidden md:block">
-                <div className="absolute left-4 bottom-6 w-5 h-5 rounded-[100%] bg-red-500 text-center max-[1200px]:w-3 max-[1200px]:h-3">
-                  <span className="font-ng font-bold">1</span>
+                <div className="absolute left-4 bottom-6 w-5 h-5 rounded-[100%] bg-red-500 max-[1200px]:w-3 max-[1200px]:h-3 flex items-center justify-center">
+                  <span className="font-ng font-bold max-[1200px]:text-xs">
+                    1
+                  </span>
                 </div>
                 <NotificationIcon onClick={handleOpen} />
               </div>

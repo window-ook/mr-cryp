@@ -1,10 +1,10 @@
 import React from 'react';
-import NavBarContainer from '@/components/layout/NavbarContainer';
+import NavBarProvider from '@/components/layout/NavbarProvider';
 
 export default function Layout({ children }) {
   return (
     <div>
-      <NavBarContainer />
+      <NavBarProvider />
       <main>{children}</main>
     </div>
   );

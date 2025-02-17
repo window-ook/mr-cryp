@@ -1,16 +1,16 @@
 import { useState } from 'react';
-import { useTrendArticlesQuery } from '@/hooks/useTrendArticlesQuery';
+import { useArticlesQuery } from '@/hooks/useArticlesQuery';
 import { Alert } from '@mui/material';
 import Articles from './Articles';
 import PendingSkeleton from '../shared/PendingSkeleton';
 
-export default function ArticlesContainer() {
+export default function ArticlesProvider() {
   const [open, setOpen] = useState(false);
   const {
     data: articles = [],
     error,
     isPending,
-  } = useTrendArticlesQuery('코인', 12);
+  } = useArticlesQuery('코인', 12);
 
   if (isPending) return <PendingSkeleton />;
 

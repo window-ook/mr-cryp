@@ -1,8 +1,8 @@
 import { memo } from 'react';
 import { VisionSubTitle } from '@/defaultTheme';
-import VideoCard from './VideoCard';
+import VideoCard from './Video';
 
-const Information = () => {
+const InformationVideos = () => {
   const information = [
     {
       id: 1,
@@ -31,7 +31,7 @@ const Information = () => {
   ];
 
   return (
-    <div className="relative">
+    <div className="relative max-[900px]:pb-5">
       <VisionSubTitle className="font-bold">코인 거래 도움 자료</VisionSubTitle>
       <div className="grid grid-cols-2 gap-6">
         {information.map(item => (
@@ -53,4 +53,4 @@ const Information = () => {
   );
 };
 
-export default memo(Information);
+export default memo(InformationVideos);

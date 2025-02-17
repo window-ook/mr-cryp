@@ -7,7 +7,7 @@ import { logoutGoogle } from '@/utils/firebase';
 import axios from 'axios';
 import NavBar from './Navbar';
 
-export default function NavBarContainer() {
+export default function NavBarProvider() {
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorSignout, setAnchorSignout] = useState(null);
   const [activePage, setActivePage] = useState('홈');
@@ -89,7 +89,7 @@ export default function NavBarContainer() {
   /** 거래 서브 메뉴 */
   const handleToggleSubMenu = subMenu => {
     setActiveSubMenu(subMenu);
-    if (subMenu === '거래 내역') router.push('/trade/tradeHistory');
+    if (subMenu === '거래 내역') router.push('/trade/trade-history');
     if (subMenu === '오더북') router.push('/trade/orderbook');
     if (subMenu === '차트') router.push('/trade/chart');
   };

@@ -11,7 +11,7 @@ import { LinearProgress } from '@mui/material';
 import axios from 'axios';
 import MarketList from './MarketList';
 
-function MarketListContainer({ marketCodes }) {
+function MarketListProvider({ marketCodes }) {
   const [isLoading, setIsLoading] = useState(true);
   const [tickers, setTickers] = useState([]);
 
@@ -75,4 +75,4 @@ function MarketListContainer({ marketCodes }) {
   return <MarketList {...props} />;
 }
 
-export default memo(MarketListContainer);
+export default memo(MarketListProvider);

@@ -1,7 +1,7 @@
 import { memo, useEffect, useState } from 'react';
 import axios from 'axios';
 import Upbit from '@/lib/upbit';
-import TradeHistoryTable from '@/components/trade/tradeHistory/TradeHistoryTable';
+import TradeHistoryUI from '@/components/trade/trade-history/TradeHistoryUI';
 
 export async function getStaticProps() {
   const upbit = new Upbit();
@@ -68,7 +68,7 @@ function TradeHistory({ marketCodes }) {
   }, [currentCode]);
 
   return (
-    <TradeHistoryTable
+    <TradeHistoryUI
       tradeData={tradeData}
       isConnected={isConnected}
       currentCode={currentCode}

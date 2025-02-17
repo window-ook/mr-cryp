@@ -1,8 +1,8 @@
 function SubIndicator({ label, value, valueStyle }) {
   return (
     <>
-      <div className="flex justify-between w-[12.5rem] max-1180:w-[9.375rem]">
-        <span className="font-ng text-[0.75rem] max-1180:text-[0.5rem] self-end">
+      <div className="flex justify-between w-[12.5rem] max-[1180px]:w-[9.375rem]">
+        <span className="font-ng text-[0.75rem] max-[1180px]:text-[0.5rem] self-end">
           {label}
         </span>
         <span
@@ -57,7 +57,7 @@ export default function MarketDetail({ codeMap, ticker, numColor }) {
             </span>
           </div>
         </div>
-        <div className="flex gap-2 mr-2 max-500:hidden">
+        <div className="flex gap-2 mr-2 max-[500px]:hidden">
           <div className="flex flex-col justify-center flex-shrink flex-grow basis-full">
             <SubIndicator
               label="고가"
