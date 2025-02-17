@@ -31,7 +31,7 @@ export default function Articles({ articles, open, handleClose }) {
           return (
             <div key={article.link} className="flex pb-2">
               <span
-                className="whitespace-nowrap overflow-hidden text-ellipsis font-ng cursor-pointer hover:opacity-50 transition-all duration-200 ease-in-out"
+                className="whitespace-nowrap overflow-hidden text-ellipsis font-ng max-[1100px]:text-xs cursor-pointer hover:opacity-50 transition-all duration-200 ease-in-out"
                 onClick={() => window.open(article.originallink, '_blank')}
               >
                 {title}
@@ -47,7 +47,7 @@ export default function Articles({ articles, open, handleClose }) {
           return (
             <div key={article.link} className="flex pb-2">
               <span
-                className="whitespace-nowrap overflow-hidden text-ellipsis font-ng cursor-pointer hover:opacity-50 transition-all duration-200 ease-in-out"
+                className="whitespace-nowrap overflow-hidden text-ellipsis font-ng max-[1100px]:text-xs cursor-pointer hover:opacity-50 transition-all duration-200 ease-in-out"
                 onClick={() => window.open(article.originallink, '_blank')}
               >
                 {title}

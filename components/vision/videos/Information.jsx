@@ -31,7 +31,7 @@ const Information = () => {
   ];
 
   return (
-    <div className="relative">
+    <div className="relative max-[900px]:pb-5">
       <VisionSubTitle className="font-bold">코인 거래 도움 자료</VisionSubTitle>
       <div className="grid grid-cols-2 gap-6">
         {information.map(item => (

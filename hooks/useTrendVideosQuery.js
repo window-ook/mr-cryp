@@ -5,7 +5,6 @@ const fetchTrendVideos = async newKeyword => {
   const response = await axios.get('/api/videos', {
     params: { keyword: newKeyword },
   });
-  console.log(response.data);
   return response.data;
 };
 
@@ -14,6 +13,7 @@ export function useTrendVideosQuery(keyword) {
     queryKey: ['videos', keyword],
     queryFn: () => fetchTrendVideos(keyword),
     staleTime: 1000 * 60 * 10,
+    gcTime: 1000 * 60 * 10,
     enabled: !!keyword,
   });
 }

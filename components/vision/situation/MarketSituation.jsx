@@ -65,7 +65,9 @@ export default function MarketSituation() {
     <>
       <div className="flex items-end gap-3">
         <VisionSubTitle>시황</VisionSubTitle>
-        <span className="pb-1 text-gray-500 font-ng">{today}</span>
+        <span className="pb-1 text-gray-500 font-ng max-[1525px]:text-xs">
+          {today}
+        </span>
       </div>
       <div className="relative h-10 p-2 rounded-lg flex items-center">
         <div
@@ -73,8 +75,12 @@ export default function MarketSituation() {
           className="absolute overflow-hidden text-ellipsis inset-0 flex items-center animate-marquee cursor-pointer"
           onClick={() => window.open(link, '_blank')}
         >
-          <span className="text-main font-semibold">{title}</span>
-          <span className="text-gray-700 pl-2">{description}...</span>
+          <span className="text-main font-semibold max-[1100px]:text-xs">
+            {title}
+          </span>
+          <span className="text-gray-700 pl-2 max-[1100px]:text-xs">
+            {description}...
+          </span>
         </div>
       </div>
     </>

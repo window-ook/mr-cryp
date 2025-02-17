@@ -8,8 +8,6 @@ export default function ProtectedRoute({ children }) {
   const [message, setMessage] = useState('');
 
   useEffect(() => {
-    if (process.env.NEXT_PUBLIC_IS_TESTING === 'true') return;
-
     const userId = localStorage.getItem('userId');
     if (!userId) {
       setOpen(true);

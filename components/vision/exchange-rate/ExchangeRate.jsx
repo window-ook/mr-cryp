@@ -8,7 +8,7 @@ export default function ExchangeRate({ exchangeRates }) {
         {exchangeRates.map(({ currency, rate }) => {
           return (
             <li key={currency}>
-              <span className="font-ng">
+              <span className="font-ng max-[1100px]:text-xs">
                 <span className="font-bold">{currency}</span> {rate.toFixed(2)}
                 원
               </span>
