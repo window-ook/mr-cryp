@@ -3,26 +3,26 @@ import { setOpen } from '@/utils/redux/chartSlice';
 import { HeadTypo } from '@/defaultTheme';
 import Upbit from '@/lib/upbit';
 import dynamic from 'next/dynamic';
-import MarketListContainer from '@/components/trade/chart/marketList/MarketListContainer';
-import MarketDetailContainer from '@/components/trade/chart/marketDetail/MarketDetailContainer';
-import TradeHistoryContainer from '@/components/trade/chart/tradeHistory/TradeHistoryContainer';
-import OrderbookContainer from '@/components/trade/chart/orderbook/OrderbookContainer';
+import MarketListProvider from '@/components/trade/chart/market-list/MarketListProvider';
+import MarketDetailProvider from '@/components/trade/chart/market-detail/MarketDetailProvider';
+import TradeHistoryProvider from '@/components/trade/chart/trade-history/TradeHistoryProvider';
+import OrderbookProvider from '@/components/trade/chart/orderbook/OrderbookProvider';
 
 const HighStockChart = dynamic(
-  () => import('@/components/trade/chart/highCharts/HighChartsContainer'),
+  () => import('@/components/trade/chart/high-charts/HighChartsProvider'),
   {
     ssr: false,
   },
 );
 
-const OrderModal = dynamic(
-  () => import('@/components/trade/chart/modal/OrderModal'),
+const ModalProvider = dynamic(
+  () => import('@/components/trade/chart/order-modal/ModalProvider'),
   {
     ssr: false,
   },
 );
 
-function HighChartContainer() {
+function HighChartProvider() {
   return <HighStockChart />;
 }
 
@@ -55,15 +55,15 @@ export default function Chart({ marketCodes }) {
         <div className="flex flex-wrap">
           {/* 1열 */}
           <div className="w-full md:w-3/12">
-            <MarketListContainer marketCodes={marketCodes} />
+            <MarketListProvider marketCodes={marketCodes} />
           </div>
 
           {/* 2열 */}
           <div className="w-full md:w-9/12">
-            <MarketDetailContainer marketCodes={marketCodes} />
+            <MarketDetailProvider marketCodes={marketCodes} />
 
             <div className="relative">
-              <HighChartContainer />
+              <HighChartProvider />
               <button
                 className="absolute right-2 top-2 bg-main shadow-md p-2 rounded-lg hover:opacity-60 transition duration-200 ease-in"
                 onClick={handleOpen}
@@ -74,17 +74,17 @@ export default function Chart({ marketCodes }) {
 
             <div className="flex flex-wrap">
               <div className="w-full md:w-7/12">
-                <TradeHistoryContainer />
+                <TradeHistoryProvider />
               </div>
               <div className="w-full md:w-5/12">
-                <OrderbookContainer />
+                <OrderbookProvider />
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      <OrderModal handleClose={handleClose} />
+      <ModalProvider handleClose={handleClose} />
     </div>
   );
 }

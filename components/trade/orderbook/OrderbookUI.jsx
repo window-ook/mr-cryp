@@ -10,7 +10,7 @@ import {
 import { Paper, LinearProgress } from '@mui/material';
 import MarketCodeSelector from '@/components/trade/shared/MarketCodeSelector';
 
-function OrderbookTable({
+function OrderbookTableUI({
   orderbookData,
   isConnected,
   currentCode,
@@ -101,4 +101,4 @@ function OrderbookTable({
     </div>
   );
 }
-export default memo(OrderbookTable);
+export default memo(OrderbookTableUI);

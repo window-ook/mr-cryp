@@ -25,7 +25,7 @@ const ModalBox = styled(Box)(() => ({
   maxHeight: '90vh',
 }));
 
-export default function OrderModal({ handleClose }) {
+export default function ModalProvider({ handleClose }) {
   const [value, setValue] = useState('1'); // 주문수량
   const [orders, setOrders] = useState([]); // 주문내역
   const open = useSelector(state => state.chart.open);

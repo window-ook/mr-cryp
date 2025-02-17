@@ -1,12 +1,12 @@
-import { getExchangeRates } from '@/utils/exchange-rate';
+import { fetchExchangeRates } from '@/utils/fetch-exchange-rate';
 import Upbit from '@/lib/upbit';
-import Information from '@/components/vision/videos/Information';
-import VideosContainer from '@/components/vision/videos/VideosContainer';
-import ArticlesContainer from '@/components/vision/articles/ArticlesContainer';
-import MarketSituation from '@/components/vision/situation/MarketSituation';
+import InformationVideos from '@/components/vision/videos/InformationVideos';
+import VideosProvider from '@/components/vision/videos/VideosProvider';
+import ArticlesProvider from '@/components/vision/articles/ArticlesProvider';
+import MarketSituation from '@/components/vision/market-situation/MarketSituation';
 import ExchangeRate from '@/components/vision/exchange-rate/ExchangeRate';
-import DailyRised from '@/components/vision/rised-coin/DailyRised';
-import WeeklyRised from '@/components/vision/rised-coin/WeeklyRised';
+import DailyRisedCoins from '@/components/vision/rised-coin/DailyRisedCoins';
+import WeeklyRisedCoins from '@/components/vision/rised-coin/WeeklyRisedCoins';
 
 export async function getStaticProps() {
   const upbit = new Upbit();
@@ -16,7 +16,7 @@ export async function getStaticProps() {
 
   try {
     marketCodes = (await upbit.marketCodes()) || [];
-    exchangeRates = (await getExchangeRates()) || [];
+    exchangeRates = (await fetchExchangeRates()) || [];
   } catch (error) {
     console.error('🚨 데이터 요청 실패:', error);
   }
@@ -42,12 +42,12 @@ export default function Vision({ marketCodes, exchangeRates }) {
         <section className="col-start-2 max-[900px]:col-start-1 row-span-2 grid grid-cols-2 max-[900px]:grid-cols-1 gap-4 h-full">
           {/* 오늘 급등 코인 */}
           <div className="p-4 bg-gray-100 rounded-lg shadow h-full">
-            <DailyRised marketCodes={marketCodes} />
+            <DailyRisedCoins marketCodes={marketCodes} />
           </div>
 
           {/* 이번주 급등 코인 */}
           <div className="p-4 bg-gray-100 rounded-lg shadow h-full">
-            <WeeklyRised marketCodes={marketCodes} />
+            <WeeklyRisedCoins marketCodes={marketCodes} />
           </div>
         </section>
 
@@ -60,18 +60,18 @@ export default function Vision({ marketCodes, exchangeRates }) {
 
           {/* TODAY NEWS */}
           <section className="p-4 bg-gray-100 rounded-lg shadow h-full">
-            <ArticlesContainer />
+            <ArticlesProvider />
           </section>
         </section>
 
         {/* 3행 1열 */}
         <section className="col-start-1 p-4 bg-gray-100 rounded-lg shadow h-full">
-          <VideosContainer />
+          <VideosProvider />
         </section>
 
         {/* 3행 2열 */}
         <section className="col-start-2 max-[900px]:col-start-1 p-4 bg-gray-100 rounded-lg shadow h-full">
-          <Information />
+          <InformationVideos />
         </section>
       </div>
     </div>

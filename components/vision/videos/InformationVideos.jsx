@@ -1,8 +1,8 @@
 import { memo } from 'react';
 import { VisionSubTitle } from '@/defaultTheme';
-import VideoCard from './VideoCard';
+import VideoCard from './Video';
 
-const Information = () => {
+const InformationVideos = () => {
   const information = [
     {
       id: 1,
@@ -53,4 +53,4 @@ const Information = () => {
   );
 };
 
-export default memo(Information);
+export default memo(InformationVideos);

@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export async function getExchangeRates() {
+export async function fetchExchangeRates() {
   try {
     const CURRENCIES = ['USD', 'JPY', 'CNY', 'EUR'];
     const API_KEY = process.env.NEXT_EXCHANGE_RATE_API_KEY;
@@ -24,7 +24,7 @@ export async function getExchangeRates() {
       rate: KRW * (1 / todayRates[currency]),
     }));
 
-    return KRW_TO_CURRENCIES; // ✅ 필요한 데이터만 반환
+    return KRW_TO_CURRENCIES;
   } catch (error) {
     console.error('🚨 환율 데이터 요청 실패:', error);
     return null;

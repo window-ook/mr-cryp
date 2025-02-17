@@ -1,13 +1,8 @@
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 
-const fetchTickers = async marketCodes => {
-  if (!marketCodes || marketCodes.length === 0) return [];
-
-  const codes = marketCodes
-    .filter(code => code.market.includes('KRW'))
-    .map(code => code.market)
-    .slice(0, 30);
+const fetchTickers = async codes => {
+  if (!codes || codes.length === 0) return [];
 
   const response = await axios.get(`/api/tickers`, {
     params: { codes: codes.join(',') },
@@ -16,8 +11,8 @@ const fetchTickers = async marketCodes => {
   return response.data;
 };
 
-const fetchWeeklyCandles = async marketCodes => {
-  if (!marketCodes || marketCodes.length === 0) return [];
+const fetchWeeklyCandles = async codes => {
+  if (!codes || codes.length === 0) return [];
 
   const batchRequest = async (codes, batchSize = 3) => {
     const results = [];
@@ -39,29 +34,27 @@ const fetchWeeklyCandles = async marketCodes => {
     return results;
   };
 
+  return await batchRequest(codes, 5);
+};
+
+export function useWeeklyTopQuery(marketCodes) {
   const codes = marketCodes
     .filter(code => code.market.includes('KRW'))
     .map(code => code.market)
     .slice(0, 30);
 
-  return await batchRequest(codes, 5);
-};
-
-export function useWeeklyTopQuery(marketCodes) {
-  // 현재가 데이터
   const { data: tickers = [], isLoading: isLoadingTickers } = useQuery({
-    queryKey: ['weekly-tickers', marketCodes],
-    queryFn: () => fetchTickers(marketCodes),
+    queryKey: ['weekly-tickers', codes],
+    queryFn: () => fetchTickers(codes),
     staleTime: 1000 * 60 * 60,
-    enabled: !!marketCodes && marketCodes.length > 0,
+    enabled: !!codes && codes.length > 0,
   });
 
-  // 주봉 캔들 데이터
   const { data: weeklyCandles = [], isLoading: isLoadingCandles } = useQuery({
-    queryKey: ['weekly-candles', marketCodes],
-    queryFn: () => fetchWeeklyCandles(marketCodes),
+    queryKey: ['weekly-candles', codes],
+    queryFn: () => fetchWeeklyCandles(codes),
     staleTime: 1000 * 60 * 60,
-    enabled: !!marketCodes && marketCodes.length > 0,
+    enabled: !!codes && codes.length > 0,
   });
 
   return {

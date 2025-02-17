@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import axios from 'axios';
 import Orderbook from '@/components/trade/chart/orderbook/Orderbook';
 
-function OrderbookContainer() {
+function OrderbookProvider() {
   const [orderbookData, setOrderbookData] = useState([]);
   const [currentCode, setCurrentCode] = useState(null);
 
@@ -32,4 +32,4 @@ function OrderbookContainer() {
   return <Orderbook orderbookData={orderbookData} />;
 }
 
-export default memo(OrderbookContainer);
+export default memo(OrderbookProvider);

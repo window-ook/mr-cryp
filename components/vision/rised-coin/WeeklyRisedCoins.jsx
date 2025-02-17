@@ -6,7 +6,7 @@ import { setCode } from '@/utils/redux/chartSlice';
 import { LinearProgress } from '@mui/material';
 import { VisionSubTitle } from '@/defaultTheme';
 
-function WeeklyRised({ marketCodes }) {
+function WeeklyRisedCoins({ marketCodes }) {
   const { tickers, weeklyCandles, isLoading } = useWeeklyTopQuery(marketCodes);
 
   const dispatch = useDispatch();
@@ -94,4 +94,4 @@ function WeeklyRised({ marketCodes }) {
   );
 }
 
-export default memo(WeeklyRised);
+export default memo(WeeklyRisedCoins);

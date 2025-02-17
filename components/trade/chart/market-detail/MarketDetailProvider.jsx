@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import axios from 'axios';
 import MarketDetail from './MarketDetail';
 
-export default function MarketDetailContainer({ marketCodes }) {
+export default function MarketDetailProvider({ marketCodes }) {
   const [isLoading, setIsLoading] = useState(true);
   const [ticker, setTicker] = useState([]);
   const code = useSelector(state => state.chart.code);

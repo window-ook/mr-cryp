@@ -14,7 +14,7 @@ const ImageWrapper = styled('div')({
   },
 });
 
-export default function VideoCard({ width, height, src, title, linkUrl }) {
+export default function Video({ width, height, src, title, linkUrl }) {
   const handleClick = () => {
     window.open(linkUrl);
   };

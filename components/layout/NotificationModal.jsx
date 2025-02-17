@@ -1,8 +1,6 @@
-import { useEffect, useState } from 'react';
-import { Avatar, Box, Modal } from '@mui/material';
-import { NGTypo, theme } from '@/defaultTheme';
+import { theme } from '@/defaultTheme';
 import { styled } from '@mui/system';
-import { globalColors } from '@/globalColors';
+import { Box, Modal } from '@mui/material';
 
 const ModalBox = styled(Box)(() => ({
   display: 'flex',

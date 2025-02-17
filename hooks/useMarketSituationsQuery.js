@@ -8,7 +8,7 @@ const fetchSituations = async () => {
   return response.data;
 };
 
-export default function useSituationsQuery() {
+export default function useMarketSituationsQuery() {
   return useQuery({
     queryKey: ['situation'],
     queryFn: fetchSituations,

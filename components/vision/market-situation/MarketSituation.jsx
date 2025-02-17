@@ -1,11 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
 import { VisionSubTitle } from '@/defaultTheme';
 import { Alert, LinearProgress } from '@mui/material';
-import useSituationsQuery from '@/hooks/useSituationsQuery';
+import useMarketSituationsQuery from '@/hooks/useMarketSituationsQuery';
 
 export default function MarketSituation() {
   const [index, setIndex] = useState(0);
-  const { data: situations, error, isPending } = useSituationsQuery();
+  const { data: situations, error, isPending } = useMarketSituationsQuery();
   const containerRef = useRef(null);
   const timeoutRef = useRef(null);
 

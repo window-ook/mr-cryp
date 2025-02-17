@@ -1,17 +1,17 @@
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 
-const fetchTrendVideos = async newKeyword => {
+const fetchVideos = async newKeyword => {
   const response = await axios.get('/api/videos', {
     params: { keyword: newKeyword },
   });
   return response.data;
 };
 
-export function useTrendVideosQuery(keyword) {
+export function useVideosQuery(keyword) {
   return useQuery({
     queryKey: ['videos', keyword],
-    queryFn: () => fetchTrendVideos(keyword),
+    queryFn: () => fetchVideos(keyword),
     staleTime: 1000 * 60 * 10,
     gcTime: 1000 * 60 * 10,
     enabled: !!keyword,

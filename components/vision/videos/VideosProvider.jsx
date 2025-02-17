@@ -1,16 +1,12 @@
-import { useTrendVideosQuery } from '@/hooks/useTrendVideosQuery';
+import { useVideosQuery } from '@/hooks/useVideosQuery';
 import { useTheme } from '@mui/material/styles';
 import { Alert } from '@mui/material';
 import PendingSkeleton from '../shared/PendingSkeleton';
-import VideoCards from './VideoCards';
+import Videos from './Videos';
 
-export default function VideosContainer() {
+export default function VideosProvider() {
   const theme = useTheme();
-  const {
-    data: videos = [],
-    isLoading,
-    error,
-  } = useTrendVideosQuery('코인 추천');
+  const { data: videos = [], isLoading, error } = useVideosQuery('코인 추천');
 
   if (isLoading) return <PendingSkeleton />;
 
@@ -22,5 +18,5 @@ export default function VideosContainer() {
     );
   }
 
-  return <VideoCards videos={videos} theme={theme} />;
+  return <Videos videos={videos} theme={theme} />;
 }

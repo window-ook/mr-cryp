@@ -1,8 +1,8 @@
 import { VisionSubTitle, NGTypo } from '@/defaultTheme';
 import { Grid, Box } from '@mui/material';
-import VideoCard from './VideoCard';
+import Video from './Video';
 
-export default function VideoCards({ videos, theme }) {
+export default function Videos({ videos, theme }) {
   return (
     <div className="w-full">
       <VisionSubTitle>TREND NOW</VisionSubTitle>
@@ -11,7 +11,7 @@ export default function VideoCards({ videos, theme }) {
           <Grid item xs={12} sm={3} key={video?.id}>
             <Box>
               <Box>
-                <VideoCard
+                <Video
                   width={200}
                   height={150}
                   src={video?.snippet?.thumbnails?.medium?.url}

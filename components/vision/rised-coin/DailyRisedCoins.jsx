@@ -6,7 +6,7 @@ import { setCode } from '@/utils/redux/chartSlice';
 import { LinearProgress } from '@mui/material';
 import { VisionSubTitle } from '@/defaultTheme';
 
-function DailyRised({ marketCodes }) {
+function DailyRisedCoins({ marketCodes }) {
   const { data: tickers, isLoading } = useDailyTopQuery(marketCodes);
 
   const dispatch = useDispatch();
@@ -90,4 +90,4 @@ function DailyRised({ marketCodes }) {
   );
 }
 
-export default memo(DailyRised);
+export default memo(DailyRisedCoins);

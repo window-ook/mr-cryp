@@ -3,7 +3,7 @@ import { TableContainer, DescriptionTypo, HeadTypo } from '@/defaultTheme';
 import { LinearProgress } from '@mui/material';
 import MarketCodeSelector from '@/components/trade/shared/MarketCodeSelector';
 
-function TradeHistoryTable({
+function TradeHistoryUI({
   isConnected,
   tradeData,
   currentCode,
@@ -72,4 +72,4 @@ function TradeHistoryTable({
   );
 }
 
-export default memo(TradeHistoryTable);
+export default memo(TradeHistoryUI);
