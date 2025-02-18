@@ -63,14 +63,16 @@ export default function MarketSituation() {
 
   return (
     <>
-      <div className="flex items-end gap-3">
+      <header className="flex items-end gap-3">
         <VisionSubTitle>시황</VisionSubTitle>
         <span className="pb-1 text-gray-500 font-ng max-[1525px]:text-xs">
           {today}
         </span>
-      </div>
-      <div className="relative h-10 p-2 rounded-lg flex items-center">
-        <div
+      </header>
+      <article className="relative h-10 p-2 rounded-lg flex items-center">
+        <button
+          aria-label="기사 링크로 이동하기"
+          type="button"
           ref={containerRef}
           className="absolute overflow-hidden text-ellipsis inset-0 flex items-center animate-marquee cursor-pointer"
           onClick={() => window.open(link, '_blank')}
@@ -81,8 +83,8 @@ export default function MarketSituation() {
           <span className="text-gray-700 pl-2 max-[1100px]:text-xs">
             {description}...
           </span>
-        </div>
-      </div>
+        </button>
+      </article>
     </>
   );
 }

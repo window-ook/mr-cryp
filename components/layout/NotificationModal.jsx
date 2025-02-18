@@ -33,8 +33,8 @@ export default function NotificationModal({ open, handleClose }) {
     <Modal
       open={open}
       onClose={handleClose}
-      aria-labelledby="modal-modal-title"
-      aria-describedby="modal-modal-description"
+      aria-labelledby="알림 정보"
+      aria-describedby="주문 체결 관련 알림이 표시되는 모달입니다."
     >
       <ModalBox>
         <ProfileBox>

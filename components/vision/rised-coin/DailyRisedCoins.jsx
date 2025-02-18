@@ -56,10 +56,10 @@ function DailyRisedCoins({ marketCodes }) {
 
   return (
     <>
-      <div className="flex gap-1 items-end">
+      <header className="flex gap-1 items-end">
         <VisionSubTitle>오늘 급등 코인</VisionSubTitle>
-      </div>
-      <div className="flex flex-col space-y-6 pt-2 overflow-hidden">
+      </header>
+      <article className="flex flex-col space-y-6 pt-2 overflow-hidden">
         {risingCoins.length > 0 ? (
           risingCoins.map((coin, i) => (
             <div
@@ -70,12 +70,14 @@ function DailyRisedCoins({ marketCodes }) {
                 <span className="w-8 text-left font-ng max-[1580px]:text-sm max-[1525px]:text-xs">
                   {i + 1}
                 </span>
-                <span
+                <button
+                  aria-label="차트로 이동해서 가격 정보 확인"
+                  type="button"
                   className="flex-1 font-ng font-bold text-left truncate cursor-pointer max-[1580px]:text-sm max-[1525px]:text-xs"
                   onClick={() => handleClickCoin(coin.name)}
                 >
                   {coin.name}
-                </span>
+                </button>
               </div>
               <span className="w-24 font-ng font-bold text-right text-red-500 max-[1580px]:text-sm max-[1525px]:text-xs">
                 +{coin.changeRate.toFixed(2)}%
@@ -85,7 +87,7 @@ function DailyRisedCoins({ marketCodes }) {
         ) : (
           <p>데이터 없음</p>
         )}
-      </div>
+      </article>
     </>
   );
 }

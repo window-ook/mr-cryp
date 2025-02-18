@@ -43,7 +43,7 @@ export default function Orderbook({ orderbookData }) {
   }, [getMaxSize, orderbookData]);
 
   return (
-    <div className="w-full h-[28.1rem] overflow-y-scroll bg-white">
+    <section className="w-full h-[28.1rem] overflow-y-scroll bg-white">
       <table className="w-full border-collapse">
         <thead className="h-[2.5rem] sticky top-0 z-10 bg-main">
           <tr>
@@ -162,6 +162,6 @@ export default function Orderbook({ orderbookData }) {
           </tbody>
         )}
       </table>
-    </div>
+    </section>
   );
 }

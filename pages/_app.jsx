@@ -11,7 +11,7 @@ import dynamic from 'next/dynamic';
 const Layout = dynamic(() => import('@/layouts/Layout'), { ssr: false });
 
 const ProtectedRoute = dynamic(
-  () => import('@/components/global/ProtectedRoute'),
+  () => import('@/components/auth/ProtectedRoute'),
   {
     ssr: false,
   },
@@ -20,7 +20,7 @@ const ProtectedRoute = dynamic(
 const queryClient = new QueryClient();
 
 function MyApp({ Component, pageProps }) {
-  const { store, props } = wrapper.useWrappedStore(pageProps);
+  const { store } = wrapper.useWrappedStore(pageProps);
 
   const router = useRouter();
   const isSignIn = router.pathname === '/';

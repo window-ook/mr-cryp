@@ -1,7 +1,7 @@
 import { styled } from '@mui/system';
 import Image from 'next/image';
 
-const ImageWrapper = styled('div')({
+const ImageClick = styled('button')({
   position: 'relative',
   cursor: 'pointer',
   width: '100%',
@@ -20,7 +20,7 @@ export default function Video({ width, height, src, title, linkUrl }) {
   };
 
   return (
-    <ImageWrapper onClick={handleClick}>
+    <ImageClick aria-label="영상 원본으로 이동하기" onClick={handleClick}>
       <Image
         alt={title}
         src={src}
@@ -33,6 +33,6 @@ export default function Video({ width, height, src, title, linkUrl }) {
           height: 'auto',
         }}
       />
-    </ImageWrapper>
+    </ImageClick>
   );
 }

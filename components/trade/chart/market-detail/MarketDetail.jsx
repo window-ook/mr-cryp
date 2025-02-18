@@ -18,19 +18,19 @@ function SubIndicator({ label, value, valueStyle }) {
 
 export default function MarketDetail({ codeMap, ticker, numColor }) {
   return (
-    <div className="h-[6.25rem] border-dashed border-[0.313rem] border-main bg-white box-border">
-      <div className="flex flex-wrap ml-[0.125rem] gap-0.5 items-end">
+    <section className="h-[6.25rem] border-dashed border-[0.313rem] border-main bg-white box-border">
+      <section className="flex flex-wrap ml-[0.125rem] gap-0.5 items-end">
         <span className="font-ng font-bold text-[1.25rem]">
           {codeMap[ticker.market]}
         </span>
         <span className="font-ng text-[0.938rem] text-right">
           {ticker.market}
         </span>
-      </div>
+      </section>
       <div className="bg-gray-300 w-full h-[0.05rem]" />
 
       <div className="flex flex-wrap justify-between pl-1">
-        <div className="flex flex-col justify-center mt-[0.5rem]">
+        <section className="flex flex-col justify-center mt-[0.5rem]">
           <div className="flex items-end">
             <span
               className={`text-[1.25rem] font-bold font-oneTitle ${numColor}`}
@@ -56,8 +56,9 @@ export default function MarketDetail({ codeMap, ticker, numColor }) {
               {Number(ticker.change_price).toLocaleString()}
             </span>
           </div>
-        </div>
-        <div className="flex gap-2 mr-2 max-[500px]:hidden">
+        </section>
+
+        <section className="flex gap-2 mr-2 max-[500px]:hidden">
           <div className="flex flex-col justify-center flex-shrink flex-grow basis-full">
             <SubIndicator
               label="고가"
@@ -94,8 +95,8 @@ export default function MarketDetail({ codeMap, ticker, numColor }) {
               valueStyle={'normal'}
             />
           </div>
-        </div>
+        </section>
       </div>
-    </div>
+    </section>
   );
 }

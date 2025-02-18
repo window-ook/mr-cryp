@@ -226,10 +226,18 @@ export default function NavBar({
                   </NavbarButton>
                 ))}
                 <div className="hidden select-1120:flex select-1120:items-center select-1120:gap-1 select-1120:mb-2">
+                  <label
+                    for="search"
+                    className="font-ng font-bold text-white pr-2 max-[1300px]:hidden"
+                  >
+                    마켓 검색
+                  </label>
                   <input
                     type="text"
+                    id="search"
                     alt="마켓 검색하기"
-                    placeholder="마켓 검색하기"
+                    aria-label="마켓 검색하기"
+                    placeholder="KRW-BTC, 이더리움"
                     onKeyDown={e => {
                       if (e.key === 'Enter') handleKeywordSearch();
                     }}
@@ -250,7 +258,7 @@ export default function NavBar({
               <UnderMdBox>
                 <IconButton
                   size="large"
-                  aria-label="account of current user"
+                  aria-label="화면 크기 md 이하 네브바 메뉴 열기"
                   aria-controls="menu-appbar"
                   aria-haspopup="true"
                   onClick={handleOpenNavMenu}
@@ -279,13 +287,15 @@ export default function NavBar({
                   }}
                 >
                   {navbarMenu.map(page => (
-                    <MenuItem
-                      key={page}
-                      onClick={() => handleCloseNavMenu(page)}
-                    >
-                      <NavTypo textAlign="center" fontSize={'1.5rem'}>
-                        {page}
-                      </NavTypo>
+                    <MenuItem key={page}>
+                      <button
+                        type="button"
+                        onClick={() => handleCloseNavMenu(page)}
+                      >
+                        <NavTypo textAlign="center" fontSize={'1.5rem'}>
+                          {page}
+                        </NavTypo>
+                      </button>
                     </MenuItem>
                   ))}
                 </Menu>

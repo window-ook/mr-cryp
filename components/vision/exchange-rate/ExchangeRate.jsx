@@ -3,7 +3,9 @@ import { VisionSubTitle } from '@/defaultTheme';
 export default function ExchangeRate({ exchangeRates }) {
   return (
     <>
-      <VisionSubTitle>오늘 환율</VisionSubTitle>
+      <header>
+        <VisionSubTitle>오늘 환율</VisionSubTitle>
+      </header>
       <ul className="flex justify-stretch">
         {exchangeRates.map(({ currency, rate }) => {
           return (

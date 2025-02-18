@@ -79,7 +79,7 @@ export default function Home() {
 
   return (
     <HomeBox>
-      <div>
+      <section>
         <div className="h-[4rem]">
           <SubTitle>내 보유 자산</SubTitle>
         </div>
@@ -87,14 +87,14 @@ export default function Home() {
           <AccountDetailPie balance={balance} />
           <AccountDetailTable balance={balance} />
         </PieBox>
-      </div>
-      <div className="h-[100%]">
+      </section>
+      <section className="h-[100%]">
         <div className="h-[4rem]" />
-        <div className="flex flex-col max-[1400px]:gap-[3rem]">
+        <article className="flex flex-col max-[1400px]:gap-[3rem]">
           <AccountBalanceFlow totalBalance={totalBalance} flowSize={flowSize} />
           <AccountMarketFlow flowSize={flowSize} />
-        </div>
-      </div>
+        </article>
+      </section>
     </HomeBox>
   );
 }
