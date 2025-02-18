@@ -19,10 +19,10 @@ export default function Articles({ articles, open, handleClose }) {
 
   return (
     <>
-      <div>
-        <VisionSubTitle>TODAY NEWS</VisionSubTitle>
-      </div>
-      <div className="grid grid-cols-2 gap-2">
+      <header>
+        <VisionSubTitle>트렌드 뉴스</VisionSubTitle>
+      </header>
+      <article className="grid grid-cols-2 gap-2">
         {formattedArticles.slice(0, 6).map(article => {
           const title = article.title
             .replace(/<b>|<\/b>/g, '')
@@ -30,12 +30,14 @@ export default function Articles({ articles, open, handleClose }) {
 
           return (
             <div key={article.link} className="flex pb-2">
-              <span
+              <button
+                aria-label="기사 원본으로 이동하기"
+                type="button"
                 className="whitespace-nowrap overflow-hidden text-ellipsis font-ng max-[1100px]:text-xs cursor-pointer hover:opacity-50 transition-all duration-200 ease-in-out"
                 onClick={() => window.open(article.originallink, '_blank')}
               >
                 {title}
-              </span>
+              </button>
             </div>
           );
         })}
@@ -46,16 +48,17 @@ export default function Articles({ articles, open, handleClose }) {
 
           return (
             <div key={article.link} className="flex pb-2">
-              <span
+              <button
+                type="button"
                 className="whitespace-nowrap overflow-hidden text-ellipsis font-ng max-[1100px]:text-xs cursor-pointer hover:opacity-50 transition-all duration-200 ease-in-out"
                 onClick={() => window.open(article.originallink, '_blank')}
               >
                 {title}
-              </span>
+              </button>
             </div>
           );
         })}
-      </div>
+      </article>
 
       <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
         <Alert onClose={handleClose} severity="success" variant="filled">

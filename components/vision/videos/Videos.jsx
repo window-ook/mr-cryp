@@ -4,7 +4,7 @@ import Video from './Video';
 
 export default function Videos({ videos, theme }) {
   return (
-    <div className="w-full">
+    <article className="w-full">
       <VisionSubTitle>TREND NOW</VisionSubTitle>
       <Grid container spacing={2}>
         {videos?.map(video => (
@@ -45,6 +45,6 @@ export default function Videos({ videos, theme }) {
           </Grid>
         ))}
       </Grid>
-    </div>
+    </article>
   );
 }

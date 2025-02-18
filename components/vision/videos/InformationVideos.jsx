@@ -1,6 +1,6 @@
 import { memo } from 'react';
 import { VisionSubTitle } from '@/defaultTheme';
-import VideoCard from './Video';
+import Video from './Video';
 
 const InformationVideos = () => {
   const information = [
@@ -31,12 +31,12 @@ const InformationVideos = () => {
   ];
 
   return (
-    <div className="relative max-[900px]:pb-5">
+    <article className="relative max-[900px]:pb-5">
       <VisionSubTitle className="font-bold">코인 거래 도움 자료</VisionSubTitle>
       <div className="grid grid-cols-2 gap-6">
         {information.map(item => (
           <div key={item.id}>
-            <VideoCard
+            <Video
               width={480}
               height={300}
               src={item.src}
@@ -49,7 +49,7 @@ const InformationVideos = () => {
       <span className="absolute right-0 py-2 text-xl font-bold font-ng">
         © Mr.cryp
       </span>
-    </div>
+    </article>
   );
 };
 

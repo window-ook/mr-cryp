@@ -264,12 +264,12 @@ export default function HighChartsProvider() {
   }, [candles, code, fetchCandles, rangeSelector]);
 
   return (
-    <div>
+    <article>
       <HighchartsReact
         highcharts={Highcharts}
         constructorType={'stockChart'}
         options={options}
       />
-    </div>
+    </article>
   );
 }

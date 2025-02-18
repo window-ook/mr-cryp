@@ -43,6 +43,7 @@ export default function SocialLoginButton({
         px: platform === 'google' ? 3 : undefined,
       }}
       onClick={handleLogin}
+      aria-label="소셜 로그인"
     >
       <Image
         src={`/images/logo_${platform}.webp`}

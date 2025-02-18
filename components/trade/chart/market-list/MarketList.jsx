@@ -40,9 +40,10 @@ export default function MarketList({
   }, [tickers, keyword, codeMap]);
 
   return (
-    <>
+    <section>
       <TextField
-        label="마켓 검색하기"
+        aria-label="마켓 검색"
+        label="마켓 검색"
         id="outlined"
         fullWidth
         value={keyword}
@@ -158,6 +159,6 @@ export default function MarketList({
           </tbody>
         </table>
       </StyledTableContainer>
-    </>
+    </section>
   );
 }

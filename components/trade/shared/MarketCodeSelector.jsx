@@ -24,7 +24,12 @@ function MarketCodeSelector({
       justifyContent="space-between"
     >
       <DescriptionTypo fontSize={'1.5rem'}>마켓 코드</DescriptionTypo>
-      <Select name="marketcode" onChange={handleMarketCode} value={currentCode}>
+      <Select
+        aria-label="마켓 선택"
+        name="marketcode"
+        onChange={handleMarketCode}
+        value={currentCode}
+      >
         {marketCodes
           ? marketCodes.map(code => (
               <MenuItem

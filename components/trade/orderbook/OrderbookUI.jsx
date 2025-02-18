@@ -19,18 +19,18 @@ function OrderbookTableUI({
   marketCodes,
 }) {
   return (
-    <div className="flex flex-col items-center gap-4 mb-5 mt-4">
+    <main className="flex flex-col items-center gap-4 mb-5 mt-4">
       <MarketCodeSelector
         currentCode={currentCode}
         setCurrentCode={setCurrentCode}
         isLoading={isLoading}
         marketCodes={marketCodes}
       />
-      <div className="flex items-center gap-4">
+      <section className="flex items-center gap-4">
         <DescriptionTypo>
           연결 상태 : {isConnected ? '🟢' : '🔴'}
         </DescriptionTypo>
-      </div>
+      </section>
       {orderbookData && isConnected ? (
         <TableContainer
           component={Paper}
@@ -41,10 +41,10 @@ function OrderbookTableUI({
             },
           }}
         >
-          <div className="p-2">
+          <section className="p-2">
             <NGTypo>총 매도 물량 : {orderbookData.total_ask_size}</NGTypo>
             <NGTypo>총 매수 물량 : {orderbookData.total_bid_size}</NGTypo>
-          </div>
+          </section>
           <table className="alone-table w-full">
             <thead className="alone-thead">
               <tr>
@@ -98,7 +98,7 @@ function OrderbookTableUI({
       ) : (
         <LinearProgress color="primary" />
       )}
-    </div>
+    </main>
   );
 }
 export default memo(OrderbookTableUI);

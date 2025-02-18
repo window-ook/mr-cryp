@@ -1,24 +1,4 @@
 import { useRouter } from 'next/router';
-import { styled } from '@mui/system';
-import { NGTypo } from '@/defaultTheme';
-import Button from '@mui/material/Button';
-
-const StyledButton = styled(Button)(() => ({
-  marginTop: '1rem',
-  gap: '1rem',
-  display: 'flex',
-  alignItems: 'center',
-  color: '#ffffff',
-  '&:hover': {
-    backgroundColor: '#ffffff',
-    color: '#000000',
-  },
-}));
-
-const Typo = styled(NGTypo)(() => ({
-  paddingLeft: '1rem',
-  paddingRight: '1rem',
-}));
 
 export default function TestLoginButton() {
   const router = useRouter();
@@ -29,8 +9,14 @@ export default function TestLoginButton() {
   };
 
   return (
-    <StyledButton variant="contained" onClick={handleTest}>
-      <Typo>테스트 로그인</Typo>
-    </StyledButton>
+    <button
+      aria-label="테스트 로그인"
+      className="mt-[1rem] px-[1rem] py-[0.4rem] rounded-md bg-main shadow-md flex gap-[1rem] items-center hover:bg-white transition duration-200 ease-in"
+      onClick={handleTest}
+    >
+      <span className="px-[1rem] font-ng text-white hover:text-black transition duration-200 ease-in">
+        테스트 로그인
+      </span>
+    </button>
   );
 }

@@ -251,8 +251,18 @@ export default function ModalPanel({ value, addOrder, askablePrice }) {
             </Box>
             <FlexCenterBox>
               <StyledTextField value={price} onChange={handlePriceChange} />
-              <IconButton onClick={handlePriceDecrement}>-</IconButton>
-              <IconButton onClick={handlePriceIncrement}>+</IconButton>
+              <IconButton
+                aria-label="주문하기: 가격 줄이기"
+                onClick={handlePriceDecrement}
+              >
+                -
+              </IconButton>
+              <IconButton
+                aria-label="주문하기: 가격 늘리기"
+                onClick={handlePriceIncrement}
+              >
+                +
+              </IconButton>
             </FlexCenterBox>
           </FlexCenterBox>
           {/* 주문수량 */}
@@ -263,8 +273,18 @@ export default function ModalPanel({ value, addOrder, askablePrice }) {
             </Box>
             <FlexCenterBox>
               <StyledTextField value={balance} onChange={handleBalanceChange} />
-              <IconButton onClick={handleBalanceDecrement}>-</IconButton>
-              <IconButton onClick={handleBalanceIncrement}>+</IconButton>
+              <IconButton
+                aria-label="주문하기: 주문수량 줄이기"
+                onClick={handleBalanceDecrement}
+              >
+                -
+              </IconButton>
+              <IconButton
+                aria-label="주문하기: 주문수량 늘리기"
+                onClick={handleBalanceIncrement}
+              >
+                +
+              </IconButton>
             </FlexCenterBox>
           </FlexCenterBox>
           {/* 주문총액 */}
@@ -291,12 +311,16 @@ export default function ModalPanel({ value, addOrder, askablePrice }) {
           {/* 버튼 */}
           <FlexCenterBox>
             <Tooltip title="초기화">
-              <ResetButton onClick={handleReset}>
+              <ResetButton
+                aria-label="주문하기: 폼 초기화"
+                onClick={handleReset}
+              >
                 <RestoreIcon />
               </ResetButton>
             </Tooltip>
             <Tooltip title="주문">
               <Button
+                aria-label="주문하기: 주문 완료"
                 sx={{
                   width: '15.625rem',
                   '@media (max-width:500px)': {

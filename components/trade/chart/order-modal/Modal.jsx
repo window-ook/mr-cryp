@@ -46,8 +46,8 @@ export default function ModalProvider({ handleClose }) {
     <Modal
       open={open}
       onClose={handleClose}
-      aria-labelledby="modal-modal-title"
-      aria-describedby="modal-modal-description"
+      aria-labelledby="주문하기"
+      aria-describedby="차트에서 주문하기를 누르면 열립니다."
     >
       <ModalBox>
         <TabContext value={value}>

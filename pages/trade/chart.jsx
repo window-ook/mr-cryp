@@ -16,7 +16,7 @@ const HighStockChart = dynamic(
 );
 
 const ModalProvider = dynamic(
-  () => import('@/components/trade/chart/order-modal/ModalProvider'),
+  () => import('@/components/trade/chart/order-modal/Modal'),
   {
     ssr: false,
   },
@@ -50,41 +50,42 @@ export default function Chart({ marketCodes }) {
   const handleClose = () => dispatch(setOpen(false));
 
   return (
-    <div className="mt-12 mb-12">
+    <main className="mt-12 mb-12">
       <div className="container mx-auto max-w-[75rem] h-[58rem] border border-gray-300 shadow-mainShadow">
         <div className="flex flex-wrap">
           {/* 1열 */}
-          <div className="w-full md:w-3/12">
+          <section className="w-full md:w-3/12">
             <MarketListProvider marketCodes={marketCodes} />
-          </div>
+          </section>
 
           {/* 2열 */}
-          <div className="w-full md:w-9/12">
+          <section className="w-full md:w-9/12">
             <MarketDetailProvider marketCodes={marketCodes} />
 
-            <div className="relative">
+            <article className="relative">
               <HighChartProvider />
               <button
+                type="button"
                 className="absolute right-2 top-2 bg-main shadow-md p-2 rounded-lg hover:opacity-60 transition duration-200 ease-in"
                 onClick={handleOpen}
               >
                 <HeadTypo>주문하기</HeadTypo>
               </button>
-            </div>
+            </article>
 
             <div className="flex flex-wrap">
-              <div className="w-full md:w-7/12">
+              <article className="w-full md:w-7/12">
                 <TradeHistoryProvider />
-              </div>
-              <div className="w-full md:w-5/12">
+              </article>
+              <article className="w-full md:w-5/12">
                 <OrderbookProvider />
-              </div>
+              </article>
             </div>
-          </div>
+          </section>
         </div>
       </div>
 
       <ModalProvider handleClose={handleClose} />
-    </div>
+    </main>
   );
 }

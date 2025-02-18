@@ -20,7 +20,6 @@ const ButtonsBox = styled(Box)(() => ({
 
 const LoginTypo = styled(DescriptionTypo)(() => ({
   color: theme.palette.primary.main,
-  textShadow: 'none',
   fontSize: '2rem',
 }));
 
