@@ -46,6 +46,7 @@ export async function getStaticProps() {
 
 export default function Chart({ marketCodes }) {
   const dispatch = useDispatch();
+
   const handleOpen = () => dispatch(setOpen(true));
   const handleClose = () => dispatch(setOpen(false));
 

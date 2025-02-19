@@ -22,28 +22,10 @@ export default function ArticlesProvider() {
     );
   }
 
-  const handleCopyLink = async link => {
-    try {
-      await navigator.clipboard.writeText(link);
-      setOpen(true);
-    } catch (err) {
-      console.error(err);
-    }
-  };
-
   const handleClose = reason => {
-    if (reason === 'clickaway') {
-      return;
-    }
+    if (reason === 'clickaway') return;
     setOpen(false);
   };
 
-  return (
-    <Articles
-      articles={articles}
-      open={open}
-      handleCopyLink={handleCopyLink}
-      handleClose={handleClose}
-    />
-  );
+  return <Articles articles={articles} open={open} handleClose={handleClose} />;
 }

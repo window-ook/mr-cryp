@@ -173,17 +173,17 @@ const NotificationIcon = styled(NotificationsNoneIcon)(() => ({
 }));
 
 export default function NavBar({
-  getActivePage,
-  setNewKeyword,
+  handleActivePage,
   handleOpenNavMenu,
   handleCloseNavMenu,
   handleOpenSignout,
-  handleCloseSignout,
   handleSignout,
+  handleCloseSignout,
   handleOpen,
   handleClose,
   handleToggleSubMenu,
   handleKeywordSearch,
+  setNewKeyword,
   navbarMenu,
   subNavbarMenu,
   activePage,
@@ -220,14 +220,14 @@ export default function NavBar({
                     <NavbarButtonTypo>{page}</NavbarButtonTypo>
                     <div
                       className={`h-1 w-full rounded-xl shadow-black shadow-lg ${
-                        getActivePage() === page ? 'bg-white' : ''
+                        handleActivePage() === page ? 'bg-white' : ''
                       }`}
                     />
                   </NavbarButton>
                 ))}
                 <div className="hidden select-1120:flex select-1120:items-center select-1120:gap-1 select-1120:mb-2">
                   <label
-                    for="search"
+                    htmlFor="search"
                     className="font-ng font-bold text-white pr-2 max-[1300px]:hidden"
                   >
                     마켓 검색
@@ -261,7 +261,7 @@ export default function NavBar({
                   aria-label="화면 크기 md 이하 네브바 메뉴 열기"
                   aria-controls="menu-appbar"
                   aria-haspopup="true"
-                  onClick={handleOpenNavMenu}
+                  onClick={e => handleOpenNavMenu(e)}
                   sx={{
                     color: globalColors.white,
                   }}
@@ -317,7 +317,7 @@ export default function NavBar({
               </div>
               <ProfileImage alt="프로필 이미지" src={imgUrl} />
               <Tooltip title="로그아웃">
-                <UserMenuTypo onClick={handleOpenSignout}>
+                <UserMenuTypo onClick={e => handleOpenSignout(e)}>
                   {nickname || 'TESTER'}, hi!
                 </UserMenuTypo>
               </Tooltip>

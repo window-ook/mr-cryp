@@ -8,13 +8,10 @@ function MarketCodeSelector({
   isLoading,
   marketCodes,
 }) {
-  const handleMarketCode = e => {
-    setCurrentCode(e.target.value);
-  };
+  const handleMarketCode = e => setCurrentCode(e.target.value);
 
-  if (isLoading) {
-    <DescriptionTypo>마켓 코드 불러오는 중...</DescriptionTypo>;
-  }
+  if (isLoading)
+    return <DescriptionTypo>마켓 코드 불러오는 중...</DescriptionTypo>;
 
   return (
     <Box

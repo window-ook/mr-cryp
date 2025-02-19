@@ -24,9 +24,12 @@ export default function SocialLoginButton({
   fontColor,
 }) {
   const router = useRouter();
+
   const STATE = crypto.randomUUID();
+
   const KAKAO_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=code`;
   const NAVER_URL = `https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=${CLIENT_ID}&state=${STATE}&redirect_uri=${REDIRECT_URI}`;
+
   const handleLogin = async () => {
     if (platform === 'google')
       await loginGoogle().then(() => router.push('/home'));

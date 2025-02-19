@@ -15,9 +15,7 @@ const ImageClick = styled('button')({
 });
 
 export default function Video({ width, height, src, title, linkUrl }) {
-  const handleClick = () => {
-    window.open(linkUrl);
-  };
+  const handleClick = () => window.open(linkUrl);
 
   return (
     <ImageClick aria-label="영상 원본으로 이동하기" onClick={handleClick}>

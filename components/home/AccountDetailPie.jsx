@@ -53,7 +53,6 @@ export default function AccountDetailPie({ balance }) {
 
     updateChartSize();
     window.addEventListener('resize', updateChartSize);
-
     return () => window.removeEventListener('resize', updateChartSize);
   }, []);
 
