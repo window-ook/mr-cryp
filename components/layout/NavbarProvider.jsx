@@ -26,18 +26,18 @@ export default function NavBarProvider() {
   const navbarMenu = ['홈', '비전', '거래'];
   const subNavbarMenu = ['오더북', '거래 내역', '차트'];
 
-  const getActivePage = () => {
-    if (router.pathname.startsWith('/vision')) return '비전';
-    if (router.pathname.startsWith('/trade')) return '거래';
-    return '홈';
-  };
-
   useEffect(() => {
     if (typeof window !== 'undefined') {
       setImgUrl(localStorage.getItem('imgUrl'));
       setNickname(localStorage.getItem('nickname'));
     }
   }, []);
+
+  const handleActivePage = () => {
+    if (router.pathname.startsWith('/vision')) return '비전';
+    if (router.pathname.startsWith('/trade')) return '거래';
+    return '홈';
+  };
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -108,8 +108,7 @@ export default function NavBarProvider() {
   const handleOpenSignout = event => setAnchorSignout(event.currentTarget);
 
   const props = {
-    getActivePage,
-    setNewKeyword,
+    handleActivePage,
     handleOpenNavMenu,
     handleCloseNavMenu,
     handleOpenSignout,
@@ -119,6 +118,7 @@ export default function NavBarProvider() {
     handleClose,
     handleToggleSubMenu,
     handleKeywordSearch,
+    setNewKeyword,
     navbarMenu,
     subNavbarMenu,
     activePage,
@@ -128,7 +128,6 @@ export default function NavBarProvider() {
     open,
     imgUrl,
     nickname,
-    newKeyword,
     isOverMd,
   };
 

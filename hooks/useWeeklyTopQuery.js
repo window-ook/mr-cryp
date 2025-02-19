@@ -14,7 +14,7 @@ const fetchTickers = async codes => {
 const fetchWeeklyCandles = async codes => {
   if (!codes || codes.length === 0) return [];
 
-  const batchRequest = async (codes, batchSize = 3) => {
+  const batchRequest = async (codes, batchSize) => {
     const results = [];
     for (let i = 0; i < codes.length; i += batchSize) {
       const batch = codes.slice(i, i + batchSize);
@@ -40,8 +40,7 @@ const fetchWeeklyCandles = async codes => {
 export function useWeeklyTopQuery(marketCodes) {
   const codes = marketCodes
     .filter(code => code.market.includes('KRW'))
-    .map(code => code.market)
-    .slice(0, 30);
+    .map(code => code.market);
 
   const { data: tickers = [], isLoading: isLoadingTickers } = useQuery({
     queryKey: ['weekly-tickers', codes],

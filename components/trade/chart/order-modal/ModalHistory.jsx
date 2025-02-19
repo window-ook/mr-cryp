@@ -127,7 +127,7 @@ export default function ModalHistory({ value, orders, removeOrder }) {
                       <TableCell rowSpan={2}>
                         <CancelButton
                           aria-label="주문하기:거래내역 취소 버튼"
-                          onClick={handleCancel(index)}
+                          onClick={() => handleCancel(index)}
                         >
                           취소
                         </CancelButton>

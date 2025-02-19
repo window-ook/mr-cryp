@@ -3,9 +3,10 @@ import { useRouter } from 'next/router';
 import { Snackbar, Alert } from '@mui/material';
 
 export default function ProtectedRoute({ children }) {
-  const router = useRouter();
   const [open, setOpen] = useState(false);
   const [message, setMessage] = useState('');
+
+  const router = useRouter();
 
   useEffect(() => {
     const userId = localStorage.getItem('userId');
@@ -19,9 +20,7 @@ export default function ProtectedRoute({ children }) {
   }, [router]);
 
   const handleClose = reason => {
-    if (reason === 'clickaway') {
-      return;
-    }
+    if (reason === 'clickaway') return;
     setOpen(false);
   };
 
@@ -29,7 +28,7 @@ export default function ProtectedRoute({ children }) {
     <>
       {children}
       <Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
-        <Alert onClose={handleClose} severity="error" variant="filled">
+        <Alert onClose={() => handleClose} severity="error" variant="filled">
           {message}
         </Alert>
       </Snackbar>

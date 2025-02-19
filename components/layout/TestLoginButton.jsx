@@ -2,7 +2,7 @@ import { useRouter } from 'next/router';
 
 export default function TestLoginButton() {
   const router = useRouter();
-  const handleTest = async () => {
+  const handleTest = () => {
     localStorage.setItem('userId', 'test-user');
     router.push('/home');
     console.log('테스트 시작');

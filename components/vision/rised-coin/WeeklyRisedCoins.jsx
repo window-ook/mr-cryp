@@ -86,7 +86,7 @@ function WeeklyRisedCoins({ marketCodes }) {
                 </button>
               </div>
               <span className="w-24 font-ng font-bold text-right text-red-500 max-[1580px]:text-sm max-[1525px]:text-xs">
-                +{coin.changeRate.toFixed(2)}%
+                {coin.changeRate.toFixed(2)}%
               </span>
             </div>
           ))
