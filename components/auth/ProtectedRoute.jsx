@@ -14,7 +14,7 @@ export default function ProtectedRoute({ children }) {
       setOpen(true);
       setMessage('로그인이 필요합니다');
       setTimeout(() => {
-        router.push('/');
+        router.push('/signin');
       }, 2000);
     }
   }, [router]);

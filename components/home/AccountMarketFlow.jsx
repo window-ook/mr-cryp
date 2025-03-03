@@ -12,7 +12,7 @@ export default function AccountMarketFlow({ flowSize }) {
   const [ripple, setRipple] = useState([]);
   const [etherium, setEtherium] = useState([]);
 
-  const xLabels = ['8월', '9월', '10월', '11월', '12월', '1월'];
+  const xLabels = ['10월', '11월', '12월', '1월', '2월', '3월'];
 
   useEffect(() => {
     const fetchMonthlyData = async () => {

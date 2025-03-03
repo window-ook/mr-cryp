@@ -14,6 +14,7 @@ import {
   MenuItem,
 } from '@mui/material';
 import { styled } from '@mui/system';
+import Image from 'next/image';
 import NotificationsNoneIcon from '@mui/icons-material/NotificationsNoneSharp';
 import SearchIcon from '@mui/icons-material/Search';
 import MenuIcon from '@mui/icons-material/Menu';
@@ -25,7 +26,6 @@ const NavTypo = styled(Typography)(() => ({
 }));
 
 const NavbarButton = styled(Button)(() => ({
-  margin: '1rem 0 1rem 1rem',
   color: 'white',
   display: 'block',
   border: 'none',
@@ -34,16 +34,16 @@ const NavbarButton = styled(Button)(() => ({
 
 const NavbarButtonTypo = styled(NavTypo)(({}) => ({
   textShadow: globalColors.shadow_text,
-  fontSize: '2rem',
-  '@media (max-width:1220px)': {
-    fontSize: '1.5rem',
+  fontSize: '1.5rem',
+  '&:hover': {
+    textShadow: 'none',
   },
 }));
 
 const OverMdBox = styled(Box)(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
-  gap: '1rem',
+  gap: '0.5rem',
   flexGrow: 1,
   [theme.breakpoints.down('md')]: {
     display: 'none',
@@ -54,10 +54,10 @@ const OverMdLogoTypo = styled(LogoTypo)(({ theme }) => ({
   display: 'flex',
   flexGrow: 1,
   marginRight: '0.5rem',
-  fontSize: '3rem',
+  fontSize: '1.5rem',
   fontWeight: 'bold',
   letterSpacing: '.3rem',
-  color: 'inherit',
+  color: globalColors.white,
   textShadow: globalColors.shadow_text,
   textDecoration: 'none',
 
@@ -76,10 +76,10 @@ const UnderMdBox = styled(Box)(({ theme }) => ({
 const UnderMdLogoTypo = styled(LogoTypo)(({ theme }) => ({
   display: 'flex',
   flexGrow: 1,
-  fontSize: '2rem',
+  fontSize: '1.5rem',
   marginRight: '0.5rem',
   letterSpacing: '.3rem',
-  color: 'inherit',
+  color: globalColors.white,
   textShadow: globalColors.shadow_text,
   textDecoration: 'none',
 
@@ -90,7 +90,8 @@ const UnderMdLogoTypo = styled(LogoTypo)(({ theme }) => ({
 
 const SubNavbar = styled(Box)(({}) => ({
   display: 'flex',
-  marginLeft: '18rem',
+  gap: '0.5rem',
+  paddingLeft: '14rem',
   '@media (max-width:900px)': {
     marginLeft: 0,
     justifyContent: 'center',
@@ -98,21 +99,16 @@ const SubNavbar = styled(Box)(({}) => ({
 }));
 
 const SubNavbarButton = styled(Button)(({}) => ({
-  my: '0.5rem',
-  mr: '0.5rem',
   display: 'block',
   border: 'none',
   boxShadow: 'none',
 }));
 
 const SubNavbarButtonTypo = styled(NavTypo)(({}) => ({
-  fontSize: '2rem',
+  fontSize: '1.5rem',
   textShadow: globalColors.shadow_text,
   '&:hover': {
     textShadow: 'none',
-  },
-  '@media (max-width:1220px)': {
-    fontSize: '1.5rem',
   },
   '@media (max-width:900px)': {
     fontSize: '1rem',
@@ -126,7 +122,7 @@ const UserMenuTypo = styled(NavTypo)(({ theme }) => ({
   padding: 0,
   color: globalColors.white,
   textShadow: globalColors.shadow_text,
-  fontSize: '1.5rem',
+  fontSize: '1rem',
   minHeight: '1.5rem',
 
   '&:hover': {
@@ -147,18 +143,6 @@ const UserMenuTypo = styled(NavTypo)(({ theme }) => ({
   },
 }));
 
-const ProfileImage = styled(Avatar)(() => ({
-  width: '2.5rem',
-  height: '2.5rem',
-  '@media (max-width:450px)': {
-    width: '1.5rem',
-    height: '1.5rem',
-  },
-  '@media (max-width:175px)': {
-    display: 'none',
-  },
-}));
-
 const NotificationIcon = styled(NotificationsNoneIcon)(() => ({
   fontSize: '2.5rem',
   color: globalColors.white,
@@ -172,18 +156,31 @@ const NotificationIcon = styled(NotificationsNoneIcon)(() => ({
   },
 }));
 
+const ProfileImage = styled(Avatar)(() => ({
+  width: '2.5rem',
+  height: '2.5rem',
+  '@media (max-width:450px)': {
+    width: '1.5rem',
+    height: '1.5rem',
+  },
+  '@media (max-width:175px)': {
+    display: 'none',
+  },
+}));
+
 export default function NavBar({
+  setNewKeyword,
   handleActivePage,
-  handleOpenNavMenu,
-  handleCloseNavMenu,
-  handleOpenSignout,
-  handleSignout,
-  handleCloseSignout,
   handleOpen,
   handleClose,
+  handleSignout,
+  handleCloseSignout,
+  handleCloseNavMenu,
   handleToggleSubMenu,
   handleKeywordSearch,
-  setNewKeyword,
+  handleOpenNavMenu,
+  handleOpenSignout,
+  handleRoute,
   navbarMenu,
   subNavbarMenu,
   activePage,
@@ -194,13 +191,14 @@ export default function NavBar({
   imgUrl,
   nickname,
   isOverMd,
+  isRoot,
 }) {
   return (
     <AppBar
       position="static"
       sx={{ top: 0, left: 0, right: 0, marginBottom: '0.25rem' }}
     >
-      <Container maxWidth="xl">
+      <Container maxWidth="lg">
         <Toolbar
           disableGutters
           sx={{
@@ -210,143 +208,177 @@ export default function NavBar({
         >
           {isOverMd ? (
             <Box sx={{ display: 'flex', alignItems: 'center' }}>
+              <Image
+                alt="navbar logo image"
+                src={'/images/logo_mustachetrans.webp'}
+                width="60"
+                height="30"
+                className="p-2"
+              />
               <OverMdLogoTypo noWrap>Mr.Cryp</OverMdLogoTypo>
-              <OverMdBox>
-                {navbarMenu.map(page => (
-                  <NavbarButton
-                    key={page}
-                    onClick={() => handleCloseNavMenu(page)}
-                  >
-                    <NavbarButtonTypo>{page}</NavbarButtonTypo>
-                    <div
-                      className={`h-1 w-full rounded-xl shadow-black shadow-lg ${
-                        handleActivePage() === page ? 'bg-white' : ''
-                      }`}
+              {isRoot ? (
+                <button
+                  onClick={() => handleRoute()}
+                  className="absolute right-0 w-[6rem] h-[2rem] rounded-md bg-white opacity-80 hover:opacity-40 transition duration-100 ease-in"
+                >
+                  <span className="font-oneTitle text-gray-800">시작하기</span>
+                </button>
+              ) : (
+                <OverMdBox>
+                  {navbarMenu.map(page => (
+                    <NavbarButton
+                      key={page}
+                      onClick={() => handleCloseNavMenu(page)}
+                    >
+                      <NavbarButtonTypo>{page}</NavbarButtonTypo>
+                      <div
+                        className={`h-1 w-full rounded-xl shadow-black shadow-lg ${
+                          handleActivePage() === page ? 'bg-white' : ''
+                        }`}
+                      />
+                    </NavbarButton>
+                  ))}
+                  <div className="hidden select-1120:flex select-1120:items-center select-1120:gap-1 select-1120:mb-2">
+                    <label
+                      htmlFor="search"
+                      className="font-ng font-bold text-white pr-2 max-[1300px]:hidden"
+                    >
+                      마켓 검색
+                    </label>
+                    <input
+                      type="text"
+                      id="search"
+                      alt="마켓 검색하기"
+                      aria-label="마켓 검색하기"
+                      placeholder="KRW-BTC, 이더리움"
+                      onKeyDown={e => {
+                        if (e.key === 'Enter') handleKeywordSearch();
+                      }}
+                      onChange={e => setNewKeyword(e.target.value)}
+                      className="w-[11rem] h-[2rem] pl-3 rounded-lg text-black"
                     />
-                  </NavbarButton>
-                ))}
-                <div className="hidden select-1120:flex select-1120:items-center select-1120:gap-1 select-1120:mb-2">
-                  <label
-                    htmlFor="search"
-                    className="font-ng font-bold text-white pr-2 max-[1300px]:hidden"
-                  >
-                    마켓 검색
-                  </label>
-                  <input
-                    type="text"
-                    id="search"
-                    alt="마켓 검색하기"
-                    aria-label="마켓 검색하기"
-                    placeholder="KRW-BTC, 이더리움"
-                    onKeyDown={e => {
-                      if (e.key === 'Enter') handleKeywordSearch();
-                    }}
-                    onChange={e => setNewKeyword(e.target.value)}
-                    className="w-[11rem] h-[2rem] pl-3 rounded-lg text-black"
-                  />
-                  <SearchIcon
-                    sx={{ color: globalColors.white, cursor: 'pointer' }}
-                    onClick={handleKeywordSearch}
-                  />
-                </div>
-              </OverMdBox>
+                    <SearchIcon
+                      sx={{ color: globalColors.white, cursor: 'pointer' }}
+                      onClick={handleKeywordSearch}
+                    />
+                  </div>
+                </OverMdBox>
+              )}
             </Box>
           ) : (
             <Box
               sx={{ display: 'flex', justifyContent: 'center', flexGrow: 1 }}
             >
-              <UnderMdBox>
-                <IconButton
-                  size="large"
-                  aria-label="화면 크기 md 이하 네브바 메뉴 열기"
-                  aria-controls="menu-appbar"
-                  aria-haspopup="true"
-                  onClick={e => handleOpenNavMenu(e)}
-                  sx={{
-                    color: globalColors.white,
-                  }}
+              {isRoot ? (
+                <button
+                  onClick={() => handleRoute()}
+                  className="absolute right-0 w-[6rem] h-[2rem] rounded-md bg-white opacity-80 hover:opacity-40 transition duration-100 ease-in"
                 >
-                  <MenuIcon />
-                </IconButton>
-                <Menu
-                  id="menu-appbar"
-                  anchorEl={anchorElNav}
-                  anchorOrigin={{
-                    vertical: 'bottom',
-                    horizontal: 'left',
-                  }}
-                  keepMounted
-                  transformOrigin={{
-                    vertical: 'top',
-                    horizontal: 'left',
-                  }}
-                  open={Boolean(anchorElNav)}
-                  onClose={handleCloseNavMenu}
-                  sx={{
-                    display: { xs: 'block', md: 'none' },
-                  }}
-                >
-                  {navbarMenu.map(page => (
-                    <MenuItem key={page}>
-                      <button
-                        type="button"
-                        onClick={() => handleCloseNavMenu(page)}
-                      >
-                        <NavTypo textAlign="center" fontSize={'1.5rem'}>
-                          {page}
-                        </NavTypo>
-                      </button>
-                    </MenuItem>
-                  ))}
-                </Menu>
-              </UnderMdBox>
+                  <span className="font-oneTitle text-gray-800">시작하기</span>
+                </button>
+              ) : (
+                <UnderMdBox>
+                  <IconButton
+                    size="large"
+                    aria-label="화면 크기 md 이하 네브바 메뉴 열기"
+                    aria-controls="menu-appbar"
+                    aria-haspopup="true"
+                    onClick={e => handleOpenNavMenu(e)}
+                    sx={{
+                      color: globalColors.white,
+                    }}
+                  >
+                    <MenuIcon />
+                  </IconButton>
+                  <Menu
+                    id="menu-appbar"
+                    anchorEl={anchorElNav}
+                    anchorOrigin={{
+                      vertical: 'bottom',
+                      horizontal: 'left',
+                    }}
+                    keepMounted
+                    transformOrigin={{
+                      vertical: 'top',
+                      horizontal: 'left',
+                    }}
+                    open={Boolean(anchorElNav)}
+                    onClose={handleCloseNavMenu}
+                    sx={{
+                      display: { xs: 'block', md: 'none' },
+                    }}
+                  >
+                    {navbarMenu.map(page => (
+                      <MenuItem key={page}>
+                        <button
+                          type="button"
+                          onClick={() => handleCloseNavMenu(page)}
+                        >
+                          <NavTypo textAlign="center" fontSize={'1.5rem'}>
+                            {page}
+                          </NavTypo>
+                        </button>
+                      </MenuItem>
+                    ))}
+                  </Menu>
+                </UnderMdBox>
+              )}
+              <Image
+                alt="navbar logo image"
+                src={'/images/logo_mustachetrans.webp'}
+                width="60"
+                height="30"
+                className="p-2"
+              />
               <UnderMdLogoTypo noWrap>Mr.Cryp</UnderMdLogoTypo>
             </Box>
           )}
 
           {/* 유저 메뉴 */}
-          <Box sx={{ flexGrow: 0 }}>
-            <div className="flex items-center gap-3">
-              <div className="relative hidden md:block">
-                <div className="absolute left-4 bottom-6 w-5 h-5 rounded-[100%] bg-red-500 max-[1200px]:w-3 max-[1200px]:h-3 flex items-center justify-center">
-                  <span className="font-ng font-bold max-[1200px]:text-xs">
-                    1
-                  </span>
+          {!isRoot && (
+            <Box sx={{ flexGrow: 0 }}>
+              <div className="flex items-center gap-3">
+                <div className="relative hidden md:block">
+                  <div className="absolute left-4 bottom-6 w-5 h-5 rounded-[100%] bg-red-500 max-[1200px]:w-3 max-[1200px]:h-3 flex items-center justify-center">
+                    <span className="font-ng font-bold max-[1200px]:text-xs">
+                      1
+                    </span>
+                  </div>
+                  <NotificationIcon onClick={handleOpen} />
                 </div>
-                <NotificationIcon onClick={handleOpen} />
+                <ProfileImage alt="프로필 이미지" src={imgUrl} />
+                <Tooltip title="로그아웃">
+                  <UserMenuTypo onClick={e => handleOpenSignout(e)}>
+                    {nickname || 'TESTER'}, hi!
+                  </UserMenuTypo>
+                </Tooltip>
               </div>
-              <ProfileImage alt="프로필 이미지" src={imgUrl} />
-              <Tooltip title="로그아웃">
-                <UserMenuTypo onClick={e => handleOpenSignout(e)}>
-                  {nickname || 'TESTER'}, hi!
-                </UserMenuTypo>
-              </Tooltip>
-            </div>
-            <Menu
-              sx={{ mt: '2.5rem' }}
-              id="menu-appbar"
-              anchorEl={anchorSignout}
-              anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              open={Boolean(anchorSignout)}
-              onClose={handleCloseSignout}
-            >
-              <MenuItem onClick={handleSignout}>
-                <Typography textAlign="center">로그아웃</Typography>
-              </MenuItem>
-            </Menu>
-          </Box>
+              <Menu
+                sx={{ mt: '2.5rem' }}
+                id="menu-appbar"
+                anchorEl={anchorSignout}
+                anchorOrigin={{
+                  vertical: 'top',
+                  horizontal: 'right',
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: 'top',
+                  horizontal: 'right',
+                }}
+                open={Boolean(anchorSignout)}
+                onClose={handleCloseSignout}
+              >
+                <MenuItem onClick={handleSignout}>
+                  <Typography textAlign="center">로그아웃</Typography>
+                </MenuItem>
+              </Menu>
+            </Box>
+          )}
         </Toolbar>
 
         {/* 서브 네브바*/}
-        {activePage === '거래' && (
+        {!isRoot && activePage === '거래' && (
           <SubNavbar>
             {subNavbarMenu.map(page => (
               <SubNavbarButton
