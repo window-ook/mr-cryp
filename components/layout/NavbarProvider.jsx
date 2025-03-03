@@ -26,6 +26,8 @@ export default function NavBarProvider() {
   const navbarMenu = ['홈', '비전', '거래'];
   const subNavbarMenu = ['오더북', '거래 내역', '차트'];
 
+  const isRoot = router.pathname === '/';
+
   useEffect(() => {
     if (typeof window !== 'undefined') {
       setImgUrl(localStorage.getItem('imgUrl'));
@@ -107,18 +109,22 @@ export default function NavBarProvider() {
   /** 로그아웃 드롭다운 열기 */
   const handleOpenSignout = event => setAnchorSignout(event.currentTarget);
 
+  /** 랜딩 페이지에서 로그인 페이지로 */
+  const handleRoute = () => router.push('/signin');
+
   const props = {
+    setNewKeyword,
     handleActivePage,
-    handleOpenNavMenu,
-    handleCloseNavMenu,
-    handleOpenSignout,
-    handleSignout,
-    handleCloseSignout,
     handleOpen,
     handleClose,
+    handleSignout,
+    handleCloseSignout,
+    handleCloseNavMenu,
     handleToggleSubMenu,
     handleKeywordSearch,
-    setNewKeyword,
+    handleOpenNavMenu,
+    handleOpenSignout,
+    handleRoute,
     navbarMenu,
     subNavbarMenu,
     activePage,
@@ -129,6 +135,7 @@ export default function NavBarProvider() {
     imgUrl,
     nickname,
     isOverMd,
+    isRoot,
   };
 
   return <NavBar {...props} />;

@@ -23,7 +23,7 @@ function MyApp({ Component, pageProps }) {
   const { store } = wrapper.useWrappedStore(pageProps);
 
   const router = useRouter();
-  const isSignIn = router.pathname === '/';
+  const isSignIn = router.pathname === '/signin';
   const isKakaoRedirecting = router.pathname === '/auth';
   const isNaverRedirecting = router.pathname === '/oauth';
 
@@ -35,13 +35,18 @@ function MyApp({ Component, pageProps }) {
           <Head>
             <title>미스터 크립 Mr.cryp</title>
           </Head>
+
           {isSignIn || isKakaoRedirecting || isNaverRedirecting ? (
             <Component {...pageProps} />
           ) : (
             <Layout>
-              <ProtectedRoute>
+              {router.pathname === '/' ? (
                 <Component {...pageProps} />
-              </ProtectedRoute>
+              ) : (
+                <ProtectedRoute>
+                  <Component {...pageProps} />
+                </ProtectedRoute>
+              )}
             </Layout>
           )}
         </QueryClientProvider>

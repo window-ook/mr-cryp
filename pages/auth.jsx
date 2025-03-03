@@ -56,7 +56,7 @@ export default function KakaoAuth({ KAKAO_CLIENT_ID, KAKAO_CLIENT_SECRET }) {
       const authCancel = urlParams.get('error');
       const authCode = urlParams.get('code');
 
-      if (authCancel) router.push('/');
+      if (authCancel) router.push('/signin');
 
       if (authCode) {
         const accessToken = await getAccessToken(authCode);

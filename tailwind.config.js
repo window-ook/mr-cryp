@@ -11,6 +11,7 @@ module.exports = {
       fontFamily: {
         ng: 'NEXON Lv1 Gothic OTF',
         oneTitle: 'ONE-Mobile-Title',
+        aggro: 'SBAggroB',
       },
 
       colors: {

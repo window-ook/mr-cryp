@@ -27,7 +27,7 @@ export default function NaverAuth() {
       const authCancel = urlParams.get('error');
       const authCode = urlParams.get('code');
 
-      if (authCancel) router.push('/');
+      if (authCancel) router.push('/signin');
 
       if (authCode) {
         const accessToken = await fetchAccessToken(authCode);
