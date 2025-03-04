@@ -15,7 +15,7 @@ export const globalColors = {
   white_retro: '#e1e3e1',
   black: { 400: '#141715', 500: '#000000' },
   skyblue: { 200: '#a7fafc', 300: '#6df3f7', 400: '#41f5fa', 500: '#05e9f0' },
-  hotpink: { 200: '#f788bc', 300: '#fa6eaf', 400: '#ff63ac', 500: '#fa52a1' },
+  hotpink: { 200: '#f788bc', 300: '#f788bc', 400: '#ff63ac', 500: '#fa52a1' },
   vanilla: { 200: '#ffe178', 300: '#ffd540', 400: '#fac814', 500: '#e3b200' },
   jade: { 200: '#86fcd3', 300: '#41fab9', 400: '#1bf5a9', 500: '#0ac483' },
 

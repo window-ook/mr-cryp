@@ -74,7 +74,7 @@ export default function MarketSituation() {
           aria-label="기사 링크로 이동하기"
           type="button"
           ref={containerRef}
-          className="absolute overflow-hidden text-ellipsis inset-0 flex items-center animate-marquee cursor-pointer"
+          className="absolute overflow-hidden whitespace-nowrap text-ellipsis inset-0 flex items-center animate-marqueeY cursor-pointer"
           onClick={() => window.open(link, '_blank')}
         >
           <span className="text-main font-semibold max-[1100px]:text-xs">

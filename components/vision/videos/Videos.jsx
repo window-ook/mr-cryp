@@ -5,7 +5,7 @@ import Video from './Video';
 export default function Videos({ videos, theme }) {
   return (
     <article className="w-full">
-      <VisionSubTitle>TREND NOW</VisionSubTitle>
+      <VisionSubTitle>트렌드 영상</VisionSubTitle>
       <Grid container spacing={2}>
         {videos?.map(video => (
           <Grid item xs={12} sm={3} key={video?.id}>
