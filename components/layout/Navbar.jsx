@@ -194,10 +194,7 @@ export default function NavBar({
   isRoot,
 }) {
   return (
-    <AppBar
-      position="static"
-      sx={{ top: 0, left: 0, right: 0, marginBottom: '0.25rem' }}
-    >
+    <AppBar position="sticky">
       <Container maxWidth="lg">
         <Toolbar
           disableGutters
