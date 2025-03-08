@@ -216,9 +216,11 @@ export default function NavBar({
               {isRoot ? (
                 <button
                   onClick={() => handleRoute()}
-                  className="absolute right-0 w-[6rem] h-[2rem] rounded-md bg-white opacity-80 hover:opacity-40 transition duration-100 ease-in"
+                  className="absolute right-0 w-[6rem] h-[2rem] rounded-md hover:opacity-40 transition duration-100 ease-in"
                 >
-                  <span className="font-oneTitle text-gray-800">시작하기</span>
+                  <span className="font-oneTitle font-bold text-white">
+                    시작하기
+                  </span>
                 </button>
               ) : (
                 <OverMdBox>
