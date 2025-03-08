@@ -7,7 +7,6 @@ import { Avatar, Box, CssBaseline, Grid, Link, Paper } from '@mui/material';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import SocialLoginButton from '@/components/layout/SocialLoginButton';
 import Image from 'next/image';
-import Head from 'next/head';
 import TestLoginButton from '@/components/layout/TestLoginButton';
 
 const ButtonsBox = styled(Box)(() => ({
@@ -70,13 +69,6 @@ export default function Signin({ KAKAO_CLIENT_ID, NAVER_CLIENT_ID }) {
 
   return (
     <main>
-      <Head>
-        <title>미스터 크립 Mr.cryp</title>
-        <meta
-          name="google-site-verification"
-          content="3HPbFBzWiEOsYaEh2ZfL_U_vgYagKrqu09DJBOSXnBk"
-        />
-      </Head>
       <Grid container component="main" sx={{ height: '100vh' }}>
         <CssBaseline />
         {/* 로그인 폼 */}

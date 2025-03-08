@@ -7,6 +7,7 @@ import { wrapper } from '@/utils/redux/store';
 import { theme } from '@/defaultTheme';
 import Head from 'next/head';
 import dynamic from 'next/dynamic';
+import Index from './index';
 
 const Layout = dynamic(() => import('@/layouts/Layout'), { ssr: false });
 
@@ -23,6 +24,7 @@ function MyApp({ Component, pageProps }) {
   const { store } = wrapper.useWrappedStore(pageProps);
 
   const router = useRouter();
+  const isRoot = router.pathname === '/';
   const isSignIn = router.pathname === '/signin';
   const isKakaoRedirecting = router.pathname === '/auth';
   const isNaverRedirecting = router.pathname === '/oauth';
@@ -40,8 +42,8 @@ function MyApp({ Component, pageProps }) {
             <Component {...pageProps} />
           ) : (
             <Layout>
-              {router.pathname === '/' ? (
-                <Component {...pageProps} />
+              {isRoot ? (
+                <Index />
               ) : (
                 <ProtectedRoute>
                   <Component {...pageProps} />

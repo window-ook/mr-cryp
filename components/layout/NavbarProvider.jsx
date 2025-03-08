@@ -69,7 +69,7 @@ export default function NavBarProvider() {
       localStorage.removeItem('imgUrl');
       localStorage.removeItem('nickname');
       sessionStorage.removeItem('activePage');
-      router.push('/');
+      router.replace('/signin');
     } catch (error) {
       console.error('로그아웃 에러');
     }
