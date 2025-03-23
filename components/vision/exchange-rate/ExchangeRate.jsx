@@ -6,7 +6,7 @@ export default function ExchangeRate({ exchangeRates }) {
       <header>
         <VisionSubTitle>오늘 환율</VisionSubTitle>
       </header>
-      <ul className="flex justify-stretch">
+      <ul className="flex justify-between">
         {exchangeRates.map(({ currency, rate }) => {
           return (
             <li key={currency}>
