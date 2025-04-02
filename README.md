@@ -12,11 +12,11 @@
 ### 👉 서비스 소개
 
 미스터 크립은 여러분의 크립토 비서입니다.<br/>
-여러분의 업비트 계좌 잔고를 확인할 수 있고, 현재 트렌드 유튜브 영상과 최신 기사(네이버)를 볼 수 있습니다.<br/> 
-그리고 코인의 실시간 현재가, 거래내역, 체결 내역에 관한 정보 확인을 차트로 쉽게 할 수 있습니다!<br/>
+여러분의 계좌 잔고와 확인할 수 있고, 현재 트렌드 소식을 확인해보세요.<br/> 
+보안 위험에 의해 실제 거래는 되지 않지만, 실시간 차트를 보고 모의 주문을 할 수 있습니다.<br/>
 
-## 🔗 접속 링크
-https://mr-cryp.vercel.app
+## 🔗 링크
+<a href='https://mr-cryp.vercel.app'>미스터 크립 홈페이지</a>
 
 ## ✅ 스택
 <div style='display:flex; align-items:center'>
@@ -25,7 +25,7 @@ https://mr-cryp.vercel.app
     <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black">
 </div>
 <div style='display:flex; align-items:center'>
-    <img src="https://img.shields.io/badge/React Query-FF4154?style=flat-square&logo=reactquery&logoColor=white">
+    <img src="https://img.shields.io/badge/Tanstack Query-FF4154?style=flat-square&logo=reactquery&logoColor=white">
     <img src="https://img.shields.io/badge/Redux Toolkit-764ABC?style=flat-square&logo=redux&logoColor=white">
 </div>
 <div style='display:flex; align-items:center'>
@@ -48,47 +48,24 @@ https://mr-cryp.vercel.app
 ## ℹ️ 페이지 소개
 ### 초기 화면
 
-![page_root](https://github.com/user-attachments/assets/82533e22-3c00-4ce9-864a-da1981a2757f)
-
-로그인을 해야만 미스터 크립의 서비스를 이용할 수 있습니다.<br>
-유저는 구글과 카카오 계정 중 원하는 것을 선택하여 로그인 후 서비스를 이용합니다.<br>
-비로그인 상태에서 타 페이지의 접근을 막기 위한 **Protected Route** 처리도 적용했습니다.(액세스 토큰 조회)<br>
+<img src='https://github.com/user-attachments/assets/3aafb0f0-297e-4701-9597-a59c7c8820a4' width='400' height='180' />
 
 ### 홈
 
-![](https://github.com/user-attachments/assets/d3394dc1-f78b-4d5a-9b49-9ff63f555e0d)
+<img src='https://github.com/user-attachments/assets/4e366d13-f52e-45f6-9905-116a625d1b39' width='600' height='300' />
 
-로그인 후 처음 접속하는 페이지입니다.<br>
-홈에서는 내 계좌현황을 파이 차트로 비율에 따라 한 눈에 확인할 수 있고,<br>
-원화(현금)와 마켓별 상세 잔고 현황을 리스트로 확인할 수 있습니다.<br>
+내 계좌현황을 파이 차트로 비율에 따라 한 눈에 확인할 수 있고,<br>
+현금와 상세 잔고 현황을 테이블로 확인할 수 있습니다.<br>
+플로우 차트로 추이를 확인해보세요!<br>
 
 ### 비전
 
-https://github.com/user-attachments/assets/81dae91e-90cd-4d26-b002-9b69d880d3bc
+<img src='https://github.com/user-attachments/assets/4bc1e9b1-71ab-4c78-951e-09d1f5689da0' width='600' height='300' />
 
 가상화폐에 대한 기본적인 정보와 투자 방법에 대한 영상,<br>
 유튜브에서 '코인'을 키워드로 검색한 최신 검색 결과 영상,<br>
 그리고 최신 기사들을 바로 확인할 수 있는 비전 페이지 입니다.<br>
 영상은 바로 재생이 가능하게 Iframe을 이용하였고, 기사는 링크 이동과 복사가 가능하게 구현했습니다.<br>
-
-### 거래
-
-업비트 REST API를 이용한 하위 3개의 페이지를 둔 거래 페이지입니다.<br>
-네비게이션바에서 거래를 클릭시 하위 메뉴탭이 활성화됩니다.<br>
-
-### 거래: 오더북
-
-![page_orderbook](https://github.com/user-attachments/assets/38bb5c22-83cb-47cd-b133-d2d02441c00c)
-
-마켓별 실시간 오더북을 보여주는 페이지입니다.<br>
-마켓 코드 셀렉터로 원하는 마켓 코드를 선택할 수 있습니다.<br>
-
-### 거래: 거래 내역
-
-![page_trade-history](https://github.com/user-attachments/assets/8e369dae-4959-4286-a557-fef284f1a0d4)
-
-마켓별 실시간 거래 내역을 보여주는 페이지입니다.<br>
-마켓 코드 셀렉터로 원하는 마켓 코드를 선택할 수 있습니다.<br>
 
 ### 거래: 실시간 차트
 
@@ -104,17 +81,9 @@ https://github.com/user-attachments/assets/4c94eb5b-2ecd-4d61-bd7f-15f1bb469c68
 기본적으로 해당 마켓의 실시간 가격이 지정되어있고 매수와 매도 주문을 하면<br>
 거래내역에서 주문한 내역을 모두 확인할 수 있게 상태로 저장됩니다.<br>
 
-### 내 프로필
-
-![navbar_user](https://github.com/user-attachments/assets/22b67fbe-47d8-4f5e-9ae2-0768ffe5d8ec)
-![user_modal](https://github.com/user-attachments/assets/4388e7dd-33a0-447c-912c-2c5b5a14d9d1)
-
-유저 정보는 네비게이션 바의 '내 프로필' 텍스트를 클릭하면 하단에 툴팁이 활성화되고,<br>
-그 중 '프로필 정보'를 클릭하면 현재 로그인된 계정의 프로필 사진과 닉네임, 플랫폼의 정보가 표시됩니다.<br>
-
 ## 🧱 아키텍처
 
-![image](https://github.com/user-attachments/assets/0186b3ef-daaa-4d6b-8401-bedc5b02c507)
+https://github.com/user-attachments/assets/56f26231-7450-4f30-b087-00c5546e8ec7
 
 ### Highcharts
 
@@ -134,18 +103,19 @@ Chart.js, D3.js, Recharts와 같은 라이브러리를 뒤로 하고 highcharts�
 
 https://mui.com/material-ui/all-components/
 
-MUI는 이미 잘 만들어진 디자인과 애니메이션을 가진 UI 컴포넌트를 제공합니다.<br> 
-부트스트랩과 스타일 컴포넌트를 혼합해둔 성격을 띄고 있으며 리액트를 사용한 프로젝트에서 개발하는데에 매우 효율적입니다.<br>
-또한 러닝 커브가 낮고 제공하는 컴포넌트 종류가 다양할 뿐만 아니라 커스터마이징 정도도 높은 수준입니다.<br>
+Bootstrap과 Styled Components를 혼합해둔 성격을 띄며, 리액트 프로젝트에서 사용하기 효율적입니다.<br>
+러닝 커브가 낮고 제공하는 컴포넌트 종류가 다양해서 빠르게 UI 개발하기 좋았습니다.<br>
 
 ### Redux Toolkit
 
-기존의 Redux의 러닝 커브를 낮추고 장점은 극대화시킨 전역 상태관리 라이브러리입니다.<br>
-미스터 크립의 거래 - 차트 페이지에서 마켓 리스트의 특정 마켓을 선택하면,<br>
-해당 마켓의 market(code)를 차트 페이지에서 나머지 그리드 아이템이자 하위 컴포넌트 요소인 <br>
-마켓 상세 정보, 차트, 실시간 거래 내역, 실시간 오더북 컴포넌트에서 동기화되어야 합니다.<br>
-상위 컴포넌트인 chart.jsx에서 useState를 이용하여 props drilling으로 하위 컴포넌트에 전달하지 않고<br>
-상태를 중앙에서 관리함으로써 코드 가독성을 높이고, 불필요한 렌더링을 줄여 성능 최적화에 도움이 됩니다.<br>
+기존의 Redux의 러닝 커브를 낮춘 전역 상태관리 라이브러리입니다.<br>
+'차트' 페이지에서 마켓 리스트의 특정 마켓을 선택하면 해당 마켓의 market(code)이<br>
+차트 페이지 나머지 하위 컴포넌트 요소인 마켓 상세 정보, 차트, 실시간 거래 내역, 실시간 오더북 컴포넌트에서 동기화되어야 합니다.<br>
+이 방식을 useState를 이용하여 props drilling으로 하위 컴포넌트에 전달하지 않고<br>
+상태를 중앙에서 관리함으로써 코드 가독성을 높이고, 불필요한 렌더링을 줄였습니다.<br> <br>
+
+또한, 네비게이션 바에서 검색하는 키워드와 차트에서 마켓 리스트의 키워드를 전역 상태로 관리하여<br>
+검색시 바로 차트로 이동할 수 있게 하였습니다.
 
 ### Next.js
 
