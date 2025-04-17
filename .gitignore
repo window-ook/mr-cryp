@@ -9,6 +9,9 @@
 # git
 .git
 
+# request.http
+request.http
+
 # testing
 /coverage
 
