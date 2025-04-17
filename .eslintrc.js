@@ -21,7 +21,7 @@ module.exports = {
     es2021: true, // ✅ 최신 ECMAScript 환경 지원
   },
   parserOptions: {
-    ecmaVersion: 'latest', // ✅ 최신 JavaScript 지원
+    ecmaVersion: 'latest',
     sourceType: 'module',
   },
 };
