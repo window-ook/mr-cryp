@@ -6,7 +6,7 @@ import Link from 'next/link';
 import Rating from '@mui/material/Rating';
 import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
 
-function Navbar() {
+const Navbar = () => {
   const router = useRouter();
 
   const handleRoute = () => router.push('/auth');
@@ -17,10 +17,10 @@ function Navbar() {
         <div className="flex items-center gap-2">
           <Image
             alt="navbar logo image"
-            src={'/images/logo_mustache.webp'}
+            src={'/images/logo_mustachetrans.webp'}
             width="60"
             height="60"
-            className="w-auto h-3"
+            className="w-auto h-4"
           />
           <span className="text-[1.5rem] text-white font-aggro font-bold italic text-shadow-black">
             Mr.cryp
@@ -40,9 +40,9 @@ function Navbar() {
       </div>
     </nav>
   );
-}
+};
 
-function Header() {
+const Header = () => {
   return (
     <>
       <Image
@@ -78,9 +78,9 @@ function Header() {
       </section>
     </>
   );
-}
+};
 
-function Marquee() {
+const Marquee = () => {
   const logos = [
     'btc.avif',
     'eth.avif',
@@ -119,9 +119,9 @@ function Marquee() {
       ))}
     </div>
   );
-}
+};
 
-function Introduce() {
+const Introduce = () => {
   return (
     <>
       <div className="flex flex-col gap-10 max-md:gap-20">
@@ -146,9 +146,9 @@ function Introduce() {
       />
     </>
   );
-}
+};
 
-function AiInvestIntroduce() {
+const AiInvestIntroduce = () => {
   return (
     <div className="flex flex-col gap-10">
       <div className="flex items-end gap-2">
@@ -185,18 +185,18 @@ function AiInvestIntroduce() {
       </Link>
     </div>
   );
-}
+};
 
-function AiPortfolioCard({
+const AiPortfolioCard = ({
   description,
   title,
   stability,
   profitability,
   recommend,
-}) {
+}) => {
   return (
     <div className="group relative max-md:w-[60rem] max-sm:w-[30%] h-[30rem] flex-1 flex flex-col hover:flex-[4] hover:shrink-0 transition-[flex-grow,flex-shrink] duration-300 ease-in-out">
-      <div className="bg-pink-100 rounded-md shadow-md flex flex-col flex-1 gap-2 transition-opacity duration-300">
+      <div className="bg-main_light rounded-md shadow-md flex flex-col flex-1 gap-2 transition-opacity duration-300">
         <div className="absolute inset-0 p-4 scale-90 opacity-0 flex flex-col justify-around gap-2 transition-opacity duration-300 ease-in group-hover:opacity-100 group-hover:scale-100">
           {/* 옵션 소개 */}
           <div className="scale-90 opacity-0 transition-all duration-150 ease-in group-hover:opacity-100 group-hover:scale-100">
@@ -243,22 +243,19 @@ function AiPortfolioCard({
       <span className="py-2 text-xl max-sm:text-sm font-oneTitle">{title}</span>
     </div>
   );
-}
+};
 
-function Footer() {
+const Footer = () => {
   return (
     <div className="w-full max-w-[75rem] mx-auto px-10 sm:px-16 md:px-20 lg:px-24 xl:px-32 flex flex-col gap-4">
       <span className="text-md text-gray-400 font-ng">
         Copyrights All reserved © Mr.Cryp 2024
       </span>
-      <span className="text-md text-gray-400 font-ng">
-        Contact - https://github.com/window-ook
-      </span>
     </div>
   );
-}
+};
 
-export default function Index() {
+export default function Home() {
   const portfolioOptions = [
     {
       title: '요즘 핫한',

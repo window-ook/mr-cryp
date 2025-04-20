@@ -16,9 +16,9 @@ import { globalColors } from '@/globalColors';
 export let theme = createTheme({
   palette: {
     primary: {
-      main: globalColors.hotpink[400],
-      light: globalColors.hotpink[300],
-      dark: globalColors.hotpink[500],
+      main: globalColors.jade[400],
+      light: globalColors.jade[300],
+      dark: globalColors.jade[500],
       contrastText: globalColors.vanilla[300],
     },
     secondary: {

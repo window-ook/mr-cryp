@@ -45,7 +45,7 @@ function WeeklyRisedCoins({ marketCodes }) {
   const router = useRouter();
 
   const krwMarketCodes = useMemo(
-    () => marketCodes.filter(code => code.market.includes('KRW')).slice(0, 30),
+    () => marketCodes.filter(code => code.market.includes('KRW')),
     [marketCodes],
   );
 

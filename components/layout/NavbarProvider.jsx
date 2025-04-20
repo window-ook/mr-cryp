@@ -91,7 +91,7 @@ export default function NavBarProvider() {
   /** 거래 서브 메뉴 */
   const handleToggleSubMenu = subMenu => {
     setActiveSubMenu(subMenu);
-    if (subMenu === '차트') router.push('/exchange/chart');
+    if (subMenu === '차트') router.push('/exchange');
     if (subMenu === 'AI 포트폴리오') router.push('/exchange/ai-portfoilo');
   };
 
@@ -99,7 +99,7 @@ export default function NavBarProvider() {
   const handleKeywordSearch = () => {
     dispatch(setKeyword(newKeyword));
     setActivePage('거래소');
-    router.push('/exchange/chart');
+    router.push('/exchange');
   };
 
   /** XS 메뉴 드롭다운 열기 */
@@ -107,9 +107,6 @@ export default function NavBarProvider() {
 
   /** 로그아웃 드롭다운 열기 */
   const handleOpenSignout = event => setAnchorSignout(event.currentTarget);
-
-  /** 랜딩 페이지에서 로그인 페이지로 */
-  const handleRoute = () => router.push('/auth');
 
   const props = {
     setNewKeyword,
@@ -123,7 +120,6 @@ export default function NavBarProvider() {
     handleKeywordSearch,
     handleOpenNavMenu,
     handleOpenSignout,
-    handleRoute,
     navbarMenu,
     subNavbarMenu,
     activePage,

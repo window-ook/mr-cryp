@@ -8,6 +8,7 @@ export default async function handler(req, res) {
 
   try {
     const upbit = new Upbit();
+
     let data;
     switch (type) {
       case '1min':
@@ -16,6 +17,7 @@ export default async function handler(req, res) {
           res.status(400).json({ error: 'unit(몇 분)을 입력하세요.' });
           return;
         }
+
         data = await upbit.candleMinutes(unit, ticker, count);
         break;
       case 'days':
@@ -34,6 +36,7 @@ export default async function handler(req, res) {
         res.status(400).json({ error: '유효하지 않은 타입입니다.' });
         return;
     }
+
     res.status(200).json(data);
   } catch (error) {
     res.status(500).json({ error: '캔들 데이터 요청 실패' });

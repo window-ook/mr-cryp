@@ -18,8 +18,9 @@ module.exports = {
       },
 
       colors: {
-        main: '#ff63ac',
-        main_light: '#f788bc',
+        main: '#0ac483',
+        main_light: '#41fab9',
+
         portfolio_trend: '#f788bc',
         portfolio_potential: '#86fcd3',
         portfolio_hot: '#de0417',
@@ -36,7 +37,7 @@ module.exports = {
       },
 
       boxShadow: {
-        mainShadow: '0px 3px 10px #ff63ac',
+        mainShadow: '0px 3px 10px #07a36c',
       },
 
       backgroundImage: {

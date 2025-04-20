@@ -23,8 +23,9 @@ export default async function handler(req, res) {
       ...item,
       id: item.id.videoId,
     }));
+
     res.status(200).json(items);
   } catch (error) {
-    res.status(500).json({ error: '네이버 API 호출 실패' });
+    res.status(500).json({ error: '유튜브 API 호출 실패' });
   }
 }

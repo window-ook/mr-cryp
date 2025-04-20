@@ -4,6 +4,7 @@ import { DescriptionTypo, NGTypo, LogoTypo, theme } from '@/defaultTheme';
 import { globalColors } from '@/globalColors';
 import { styled } from '@mui/system';
 import { Avatar, Box, CssBaseline, Grid, Paper } from '@mui/material';
+import Head from 'next/head';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import SocialLoginButton from '@/components/layout/SocialLoginButton';
 import Image from 'next/image';
@@ -17,7 +18,6 @@ const ButtonsBox = styled(Box)(() => ({
 }));
 
 const LoginTypo = styled(DescriptionTypo)(() => ({
-  color: theme.palette.primary.main,
   fontSize: '2rem',
 }));
 
@@ -65,83 +65,88 @@ export default function Signin({ KAKAO_CLIENT_ID }) {
   }, [router]);
 
   return (
-    <main>
-      <Grid container component="main" sx={{ height: '100vh' }}>
-        <CssBaseline />
-        {/* 로그인 폼 */}
-        <Grid
-          item
-          xs={12}
-          sm={8}
-          md={5}
-          component={Paper}
-          elevation={6}
-          square
-          display="flex"
-          alignItems="center"
-          justifyContent="center"
-        >
-          <ButtonsBox>
-            <Avatar
-              style={{
-                backgroundColor: theme.palette.primary.main,
-              }}
-            >
-              <LockOutlinedIcon />
-            </Avatar>
-            <LoginTypo>로그인</LoginTypo>
-            <SocialLoginButton
-              platform={'google'}
-              bgColor={'bg-blue-600'}
-              fontColor={'text-white'}
-            />
-            <SocialLoginButton
-              CLIENT_ID={KAKAO_CLIENT_ID}
-              REDIRECT_URI={KAKAO_REDIRECT_URI}
-              platform={'kakao'}
-              bgColor={'bg-yellow-300'}
-              fontColor={'text-black'}
-            />
-            <SocialLoginButton isTest={true} />
-            <Copyright sx={{ mt: 5 }} />
-          </ButtonsBox>
-        </Grid>
-        {/* 포스터 사이드 */}
-        <Grid
-          item
-          xs={false}
-          sm={4}
-          md={7}
-          sx={{
-            display: { xs: 'none', sm: 'block' },
-            backgroundColor: globalColors.auth_background,
-          }}
-        >
-          <Box
-            display={'flex'}
-            alignItems={'center'}
-            justifyContent={'center'}
-            height={'100vh'}
-            gap={2}
+    <>
+      <Head>
+        <title>로그인 - 미스터 크립</title>
+      </Head>
+      <main>
+        <Grid container component="main" sx={{ height: '100vh' }}>
+          <CssBaseline />
+          {/* 로그인 폼 */}
+          <Grid
+            item
+            xs={12}
+            sm={8}
+            md={5}
+            component={Paper}
+            elevation={6}
+            square
+            display="flex"
+            alignItems="center"
+            justifyContent="center"
           >
-            <Image
-              alt="로고 이미지"
-              src="/images/logo_mustache.webp"
-              width={100}
-              height={30}
-              priority={true}
-              style={{
-                width: '10%',
-                height: 'auto',
-                objectFit: 'contain',
-              }}
-            />
-            <StyledLogoTypo noWrap fontWeight="bold" fontSize={'2.5rem'}>
-              Mr.Cryp
-            </StyledLogoTypo>
-          </Box>
+            <ButtonsBox>
+              <Avatar
+                style={{
+                  backgroundColor: theme.palette.primary.main,
+                }}
+              >
+                <LockOutlinedIcon />
+              </Avatar>
+              <LoginTypo>로그인</LoginTypo>
+              <SocialLoginButton
+                platform={'google'}
+                bgColor={'bg-blue-600'}
+                fontColor={'text-white'}
+              />
+              <SocialLoginButton
+                CLIENT_ID={KAKAO_CLIENT_ID}
+                REDIRECT_URI={KAKAO_REDIRECT_URI}
+                platform={'kakao'}
+                bgColor={'bg-yellow-300'}
+                fontColor={'text-black'}
+              />
+              <SocialLoginButton isTest={true} />
+              <Copyright sx={{ mt: 5 }} />
+            </ButtonsBox>
+          </Grid>
+          {/* 포스터 사이드 */}
+          <Grid
+            item
+            xs={false}
+            sm={4}
+            md={7}
+            sx={{
+              display: { xs: 'none', sm: 'block' },
+              backgroundColor: globalColors.auth_background,
+            }}
+          >
+            <Box
+              display={'flex'}
+              alignItems={'center'}
+              justifyContent={'center'}
+              height={'100vh'}
+              gap={2}
+            >
+              <Image
+                alt="로고 이미지"
+                src="/images/logo_mustache.avif"
+                width={100}
+                height={30}
+                priority={true}
+                style={{
+                  width: '10%',
+                  height: 'auto',
+                  objectFit: 'contain',
+                }}
+              />
+              <StyledLogoTypo noWrap fontWeight="bold" fontSize={'2.5rem'}>
+                Mr.Cryp
+              </StyledLogoTypo>
+            </Box>
+          </Grid>
         </Grid>
-      </Grid>
-    </main>
+      </main>
+    </>
   );
 }

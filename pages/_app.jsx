@@ -8,7 +8,7 @@ import { theme } from '@/defaultTheme';
 import Layout from '@/layouts/Layout';
 import Head from 'next/head';
 import dynamic from 'next/dynamic';
-import Index from './index';
+import Home from './index';
 import localFont from 'next/font/local';
 
 const pretendard = localFont({
@@ -33,8 +33,7 @@ export default function MyApp({ Component, pageProps }) {
   const router = useRouter();
   const isRoot = router.pathname === '/';
   const isAuth = router.pathname === '/auth';
-  const isKakaoRedirecting = router.pathname === '/auth';
-  const isNaverRedirecting = router.pathname === '/oauth';
+  const isKakaoRedirecting = router.pathname === '/oauth';
 
   return (
     <Provider store={store}>
@@ -46,12 +45,12 @@ export default function MyApp({ Component, pageProps }) {
           </Head>
 
           <main className={`${pretendard.variable} font-sans`}>
-            {isAuth || isKakaoRedirecting || isNaverRedirecting ? (
+            {isAuth || isKakaoRedirecting ? (
               <Component {...pageProps} />
             ) : (
               <Layout>
                 {isRoot ? (
-                  <Index />
+                  <Component {...pageProps} />
                 ) : (
                   <ProtectedRoute>
                     <Component {...pageProps} />

@@ -59,7 +59,7 @@ export default function AccountDetailPie({ balance }) {
   const palette = [
     theme.palette.primary.main,
     theme.palette.secondary.main,
-    globalColors.jade['400'],
+    globalColors.hotpink['300'],
   ];
 
   return (

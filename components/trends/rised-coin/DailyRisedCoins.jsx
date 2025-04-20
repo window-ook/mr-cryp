@@ -47,7 +47,7 @@ function DailyRisedCoins({ marketCodes }) {
     if (marketCode) {
       dispatch(setCode(marketCode));
       setTimeout(() => {
-        router.push('/exchange/chart');
+        router.push('/exchange');
       }, 100);
     }
   };
