@@ -63,16 +63,20 @@ export default function AccountDetailTable({ balance }) {
                 padding: '1rem',
               }}
             >
-              <NGTypo fontWeight={'bold'}>자산</NGTypo>
+              <span className="text-lg font-pretendard font-bold">자산</span>
             </TableCell>
             <TableCell align="left">
-              <NGTypo fontWeight={'bold'}>통화</NGTypo>
+              <span className="text-lg font-pretendard font-bold">통화</span>
             </TableCell>
             <TableCell align="center">
-              <NGTypo fontWeight={'bold'}>보유 비율</NGTypo>
+              <span className="text-lg font-pretendard font-bold">
+                보유 비율
+              </span>
             </TableCell>
             <TableCell align="left">
-              <NGTypo fontWeight={'bold'}>보유 금액</NGTypo>
+              <span className="text-lg font-pretendard font-bold">
+                보유 금액
+              </span>
             </TableCell>
           </TableRow>
         </TableHead>

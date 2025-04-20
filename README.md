@@ -50,7 +50,7 @@
 
 <img src='https://github.com/user-attachments/assets/3aafb0f0-297e-4701-9597-a59c7c8820a4' width='400' height='180' />
 
-### 홈
+### 마이페이지
 
 <img src='https://github.com/user-attachments/assets/4e366d13-f52e-45f6-9905-116a625d1b39' width='600' height='300' />
 
@@ -58,13 +58,13 @@
 현금와 상세 잔고 현황을 테이블로 확인할 수 있습니다.<br>
 플로우 차트로 추이를 확인해보세요!<br>
 
-### 비전
+### 트렌드
 
 <img src='https://github.com/user-attachments/assets/4bc1e9b1-71ab-4c78-951e-09d1f5689da0' width='600' height='300' />
 
 가상화폐에 대한 기본적인 정보와 투자 방법에 대한 영상,<br>
 유튜브에서 '코인'을 키워드로 검색한 최신 검색 결과 영상,<br>
-그리고 최신 기사들을 바로 확인할 수 있는 비전 페이지 입니다.<br>
+그리고 최신 기사들을 바로 확인할 수 있는 트렌드 페이지 입니다.<br>
 영상은 바로 재생이 가능하게 Iframe을 이용하였고, 기사는 링크 이동과 복사가 가능하게 구현했습니다.<br>
 
 ### 거래: 실시간 차트

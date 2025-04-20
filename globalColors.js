@@ -13,6 +13,7 @@ export const globalColors = {
 
   white: '#ffffff',
   white_retro: '#e1e3e1',
+  auth_background: '#f5f5f5',
   black: { 400: '#141715', 500: '#000000' },
   skyblue: { 200: '#a7fafc', 300: '#6df3f7', 400: '#41f5fa', 500: '#05e9f0' },
   hotpink: { 200: '#f788bc', 300: '#f788bc', 400: '#ff63ac', 500: '#fa52a1' },

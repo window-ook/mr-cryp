@@ -1,7 +1,7 @@
 import { memo } from 'react';
 import { TableContainer, DescriptionTypo, HeadTypo } from '@/defaultTheme';
 import { LinearProgress } from '@mui/material';
-import MarketCodeSelector from '@/components/trade/shared/MarketCodeSelector';
+import MarketCodeSelector from '@/components/exchange/shared/MarketCodeSelector';
 
 function TradeHistoryUI({
   isConnected,

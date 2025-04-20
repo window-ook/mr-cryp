@@ -5,11 +5,18 @@ import { Provider } from 'react-redux';
 import { useRouter } from 'next/router';
 import { wrapper } from '@/utils/redux/store';
 import { theme } from '@/defaultTheme';
+import Layout from '@/layouts/Layout';
 import Head from 'next/head';
 import dynamic from 'next/dynamic';
 import Index from './index';
+import localFont from 'next/font/local';
 
-const Layout = dynamic(() => import('@/layouts/Layout'), { ssr: false });
+const pretendard = localFont({
+  src: '../public/fonts/PretendardVariable.woff2',
+  display: 'swap',
+  weight: '45 920',
+  variable: '--font-pretendard',
+});
 
 const ProtectedRoute = dynamic(
   () => import('@/components/auth/ProtectedRoute'),
@@ -20,12 +27,12 @@ const ProtectedRoute = dynamic(
 
 const queryClient = new QueryClient();
 
-function MyApp({ Component, pageProps }) {
+export default function MyApp({ Component, pageProps }) {
   const { store } = wrapper.useWrappedStore(pageProps);
 
   const router = useRouter();
   const isRoot = router.pathname === '/';
-  const isSignIn = router.pathname === '/signin';
+  const isAuth = router.pathname === '/auth';
   const isKakaoRedirecting = router.pathname === '/auth';
   const isNaverRedirecting = router.pathname === '/oauth';
 
@@ -38,23 +45,23 @@ function MyApp({ Component, pageProps }) {
             <title>미스터 크립 Mr.cryp</title>
           </Head>
 
-          {isSignIn || isKakaoRedirecting || isNaverRedirecting ? (
-            <Component {...pageProps} />
-          ) : (
-            <Layout>
-              {isRoot ? (
-                <Index />
-              ) : (
-                <ProtectedRoute>
-                  <Component {...pageProps} />
-                </ProtectedRoute>
-              )}
-            </Layout>
-          )}
+          <main className={`${pretendard.variable} font-sans`}>
+            {isAuth || isKakaoRedirecting || isNaverRedirecting ? (
+              <Component {...pageProps} />
+            ) : (
+              <Layout>
+                {isRoot ? (
+                  <Index />
+                ) : (
+                  <ProtectedRoute>
+                    <Component {...pageProps} />
+                  </ProtectedRoute>
+                )}
+              </Layout>
+            )}
+          </main>
         </QueryClientProvider>
       </ThemeProvider>
     </Provider>
   );
 }
-
-export default MyApp;

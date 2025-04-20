@@ -8,7 +8,7 @@ import {
   theme,
 } from '@/defaultTheme';
 import { Paper, LinearProgress } from '@mui/material';
-import MarketCodeSelector from '@/components/trade/shared/MarketCodeSelector';
+import MarketCodeSelector from '@/components/exchange/shared/MarketCodeSelector';
 
 function OrderbookTableUI({
   orderbookData,

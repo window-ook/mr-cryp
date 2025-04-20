@@ -27,17 +27,32 @@ const NavTypo = styled(Typography)(() => ({
 
 const NavbarButton = styled(Button)(() => ({
   color: 'white',
-  display: 'block',
+  display: 'inline-flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  flexShrink: 0,
+  whiteSpace: 'nowrap',
   border: 'none',
   boxShadow: 'none',
+  padding: '6px 8px',
+  minWidth: 'fit-content',
 }));
 
 const NavbarButtonTypo = styled(NavTypo)(({}) => ({
   textShadow: globalColors.shadow_text,
-  fontSize: '1.5rem',
+  fontSize: '1rem',
   '&:hover': {
     textShadow: 'none',
   },
+}));
+
+const NavbarUnderline = styled('div')(({ isActive }) => ({
+  height: '4px',
+  width: '100%',
+  borderRadius: '12px',
+  boxShadow: isActive ? '0 2px 4px rgba(0, 0, 0, 0.5)' : '',
+  backgroundColor: isActive ? '#fff' : 'transparent',
+  transition: 'background-color 0.2s ease-in-out',
 }));
 
 const OverMdBox = styled(Box)(({ theme }) => ({
@@ -45,6 +60,7 @@ const OverMdBox = styled(Box)(({ theme }) => ({
   alignItems: 'center',
   gap: '0.5rem',
   flexGrow: 1,
+  paddingLeft: '1rem',
   [theme.breakpoints.down('md')]: {
     display: 'none',
   },
@@ -105,13 +121,11 @@ const SubNavbarButton = styled(Button)(({}) => ({
 }));
 
 const SubNavbarButtonTypo = styled(NavTypo)(({}) => ({
-  fontSize: '1.5rem',
+  fontSize: '1rem',
+  color: globalColors.white,
   textShadow: globalColors.shadow_text,
   '&:hover': {
     textShadow: 'none',
-  },
-  '@media (max-width:900px)': {
-    fontSize: '1rem',
   },
   '@media (max-width:450px)': {
     fontSize: '0.875rem',
@@ -144,11 +158,11 @@ const UserMenuTypo = styled(NavTypo)(({ theme }) => ({
 }));
 
 const NotificationIcon = styled(NotificationsNoneIcon)(() => ({
-  fontSize: '2.5rem',
+  fontSize: '2rem',
   color: globalColors.white,
   transition: 'color ease 200ms',
   '@media (max-width:1220px)': {
-    fontSize: '2rem',
+    fontSize: '1.5rem',
   },
   '&:hover': {
     color: globalColors.vanilla[400],
@@ -205,14 +219,16 @@ export default function NavBar({
         >
           {isOverMd ? (
             <Box sx={{ display: 'flex', alignItems: 'center' }}>
-              <Image
-                alt="navbar logo image"
-                src={'/images/logo_mustachetrans.webp'}
-                width="60"
-                height="30"
-                className="p-2"
-              />
-              <OverMdLogoTypo noWrap>Mr.Cryp</OverMdLogoTypo>
+              <div className="flex">
+                <Image
+                  alt="navbar logo image"
+                  src={'/images/logo_mustachetrans.webp'}
+                  width="60"
+                  height="30"
+                  className="p-2"
+                />
+                <OverMdLogoTypo noWrap>Mr.Cryp</OverMdLogoTypo>
+              </div>
 
               <OverMdBox>
                 {navbarMenu.map(page => (
@@ -221,35 +237,30 @@ export default function NavBar({
                     onClick={() => handleCloseNavMenu(page)}
                   >
                     <NavbarButtonTypo>{page}</NavbarButtonTypo>
-                    <div
-                      className={`h-1 w-full rounded-xl shadow-black shadow-lg ${
-                        handleActivePage() === page ? 'bg-white' : ''
-                      }`}
-                    />
+                    <NavbarUnderline isActive={handleActivePage() === page} />
                   </NavbarButton>
                 ))}
-                <div className="hidden select-1120:flex select-1120:items-center select-1120:gap-1 select-1120:mb-2">
+                <div className="hidden select-1120:gap-1 select-1120:flex select-1120:items-center">
                   <label
                     htmlFor="search"
                     className="font-ng font-bold text-white pr-2 max-[1300px]:hidden"
                   >
-                    마켓 검색
+                    <SearchIcon
+                      sx={{ color: globalColors.white, cursor: 'pointer' }}
+                      onClick={handleKeywordSearch}
+                    />
                   </label>
                   <input
                     type="text"
                     id="search"
                     alt="마켓 검색하기"
                     aria-label="마켓 검색하기"
-                    placeholder="KRW-BTC, 이더리움"
+                    placeholder="마켓 검색"
                     onKeyDown={e => {
                       if (e.key === 'Enter') handleKeywordSearch();
                     }}
                     onChange={e => setNewKeyword(e.target.value)}
                     className="w-[11rem] h-[2rem] pl-3 rounded-lg text-black"
-                  />
-                  <SearchIcon
-                    sx={{ color: globalColors.white, cursor: 'pointer' }}
-                    onClick={handleKeywordSearch}
                   />
                 </div>
               </OverMdBox>
@@ -258,12 +269,6 @@ export default function NavBar({
             <Box
               sx={{ display: 'flex', justifyContent: 'center', flexGrow: 1 }}
             >
-              <button
-                onClick={() => handleRoute()}
-                className="absolute right-0 w-[6rem] h-[2rem] rounded-md hover:opacity-40 transition duration-100 ease-in"
-              >
-                <span className="font-oneTitle text-white">시작하기</span>
-              </button>
               <UnderMdBox>
                 <IconButton
                   size="large"
@@ -325,11 +330,7 @@ export default function NavBar({
             <Box sx={{ flexGrow: 0 }}>
               <div className="flex items-center gap-3">
                 <div className="relative hidden md:block">
-                  <div className="absolute left-4 bottom-6 w-5 h-5 rounded-[100%] bg-red-500 max-[1200px]:w-3 max-[1200px]:h-3 flex items-center justify-center">
-                    <span className="font-ng font-bold max-[1200px]:text-xs">
-                      1
-                    </span>
-                  </div>
+                  <div className="absolute left-4 bottom-6 max-[1200px]:bottom-5 w-3 h-3 max-[1200px]:w-2 max-[1200px]:h-2 rounded-[100%] bg-pink-600 flex items-center justify-center opacity-70"></div>
                   <NotificationIcon onClick={handleOpen} />
                 </div>
                 <ProfileImage alt="프로필 이미지" src={imgUrl} />
@@ -364,19 +365,13 @@ export default function NavBar({
         </Toolbar>
 
         {/* 서브 네브바*/}
-        {!isRoot && activePage === '거래' && (
+        {!isRoot && activePage === '거래소' && (
           <SubNavbar>
             {subNavbarMenu.map(page => (
               <SubNavbarButton
                 aria-label="서브 네브바 메뉴 버튼"
                 key={page}
                 onClick={() => handleToggleSubMenu(page)}
-                sx={{
-                  color:
-                    activeSubMenu === page
-                      ? 'secondary.light'
-                      : globalColors.white,
-                }}
               >
                 <SubNavbarButtonTypo>{page}</SubNavbarButtonTypo>
               </SubNavbarButton>

@@ -9,7 +9,7 @@ import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
 function Navbar() {
   const router = useRouter();
 
-  const handleRoute = () => router.push('/signin');
+  const handleRoute = () => router.push('/auth');
 
   return (
     <nav className="fixed top-0 left-0 z-50 w-full bg-transparent shadow-md backdrop-blur-lg">
@@ -178,7 +178,7 @@ function AiInvestIntroduce() {
         </div>
       </div>
       <Link
-        href="/signin"
+        href="/auth"
         className="w-[8rem] h-[2rem] rounded-md opacity-80 flex items-center hover:opacity-40 transition duration-100 ease-in"
       >
         <span className="text-lg font-oneTitle text-main">체험하기 {'>'}</span>

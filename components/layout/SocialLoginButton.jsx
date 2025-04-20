@@ -1,67 +1,68 @@
 import { useRouter } from 'next/router';
 import { loginGoogle } from '@/utils/firebase';
-import { styled } from '@mui/system';
-import { NGTypo } from '@/defaultTheme';
 import Image from 'next/image';
-import Button from '@mui/material/Button';
-
-const StyledButton = styled(Button)(() => ({
-  marginTop: '1rem',
-  gap: '1rem',
-  display: 'flex',
-  alignItems: 'center',
-  '&:hover': {
-    backgroundColor: '#ffffff',
-    color: '#000000',
-  },
-}));
 
 export default function SocialLoginButton({
   CLIENT_ID,
   REDIRECT_URI,
   platform,
-  bgColor,
-  fontColor,
+  bgColor = 'bg-main',
+  fontColor = 'text-white',
+  isTest = false,
 }) {
   const router = useRouter();
 
-  const STATE = crypto.randomUUID();
-
   const KAKAO_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=code`;
-  const NAVER_URL = `https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=${CLIENT_ID}&state=${STATE}&redirect_uri=${REDIRECT_URI}`;
+
+  const getButtonText = () => {
+    if (isTest) return '체험하기';
+    return `${platform === 'kakao' ? '카카오' : '구글'} 로그인`;
+  };
+
+  const getLogoPath = () => {
+    if (isTest) return '/images/logo_mustachetrans.webp';
+    return `/images/logo_${platform}.webp`;
+  };
+
+  const getButtonClass = () => {
+    const baseClasses =
+      'w-[12rem] mt-[1rem] px-[1rem] py-[0.4rem] rounded-md shadow-md flex gap-[1rem] items-center hover:bg-white transition duration-200 ease-in';
+
+    if (isTest) return `${baseClasses} bg-main text-white`;
+
+    return `${baseClasses} ${bgColor} ${fontColor}`;
+  };
 
   const handleLogin = async () => {
+    if (isTest) {
+      localStorage.setItem('userId', 'test-user');
+      router.push('/mypage');
+      return;
+    }
+
     if (platform === 'google')
-      await loginGoogle().then(() => router.push('/home'));
+      await loginGoogle().then(() => router.push('/mypage'));
     if (platform === 'kakao') window.location.href = KAKAO_URL;
-    if (platform === 'naver') window.location.href = NAVER_URL;
   };
 
   return (
-    <StyledButton
-      variant="contained"
-      sx={{
-        backgroundColor: bgColor,
-        color: fontColor,
-        px: platform === 'google' ? 3 : undefined,
-      }}
+    <button
+      type="button"
+      aria-label="로그인 버튼"
       onClick={handleLogin}
-      aria-label="소셜 로그인"
+      className={getButtonClass()}
     >
       <Image
-        src={`/images/logo_${platform}.webp`}
-        alt={platform}
+        src={getLogoPath()}
+        alt={isTest ? '테스트 로그인 버튼 이미지' : platform}
         width="20"
         height="20"
       />
-      <NGTypo>
-        {platform === 'kakao'
-          ? '카카오'
-          : platform === 'naver'
-            ? '네이버'
-            : '구글'}{' '}
-        로그인
-      </NGTypo>
-    </StyledButton>
+      <span
+        className={`pl-[1rem] font-ng ${isTest && 'text-white hover:text-black transition duration-200 ease-in'}`}
+      >
+        {getButtonText()}
+      </span>
+    </button>
   );
 }

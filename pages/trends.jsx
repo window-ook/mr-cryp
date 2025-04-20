@@ -1,12 +1,12 @@
 import { fetchExchangeRates } from '@/utils/fetchExchangeRates';
 import Upbit from '@/lib/upbit';
-import InformationVideos from '@/components/vision/videos/InformationVideos';
-import VideosProvider from '@/components/vision/videos/VideosProvider';
-import ArticlesProvider from '@/components/vision/articles/ArticlesProvider';
-import MarketSituation from '@/components/vision/market-situation/MarketSituation';
-import ExchangeRate from '@/components/vision/exchange-rate/ExchangeRate';
-import DailyRisedCoins from '@/components/vision/rised-coin/DailyRisedCoins';
-import WeeklyRisedCoins from '@/components/vision/rised-coin/WeeklyRisedCoins';
+import InformationVideos from '@/components/trends/videos/InformationVideos';
+import VideosProvider from '@/components/trends/videos/VideosProvider';
+import ArticlesProvider from '@/components/trends/articles/ArticlesProvider';
+import MarketSituation from '@/components/trends/market-situation/MarketSituation';
+import ExchangeRate from '@/components/trends/exchange-rate/ExchangeRate';
+import DailyRisedCoins from '@/components/trends/rised-coin/DailyRisedCoins';
+import WeeklyRisedCoins from '@/components/trends/rised-coin/WeeklyRisedCoins';
 
 export async function getStaticProps() {
   const upbit = new Upbit();

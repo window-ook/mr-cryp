@@ -87,10 +87,9 @@ export let theme = createTheme({
  */
 export const SubTitle = styled(Typography)(() => ({
   fontSize: '2rem',
-  fontFamily: 'NEXON Lv1 Gothic OTF',
+  fontFamily: 'pretendard',
   fontWeight: 'bold',
   color: theme.palette.primary.main,
-  textShadow: globalColors.shadow_text,
   marginBottom: '0.125rem',
   '@media (max-width:900px)': {
     fontSize: '1.5rem',
@@ -98,7 +97,7 @@ export const SubTitle = styled(Typography)(() => ({
 }));
 
 /**
- * 비전 페이지 전용 서브 타이틀
+ * 트렌드 페이지 전용 서브 타이틀
  * @type {import('@mui/system').StyledComponent<import('@mui/material').TypographyProps>}
  */
 export const VisionSubTitle = styled(SubTitle)(() => ({
@@ -117,9 +116,8 @@ export const VisionSubTitle = styled(SubTitle)(() => ({
  * @type {import('@mui/system').StyledComponent<import('@mui/material').TypographyProps>}
  */
 export const DescriptionTypo = styled(Typography)(() => ({
-  fontFamily: 'NEXON Lv1 Gothic OTF',
+  fontFamily: 'pretendard',
   color: globalColors.black,
-  // textShadow: globalColors.shadow_text,
   fontWeight: 'bold',
   '@media (max-width:900px)': {
     fontSize: '0.5rem',

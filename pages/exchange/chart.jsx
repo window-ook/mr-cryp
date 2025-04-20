@@ -3,20 +3,20 @@ import { setOpen } from '@/utils/redux/chartSlice';
 import { HeadTypo } from '@/defaultTheme';
 import Upbit from '@/lib/upbit';
 import dynamic from 'next/dynamic';
-import MarketListProvider from '@/components/trade/chart/market-list/MarketListProvider';
-import MarketDetailProvider from '@/components/trade/chart/market-detail/MarketDetailProvider';
-import TradeHistoryProvider from '@/components/trade/chart/trade-history/TradeHistoryProvider';
-import OrderbookProvider from '@/components/trade/chart/orderbook/OrderbookProvider';
+import MarketListProvider from '@/components/exchange/chart/market-list/MarketListProvider';
+import MarketDetailProvider from '@/components/exchange/chart/market-detail/MarketDetailProvider';
+import TradeHistoryProvider from '@/components/exchange/chart/trade-history/TradeHistoryProvider';
+import OrderbookProvider from '@/components/exchange/chart/orderbook/OrderbookProvider';
 
 const HighStockChart = dynamic(
-  () => import('@/components/trade/chart/high-charts/HighChartsProvider'),
+  () => import('@/components/exchange/chart/high-charts/HighChartsProvider'),
   {
     ssr: false,
   },
 );
 
 const ModalProvider = dynamic(
-  () => import('@/components/trade/chart/order-modal/Modal'),
+  () => import('@/components/exchange/chart/order-modal/Modal'),
   {
     ssr: false,
   },
