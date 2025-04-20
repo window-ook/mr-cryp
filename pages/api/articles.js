@@ -9,6 +9,7 @@ export default async function handler(req, res) {
   try {
     const textEncoder = new TextEncoder();
     const encoded = textEncoder.encode(keyword);
+
     const response = await axios.get(
       'https://openapi.naver.com/v1/search/news.json?',
       {
@@ -25,6 +26,7 @@ export default async function handler(req, res) {
         },
       },
     );
+
     res.status(200).json(response.data.items);
   } catch (error) {
     console.error('API 호출 실패:', error);

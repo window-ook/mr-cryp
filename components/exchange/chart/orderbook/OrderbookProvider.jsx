@@ -1,7 +1,7 @@
 import { useEffect, useState, memo } from 'react';
 import { useSelector } from 'react-redux';
 import axios from 'axios';
-import Orderbook from '@/components/trade/chart/orderbook/Orderbook';
+import Orderbook from '@/components/exchange/chart/orderbook/Orderbook';
 
 function OrderbookProvider() {
   const [orderbookData, setOrderbookData] = useState([]);

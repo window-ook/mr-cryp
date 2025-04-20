@@ -1,7 +1,7 @@
 import { useEffect, useState, memo } from 'react';
 import { useSelector } from 'react-redux';
 import axios from 'axios';
-import TradeHistory from '@/components/trade/chart/trade-history/TradeHistory';
+import TradeHistory from '@/components/exchange/chart/trade-history/TradeHistory';
 
 function TradeHistoryProvider() {
   const [tradeData, setTradeData] = useState([]);

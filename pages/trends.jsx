@@ -1,0 +1,85 @@
+import { fetchExchangeRates } from '@/utils/fetchExchangeRates';
+import Head from 'next/head';
+import Upbit from '@/lib/upbit';
+import InformationVideos from '@/components/trends/videos/InformationVideos';
+import VideosProvider from '@/components/trends/videos/VideosProvider';
+import ArticlesProvider from '@/components/trends/articles/ArticlesProvider';
+import MarketSituation from '@/components/trends/market-situation/MarketSituation';
+import ExchangeRate from '@/components/trends/exchange-rate/ExchangeRate';
+import DailyRisedCoins from '@/components/trends/rised-coin/DailyRisedCoins';
+import WeeklyRisedCoins from '@/components/trends/rised-coin/WeeklyRisedCoins';
+
+export async function getStaticProps() {
+  const upbit = new Upbit();
+
+  let marketCodes = [];
+  let exchangeRates = [];
+
+  try {
+    marketCodes = (await upbit.marketCodes()) || [];
+    exchangeRates = (await fetchExchangeRates()) || [];
+  } catch (error) {
+    console.error('🚨 데이터 요청 실패:', error);
+  }
+
+  return {
+    props: {
+      marketCodes,
+      exchangeRates,
+    },
+    revalidate: 3600,
+  };
+}
+
+export default function Trends({ marketCodes, exchangeRates }) {
+  return (
+    <>
+      <Head>
+        <title>코인 트렌드 - 미스터 크립</title>
+      </Head>
+      <main className="py-6 flex flex-col items-center w-full h-full">
+        <div className="w-4/5 grid grid-cols-[3fr,2fr] max-[900px]:grid-cols-1 gap-6 h-full">
+          {/* 1행 - 실시간 환율 */}
+          <section className="col-start-1 p-4 rounded-lg bg-gray-100 shadow h-full">
+            <ExchangeRate exchangeRates={exchangeRates} />
+          </section>
+
+          <section className="col-start-2 max-[900px]:col-start-1 row-span-2 grid grid-cols-2 max-[900px]:grid-cols-1 gap-4 h-full">
+            {/* 오늘 급등 코인 */}
+            <article className="p-4 bg-gray-100 rounded-lg shadow h-full">
+              <DailyRisedCoins marketCodes={marketCodes} />
+            </article>
+
+            {/* 이번주 급등 코인 */}
+            <article className="p-4 bg-gray-100 rounded-lg shadow h-full">
+              <WeeklyRisedCoins marketCodes={marketCodes} />
+            </article>
+          </section>
+
+          {/* 2행 - 시황 소식 & TODAY NEWS (1열) */}
+          <section className="col-start-1 grid grid-rows-[auto, 1fr] gap-4 h-full">
+            {/* 시황 소식 */}
+            <article className="p-4 bg-sky-200 rounded-lg shadow">
+              <MarketSituation />
+            </article>
+
+            {/* TODAY NEWS */}
+            <article className="p-4 bg-gray-100 rounded-lg shadow h-full">
+              <ArticlesProvider />
+            </article>
+          </section>
+
+          {/* 3행 1열 */}
+          <section className="col-start-1 p-4 bg-gray-100 rounded-lg shadow h-full">
+            <VideosProvider />
+          </section>
+
+          {/* 3행 2열 */}
+          <section className="col-start-2 max-[900px]:col-start-1 p-4 bg-gray-100 rounded-lg shadow h-full">
+            <InformationVideos />
+          </section>
+        </div>
+      </main>
+    </>
+  );
+}

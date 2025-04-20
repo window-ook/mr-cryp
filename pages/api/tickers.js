@@ -6,8 +6,10 @@ export default async function handler(req, res) {
 
   try {
     const upbit = new Upbit();
+
     const response = await upbit.currentPrice(req.query.codes);
     const data = await response.data;
+
     res.status(200).json(data);
   } catch (error) {
     res

@@ -10,7 +10,7 @@ import NavBar from './Navbar';
 export default function NavBarProvider() {
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorSignout, setAnchorSignout] = useState(null);
-  const [activePage, setActivePage] = useState('홈');
+  const [activePage, setActivePage] = useState('트렌드');
   const [activeSubMenu, setActiveSubMenu] = useState('');
   const [open, setOpen] = useState(false);
   const [imgUrl, setImgUrl] = useState('');
@@ -23,8 +23,8 @@ export default function NavBarProvider() {
 
   const isOverMd = useMediaQuery('(min-width:900px)');
 
-  const navbarMenu = ['홈', '비전', '거래'];
-  const subNavbarMenu = ['오더북', '거래 내역', '차트'];
+  const navbarMenu = ['트렌드', '거래소', '마이페이지'];
+  const subNavbarMenu = ['차트', 'AI 포트폴리오'];
 
   const isRoot = router.pathname === '/';
 
@@ -36,9 +36,9 @@ export default function NavBarProvider() {
   }, []);
 
   const handleActivePage = () => {
-    if (router.pathname.startsWith('/vision')) return '비전';
-    if (router.pathname.startsWith('/trade')) return '거래';
-    return '홈';
+    if (router.pathname.startsWith('/trends')) return '트렌드';
+    if (router.pathname.startsWith('/exchange')) return '거래소';
+    return '마이페이지';
   };
 
   const handleOpen = () => setOpen(true);
@@ -69,7 +69,7 @@ export default function NavBarProvider() {
       localStorage.removeItem('imgUrl');
       localStorage.removeItem('nickname');
       sessionStorage.removeItem('activePage');
-      router.replace('/signin');
+      router.replace('/auth');
     } catch (error) {
       console.error('로그아웃 에러');
     }
@@ -83,24 +83,23 @@ export default function NavBarProvider() {
     setAnchorElNav(null);
     setActivePage(page);
     sessionStorage.setItem('activePage', page);
-    if (page === '홈') router.push('/home');
-    if (page === '비전') router.push('/vision');
-    if (page === '거래') router.push('/trade');
+    if (page === '마이페이지') router.push('/mypage');
+    if (page === '트렌드') router.push('/trends');
+    if (page === '거래소') router.push('/exchange');
   };
 
   /** 거래 서브 메뉴 */
   const handleToggleSubMenu = subMenu => {
     setActiveSubMenu(subMenu);
-    if (subMenu === '거래 내역') router.push('/trade/trade-history');
-    if (subMenu === '오더북') router.push('/trade/orderbook');
-    if (subMenu === '차트') router.push('/trade/chart');
+    if (subMenu === '차트') router.push('/exchange');
+    if (subMenu === 'AI 포트폴리오') router.push('/exchange/ai-portfoilo');
   };
 
   /** 키워드 검색 */
   const handleKeywordSearch = () => {
     dispatch(setKeyword(newKeyword));
-    setActivePage('거래');
-    router.push('/trade/chart');
+    setActivePage('거래소');
+    router.push('/exchange');
   };
 
   /** XS 메뉴 드롭다운 열기 */
@@ -108,9 +107,6 @@ export default function NavBarProvider() {
 
   /** 로그아웃 드롭다운 열기 */
   const handleOpenSignout = event => setAnchorSignout(event.currentTarget);
-
-  /** 랜딩 페이지에서 로그인 페이지로 */
-  const handleRoute = () => router.push('/signin');
 
   const props = {
     setNewKeyword,
@@ -124,7 +120,6 @@ export default function NavBarProvider() {
     handleKeywordSearch,
     handleOpenNavMenu,
     handleOpenSignout,
-    handleRoute,
     navbarMenu,
     subNavbarMenu,
     activePage,

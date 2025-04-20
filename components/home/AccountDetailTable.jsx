@@ -1,33 +1,22 @@
-import { theme, NGTypo } from '@/defaultTheme';
-import { globalColors } from '@/globalColors';
-import {
-  Box,
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
-  Paper,
-} from '@mui/material';
+import { NGTypo } from '@/defaultTheme';
 
 function HoldingAmount({ balance, price }) {
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+    <div className="flex flex-col">
       <NGTypo>보유수량(평가금액)</NGTypo>
       <NGTypo fontWeight={'bold'}>
         {parseFloat(parseFloat(price) * balance).toLocaleString()} KRW
       </NGTypo>
-    </Box>
+    </div>
   );
 }
 
 function HoldingRatio({ percentage }) {
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+    <div className="flex flex-col">
       <NGTypo>보유비중</NGTypo>
       <NGTypo fontWeight={'bold'}>{percentage.toFixed(2)}%</NGTypo>
-    </Box>
+    </div>
   );
 }
 
@@ -38,60 +27,33 @@ export default function AccountDetailTable({ balance }) {
   );
 
   return (
-    <TableContainer
-      component={Paper}
-      sx={{
-        width: '100%',
-        height: '100%',
-        margin: 0,
-        borderTopLeftRadius: 0,
-        borderTopRightRadius: 0,
-        '@media (max-width:700px)': {
-          width: '100%',
-        },
-
-        '@media (max-width:500px)': {
-          width: '100%',
-        },
-      }}
-    >
-      <Table>
-        <TableHead>
-          <TableRow>
-            <TableCell
-              sx={{
-                padding: '1rem',
-              }}
-            >
-              <NGTypo fontWeight={'bold'}>자산</NGTypo>
-            </TableCell>
-            <TableCell align="left">
-              <NGTypo fontWeight={'bold'}>통화</NGTypo>
-            </TableCell>
-            <TableCell align="center">
-              <NGTypo fontWeight={'bold'}>보유 비율</NGTypo>
-            </TableCell>
-            <TableCell align="left">
-              <NGTypo fontWeight={'bold'}>보유 금액</NGTypo>
-            </TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
+    <div className="w-full h-full m-0 rounded-t-none bg-white shadow-md max-[700px]:w-full max-[500px]:w-full">
+      <table className="w-full">
+        <thead>
+          <tr className="bg-main text-left">
+            <th className="p-4">
+              <span className="text-lg font-pretendard font-bold">자산</span>
+            </th>
+            <th className="text-left">
+              <span className="text-lg font-pretendard font-bold">통화</span>
+            </th>
+            <th className="text-center">
+              <span className="text-lg font-pretendard font-bold">
+                보유 비율
+              </span>
+            </th>
+            <th className="text-left">
+              <span className="text-lg font-pretendard font-bold">
+                보유 금액
+              </span>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
           {balance &&
             balance.map((item, index) => (
-              <TableRow
-                key={item.currency}
-                sx={{
-                  '&:hover': { backgroundColor: globalColors.white_retro },
-                }}
-              >
-                <TableCell
-                  component="th"
-                  scope="row"
-                  sx={{
-                    padding: '0.5rem',
-                  }}
-                >
+              <tr key={item.currency} className="hover:bg-[#F5F5F5]">
+                <td className="p-2">
                   {index === 0 ? (
                     <NGTypo fontWeight={'bold'}>원화</NGTypo>
                   ) : item.currency === 'ETH' ? (
@@ -99,16 +61,13 @@ export default function AccountDetailTable({ balance }) {
                   ) : (
                     <NGTypo fontWeight={'bold'}>리플</NGTypo>
                   )}
-                </TableCell>
-                <TableCell align="left">
-                  <NGTypo
-                    fontWeight={'bold'}
-                    color={theme.palette.primary.main}
-                  >
+                </td>
+                <td className="text-left">
+                  <NGTypo fontWeight={'bold'} color="primary">
                     {item.currency}
                   </NGTypo>
-                </TableCell>
-                <TableCell align="center">
+                </td>
+                <td className="text-center">
                   <HoldingRatio
                     percentage={
                       index === 0
@@ -118,35 +77,29 @@ export default function AccountDetailTable({ balance }) {
                           100
                     }
                   />
-                </TableCell>
-                <TableCell align="left">
+                </td>
+                <td className="text-left">
                   <HoldingAmount
                     balance={item.balance}
                     price={item.avg_buy_price}
                   />
-                </TableCell>
-              </TableRow>
+                </td>
+              </tr>
             ))}
-          <TableRow>
-            <TableCell
-              component="th"
-              scope="row"
-              sx={{
-                padding: '0.5rem',
-              }}
-            >
+          <tr>
+            <td className="p-2">
               <NGTypo fontWeight={'bold'}>총액</NGTypo>
-            </TableCell>
-            <TableCell />
-            <TableCell />
-            <TableCell align="left">
+            </td>
+            <td />
+            <td />
+            <td className="text-left">
               <NGTypo fontWeight={'bold'}>
                 {parseFloat(totalBalance).toLocaleString()} {' KRW'}
               </NGTypo>
-            </TableCell>
-          </TableRow>
-        </TableBody>
-      </Table>
-    </TableContainer>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   );
 }
