@@ -1,8 +1,7 @@
 import { memo } from 'react';
-import { VisionSubTitle } from '@/defaultTheme';
 import Video from './Video';
 
-const InformationVideos = () => {
+function Informations() {
   const information = [
     {
       id: 1,
@@ -32,7 +31,9 @@ const InformationVideos = () => {
 
   return (
     <article className="relative max-[900px]:pb-5">
-      <VisionSubTitle className="font-bold">코인 거래 도움 자료</VisionSubTitle>
+      <span className="font-pretendard text-[1.5rem] font-bold text-main">
+        코인 거래 도움 자료
+      </span>
       <div className="grid grid-cols-2 gap-6">
         {information.map(item => (
           <div key={item.id}>
@@ -51,6 +52,6 @@ const InformationVideos = () => {
       </span>
     </article>
   );
-};
+}
 
-export default memo(InformationVideos);
+export default memo(Informations);

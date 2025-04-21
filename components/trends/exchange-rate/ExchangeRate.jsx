@@ -1,10 +1,10 @@
-import { VisionSubTitle } from '@/defaultTheme';
-
 export default function ExchangeRate({ exchangeRates }) {
   return (
     <>
       <header>
-        <VisionSubTitle>오늘 환율</VisionSubTitle>
+        <span className="font-pretendard text-[1.5rem] font-bold text-main">
+          오늘 환율
+        </span>
       </header>
       <ul className="flex justify-between">
         {exchangeRates.map(({ currency, rate }) => {

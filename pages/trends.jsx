@@ -1,9 +1,9 @@
 import { fetchExchangeRates } from '@/utils/fetchExchangeRates';
 import Head from 'next/head';
 import Upbit from '@/lib/upbit';
-import InformationVideos from '@/components/trends/videos/InformationVideos';
-import VideosProvider from '@/components/trends/videos/VideosProvider';
-import ArticlesProvider from '@/components/trends/articles/ArticlesProvider';
+import Informations from '@/components/trends/videos/Informations';
+import Videos from '@/components/trends/videos/Videos';
+import Articles from '@/components/trends/articles/Articles';
 import MarketSituation from '@/components/trends/market-situation/MarketSituation';
 import ExchangeRate from '@/components/trends/exchange-rate/ExchangeRate';
 import DailyRisedCoins from '@/components/trends/rised-coin/DailyRisedCoins';
@@ -65,18 +65,18 @@ export default function Trends({ marketCodes, exchangeRates }) {
 
             {/* TODAY NEWS */}
             <article className="p-4 bg-gray-100 rounded-lg shadow h-full">
-              <ArticlesProvider />
+              <Articles />
             </article>
           </section>
 
           {/* 3행 1열 */}
           <section className="col-start-1 p-4 bg-gray-100 rounded-lg shadow h-full">
-            <VideosProvider />
+            <Videos />
           </section>
 
           {/* 3행 2열 */}
           <section className="col-start-2 max-[900px]:col-start-1 p-4 bg-gray-100 rounded-lg shadow h-full">
-            <InformationVideos />
+            <Informations />
           </section>
         </div>
       </main>

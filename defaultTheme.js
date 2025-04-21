@@ -97,21 +97,6 @@ export const SubTitle = styled(Typography)(() => ({
 }));
 
 /**
- * 트렌드 페이지 전용 서브 타이틀
- * @type {import('@mui/system').StyledComponent<import('@mui/material').TypographyProps>}
- */
-export const VisionSubTitle = styled(SubTitle)(() => ({
-  fontSize: '1.5rem',
-  '@media (max-width:1400px)': {
-    fontSize: '1rem',
-  },
-
-  '@media (max-width:1100px)': {
-    fontSize: '0.7rem',
-  },
-}));
-
-/**
  * 디스크립션
  * @type {import('@mui/system').StyledComponent<import('@mui/material').TypographyProps>}
  */

@@ -13,7 +13,7 @@ module.exports = {
       fontFamily: {
         pretendard: ['var(--font-pretendard)'],
         ng: 'NEXON Lv1 Gothic OTF',
-        oneTitle: 'ONE-Mobile-Title',
+        onetitle: 'ONE-Mobile-Title',
         aggro: 'SBAggroB',
       },
 

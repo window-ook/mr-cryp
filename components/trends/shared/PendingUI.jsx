@@ -1,6 +1,6 @@
 import { Grid, Box, Skeleton } from '@mui/material';
 
-export default function PendingSkeleton() {
+export default function PendingUI() {
   return (
     <Grid container spacing={2}>
       {Array.from(new Array(4)).map((_, index) => (

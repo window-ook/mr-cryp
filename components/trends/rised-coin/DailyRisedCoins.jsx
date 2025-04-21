@@ -1,10 +1,9 @@
+import { memo, useMemo } from 'react';
 import { useDispatch } from 'react-redux';
 import { useRouter } from 'next/router';
 import { useDailyTopQuery } from '@/hooks/useDailyTopQuery';
-import { memo, useMemo } from 'react';
 import { setCode } from '@/utils/redux/chartSlice';
 import { LinearProgress } from '@mui/material';
-import { VisionSubTitle } from '@/defaultTheme';
 
 function DailyRisedCoins({ marketCodes }) {
   const { data: tickers, isLoading } = useDailyTopQuery(marketCodes);
@@ -57,7 +56,9 @@ function DailyRisedCoins({ marketCodes }) {
   return (
     <>
       <header className="flex gap-1 items-end">
-        <VisionSubTitle>오늘 급등 코인</VisionSubTitle>
+        <span className="font-pretendard text-[1.5rem] font-bold text-main">
+          오늘 급등 코인
+        </span>
       </header>
       <article className="flex flex-col space-y-6 pt-2 overflow-hidden">
         {risingCoins.length > 0 ? (

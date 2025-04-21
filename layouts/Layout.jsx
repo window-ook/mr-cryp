@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
 import React from 'react';
-import NavBarProvider from '@/components/layout/NavbarProvider';
+import NavBar from '@/components/layout/Navbar';
 
 export default function Layout({ children }) {
   const router = useRouter();
@@ -8,7 +8,7 @@ export default function Layout({ children }) {
 
   return (
     <div>
-      {!isHomePage && <NavBarProvider />}
+      {!isHomePage && <NavBar />}
       <main>{children}</main>
     </div>
   );

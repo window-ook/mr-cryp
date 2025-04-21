@@ -1,164 +1,78 @@
-import { useMemo } from 'react';
-import { styled } from '@mui/system';
-import { globalColors } from '@/globalColors';
-import { DescriptionTypo, NGTypo, PriceTypo } from '@/defaultTheme';
-import { TableContainer, TextField, InputAdornment } from '@mui/material';
-import SearchIcon from '@mui/icons-material/Search';
+import { memo, useMemo, useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  setCode,
+  setRate,
+  setPrevPrice,
+  setCurrPrice,
+  setKeyword,
+} from '@/utils/redux/chartSlice';
+import { LinearProgress } from '@mui/material';
+import axios from 'axios';
+import MarketListUI from './MarketListUI';
 
-const StyledTableContainer = styled(TableContainer)(() => ({
-  maxWidth: '100%',
-  height: 'calc(58rem - 3.438rem)',
-  overflowY: 'auto',
-  overflowX: 'hidden',
-  margin: 0,
-  padding: 0,
-  backgroundColor: globalColors.white,
-}));
+function MarketList({ marketCodes }) {
+  const [isLoading, setIsLoading] = useState(true);
+  const [tickers, setTickers] = useState([]);
 
-const EditedDescriptionTypo = styled(DescriptionTypo)(() => ({
-  color: globalColors.white,
-}));
+  const dispatch = useDispatch();
 
-export default function MarketList({
-  keyword,
-  codeMap,
-  tickers,
-  handleRowClick,
-  handleSearchChange,
-}) {
-  const filteredTickers = useMemo(() => {
-    return tickers.filter(ticker => {
-      const marketName = codeMap[ticker.code] || codeMap[ticker.market];
-      return (
-        (marketName && marketName.includes(keyword.toLowerCase())) ||
-        (ticker.code &&
-          ticker.code.toLowerCase().includes(keyword.toLowerCase())) ||
-        (ticker.market &&
-          ticker.market.toLowerCase().includes(keyword.toLowerCase()))
-      );
+  const intervalTime = useSelector(state => state.chart.intervalTime);
+
+  const keyword = useSelector(state => state.chart.keyword);
+
+  const codeMap = useMemo(() => {
+    const map = {};
+    marketCodes.forEach(item => {
+      map[item.market] = item.korean_name;
     });
-  }, [tickers, keyword, codeMap]);
+    return map;
+  }, [marketCodes]);
 
-  return (
-    <section>
-      <TextField
-        aria-label="마켓 검색"
-        label="마켓 검색"
-        id="outlined"
-        fullWidth
-        value={keyword}
-        onChange={handleSearchChange}
-        InputProps={{
-          endAdornment: (
-            <InputAdornment position="end">
-              <SearchIcon />
-            </InputAdornment>
-          ),
-        }}
-        sx={{ bgcolor: 'white', borderRadius: 1 }}
-      />
-      <StyledTableContainer>
-        <table className="w-full">
-          <thead className="sticky top-0 z-10 bg-main">
-            <tr>
-              <th className="w-[6.75rem] py-[0.25rem]">
-                <EditedDescriptionTypo fontSize={12}>
-                  코인
-                </EditedDescriptionTypo>
-              </th>
-              <th className="w-[4rem] py-[0.25rem]">
-                <EditedDescriptionTypo fontSize={12}>
-                  현재가
-                </EditedDescriptionTypo>
-              </th>
-              <th className="w-[4rem] py-[0.25rem]">
-                <EditedDescriptionTypo fontSize={12}>
-                  전일대비
-                </EditedDescriptionTypo>
-              </th>
-              <th className="w-[4rem] py-[0.25rem]">
-                <EditedDescriptionTypo fontSize={12}>
-                  거래대금
-                </EditedDescriptionTypo>
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {filteredTickers &&
-              filteredTickers.map(ticker => (
-                <tr
-                  className="hover:bg-list_hover cursor-pointer"
-                  key={`${ticker.acc_trade_price} + ${ticker.signed_change_rate}`}
-                  onClick={() => {
-                    handleRowClick(
-                      ticker.code || ticker.market,
-                      ticker.signed_change_rate,
-                      ticker.prev_closing_price,
-                      ticker.trade_price,
-                    );
-                  }}
-                >
-                  <td className="table-cell w-[6.75rem] border-b-[0.063rem] border-color:rgba(224, 224, 224, 1)] border-solid whitespace-nowrap">
-                    <NGTypo
-                      fontSize={11}
-                      fontWeight={'bold'}
-                      sx={{ maxWidth: '5rem' }}
-                    >
-                      {codeMap[ticker.code] || codeMap[ticker.market]}
-                    </NGTypo>
-                    <NGTypo fontSize={10} color={globalColors.market_code}>
-                      {ticker.code || ticker.market}
-                    </NGTypo>
-                  </td>
-                  <td
-                    className={`table-cell w-[4rem] border-b-[0.063rem] border-color:rgba(224, 224, 224, 1)] border-solid text-right ${
-                      ticker.signed_change_rate > 0
-                        ? 'text-color_pos'
-                        : ticker.signed_change_rate < 0
-                          ? 'text-color_neg'
-                          : 'text-black'
-                    }`}
-                  >
-                    <PriceTypo fontSize={11} fontWeight={'bold'}>
-                      {ticker.trade_price !== undefined &&
-                      ticker.trade_price !== null
-                        ? ticker.trade_price.toLocaleString()
-                        : 0}
-                    </PriceTypo>
-                  </td>
-                  <td
-                    className={`table-cell w-[4rem] border-b-[0.063rem] border-color:rgba(224, 224, 224, 1)] border-solid text-right ${
-                      ticker.signed_change_rate > 0
-                        ? 'text-color_pos'
-                        : ticker.signed_change_rate < 0
-                          ? 'text-color_neg'
-                          : 'text-black'
-                    }`}
-                  >
-                    <div className="flex flex-col">
-                      <PriceTypo fontSize={10} fontWeight={'bold'}>
-                        {(ticker.signed_change_rate * 100).toFixed(2)}%
-                      </PriceTypo>
-                      <PriceTypo fontSize={10} fontWeight={'bold'}>
-                        {ticker.signed_change_price.toLocaleString()}
-                      </PriceTypo>
-                    </div>
-                  </td>
-                  <td className="table-cell w-[4rem] border-b-[0.063rem] border-color:rgba(224, 224, 224, 1)] border-solid whitespace-nowrap">
-                    <div className="flex flex-col">
-                      <PriceTypo fontSize={10}>
-                        {Math.round(
-                          parseInt(ticker.acc_trade_price_24h) / 1000000,
-                        ).toLocaleString()}
-                      </PriceTypo>
-                      <NGTypo fontSize={10}>백만</NGTypo>
-                    </div>
-                  </td>
-                </tr>
-              ))}
-          </tbody>
-        </table>
-      </StyledTableContainer>
-    </section>
-  );
+  useEffect(() => {
+    if (marketCodes) {
+      const fetchTickers = async () => {
+        try {
+          const codesString = marketCodes
+            .filter(code => code.market.includes('KRW'))
+            .map(code => code.market)
+            .join(',');
+          const response = await axios.get(`/api/tickers?codes=${codesString}`);
+          const data = await response.data;
+          setTickers(data);
+        } catch (error) {
+          console.error('마켓 리스트 다운로드 오류: ', error);
+        } finally {
+          setIsLoading(false);
+        }
+      };
+
+      fetchTickers();
+      const interval = setInterval(fetchTickers, intervalTime);
+      return () => clearInterval(interval);
+    }
+  }, [marketCodes, intervalTime]);
+
+  const handleSearchChange = e => dispatch(setKeyword(e.target.value));
+
+  const handleRowClick = (code, rate, prevPrice, currPrice) => {
+    dispatch(setCode(code));
+    dispatch(setRate(rate));
+    dispatch(setPrevPrice(prevPrice));
+    dispatch(setCurrPrice(currPrice));
+  };
+
+  const props = {
+    keyword,
+    tickers,
+    codeMap,
+    handleRowClick,
+    handleSearchChange,
+  };
+
+  if (isLoading) return <LinearProgress color="primary" />;
+
+  return <MarketListUI {...props} />;
 }
+
+export default memo(MarketList);

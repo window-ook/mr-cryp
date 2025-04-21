@@ -8,7 +8,7 @@ const LineChart = dynamic(
 
 export default function AccountBalanceFlow({ totalBalance, flowSize }) {
   const history = [4500, 5681, 5998, 7100, 8502];
-  const xLabels = ['10월', '11월', '12월', '1월', '2월', '3월'];
+  const xLabels = ['11월', '12월', '1월', '2월', '3월', '4월'];
 
   return (
     <div className="flex flex-col w-full">

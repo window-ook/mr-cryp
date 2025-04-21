@@ -3,127 +3,99 @@ import { useDispatch } from 'react-redux';
 import { useRouter } from 'next/router';
 import { useWeeklyTopQuery } from '@/hooks/useWeeklyTopQuery';
 import { setCode } from '@/utils/redux/chartSlice';
-import { VisionSubTitle } from '@/defaultTheme';
-
-const SkeletonLoader = () => (
-  <div className="animate-pulse space-y-6 pt-2">
-    {[...Array(5)].map((_, i) => (
-      <div key={i} className="w-full flex items-center">
-        <div className="w-8 h-4 bg-gray-200 rounded" />
-        <div className="flex-1 h-4 bg-gray-200 rounded mx-2" />
-        <div className="w-[5.5rem] h-4 bg-gray-200 rounded shrink-0" />
-      </div>
-    ))}
-  </div>
-);
-
-const CoinItem = memo(({ coin, index, onClickCoin }) => (
-  <div className="w-full flex items-center group hover:bg-gray-50 p-2 rounded-lg transition-colors">
-    <span className="w-8 text-left font-ng text-base text-gray-600 group-hover:text-gray-900 transition-colors shrink-0">
-      {index + 1}
-    </span>
-    <button
-      aria-label={`${coin.name} 차트로 이동`}
-      type="button"
-      className="flex-1 min-w-0 font-ng font-bold text-left text-gray-900 hover:text-blue-600 transition-colors mx-2"
-      onClick={() => onClickCoin(coin.name)}
-    >
-      <span className="block whitespace-nowrap overflow-hidden text-ellipsis">
-        {coin.name}
-      </span>
-    </button>
-    <span className="w-[5.5rem] font-ng font-bold text-right text-red-500 tabular-nums shrink-0">
-      +{coin.changeRate.toFixed(2)}%
-    </span>
-  </div>
-));
-
-CoinItem.displayName = 'CoinItem';
+import { LinearProgress } from '@mui/material';
 
 function WeeklyRisedCoins({ marketCodes }) {
+  const { tickers, weeklyCandles, isLoading } = useWeeklyTopQuery(marketCodes);
+
   const dispatch = useDispatch();
+
   const router = useRouter();
-
-  const krwMarketCodes = useMemo(
-    () => marketCodes.filter(code => code.market.includes('KRW')),
-    [marketCodes],
-  );
-
-  const { tickers, weeklyCandles, isLoading } =
-    useWeeklyTopQuery(krwMarketCodes);
 
   const codeMap = useMemo(() => {
     const map = {};
-    krwMarketCodes.forEach(item => {
-      map[item.market] = item.korean_name;
-    });
+    marketCodes
+      .filter(code => code.market.includes('KRW'))
+      .forEach(item => {
+        map[item.market] = item.korean_name;
+      });
     return map;
-  }, [krwMarketCodes]);
+  }, [marketCodes]);
 
   const risingCoins = useMemo(() => {
     if (!tickers.length || !weeklyCandles.length) return [];
 
-    const tickerMap = new Map(tickers.map(ticker => [ticker.market, ticker]));
-
     return weeklyCandles
       .map(({ market, data }) => {
-        const ticker = tickerMap.get(market);
-        if (!ticker) return null;
-
-        const changeRate =
-          ((ticker.trade_price - data.opening_price) / data.opening_price) *
-          100;
-
-        if (changeRate <= 0) return null;
+        const ticker = tickers.find(t => t.market === market);
+        if (!ticker) return null; // 현재가 데이터가 없으면 스킵
 
         return {
           market,
           name: codeMap[market],
-          changeRate,
+          tradePrice: ticker.trade_price, // ✅ 현재가
+          openingPrice: data.opening_price, // ✅ 주봉 시가
+          changeRate:
+            ((ticker.trade_price - data.opening_price) / data.opening_price) *
+            100,
         };
       })
-      .filter(Boolean)
+      .filter(Boolean) // null 값 제거
       .sort((a, b) => b.changeRate - a.changeRate)
-      .slice(0, 5);
+      .slice(0, 10); // Top 10 선정
   }, [tickers, weeklyCandles, codeMap]);
 
   const handleClickCoin = coinName => {
     const marketCode = Object.entries(codeMap).find(
-      ([, name]) => name === coinName,
+      ([code, name]) => name === coinName,
     )?.[0];
-
     if (marketCode) {
       dispatch(setCode(marketCode));
-      router.push('/trade/chart');
+      setTimeout(() => {
+        router.push('/trade/chart');
+      }, 100);
     }
   };
 
+  if (isLoading) return <LinearProgress color="primary" />;
+
   return (
-    <div>
-      <header className="mb-4">
-        <VisionSubTitle>이번주 급등 코인</VisionSubTitle>
+    <>
+      <header>
+        <span className="font-pretendard text-[1.5rem] font-bold text-main">
+          이번주 급등 코인
+        </span>
       </header>
-      <article className="min-h-[280px]">
-        {isLoading ? (
-          <SkeletonLoader />
-        ) : risingCoins.length > 0 ? (
-          <div className="space-y-2">
-            {risingCoins.map((coin, i) => (
-              <CoinItem
-                key={coin.market}
-                coin={coin}
-                index={i}
-                onClickCoin={handleClickCoin}
-              />
-            ))}
-          </div>
+      <article className="flex flex-col space-y-6 pt-2 overflow-hidden">
+        {risingCoins.length > 0 ? (
+          risingCoins.map((coin, i) => (
+            <div
+              key={coin.market}
+              className="w-full flex justify-between items-center "
+            >
+              <div className="w-full flex items-center">
+                <span className="w-8 text-left font-ng max-[1580px]:text-sm max-[1525px]:text-xs">
+                  {i + 1}
+                </span>
+                <button
+                  aria-label="차트로 이동해서 가격 정보 확인"
+                  type="button"
+                  className="flex-1 font-ng font-bold text-left truncate cursor-pointer max-[1580px]:text-sm max-[1525px]:text-xs"
+                  onClick={() => handleClickCoin(coin.name)}
+                >
+                  {coin.name}
+                </button>
+              </div>
+              <span className="w-24 font-ng font-bold text-right text-red-500 max-[1580px]:text-sm max-[1525px]:text-xs">
+                {coin.changeRate.toFixed(2)}%
+              </span>
+            </div>
+          ))
         ) : (
-          <div className="flex items-center justify-center h-[280px] text-gray-500">
-            데이터가 없습니다
-          </div>
+          <p>데이터 없음</p>
         )}
       </article>
-    </div>
+    </>
   );
 }
 

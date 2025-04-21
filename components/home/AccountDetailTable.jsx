@@ -1,24 +1,22 @@
-import { NGTypo } from '@/defaultTheme';
-
-function HoldingAmount({ balance, price }) {
+const HoldingAmount = ({ balance, price }) => {
   return (
     <div className="flex flex-col">
-      <NGTypo>보유수량(평가금액)</NGTypo>
-      <NGTypo fontWeight={'bold'}>
+      <span className="font-pretendard font-bold">
         {parseFloat(parseFloat(price) * balance).toLocaleString()} KRW
-      </NGTypo>
+      </span>
     </div>
   );
-}
+};
 
-function HoldingRatio({ percentage }) {
+const HoldingRatio = ({ percentage }) => {
   return (
     <div className="flex flex-col">
-      <NGTypo>보유비중</NGTypo>
-      <NGTypo fontWeight={'bold'}>{percentage.toFixed(2)}%</NGTypo>
+      <span className="font-pretendard font-bold">
+        {percentage.toFixed(2)}%
+      </span>
     </div>
   );
-}
+};
 
 export default function AccountDetailTable({ balance }) {
   const totalBalance = balance.reduce(
@@ -32,18 +30,22 @@ export default function AccountDetailTable({ balance }) {
         <thead>
           <tr className="bg-main text-left">
             <th className="p-4">
-              <span className="text-lg font-pretendard font-bold">자산</span>
+              <span className="text-white text-lg font-pretendard font-bold">
+                자산
+              </span>
             </th>
             <th className="text-left">
-              <span className="text-lg font-pretendard font-bold">통화</span>
+              <span className="text-white text-lg font-pretendard font-bold">
+                통화
+              </span>
             </th>
             <th className="text-center">
-              <span className="text-lg font-pretendard font-bold">
+              <span className="text-white text-lg font-pretendard font-bold">
                 보유 비율
               </span>
             </th>
             <th className="text-left">
-              <span className="text-lg font-pretendard font-bold">
+              <span className="text-white text-lg font-pretendard font-bold">
                 보유 금액
               </span>
             </th>
@@ -55,17 +57,17 @@ export default function AccountDetailTable({ balance }) {
               <tr key={item.currency} className="hover:bg-[#F5F5F5]">
                 <td className="p-2">
                   {index === 0 ? (
-                    <NGTypo fontWeight={'bold'}>원화</NGTypo>
+                    <span className="font-ng font-bold">원화</span>
                   ) : item.currency === 'ETH' ? (
-                    <NGTypo fontWeight={'bold'}>이더리움</NGTypo>
+                    <span className="font-ng font-bold">이더리움</span>
                   ) : (
-                    <NGTypo fontWeight={'bold'}>리플</NGTypo>
+                    <span className="font-ng font-bold">리플</span>
                   )}
                 </td>
                 <td className="text-left">
-                  <NGTypo fontWeight={'bold'} color="primary">
+                  <span className="font-ng font-bold" color="primary">
                     {item.currency}
-                  </NGTypo>
+                  </span>
                 </td>
                 <td className="text-center">
                   <HoldingRatio
@@ -88,14 +90,14 @@ export default function AccountDetailTable({ balance }) {
             ))}
           <tr>
             <td className="p-2">
-              <NGTypo fontWeight={'bold'}>총액</NGTypo>
+              <span className="font-pretendard font-bold">총액</span>
             </td>
             <td />
             <td />
             <td className="text-left">
-              <NGTypo fontWeight={'bold'}>
+              <span className="font-pretendard font-bold">
                 {parseFloat(totalBalance).toLocaleString()} {' KRW'}
-              </NGTypo>
+              </span>
             </td>
           </tr>
         </tbody>

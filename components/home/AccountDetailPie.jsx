@@ -1,37 +1,12 @@
 import { useEffect, useState } from 'react';
 import { theme } from '@/defaultTheme';
 import { globalColors } from '@/globalColors';
-import { Box, styled } from '@mui/system';
 import dynamic from 'next/dynamic';
 
 const PieChart = dynamic(
   () => import('@mui/x-charts/PieChart').then(mod => mod.PieChart),
   { ssr: false },
 );
-
-const AccountPieBox = styled(Box)(() => ({
-  display: 'flex',
-  justifyContent: 'center',
-  backgroundColor: globalColors.white,
-  borderTopLeftRadius: '0.25rem',
-  borderTopRightRadius: '0.25rem',
-  padding: '2rem',
-  border: '0.25rem solid',
-  borderColor: theme.palette.primary.main,
-
-  '@media (max-width:1075px)': {
-    width: '100%',
-    padding: '0.25rem 2rem 0.25rem 2rem',
-  },
-
-  '@media (max-width:700px)': {
-    width: '100%',
-  },
-
-  '@media (max-width:500px)': {
-    width: '100%',
-  },
-}));
 
 export default function AccountDetailPie({ balance }) {
   const [pieParams, setPieParams] = useState({ width: 600, height: 300 });
@@ -63,7 +38,7 @@ export default function AccountDetailPie({ balance }) {
   ];
 
   return (
-    <AccountPieBox sx={{ boxShadow: 3 }}>
+    <div className="max-[1075px]:w-full max-[1075px]:py-1 max-[1075px]:px-8 max-[700px]:w-full max-[500px]:w-full p-8 border-4 border-main rounded-t-[0.25rem] shadow-lg bg-white flex justify-center">
       <PieChart
         colors={palette}
         series={[
@@ -92,6 +67,6 @@ export default function AccountDetailPie({ balance }) {
         ]}
         {...pieParams}
       />
-    </AccountPieBox>
+    </div>
   );
 }

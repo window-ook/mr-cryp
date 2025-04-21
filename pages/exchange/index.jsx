@@ -4,20 +4,20 @@ import { HeadTypo } from '@/defaultTheme';
 import Head from 'next/head';
 import Upbit from '@/lib/upbit';
 import dynamic from 'next/dynamic';
-import MarketListProvider from '@/components/exchange/chart/market-list/MarketListProvider';
-import MarketDetailProvider from '@/components/exchange/chart/market-detail/MarketDetailProvider';
+import MarketList from '@/components/exchange/chart/market-list/MarketList';
+import MarketDetailProvider from '@/components/exchange/chart/market-detail/MarketDetail';
 import TradeHistoryProvider from '@/components/exchange/chart/trade-history/TradeHistoryProvider';
-import OrderbookProvider from '@/components/exchange/chart/orderbook/OrderbookProvider';
+import OrderbookProvider from '@/components/exchange/chart/orderbook/Orderbook';
 
 const HighStockChart = dynamic(
-  () => import('@/components/exchange/chart/high-charts/HighChartsProvider'),
+  () => import('@/components/exchange/chart/high-charts/HighCharts'),
   {
     ssr: false,
   },
 );
 
 const ModalProvider = dynamic(
-  () => import('@/components/exchange/chart/order-modal/Modal'),
+  () => import('@/components/exchange/chart/order/Modal'),
   {
     ssr: false,
   },
@@ -61,7 +61,7 @@ export default function Chart({ marketCodes }) {
           <div className="flex flex-wrap">
             {/* 1열 */}
             <section className="w-full md:w-3/12">
-              <MarketListProvider marketCodes={marketCodes} />
+              <MarketList marketCodes={marketCodes} />
             </section>
 
             {/* 2열 */}
