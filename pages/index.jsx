@@ -32,7 +32,7 @@ const Navbar = () => {
             onClick={handleRoute}
             className=" w-[6rem] h-[2rem] rounded-md cursor-pointer hover:opacity-40 transition duration-100 ease-in"
           >
-            <span className="text-xl max-sm:text-lg font-bold text-black font-oneTitle">
+            <span className="text-xl max-sm:text-lg font-bold text-black font-onetitle">
               시작하기
             </span>
           </a>
@@ -56,21 +56,21 @@ const Header = () => {
       />
       <section className="w-full max-w-[75rem] mx-auto px-10 sm:px-16 md:px-20 lg:px-24 xl:px-32 pt-60 flex flex-col gap-4">
         <div className="flex flex-col gap-2">
-          <span className="text-5xl lg:text-4xl md:text-3xl sm:text-2xl xs:text-xl text-white font-oneTitle text-shadow-black">
+          <span className="text-5xl lg:text-4xl md:text-3xl sm:text-2xl xs:text-xl text-white font-onetitle text-shadow-black">
             미스터 크립이
           </span>
-          <span className="text-5xl lg:text-4xl md:text-3xl sm:text-2xl xs:text-xl text-white font-oneTitle text-shadow-black">
+          <span className="text-5xl lg:text-4xl md:text-3xl sm:text-2xl xs:text-xl text-white font-onetitle text-shadow-black">
             더 쉬운 코인 투자를 도와드립니다.
           </span>
         </div>
         <div className="flex gap-4">
           <div className="h-[2rem] rounded-md flex items-center opacity-80 hover:opacity-40 transition duration-100 ease-in">
-            <span className="text-white font-oneTitle text-shadow-black">
+            <span className="text-white font-onetitle text-shadow-black">
               #크립토 비서
             </span>
           </div>
           <div className="h-[2rem] rounded-md flex items-center opacity-80 hover:opacity-40 transition duration-100 ease-in">
-            <span className="text-white font-oneTitle text-shadow-black">
+            <span className="text-white font-onetitle text-shadow-black">
               #AI 포트폴리오
             </span>
           </div>
@@ -125,12 +125,12 @@ const Introduce = () => {
   return (
     <>
       <div className="flex flex-col gap-10 max-md:gap-20">
-        <span className="break-words text-5xl max-lg:text-4xl max-md:text-2xl max-sm:text-lg max-lg:text-shadow-none font-oneTitle text-shadow-black whitespace-nowrap">
+        <span className="break-words text-5xl max-lg:text-4xl max-md:text-2xl max-sm:text-lg max-lg:text-shadow-none font-onetitle text-shadow-black whitespace-nowrap">
           Crypto Secretary for me
         </span>
         <div className="flex gap-4">
           <div className="h-[2rem] rounded-md flex items-center">
-            <span className="text-lg max-sm:text-sm max-md:text-[1rem] font-oneTitle">
+            <span className="text-lg max-sm:text-sm max-md:text-[1rem] font-onetitle">
               미스터 크립은 고객이 필요한 정보를 모두 제공합니다. <br />
               자산, 뉴스, 실시간 가격과 차트를 편하게 확인하세요. <br />
             </span>
@@ -152,7 +152,7 @@ const AiInvestIntroduce = () => {
   return (
     <div className="flex flex-col gap-10">
       <div className="flex items-end gap-2">
-        <span className="text-5xl max-lg:text-4xl max-md:text-2xl max-sm:text-lg font-oneTitle text-shadow-black max-lg:text-shadow-none">
+        <span className="text-5xl max-lg:text-4xl max-md:text-2xl max-sm:text-lg font-onetitle text-shadow-black max-lg:text-shadow-none">
           투자를 스마트하게
         </span>
         <AutoAwesomeIcon
@@ -164,13 +164,13 @@ const AiInvestIntroduce = () => {
             },
           }}
         />
-        <span className="text-lg max-md:text-sm font-oneTitle">
+        <span className="text-lg max-md:text-sm font-onetitle">
           v2 업데이트 추가 예정
         </span>
       </div>
       <div className="flex gap-4">
         <div className="h-[2rem] rounded-md flex items-center">
-          <span className="flex flex-col text-lg max-sm:text-sm font-oneTitle">
+          <span className="flex flex-col text-lg max-sm:text-sm font-onetitle">
             미스터 크립은 원하는 성향에 따라 현재 보유 중인 현금으로 <br />
             매수 가능한 포트폴리오를 구성해줍니다.
             <br />
@@ -181,7 +181,7 @@ const AiInvestIntroduce = () => {
         href="/auth"
         className="w-[8rem] h-[2rem] rounded-md opacity-80 flex items-center hover:opacity-40 transition duration-100 ease-in"
       >
-        <span className="text-lg font-oneTitle text-main">체험하기 {'>'}</span>
+        <span className="text-lg font-onetitle text-main">체험하기 {'>'}</span>
       </Link>
     </div>
   );
@@ -200,7 +200,7 @@ const AiPortfolioCard = ({
         <div className="absolute inset-0 p-4 scale-90 opacity-0 flex flex-col justify-around gap-2 transition-opacity duration-300 ease-in group-hover:opacity-100 group-hover:scale-100">
           {/* 옵션 소개 */}
           <div className="scale-90 opacity-0 transition-all duration-150 ease-in group-hover:opacity-100 group-hover:scale-100">
-            <p className="text-2xl max-lg:text-xl max-sm:text-lg text-black font-oneTitle">
+            <p className="text-2xl max-lg:text-xl max-sm:text-lg text-black font-onetitle">
               {description}
             </p>
           </div>
@@ -240,7 +240,7 @@ const AiPortfolioCard = ({
           </div>
         </div>
       </div>
-      <span className="py-2 text-xl max-sm:text-sm font-oneTitle">{title}</span>
+      <span className="py-2 text-xl max-sm:text-sm font-onetitle">{title}</span>
     </div>
   );
 };

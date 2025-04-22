@@ -1,50 +1,26 @@
-import { VisionSubTitle, NGTypo } from '@/defaultTheme';
-import { Grid, Box } from '@mui/material';
-import Video from './Video';
+import { useVideosQuery } from '@/hooks/useVideosQuery';
+import { useTheme } from '@mui/material/styles';
+import { Alert } from '@mui/material';
+import PendingUI from '../shared/PendingUI';
+import VideosUI from './VideosUI';
 
-export default function Videos({ videos, theme }) {
-  return (
-    <article className="w-full">
-      <VisionSubTitle>트렌드 영상</VisionSubTitle>
-      <Grid container spacing={2}>
-        {videos?.map(video => (
-          <Grid item xs={12} sm={3} key={video?.id}>
-            <Box>
-              <Box>
-                <Video
-                  width={200}
-                  height={150}
-                  src={video?.snippet?.thumbnails?.medium?.url}
-                  title={video?.snippet?.title}
-                  linkUrl={`https://youtube.com/watch?v=${video?.id}`}
-                />
-              </Box>
-              <Box sx={{ pr: 2, pt: 2 }}>
-                <NGTypo gutterBottom variant="body2" fontWeight={'bold'}>
-                  {video?.snippet?.title
-                    ?.replace(/&quot;/g, '')
-                    ?.replace(/&#39;/g, '')
-                    ?.replace(/"/g, '')
-                    ?.replace(/'/g, '')
-                    ?.slice(0, 25) + '...'}
-                </NGTypo>
-                <NGTypo
-                  display="block"
-                  variant="caption"
-                  fontWeight={'bold'}
-                  color={theme.palette.primary.main}
-                >
-                  {video?.snippet?.channelTitle}
-                </NGTypo>
-                <NGTypo variant="caption" fontWeight={'bold'}>
-                  {video?.snippet?.publishTime.slice(0, 10)}{' '}
-                  {video?.snippet?.publishTime.slice(11, 16)}
-                </NGTypo>
-              </Box>
-            </Box>
-          </Grid>
-        ))}
-      </Grid>
-    </article>
-  );
+export default function Videos() {
+  const theme = useTheme();
+
+  // const { data: videos = [], isLoading, error } = useVideosQuery('코인 추천');
+  const videos = [];
+  const isLoading = false;
+  const error = false;
+
+  if (isLoading) return <PendingUI />;
+
+  if (error) {
+    return (
+      <Alert severity="error">
+        유튜브 영상 다운로드 중 에러가 발생했습니다.
+      </Alert>
+    );
+  }
+
+  return <VideosUI videos={videos} theme={theme} />;
 }

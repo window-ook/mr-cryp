@@ -1,5 +1,7 @@
 import axios from 'axios';
 
+// puppeteer 사용해서 token post 크롤링하는 코드
+
 export default async function handler(req, res) {
   const { keyword, count } = req.query;
 

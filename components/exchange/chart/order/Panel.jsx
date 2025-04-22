@@ -51,7 +51,7 @@ const ResetButton = styled(Button)(() => ({
   },
 }));
 
-export default function ModalPanel({ value, addOrder, askablePrice }) {
+export default function Panel({ value, addOrder, askablePrice }) {
   const code = useSelector(state => state.chart.code);
   const currPrice = useSelector(state => state.chart.currPrice); // 선택한 마켓의 현재가
 

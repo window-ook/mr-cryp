@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from 'react';
-import { VisionSubTitle } from '@/defaultTheme';
 import { Alert, LinearProgress } from '@mui/material';
 import useMarketSituationsQuery from '@/hooks/useMarketSituationsQuery';
 
@@ -64,7 +63,9 @@ export default function MarketSituation() {
   return (
     <>
       <header className="flex items-end gap-3">
-        <VisionSubTitle>시황</VisionSubTitle>
+        <span className="font-pretendard text-[1.5rem] font-bold text-main">
+          시황
+        </span>
         <span className="pb-1 text-gray-500 font-ng max-[1525px]:text-xs">
           {today}
         </span>

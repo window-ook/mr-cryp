@@ -3,10 +3,10 @@ import { Box } from '@mui/system';
 import { SubTitle } from '@/defaultTheme';
 import Head from 'next/head';
 import axios from 'axios';
-import AccountMarketFlow from '@/components/home/AccountMarketFlow';
-import AccountBalanceFlow from '@/components/home/AccountBalanceFlow';
-import AccountDetailTable from '@/components/home/AccountDetailTable';
-import AccountDetailPie from '@/components/home/AccountDetailPie';
+import AccountMarketFlow from '@/components/mypage/AccountMarketFlow';
+import AccountBalanceFlow from '@/components/mypage/AccountBalanceFlow';
+import AccountDetailTable from '@/components/mypage/AccountDetailTable';
+import AccountDetailPie from '@/components/mypage/AccountDetailPie';
 
 export default function Home() {
   const [balance, setBalance] = useState([]);
