@@ -16,6 +16,17 @@ Highcharts.setOptions({
   },
 });
 
+// Format date to 'YYYY-MM-DD HH:mm:ss'
+const formatDate = date => {
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const day = String(date.getDate()).padStart(2, '0');
+  const hours = String(date.getHours()).padStart(2, '0');
+  const minutes = String(date.getMinutes()).padStart(2, '0');
+  const seconds = String(date.getSeconds()).padStart(2, '0');
+  return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+};
+
 const initialOptions = {
   chart: {
     maxWidth: 900,
@@ -134,12 +145,13 @@ export default function HighCharts() {
     async type => {
       let fetchedCandles;
       try {
-        const response = await axios.get('/api/candles', {
+        const response = await axios.get('/api/upbit/candles', {
           params: {
             type,
             unit: type.replace('min', ''),
             ticker: code,
             count: 200,
+            to: formatDate(new Date()),
           },
         });
         fetchedCandles = response.data;

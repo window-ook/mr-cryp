@@ -37,7 +37,9 @@ function MarketList({ marketCodes }) {
             .filter(code => code.market.includes('KRW'))
             .map(code => code.market)
             .join(',');
-          const response = await axios.get(`/api/tickers?codes=${codesString}`);
+          const response = await axios.get(
+            `/api/upbit/tickers?markets=${codesString}`,
+          );
           const data = await response.data;
           setTickers(data);
         } catch (error) {

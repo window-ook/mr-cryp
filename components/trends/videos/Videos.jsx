@@ -7,7 +7,10 @@ import VideosUI from './VideosUI';
 export default function Videos() {
   const theme = useTheme();
 
-  const { data: videos = [], isLoading, error } = useVideosQuery('코인 추천');
+  // const { data: videos = [], isLoading, error } = useVideosQuery('코인 추천');
+  const videos = [];
+  const isLoading = false;
+  const error = false;
 
   if (isLoading) return <PendingUI />;
 

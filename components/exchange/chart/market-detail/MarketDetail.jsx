@@ -22,7 +22,7 @@ export default function MarketDetail({ marketCodes }) {
     if (!code) return;
     const fetchTicker = async () => {
       try {
-        const response = await axios.get(`/api/tickers?codes=${code}`);
+        const response = await axios.get(`/api/upbit/tickers?markets=${code}`);
         setTicker(...response.data);
       } catch (error) {
         console.error('마켓 디테일 다운로드 오류: ', error);

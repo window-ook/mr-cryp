@@ -18,7 +18,7 @@ export default async function handler(req, res) {
           return;
         }
 
-        data = await upbit.candleMinutes(unit, ticker, count);
+        data = await upbit.candleMinutes(unit, ticker, count, to);
         break;
       case 'days':
         data = await upbit.candleDays(ticker, count);

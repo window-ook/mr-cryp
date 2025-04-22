@@ -21,7 +21,7 @@ export default function AccountMarketFlow({ flowSize }) {
 
         const responses = await Promise.all(
           tickers.map(ticker =>
-            axios.get('/api/candles', {
+            axios.get('/api/upbit/candles', {
               params: {
                 type: 'months',
                 ticker,

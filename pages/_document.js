@@ -6,7 +6,6 @@ export default function Document() {
       <Head>
         {/* SEO 메타데이터 */}
         <meta charSet="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="author" content="windowook" />
         <meta
           name="keywords"
