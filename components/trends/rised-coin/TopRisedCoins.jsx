@@ -1,20 +1,11 @@
-import { Suspense, useEffect, useState } from 'react';
-import axios from 'axios';
+import { memo, useState } from 'react';
+import { useRisedCoinsQuery } from '@/hooks/useRisedCoinsQuery';
+import PendingUI from '../shared/PendingUI';
 
-export default function TopRisedCoins() {
-  const [selectedPeriod, setSelectedPeriod] = useState('1주일');
-  const [risedCoins, setRisedCoins] = useState([]);
+function TopRisedCoins() {
+  const [selectedPeriod, setSelectedPeriod] = useState('oneWeek');
 
-  const fetchData = async () => {
-    const response = await axios.get('/api/upbit/rised-coins');
-    const data = response.data.data;
-    console.log(data);
-    setRisedCoins(data);
-  };
-
-  useEffect(() => {
-    fetchData();
-  }, []);
+  const { data: risedCoins, isPending } = useRisedCoinsQuery();
 
   const PERIODS = [
     { label: '1주일', value: 'oneWeek' },
@@ -24,20 +15,36 @@ export default function TopRisedCoins() {
     { label: '1년', value: 'oneYear' },
   ];
 
+  const getSortedCoins = () => {
+    if (!risedCoins) return [];
+
+    return [...risedCoins]
+      .sort((a, b) => {
+        const aValue =
+          parseFloat(a.periods[selectedPeriod]?.replace('%', '')) || -Infinity;
+        const bValue =
+          parseFloat(b.periods[selectedPeriod]?.replace('%', '')) || -Infinity;
+        return bValue - aValue;
+      })
+      .slice(0, 15);
+  };
+
+  if (isPending) return <PendingUI />;
+
   return (
-    <div className="w-full h-full flex flex-col gap-4">
-      <p className="text-2xl font-pretendard font-bold text-main">
-        기간별 상승률
+    <div className="w-full flex flex-col gap-4">
+      <p className="mb-2 text-2xl max-[475px]:text-xl font-pretendard font-bold text-main_dark">
+        기간별 상승률 TOP
       </p>
 
-      <div className="w-full flex flex-col gap-4">
-        {/* 기간 선택 셀렉터 */}
-        <div className="flex gap-2 bg-gray-100 rounded-lg">
+      <div className="w-full flex flex-col gap-4 mb-4">
+        {/* 기간 선택 셀렉터(476px 이상) */}
+        <div className="flex gap-2 bg-gray-100 rounded-lg max-[475px]:hidden">
           {PERIODS?.map(period => (
             <button
               key={period.value}
               onClick={() => setSelectedPeriod(period.value)}
-              className={`px-4 py-2 rounded-md transition-all duration-200 ${
+              className={`px-4 py-2 rounded-md max-[530px]:text-xs transition-all duration-200 ${
                 selectedPeriod === period.value
                   ? 'bg-main text-white font-medium shadow-sm'
                   : 'bg-white text-gray-600 hover:bg-gray-50'
@@ -48,21 +55,43 @@ export default function TopRisedCoins() {
           ))}
         </div>
 
-        {/* 코인 리스트 - 더보기 확장가능 */}
-        <div className="w-full flex flex-col gap-2">
-          <Suspense fallback={<div>Loading...</div>}>
-            {risedCoins.map(coin => (
-              <div key={coin.name} className="flex justify-between">
-                <div>
-                  <span>{coin.name}</span>
-                  <span>({coin.market})</span>
-                </div>
-                <span>{coin.periods.oneWeek}</span>
-              </div>
+        {/* 기간 선택 셀렉터(475px 이하) */}
+        <div className="hidden max-[475px]:block w-full">
+          <select
+            value={selectedPeriod}
+            onChange={e => setSelectedPeriod(e.target.value)}
+            className="w-full px-4 py-2 rounded-md text-sm bg-white border border-gray-200"
+          >
+            {PERIODS.map(period => (
+              <option key={period.value} value={period.value}>
+                {period.label}
+              </option>
             ))}
-          </Suspense>
+          </select>
+        </div>
+
+        <div className="w-full flex flex-col gap-6">
+          <div className="grid grid-cols-12 gap-4 px-2 border-dashed border-2 border-main-light bg-white text-gray-500 text-sm text-center">
+            <div className="col-span-4">자산</div>
+            <div className="col-span-4">마켓</div>
+            <div className="col-span-4">상승률</div>
+          </div>
+
+          {getSortedCoins().map(coin => (
+            <div key={coin.name} className="grid grid-cols-12 gap-4 px-2">
+              <span className="col-span-4 font-ng">{coin.name}</span>
+              <span className="col-span-4 font-ng text-gray-400">
+                {coin.market}
+              </span>
+              <span className="col-span-4 text-color_pos text-right">
+                {coin.periods[selectedPeriod]}
+              </span>
+            </div>
+          ))}
         </div>
       </div>
     </div>
   );
 }
+
+export default memo(TopRisedCoins);

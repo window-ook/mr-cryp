@@ -35,7 +35,7 @@ export default function Trends({ exchangeRates }) {
   return (
     <>
       <Head>
-        <title>코인 트렌드 - 미스터 크립</title>
+        <title>오늘 트렌드 - 미스터 크립</title>
       </Head>
       <main className="py-6 flex flex-col items-center w-full h-full">
         <div className="w-4/5 grid grid-cols-[3fr,2fr] max-[900px]:grid-cols-1 gap-6 h-full">
@@ -51,9 +51,8 @@ export default function Trends({ exchangeRates }) {
             </article>
           </section>
 
-          {/* 나머지 섹션들은 그대로 유지 */}
           <section className="col-start-1 grid grid-rows-[auto, 1fr] gap-4 h-full">
-            <article className="p-4 bg-sky-200 rounded-lg shadow">
+            <article className="p-4 bg-emerald-200 rounded-lg shadow">
               <MarketSituation />
             </article>
             <article className="p-4 bg-gray-100 rounded-lg shadow h-full">

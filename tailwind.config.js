@@ -20,6 +20,7 @@ module.exports = {
       colors: {
         main: '#0ac483',
         main_light: '#41fab9',
+        main_dark: '#07a36c',
 
         portfolio_trend: '#f788bc',
         portfolio_potential: '#86fcd3',
