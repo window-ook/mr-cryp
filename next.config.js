@@ -21,6 +21,12 @@ const nextConfig = {
         port: '',
         pathname: '/vi/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'f1.tokenpost.kr',
+        port: '',
+        pathname: '/**',
+      },
     ],
     localPatterns: [
       {

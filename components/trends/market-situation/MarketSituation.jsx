@@ -1,10 +1,10 @@
-import { useEffect, useRef, useState } from 'react';
-import { Alert, LinearProgress } from '@mui/material';
-import useMarketSituationsQuery from '@/hooks/useMarketSituationsQuery';
+import { memo, useEffect, useRef, useState } from 'react';
+import { useMarketSituationQuery } from '@/hooks/useMarketSituationQuery';
+import { LinearProgress } from '@mui/material';
 
-export default function MarketSituation() {
+function MarketSituation() {
   const [index, setIndex] = useState(0);
-  const { data: situations, error, isPending } = useMarketSituationsQuery();
+
   const containerRef = useRef(null);
   const timeoutRef = useRef(null);
 
@@ -13,6 +13,8 @@ export default function MarketSituation() {
     return `${date.getFullYear()}년 ${date.getMonth() + 1}월 ${date.getDate()}일`;
   };
   const today = formatDate(new Date());
+
+  const { data: situations, isPending } = useMarketSituationQuery();
 
   useEffect(() => {
     if (!situations || situations.length === 0) return;
@@ -43,32 +45,17 @@ export default function MarketSituation() {
     };
   }, [situations, index]);
 
-  if (!situations || situations.length === 0) return <LinearProgress />;
-
-  const currentNews = situations[index];
-  const title = currentNews.title
-    .replace(/<b>|<\/b>/g, '')
-    .replace(/&quot;/g, '')
-    .slice(0, 25);
-  const description = currentNews.description
-    .replace(/<b>|<\/b>/g, '')
-    .replace(/&quot;/g, '')
-    .slice(0, 30);
-  const link = currentNews.link;
-
   if (isPending) return <LinearProgress />;
-  if (error)
-    return <Alert severity="error">데이터를 불러오는 중 오류 발생</Alert>;
+
+  const currentNews = situations?.[index];
 
   return (
-    <>
-      <header className="flex items-end gap-3">
-        <span className="font-pretendard text-[1.5rem] font-bold text-main">
+    <div className="flex flex-col gap-4">
+      <header className="flex items-end gap-2">
+        <span className="font-pretendard text-2xl max-[475px]:text-xl font-bold text-main_dark">
           시황
         </span>
-        <span className="pb-1 text-gray-500 font-ng max-[1525px]:text-xs">
-          {today}
-        </span>
+        <span className="text-gray-500 font-ng text-xs">{today}</span>
       </header>
       <article className="relative h-10 p-2 rounded-lg flex items-center">
         <button
@@ -76,16 +63,15 @@ export default function MarketSituation() {
           type="button"
           ref={containerRef}
           className="absolute overflow-hidden whitespace-nowrap text-ellipsis inset-0 flex items-center animate-marqueeY cursor-pointer"
-          onClick={() => window.open(link, '_blank')}
+          onClick={() => window.open(currentNews?.url, '_blank')}
         >
-          <span className="text-main font-semibold max-[1100px]:text-xs">
-            {title}
-          </span>
-          <span className="text-gray-700 pl-2 max-[1100px]:text-xs">
-            {description}...
+          <span className="font-semibold max-[1100px]:text-xs">
+            {currentNews?.title}
           </span>
         </button>
       </article>
-    </>
+    </div>
   );
 }
+
+export default memo(MarketSituation);

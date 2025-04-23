@@ -1,26 +1,19 @@
+import { memo } from 'react';
 import { useVideosQuery } from '@/hooks/useVideosQuery';
 import { useTheme } from '@mui/material/styles';
-import { Alert } from '@mui/material';
 import PendingUI from '../shared/PendingUI';
 import VideosUI from './VideosUI';
 
-export default function Videos() {
+function Videos() {
   const theme = useTheme();
 
-  // const { data: videos = [], isLoading, error } = useVideosQuery('코인 추천');
-  const videos = [];
-  const isLoading = false;
-  const error = false;
+  const { data: videos, isPending, error } = useVideosQuery('코인 추천');
 
-  if (isLoading) return <PendingUI />;
+  if (isPending) return <PendingUI />;
 
-  if (error) {
-    return (
-      <Alert severity="error">
-        유튜브 영상 다운로드 중 에러가 발생했습니다.
-      </Alert>
-    );
-  }
+  if (error) throw new Error('유튜브 영상 다운로드 중 에러가 발생했습니다.');
 
   return <VideosUI videos={videos} theme={theme} />;
 }
+
+export default memo(Videos);

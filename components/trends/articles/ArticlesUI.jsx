@@ -1,71 +1,81 @@
-import { Snackbar, Alert } from '@mui/material';
+import Image from 'next/image';
 
-export default function Articles({ articles, open, handleClose }) {
-  const formatDate = pubDate => {
-    const date = new Date(pubDate);
-    const year = date.getFullYear();
-    const month = date.getMonth() + 1;
-    const day = date.getDate();
-    const hour = date.getHours();
-    const minute = date.getMinutes();
-    return `${year}년 ${month}월 ${day}일 ${hour}시 ${minute}분`;
-  };
-
-  const formattedArticles = articles.map(article => ({
-    ...article,
-    pubDate: formatDate(article.pubDate),
-  }));
-
+export default function ArticlesUI({ articles }) {
   return (
-    <>
+    <div className="flex flex-col gap-4">
       <header>
-        <span className="font-pretendard text-[1.5rem] font-bold text-main">
-          트렌드 뉴스
+        <span className="font-pretendard text-2xl max-[475px]:text-xl font-bold text-main_dark">
+          글로벌 토픽
         </span>
       </header>
       <article className="grid grid-cols-2 gap-2">
-        {formattedArticles.slice(0, 6).map(article => {
+        {articles.slice(0, 6).map(article => {
           const title = article.title
             .replace(/<b>|<\/b>/g, '')
             .replace(/&quot;/g, '');
 
           return (
-            <div key={article.link} className="flex pb-2">
+            <div key={article.url} className="flex pb-2">
               <button
                 aria-label="기사 원본으로 이동하기"
                 type="button"
-                className="whitespace-nowrap overflow-hidden text-ellipsis font-ng max-[1100px]:text-xs cursor-pointer hover:opacity-50 transition-all duration-200 ease-in-out"
-                onClick={() => window.open(article.originallink, '_blank')}
+                className="w-full flex gap-2 cursor-pointer hover:opacity-50 transition-all duration-200 ease-in-out"
+                onClick={() => window.open(article.url, '_blank')}
               >
-                {title}
+                <Image
+                  src={article.imageUrl}
+                  alt={title}
+                  width={80}
+                  height={0}
+                  className="w-[5rem] h-full object-cover rounded-lg flex-shrink-0"
+                  priority
+                />
+                <div className="flex flex-col gap-1 overflow-hidden">
+                  <span className="font-ng max-[1100px]:text-xs text-left line-clamp-2">
+                    {article.title}
+                  </span>
+                  <span className="font-ng text-xs text-left text-gray-500">
+                    {article.timestamp}
+                  </span>
+                </div>
               </button>
             </div>
           );
         })}
-        {formattedArticles.slice(6).map(article => {
+
+        {articles.slice(6).map(article => {
           const title = article.title
             .replace(/<b>|<\/b>/g, '')
             .replace(/&quot;/g, '');
 
           return (
-            <div key={article.link} className="flex pb-2">
+            <div key={article.url} className="flex pb-2">
               <button
                 type="button"
-                className="whitespace-nowrap overflow-hidden text-ellipsis font-ng max-[1100px]:text-xs cursor-pointer hover:opacity-50 transition-all duration-200 ease-in-out"
-                onClick={() => window.open(article.originallink, '_blank')}
+                className="w-full flex gap-2 cursor-pointer hover:opacity-50 transition-all duration-200 ease-in-out"
+                onClick={() => window.open(article.url, '_blank')}
               >
-                {title}
+                <Image
+                  src={article.imageUrl}
+                  alt={title}
+                  width={80}
+                  height={0}
+                  className="w-[5rem] h-auto object-cover rounded-lg flex-shrink-0"
+                  priority
+                />
+                <div className="flex flex-col gap-1 overflow-hidden">
+                  <span className="font-ng max-[1100px]:text-xs text-left line-clamp-2">
+                    {article.title}
+                  </span>
+                  <span className="font-ng text-xs text-left text-gray-500">
+                    {article.timestamp}
+                  </span>
+                </div>
               </button>
             </div>
           );
         })}
       </article>
-
-      <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
-        <Alert onClose={handleClose} severity="success" variant="filled">
-          링크가 클립보드에 복사되었습니다
-        </Alert>
-      </Snackbar>
-    </>
+    </div>
   );
 }

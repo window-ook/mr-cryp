@@ -46,45 +46,29 @@ export default async function handler(req, res) {
 
     await page.waitForSelector(
       'table.BasicTable.CryptNewsTable.CryptNewsTable--Period',
-      {
-        visible: true,
-        timeout: 10000,
-      },
+      { visible: true, timeout: 10000 },
     );
 
-    const buttonSelector = 'div.LineArticle_Table div.LineArticle_More a';
+    await page.waitForSelector('[class*="MoreBtn"]', {
+      visible: true,
+      timeout: 10000,
+    });
 
-    // 버튼이 존재하는지 확인
-    const isButtonVisible = await page.evaluate(selector => {
-      const button = document.querySelector(selector);
-      return !!button && button.offsetParent !== null;
-    }, buttonSelector);
+    let clickSuccess = false;
+    if (!clickSuccess) {
+      const selectors = ['[class*="MoreBtn"]'];
 
-    try {
-      if (isButtonVisible) {
-        await page.click(buttonSelector);
-        console.log('클래스명으로 버튼 클릭 성공');
-      } else {
-        // 2. 텍스트 콘텐츠로 시도
-        const viewAllButton = await page.evaluateHandle(() => {
-          // 모든 a 태그 중에서 '전체보기'라는 텍스트를 포함한 요소 찾기
-          const allLinks = Array.from(document.querySelectorAll('a'));
-          return allLinks.find(
-            link =>
-              link.textContent?.includes('전체보기') ||
-              Array.from(link.querySelectorAll('span')).some(span =>
-                span.textContent?.includes('전체보기'),
-              ),
-          );
-        });
-
-        if (viewAllButton) {
-          await viewAllButton.click();
-          console.log('텍스트 내용으로 버튼 클릭 성공');
+      for (const selector of selectors) {
+        try {
+          await page.waitForSelector(selector, { timeout: 1000 });
+          await page.click(selector);
+          clickSuccess = true;
+          console.log(`선택자 '${selector}'로 클릭 성공`);
+          break;
+        } catch (e) {
+          console.log(`선택자 '${selector}'로 클릭 실패:`, e.message);
         }
       }
-    } catch (error) {
-      console.error(error);
     }
 
     await new Promise(resolve => setTimeout(resolve, 2000));
@@ -141,8 +125,14 @@ export default async function handler(req, res) {
   } catch (error) {
     console.error('기간별 상승률 fetch error:', error);
 
-    await browser.close();
-    browser = null;
+    if (browser) {
+      try {
+        await browser.close();
+      } catch (e) {
+        console.error('브라우저 종료 중 오류:', e);
+      }
+      browser = null;
+    }
 
     return res.status(500).json({
       status: 500,

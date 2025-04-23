@@ -4,8 +4,8 @@ import Video from './Video';
 
 export default function VideosUI({ videos, theme }) {
   return (
-    <article className="w-full">
-      <span className="font-pretendard text-[1.5rem] font-bold text-main">
+    <article className="w-full flex flex-col gap-4">
+      <span className="font-pretendard text-2xl max-[475px]:text-xl font-bold text-main_dark">
         트렌드 영상
       </span>
       <Grid container spacing={2}>

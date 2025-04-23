@@ -11,9 +11,18 @@ const fetchVideos = async newKeyword => {
 export function useVideosQuery(keyword) {
   return useQuery({
     queryKey: ['videos', keyword],
-    queryFn: () => fetchVideos(keyword),
+    queryFn: async () => {
+      const data = await fetchVideos(keyword);
+      data.sort((a, b) => {
+        const dateA = new Date(a.snippet.publishTime);
+        const dateB = new Date(b.snippet.publishTime);
+        return dateB - dateA;
+      });
+      return data;
+    },
     staleTime: 1000 * 60 * 10,
     gcTime: 1000 * 60 * 10,
     enabled: !!keyword,
+    refetchOnWindowFocus: false,
   });
 }
