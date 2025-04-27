@@ -1,6 +1,3 @@
-/** @type {import('tailwindcss').Config} */
-const plugin = require('tailwindcss/plugin');
-
 module.exports = {
   mode: 'jit',
   content: [
@@ -71,7 +68,7 @@ module.exports = {
     },
   },
   plugins: [
-    plugin(function ({ matchUtilities, theme }) {
+    function ({ matchUtilities, theme }) {
       matchUtilities(
         {
           'text-shadow': value => ({
@@ -80,6 +77,6 @@ module.exports = {
         },
         { values: theme('textShadow') },
       );
-    }),
+    },
   ],
 };
