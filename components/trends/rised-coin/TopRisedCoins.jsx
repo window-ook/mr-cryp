@@ -33,7 +33,7 @@ function TopRisedCoins() {
 
   return (
     <div className="w-full flex flex-col gap-4">
-      <p className="mb-2 text-2xl max-[475px]:text-xl font-pretendard font-bold text-main_dark">
+      <p className="mb-2 text-2xl max-[475px]:text-xl font-pretendard font-bold text-main-dark">
         기간별 상승률 TOP
       </p>
 
@@ -46,7 +46,7 @@ function TopRisedCoins() {
               onClick={() => setSelectedPeriod(period.value)}
               className={`px-4 py-2 rounded-md max-[530px]:text-xs transition-all duration-200 ${
                 selectedPeriod === period.value
-                  ? 'bg-main text-white font-medium shadow-sm'
+                  ? 'bg-main text-white font-medium shadow-xs'
                   : 'bg-white text-gray-600 hover:bg-gray-50'
               }`}
             >
@@ -83,7 +83,7 @@ function TopRisedCoins() {
               <span className="col-span-4 font-ng text-gray-400">
                 {coin.market}
               </span>
-              <span className="col-span-4 text-color_pos text-right">
+              <span className="col-span-4 text-color-pos text-right">
                 {coin.periods[selectedPeriod]}
               </span>
             </div>

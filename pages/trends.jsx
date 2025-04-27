@@ -38,33 +38,31 @@ export default function Trends({ exchangeRates }) {
         <title>오늘 트렌드 - 미스터 크립</title>
       </Head>
       <main className="py-6 flex flex-col items-center w-full h-full">
-        <div className="w-4/5 grid grid-cols-[3fr,2fr] max-[900px]:grid-cols-1 gap-6 h-full">
-          {/* 실시간 환율 */}
-          <section className="col-start-1 p-4 rounded-lg bg-gray-100 shadow h-full">
+        <div className="w-4/5 grid grid-cols-[3fr_2fr] max-[900px]:grid-cols-1 gap-6 h-full">
+          <section className="col-start-1 p-4 rounded-lg bg-gray-100 shadow-sm h-full">
             <ExchangeRate exchangeRates={exchangeRates} />
           </section>
 
           <section className="col-start-2 max-[900px]:col-start-1 row-span-2 h-full gap-4 ">
-            {/* 기간별 상승률 */}
-            <article className="p-4 bg-gray-100 rounded-lg shadow h-full">
+            <article className="p-4 bg-gray-100 rounded-lg shadow-sm h-full">
               <TopRisedCoins />
             </article>
           </section>
 
           <section className="col-start-1 grid grid-rows-[auto, 1fr] gap-4 h-full">
-            <article className="p-4 bg-emerald-200 rounded-lg shadow">
+            <article className="p-4 bg-emerald-200 rounded-lg shadow-sm">
               <MarketSituation />
             </article>
-            <article className="p-4 bg-gray-100 rounded-lg shadow h-full">
+            <article className="p-4 bg-gray-100 rounded-lg shadow-sm h-full">
               <Articles />
             </article>
           </section>
 
-          <section className="col-start-1 p-4 bg-gray-100 rounded-lg shadow h-full">
+          <section className="col-start-1 p-4 bg-gray-100 rounded-lg shadow-sm h-full">
             <Videos />
           </section>
 
-          <section className="col-start-2 max-[900px]:col-start-1 p-4 bg-gray-100 rounded-lg shadow h-full">
+          <section className="col-start-2 max-[900px]:col-start-1 p-4 bg-gray-100 rounded-lg shadow-sm h-full">
             <Informations />
           </section>
         </div>

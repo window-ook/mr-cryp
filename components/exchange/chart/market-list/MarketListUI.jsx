@@ -1,18 +1,15 @@
 import { useMemo } from 'react';
-import { styled } from '@mui/system';
-import { globalColors } from '@/globalColors';
-import { TableContainer, TextField, InputAdornment } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 
-const StyledTableContainer = styled(TableContainer)(() => ({
-  maxWidth: '100%',
-  height: 'calc(58rem - 3.438rem)',
-  overflowY: 'auto',
-  overflowX: 'hidden',
-  margin: 0,
-  padding: 0,
-  backgroundColor: globalColors.white,
-}));
+const TableHeader = ({ w, py = 'py-[0.25rem]', text }) => {
+  return (
+    <th className={`${w} ${py}`}>
+      <span className="font-ng font-bold text-white text-xs max-[900px]:text-[0.5rem]">
+        {text}
+      </span>
+    </th>
+  );
+};
 
 export default function MarketList({
   keyword,
@@ -35,54 +32,35 @@ export default function MarketList({
   }, [tickers, keyword, codeMap]);
 
   return (
-    <section>
-      <TextField
-        aria-label="마켓 검색"
-        label="마켓 검색"
-        id="outlined"
-        fullWidth
-        value={keyword}
-        onChange={handleSearchChange}
-        InputProps={{
-          endAdornment: (
-            <InputAdornment position="end">
-              <SearchIcon />
-            </InputAdornment>
-          ),
-        }}
-        sx={{ bgcolor: 'white', borderRadius: 1 }}
-      />
-      <StyledTableContainer>
+    <div className="flex flex-col h-full">
+      <div className="relative w-full">
+        <input
+          aria-label="마켓 검색"
+          type="text"
+          className="w-full h-[2.5rem] px-1 border border-none focus:outline-none focus:ring-1 focus:ring-main-dark bg-white"
+          placeholder="마켓 검색"
+          value={keyword}
+          onChange={handleSearchChange}
+        />
+        <div className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500">
+          <SearchIcon />
+        </div>
+      </div>
+      <div className="max-w-full h-[calc(58rem-2.7rem)] overflow-y-auto overflow-x-hidden m-0 p-0 bg-white">
         <table className="w-full">
           <thead className="sticky top-0 z-10 bg-main">
             <tr>
-              <th className="w-[6.75rem] py-[0.25rem]">
-                <span className="font-ng font-bold text-white text-xs max-[900px]:text-[0.5rem]">
-                  코인
-                </span>
-              </th>
-              <th className="w-[4rem] py-[0.25rem]">
-                <span className="font-ng font-bold text-white text-xs max-[900px]:text-[0.5rem]">
-                  현재가
-                </span>
-              </th>
-              <th className="w-[4rem] py-[0.25rem]">
-                <span className="font-ng font-bold text-white text-xs max-[900px]:text-[0.5rem]">
-                  전일대비
-                </span>
-              </th>
-              <th className="w-[4rem] py-[0.25rem]">
-                <span className="font-ng font-bold text-white text-xs max-[900px]:text-[0.5rem]">
-                  거래대금
-                </span>
-              </th>
+              <TableHeader w="w-[6.75rem]" text="코인" />
+              <TableHeader w="w-[4rem]" text="현재가" />
+              <TableHeader w="w-[4rem]" text="전일대비" />
+              <TableHeader w="w-[4rem]" text="거래대금" />
             </tr>
           </thead>
           <tbody>
             {filteredTickers &&
               filteredTickers.map(ticker => (
                 <tr
-                  className="hover:bg-list_hover cursor-pointer"
+                  className="hover:bg-list-hover cursor-pointer transition-all duration-150 ease-in"
                   key={`${ticker.acc_trade_price} + ${ticker.signed_change_rate}`}
                   onClick={() => {
                     handleRowClick(
@@ -93,22 +71,22 @@ export default function MarketList({
                     );
                   }}
                 >
-                  <td className="table-cell w-[6.75rem] border-b-[0.063rem] border-color:rgba(224, 224, 224, 1)] border-solid">
+                  <td className="table-cell w-[6.75rem] px-0.5 border-b-[0.063rem] border-b-[#e0e0e0]">
                     <div className="flex flex-col">
                       <span className="font-ng font-bold text-xs">
                         {codeMap[ticker.code] || codeMap[ticker.market]}
                       </span>
-                      <span className="text-market_code text-xs">
+                      <span className="text-market-code text-xs">
                         {ticker.code || ticker.market}
                       </span>
                     </div>
                   </td>
                   <td
-                    className={`table-cell w-[4rem] border-b-[0.063rem] border-color:rgba(224, 224, 224, 1)] border-solid text-right ${
+                    className={`table-cell w-[4rem] px-0.5 border-b-[0.063rem] border-b-[#e0e0e0] text-right ${
                       ticker.signed_change_rate > 0
-                        ? 'text-color_pos'
+                        ? 'text-pos'
                         : ticker.signed_change_rate < 0
-                          ? 'text-color_neg'
+                          ? 'text-neg'
                           : 'text-black'
                     }`}
                   >
@@ -120,11 +98,11 @@ export default function MarketList({
                     </span>
                   </td>
                   <td
-                    className={`table-cell w-[4rem] border-b-[0.063rem] border-color:rgba(224, 224, 224, 1)] border-solid text-right ${
+                    className={`table-cell w-[4rem] px-0.5 border-b-[0.063rem] border-b-[#e0e0e0] text-right ${
                       ticker.signed_change_rate > 0
-                        ? 'text-color_pos'
+                        ? 'text-pos'
                         : ticker.signed_change_rate < 0
-                          ? 'text-color_neg'
+                          ? 'text-neg'
                           : 'text-black'
                     }`}
                   >
@@ -132,12 +110,12 @@ export default function MarketList({
                       <span className="font-onetitle font-bold text-[0.6rem]">
                         {(ticker.signed_change_rate * 100).toFixed(2)}%
                       </span>
-                      <span className="font-onetitle text-market_code text-[0.6rem]">
+                      <span className="font-onetitle text-market-code text-[0.6rem]">
                         {ticker.signed_change_price.toLocaleString()}
                       </span>
                     </div>
                   </td>
-                  <td className="table-cell w-[4rem] border-b-[0.063rem] border-color:rgba(224, 224, 224, 1)] border-solid whitespace-nowrap">
+                  <td className="table-cell w-[4rem] px-0.5 border-b-[0.063rem] border-b-[#e0e0e0] whitespace-nowrap">
                     <div className="flex flex-col">
                       <span className="font-onetitle text-[0.6rem]">
                         {Math.round(
@@ -151,7 +129,7 @@ export default function MarketList({
               ))}
           </tbody>
         </table>
-      </StyledTableContainer>
-    </section>
+      </div>
+    </div>
   );
 }

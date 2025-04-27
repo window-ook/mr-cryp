@@ -1,19 +1,7 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-::-webkit-scrollbar {
-  width: 8px;
-}
-::-webkit-scrollbar-track {
-  background: #f1f1f1;
-}
-::-webkit-scrollbar-thumb {
-  background: #888;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: #555;
-}
+/* 폰트 소스 경로  */
+@import url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF.woff');
+@import url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/ONE-Mobile-Title.woff');
+@import url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/SBAggroB.woff');
 
 /* 넥슨 Lv.1 고딕 - 기본 폰트 */
 @font-face {
@@ -45,6 +33,20 @@
   font-display: swap;
 }
 
+@import 'tailwindcss';
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
 
 body {
   overflow-y: scroll;
@@ -52,67 +54,45 @@ body {
   scrollbar-color: #888 #f1f1f1;
   margin: 0;
   padding: 0;
-  font-family: 'NEXON Lv1 Gothic Low OTF', Arial, sans-serif;
 }
 
-.ask-volume {
-  padding: 0;
-  background-color: #b6f5fa;
-}
+@theme {
+  /* 색상 */
+  --color-main: #0ac483;
+  --color-main-light: #41fab9;
+  --color-main-dark: #07a36c;
 
-.bid-volume {
-  padding: 0;
-  background-color: #f5bfd0;
-}
+  --color-pos: #fa0015;
+  --color-neg: #000cfa;
+  --color-market-code: #8c8b88;
+  --color-list-hover: #e1e3e1;
 
-.alone-table {
-  max-width: '62.5rem';
-  margin-top:  '1rem';
-  border-radius: '0.5rem';
-  background-color: #fff;
-  border-collapse: collapse;
-  overflow: hidden;
-}
+  /* 폰트 */
+  --font-pretendard: 'Pretendard';
+  --font-ng: 'NEXON Lv1 Gothic OTF';
+  --font-onetitle: 'ONE-Mobile-Title';
+  --font-aggro: 'SBAggroB';
 
-.alone-thead {
-  background-color: #ff63ac;
-}
+  --select-1120: '1120px';
 
-.alone-table-th,
-.alone-table-td {
-  width: 33.33%;
-  border-bottom: 1px solid #ddd; 
-  text-align: center; 
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
-}
+  --text-shadow-black: 0 2px 4px rgba(0, 0, 0, 0.8);
+  --text-shadow-none: none;
 
-.alone-table-th {
-  font-weight: bold; 
-  font-size: 1.2rem;
-  background-color: #ff63ac;
-}
+  --shadow-main: 0px 3px 10px #07a36c;
 
-.center {
-  padding: 1.5rem;
-}
+  /* 마키 */
+  --animate-marqueeX: marqueeX 20s linear infinite;
+  --animate-marqueeY: marqueeY 5s linear infinite;
 
-@media (max-width: 900px) {
-  .alone-table {
-    width: 100%; 
-    max-width: 100%;
-    font-size: 0.8rem; 
+  @keyframes marqueeX {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-100%); }
   }
-}
-
-@media (max-width: 600px) {
-  .alone-table-th,
-  .alone-table-td {
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
-  }
-  
-  .alone-table-th {
-    font-size: 1rem
+    
+  @keyframes marqueeY {
+      0% { opacity: 0; transform: translateY(20px); }    
+      10% { opacity: 1; transform: translateY(0); }
+      90% { opacity: 1; transform: translateY(0); }
+      100% { opacity: 0; transform: translateY(-20px); }
   }
 }

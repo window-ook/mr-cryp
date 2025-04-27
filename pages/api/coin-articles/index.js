@@ -91,7 +91,7 @@ export default async function handler(req, res) {
           }
         });
 
-        return articles;
+        return articles.slice(0, 12);
       } catch (e) {
         console.error('데이터 추출 중 오류:', e);
         return { error: e.toString() };

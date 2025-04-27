@@ -43,6 +43,13 @@ export default async function handler(req, res) {
       }
     });
 
+    // 페이지 로드 시 오류 처리
+    page.on('error', err => {
+      console.error('페이지 오류:', err);
+    });
+
+    console.log('페이지 이동 시작...');
+
     await page.goto('https://www.tokenpost.kr/news/market', {
       waitUntil: 'domcontentloaded',
       timeout: 10000,
@@ -52,6 +59,8 @@ export default async function handler(req, res) {
       visible: true,
       timeout: 10000,
     });
+
+    console.log('선택자 감지됨, 데이터 추출 중...');
 
     const data = await page.evaluate(() => {
       try {

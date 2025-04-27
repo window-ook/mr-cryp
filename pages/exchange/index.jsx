@@ -57,7 +57,7 @@ export default function Chart({ marketCodes }) {
         <title>거래소 - 미스터 크립</title>
       </Head>
       <main className="mt-12 mb-12">
-        <div className="container mx-auto max-w-[75rem] h-[58rem] border border-gray-300 shadow-mainShadow">
+        <div className="container mx-auto max-w-[75rem] h-[58rem] border border-gray-300 shadow-main">
           <div className="flex flex-wrap">
             {/* 1열 */}
             <section className="w-full md:w-3/12">

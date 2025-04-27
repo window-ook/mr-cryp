@@ -11,6 +11,13 @@ export default async function handler(req, res) {
     const executablePath = await chromium.executablePath;
 
     browser = await puppeteerCore.launch({
+      args: [
+        ...chromium.args,
+        '--hide-scrollbars',
+        '--disable-web-security',
+        '--no-sandbox',
+        '--disable-setuid-sandbox',
+      ],
       defaultViewport: chromium.defaultViewport,
       headless: true,
       args: [...chromium.args, '--hide-scrollbars', '--disable-web-security'],
@@ -43,15 +50,26 @@ export default async function handler(req, res) {
       }
     });
 
+    // 페이지 로드 시 오류 처리
+    page.on('error', err => {
+      console.error('페이지 오류:', err);
+    });
+
+    console.log('페이지 이동 시작...');
+
     await page.goto('https://www.tokenpost.kr/', {
       waitUntil: 'domcontentloaded',
-      timeout: 10000,
+      timeout: 30000,
     });
+
+    console.log('페이지 로드 완료, 선택자 대기 중...');
 
     await page.waitForSelector('div.main_news_category .category_item', {
       visible: true,
-      timeout: 10000,
+      timeout: 30000,
     });
+
+    console.log('선택자 감지됨, 데이터 추출 중...');
 
     const data = await page.evaluate(() => {
       try {
@@ -59,17 +77,20 @@ export default async function handler(req, res) {
           'div.main_news_category .category_item',
         );
 
+        if (!categoryItems || categoryItems.length === 0) {
+          return { error: 'No category items found' };
+        }
+
         const articles = [];
 
         categoryItems.forEach(item => {
           try {
             // 로고
             const imageElement = item.querySelector('.category_item_image a');
-            const imageUrl = imageElement
-              ? imageElement.querySelector('img')
+            const imageUrl =
+              imageElement && imageElement.querySelector('img')
                 ? imageElement.querySelector('img').src
-                : null
-              : null;
+                : null;
 
             // 제목
             const textElement = item.querySelector('.category_item_text a');
@@ -95,7 +116,7 @@ export default async function handler(req, res) {
           }
         });
 
-        return articles;
+        return articles.slice(0, 12);
       } catch (e) {
         console.error('데이터 추출 중 오류:', e);
         return { error: e.toString() };

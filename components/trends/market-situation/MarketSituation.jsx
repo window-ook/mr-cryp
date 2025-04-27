@@ -52,7 +52,7 @@ function MarketSituation() {
   return (
     <div className="flex flex-col gap-4">
       <header className="flex items-end gap-2">
-        <span className="font-pretendard text-2xl max-[475px]:text-xl font-bold text-main_dark">
+        <span className="font-pretendard text-2xl max-[475px]:text-xl font-bold text-main-dark">
           시황
         </span>
         <span className="text-gray-500 font-ng text-xs">{today}</span>
