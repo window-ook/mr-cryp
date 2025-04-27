@@ -4,7 +4,7 @@ function ExchangeRate({ exchangeRates }) {
   return (
     <div className="flex flex-col gap-4">
       <header>
-        <span className="font-pretendard text-2xl max-[475px]:text-xl font-bold text-main_dark">
+        <span className="font-pretendard text-2xl max-[475px]:text-xl font-bold text-main-dark">
           오늘 환율
         </span>
       </header>
@@ -13,8 +13,8 @@ function ExchangeRate({ exchangeRates }) {
           {exchangeRates.map(({ currency, rate }) => {
             return (
               <li key={currency}>
-                <span className="font-ng max-[1100px]:text-xs">
-                  <span className="font-bold">{currency}</span>{' '}
+                <span className="font-ng max-[1100px]:text-xs text-lg">
+                  <span className="font-bold text-main-dark">{currency}</span>{' '}
                   {rate.toFixed(2)}원
                 </span>
               </li>

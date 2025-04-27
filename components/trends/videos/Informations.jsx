@@ -31,7 +31,7 @@ function Informations() {
 
   return (
     <article className="flex flex-col gap-4">
-      <span className="text-2xl max-[475px]:text-xl font-pretendard font-bold text-main_dark">
+      <span className="text-2xl max-[475px]:text-xl font-pretendard font-bold text-main-dark">
         도움 자료
       </span>
       <div className="grid grid-cols-2 gap-6">

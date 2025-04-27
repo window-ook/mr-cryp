@@ -65,7 +65,7 @@ export default function Orderbook({ orderbookData }) {
               .reverse()
               .map((element, index) => (
                 <tr key={`${element.ask_price}${index}`}>
-                  <td className="table-cell w-1/3 py-1 bg-[#b6f5fa] h-[1rem] border-b-[0.063rem] border-color:rgba(224, 224, 224, 1)] border-solid">
+                  <td className="table-cell w-1/3 py-1 bg-[#b6f5fa] h-[1rem] border-b-[0.063rem] border-b-[#e0e0e0]">
                     <div className="relative">
                       <PriceTypo
                         fontSize={10}
@@ -84,7 +84,7 @@ export default function Orderbook({ orderbookData }) {
                       />
                     </div>
                   </td>
-                  <td className="table-cell w-1/3 p-1 border-b-[0.063rem] border-color:rgba(224, 224, 224, 1)] border-solid">
+                  <td className="table-cell w-1/3 p-1 border-b-[0.063rem] border-b-[#e0e0e0]">
                     <div className="flex justify-between">
                       <PriceTypo
                         color={numColor}
@@ -103,15 +103,15 @@ export default function Orderbook({ orderbookData }) {
                       </PriceTypo>
                     </div>
                   </td>
-                  <td className="table-cell w-1/3 p-1 border-b-[0.063rem] border-color:rgba(224, 224, 224, 1)] border-solid" />
+                  <td className="table-cell w-1/3 p-1 border-b-[0.063rem] border-b-[#e0e0e0]" />
                 </tr>
               ))}
 
             {/* 매수 */}
             {[...orderbookData.orderbook_units].map((element, index) => (
               <tr key={`bid_${index}`}>
-                <td className="table-cell w-1/3 p-1 border-b-[0.063rem] border-color:rgba(224, 224, 224, 1)] border-solid" />
-                <td className="table-cell w-1/3 p-1 border-b-[0.063rem] border-color:rgba(224, 224, 224, 1)] border-solid">
+                <td className="table-cell w-1/3 p-1 border-b-[0.063rem] border-b-[#e0e0e0]" />
+                <td className="table-cell w-1/3 p-1 border-b-[0.063rem] border-b-[#e0e0e0]">
                   <div className="flex justify-between">
                     <PriceTypo
                       color={numColor}
@@ -130,7 +130,7 @@ export default function Orderbook({ orderbookData }) {
                     </PriceTypo>
                   </div>
                 </td>
-                <td className="table-cell w-1/3 py-1 bg-[#f5bfd0] h-[1rem] border-b-[0.063rem] border-color:rgba(224, 224, 224, 1)] border-solid">
+                <td className="table-cell w-1/3 py-1 bg-[#f5bfd0] h-[1rem] border-b-[0.063rem] border-b-[#e0e0e0]">
                   <div className="relative">
                     <PriceTypo
                       fontSize={10}

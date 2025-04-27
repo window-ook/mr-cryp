@@ -4,7 +4,7 @@ export default function ArticlesUI({ articles }) {
   return (
     <div className="flex flex-col gap-4">
       <header>
-        <span className="font-pretendard text-2xl max-[475px]:text-xl font-bold text-main_dark">
+        <span className="font-pretendard text-2xl max-[475px]:text-xl font-bold text-main-dark">
           글로벌 토픽
         </span>
       </header>
@@ -27,7 +27,7 @@ export default function ArticlesUI({ articles }) {
                   alt={title}
                   width={80}
                   height={0}
-                  className="w-[5rem] h-full object-cover rounded-lg flex-shrink-0"
+                  className="w-[5rem] h-full object-cover rounded-lg shrink-0"
                   priority
                 />
                 <div className="flex flex-col gap-1 overflow-hidden">
@@ -60,7 +60,7 @@ export default function ArticlesUI({ articles }) {
                   alt={title}
                   width={80}
                   height={0}
-                  className="w-[5rem] h-auto object-cover rounded-lg flex-shrink-0"
+                  className="w-[5rem] h-auto object-cover rounded-lg shrink-0"
                   priority
                 />
                 <div className="flex flex-col gap-1 overflow-hidden">

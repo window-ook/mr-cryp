@@ -63,12 +63,12 @@ export default function NavBar({
                 </span>
               </div>
 
-              <div className="flex items-center gap-1 flex-grow pl-4">
+              <div className="flex items-center gap-1 grow pl-4">
                 {navbarMenu.map(page => (
                   <button
                     type="button"
                     key={page}
-                    className="min-w-fit py-6 px-4 whitespace-nowrap inline-flex flex-col flex-shrink-0 items-center text-white transition-all duration-200 ease-in-out"
+                    className="min-w-fit py-6 px-4 whitespace-nowrap inline-flex flex-col shrink-0 items-center text-white cursor-pointer hover:opacity-50 transition-all duration-200 ease-in-out"
                     onClick={() => handleCloseNavMenu(page)}
                   >
                     <span className="font-aggro text-xl text-shadow-black">
@@ -110,7 +110,7 @@ export default function NavBar({
             </div>
           ) : (
             <div className="flex justify-center items-center">
-              <div className="flex flex-grow">
+              <div className="flex grow">
                 <button
                   type="button"
                   className="p-2 text-white"
@@ -130,7 +130,7 @@ export default function NavBar({
                     <button
                       key={page}
                       type="button"
-                      className="w-full px-4 py-2 text-left hover:bg-gray-100"
+                      className="w-full px-4 py-2 text-left hover:bg-gray-100 cursor-pointer"
                       onClick={() => handleCloseNavMenu(page)}
                     >
                       <span className="font-bold font-ng text-center text-xl">
@@ -200,7 +200,7 @@ export default function NavBar({
             {subNavbarMenu.map(page => (
               <button
                 type="button"
-                className="min-w-fit pr-4 whitespace-nowrap inline-flex flex-col flex-shrink-0 items-center text-white transition-all duration-200 ease-in-out"
+                className="min-w-fit pr-4 whitespace-nowrap inline-flex flex-col shrink-0 items-center text-white cursor-pointer hover:opacity-50 transition-all duration-200 ease-in-out"
                 aria-label="서브 네브바 메뉴 버튼"
                 key={page}
                 onClick={() => handleToggleSubMenu(page)}

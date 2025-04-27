@@ -34,17 +34,17 @@ export default function TradeHistory({ tradeData }) {
               <tr
                 key={`${data.sequential_id}-${data.timestamp}-${Math.random()}`}
               >
-                <td className="table-cell w-1/4 border-b-[0.063rem] border-color:rgba(224, 224, 224, 1)] border-solid text-center">
+                <td className="table-cell w-1/4 border-b border-b-[#e0e0e0] text-center">
                   <NGTypo fontSize={12}>
                     {timestampToTime(data.timestamp)}
                   </NGTypo>
                 </td>
-                <td className="table-cell w-1/4 border-b-[0.063rem] border-color:rgba(224, 224, 224, 1)] border-solid text-center">
+                <td className="table-cell w-1/4 border-b border-b-[#e0e0e0] text-center">
                   <NGTypo fontSize={12}>
                     {Number(data.trade_price).toLocaleString()}원
                   </NGTypo>
                 </td>
-                <td className="table-cell w-1/4 border-b-[0.063rem] border-color:rgba(224, 224, 224, 1)] border-solid text-center">
+                <td className="table-cell w-1/4 border-b border-b-[#e0e0e0] text-center">
                   <PriceTypo
                     fontSize={12}
                     color={
@@ -56,7 +56,7 @@ export default function TradeHistory({ tradeData }) {
                     {data.trade_volume}
                   </PriceTypo>
                 </td>
-                <td className="table-cell w-1/4 border-b-[0.063rem] border-color:rgba(224, 224, 224, 1)] border-solid text-center">
+                <td className="table-cell w-1/4 border-b border-b-[#e0e0e0] text-center">
                   <PriceTypo
                     fontSize={12}
                     color={

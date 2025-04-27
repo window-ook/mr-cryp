@@ -6,7 +6,7 @@ const SubIndicator = ({ label, value, valueStyle }) => {
           {label}
         </span>
         <span
-          className={`font-onetitle text-[0.75rem] self-end ${valueStyle === 'neg' ? 'text-color_neg' : valueStyle === 'pos' ? 'text-color_pos' : 'text-black'}`}
+          className={`font-onetitle text-[0.75rem] self-end ${valueStyle === 'neg' ? 'text-color-neg' : valueStyle === 'pos' ? 'text-color-pos' : 'text-black'}`}
         >
           {Number(value).toLocaleString()}
         </span>
@@ -40,7 +40,7 @@ export default function MarketDetailUI({ codeMap, ticker, numColor }) {
             <span className={`font-bold ${numColor}`}>KRW</span>
           </div>
           <div className="flex justify-between gap-2 items-center">
-            <span className="text-[0.75rem] text-market_code font-bold">
+            <span className="text-[0.75rem] text-market-code font-bold">
               전일대비
             </span>
             <span className={`font-onetitle ${numColor}`}>
@@ -59,7 +59,7 @@ export default function MarketDetailUI({ codeMap, ticker, numColor }) {
         </section>
 
         <section className="flex gap-2 mr-2 max-[500px]:hidden">
-          <div className="flex flex-col justify-center flex-shrink flex-grow basis-full">
+          <div className="flex flex-col justify-center shrink grow basis-full">
             <SubIndicator
               label="고가"
               value={ticker.high_price}
@@ -71,7 +71,7 @@ export default function MarketDetailUI({ codeMap, ticker, numColor }) {
               valueStyle={'neg'}
             />
           </div>
-          <div className="flex flex-col justify-center flex-shrink flex-grow basis-full">
+          <div className="flex flex-col justify-center shrink grow basis-full">
             <SubIndicator
               label="52주 신고가"
               value={ticker.highest_52_week_price}
@@ -83,7 +83,7 @@ export default function MarketDetailUI({ codeMap, ticker, numColor }) {
               valueStyle={'neg'}
             />
           </div>
-          <div className="flex flex-col justify-center flex-shrink flex-grow basis-full">
+          <div className="flex flex-col justify-center shrink grow basis-full">
             <SubIndicator
               label="거래량(24H)"
               value={ticker.acc_trade_volume_24h}

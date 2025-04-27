@@ -1,19 +1,17 @@
-import { Grid, Box, Skeleton } from '@mui/material';
-
 export default function PendingUI() {
   return (
-    <Grid container spacing={2}>
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
       {Array.from(new Array(4)).map((_, index) => (
-        <Grid item xs={12} md={6} key={index}>
-          <Box sx={{ width: '18.75rem', mt: '0.188rem' }}>
-            <Skeleton variant="rectangular" width={210} height={130} />
-            <Box sx={{ pt: 0.5 }}>
-              <Skeleton />
-              <Skeleton width="60%" />
-            </Box>
-          </Box>
-        </Grid>
+        <div key={index} className="w-full">
+          <div className="w-[10rem] mt-[0.7rem]">
+            <div className="bg-gray-200 w-[10rem] h-[5rem] animate-pulse rounded"></div>
+            <div className="pt-2">
+              <div className="h-4 bg-gray-200 rounded w-full animate-pulse mb-2"></div>
+              <div className="h-4 bg-gray-200 rounded w-3/5 animate-pulse"></div>
+            </div>
+          </div>
+        </div>
       ))}
-    </Grid>
+    </div>
   );
 }
