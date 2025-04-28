@@ -1,8 +1,8 @@
 import { useMemo, useEffect, useState } from 'react';
-import { LinearProgress } from '@mui/material';
 import { useSelector } from 'react-redux';
 import axios from 'axios';
 import MarketDetailUI from './MarketDetailUI';
+import LinearProgress from '@/components/shared/LinearProgress';
 
 export default function MarketDetail({ marketCodes }) {
   const [isLoading, setIsLoading] = useState(true);
@@ -20,6 +20,7 @@ export default function MarketDetail({ marketCodes }) {
 
   useEffect(() => {
     if (!code) return;
+
     const fetchTicker = async () => {
       try {
         const response = await axios.get(`/api/upbit/tickers?markets=${code}`);
@@ -30,6 +31,7 @@ export default function MarketDetail({ marketCodes }) {
         setIsLoading(false);
       }
     };
+
     fetchTicker();
     const interval = setInterval(fetchTicker, intervalTime);
     return () => clearInterval(interval);
@@ -39,12 +41,16 @@ export default function MarketDetail({ marketCodes }) {
     ticker && ticker.signed_change_rate === 0
       ? 'text-black'
       : ticker && ticker.signed_change_rate > 0
-        ? 'text-color-pos'
-        : 'text-color-neg';
+        ? 'text-pos'
+        : 'text-neg';
 
-  if (isLoading) return <LinearProgress color="primary" />;
+  if (isLoading) return <LinearProgress />;
 
-  return (
-    <MarketDetailUI codeMap={codeMap} ticker={ticker} numColor={numColor} />
-  );
+  const props = {
+    codeMap,
+    ticker,
+    numColor,
+  };
+
+  return <MarketDetailUI {...props} />;
 }

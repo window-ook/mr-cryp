@@ -7,9 +7,9 @@ import {
   setCurrPrice,
   setKeyword,
 } from '@/utils/redux/chartSlice';
-import { LinearProgress } from '@mui/material';
 import axios from 'axios';
 import MarketListUI from './MarketListUI';
+import LinearProgress from '@/components/shared/LinearProgress';
 
 function MarketList({ marketCodes }) {
   const [isLoading, setIsLoading] = useState(true);
@@ -72,7 +72,7 @@ function MarketList({ marketCodes }) {
     handleSearchChange,
   };
 
-  if (isLoading) return <LinearProgress color="primary" />;
+  if (isLoading) return <LinearProgress />;
 
   return <MarketListUI {...props} />;
 }

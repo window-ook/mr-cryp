@@ -30,7 +30,7 @@ const Navbar = () => {
         <div className="flex gap-6">
           <a
             onClick={handleRoute}
-            className=" w-[6rem] h-[2rem] rounded-md cursor-pointer hover:opacity-40 transition duration-100 ease-in"
+            className=" w-[6rem] h-[2rem] rounded-md cursor-pointer hover:opacity-40 transition duration-150 ease"
           >
             <span className="text-xl max-sm:text-lg font-bold text-black font-onetitle">
               시작하기
@@ -105,18 +105,33 @@ const Marquee = () => {
   ];
 
   return (
-    <div className="pt-4 flex gap-6 animate-marqueeX whitespace-nowrap">
-      {[...logos, ...logos].map(logo => (
-        <Image
-          key={crypto.randomUUID()}
-          src={`/images/marquee/${logo}`}
-          alt="coin logo images"
-          width={80}
-          height={80}
-          className="h-auto max-sm:w-[10%]"
-          draggable="false"
-        />
-      ))}
+    <div className="flex gap-6">
+      {/* <div className="pt-4 flex gap-6 animate-marqueeX-1 whitespace-nowrap">
+        {[...logos].map(logo => (
+          <Image
+            key={crypto.randomUUID()}
+            src={`/images/marquee/${logo}`}
+            alt="coin logo images"
+            width={80}
+            height={80}
+            className="h-auto max-sm:w-[10%]"
+            draggable="false"
+          />
+        ))}
+      </div> */}
+      {/* <div className="pt-4 flex gap-6 animate-marqueeX-2 whitespace-nowrap">
+        {[...logos].map(logo => (
+          <Image
+            key={crypto.randomUUID()}
+            src={`/images/marquee/${logo}`}
+            alt="coin logo images"
+            width={80}
+            height={80}
+            className="h-auto max-sm:w-[10%]"
+            draggable="false"
+          />
+        ))}
+      </div> */}
     </div>
   );
 };
@@ -124,10 +139,10 @@ const Marquee = () => {
 const Introduce = () => {
   return (
     <>
-      <div className="flex flex-col max-md:gap-20 w-full">
-        <span className="break-words text-5xl max-lg:text-3xl max-sm:text-2xl max-lg:text-shadow-none font-onetitle font-bold text-shadow-black sm:whitespace-nowrap">
+      <div className="flex flex-col gap-10 max-md:gap-20 w-full">
+        <p className="break-words text-5xl max-lg:text-3xl max-sm:text-2xl max-lg:text-shadow-none font-onetitle font-bold text-shadow-black sm:whitespace-nowrap">
           Crypto Secretary for me
-        </span>
+        </p>
         <div className="flex flex-col sm:flex-row gap-6 sm:gap-4">
           <div className="rounded-md flex items-center">
             <span className="text-sm sm:text-xs md:text-xl font-onetitle">
@@ -135,15 +150,15 @@ const Introduce = () => {
               자산, 뉴스, 실시간 차트를 편하게 확인하세요. <br />
             </span>
           </div>
-          <Image
-            alt="introduce service image"
-            src="/images/introduce_service.avif"
-            width={400}
-            height={400}
-            className="w-full sm:w-[30%] md:w-[40%]"
-          />
         </div>
       </div>
+      <Image
+        alt="introduce service image"
+        src="/images/introduce_service.avif"
+        width={400}
+        height={400}
+        className="w-full sm:w-[30%] md:w-[40%]"
+      />
     </>
   );
 };

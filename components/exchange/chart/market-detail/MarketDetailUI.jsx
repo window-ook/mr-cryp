@@ -6,7 +6,7 @@ const SubIndicator = ({ label, value, valueStyle }) => {
           {label}
         </span>
         <span
-          className={`font-onetitle text-[0.75rem] self-end ${valueStyle === 'neg' ? 'text-color-neg' : valueStyle === 'pos' ? 'text-color-pos' : 'text-black'}`}
+          className={`font-onetitle text-[0.75rem] self-end ${valueStyle === 'neg' ? 'text-neg' : valueStyle === 'pos' ? 'text-pos' : 'text-black'}`}
         >
           {Number(value).toLocaleString()}
         </span>

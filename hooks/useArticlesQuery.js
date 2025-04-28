@@ -7,7 +7,7 @@ const fetchPosts = async () => {
     const endpoint =
       baseUrl === 'http://localhost:3000'
         ? '/api/coin-articles'
-        : `${baseUrl}/api/coin-articles/product`;
+        : `/api/coin-articles/product`;
 
     const response = await axios.get(endpoint);
     return response.data.data;
