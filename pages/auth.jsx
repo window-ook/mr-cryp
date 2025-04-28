@@ -6,7 +6,7 @@ import { styled } from '@mui/system';
 import { Avatar, Box, CssBaseline, Grid, Paper } from '@mui/material';
 import Head from 'next/head';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import SocialLoginButton from '@/components/layout/SocialLoginButton';
+import SocialLoginButton from '@/components/auth/SocialLoginButton';
 import Image from 'next/image';
 
 const ButtonsBox = styled(Box)(() => ({
@@ -59,7 +59,7 @@ export default function Signin({ KAKAO_CLIENT_ID }) {
       const userId = localStorage.getItem('userId');
       if (userId) {
         alert('이미 로그인 되어있습니다.');
-        router.push('/mypage');
+        router.push('/trends');
       }
     }
   }, [router]);

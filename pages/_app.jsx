@@ -8,7 +8,6 @@ import { theme } from '@/defaultTheme';
 import Layout from '@/layouts/Layout';
 import Head from 'next/head';
 import dynamic from 'next/dynamic';
-import Home from './index';
 import localFont from 'next/font/local';
 
 const pretendard = localFont({
@@ -19,7 +18,7 @@ const pretendard = localFont({
 });
 
 const ProtectedRoute = dynamic(
-  () => import('@/components/auth/ProtectedRoute'),
+  () => import('@/components/layout/ProtectedRoute'),
   {
     ssr: false,
   },

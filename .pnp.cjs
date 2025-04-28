@@ -45,6 +45,7 @@ const RAW_RUNTIME_STATE =
           ["@tanstack/react-query", "virtual:f7ba88e7e443c955d9ba517c47e233bab9a9f34ca128ceef967a588a13bd89fc5aa1fb8b1b4931808b5fdb2bdcb48468b84b4cc51dbba19a45671cfed4c20e1f#npm:5.62.2"],\
           ["axios", "npm:1.9.0"],\
           ["cheerio", "npm:1.0.0"],\
+          ["clsx", "npm:2.1.1"],\
           ["eslint", "npm:8.57.1"],\
           ["eslint-config-next", "virtual:f7ba88e7e443c955d9ba517c47e233bab9a9f34ca128ceef967a588a13bd89fc5aa1fb8b1b4931808b5fdb2bdcb48468b84b4cc51dbba19a45671cfed4c20e1f#npm:15.3.1"],\
           ["eslint-config-prettier", "virtual:f7ba88e7e443c955d9ba517c47e233bab9a9f34ca128ceef967a588a13bd89fc5aa1fb8b1b4931808b5fdb2bdcb48468b84b4cc51dbba19a45671cfed4c20e1f#npm:9.1.0"],\
@@ -7559,6 +7560,7 @@ const RAW_RUNTIME_STATE =
           ["@tanstack/react-query", "virtual:f7ba88e7e443c955d9ba517c47e233bab9a9f34ca128ceef967a588a13bd89fc5aa1fb8b1b4931808b5fdb2bdcb48468b84b4cc51dbba19a45671cfed4c20e1f#npm:5.62.2"],\
           ["axios", "npm:1.9.0"],\
           ["cheerio", "npm:1.0.0"],\
+          ["clsx", "npm:2.1.1"],\
           ["eslint", "npm:8.57.1"],\
           ["eslint-config-next", "virtual:f7ba88e7e443c955d9ba517c47e233bab9a9f34ca128ceef967a588a13bd89fc5aa1fb8b1b4931808b5fdb2bdcb48468b84b4cc51dbba19a45671cfed4c20e1f#npm:15.3.1"],\
           ["eslint-config-prettier", "virtual:f7ba88e7e443c955d9ba517c47e233bab9a9f34ca128ceef967a588a13bd89fc5aa1fb8b1b4931808b5fdb2bdcb48468b84b4cc51dbba19a45671cfed4c20e1f#npm:9.1.0"],\

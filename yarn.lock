@@ -5832,6 +5832,7 @@ __metadata:
     "@tanstack/react-query": "npm:^5.52.0"
     axios: "npm:^1.9.0"
     cheerio: "npm:^1.0.0"
+    clsx: "npm:^2.1.1"
     eslint: "npm:^8"
     eslint-config-next: "npm:^15.3.1"
     eslint-config-prettier: "npm:^9.1.0"

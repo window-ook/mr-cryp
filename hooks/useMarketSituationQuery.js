@@ -6,7 +6,7 @@ const fetchSituations = async () => {
   const endpoint =
     baseUrl === 'http://localhost:3000'
       ? '/api/coin-situation'
-      : `${baseUrl}/api/coin-situation/product`;
+      : `/api/coin-situation/product`;
 
   const response = await axios.get(endpoint);
   return response.data.data;

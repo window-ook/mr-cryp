@@ -1,6 +1,4 @@
 import { useEffect, useState } from 'react';
-import { Box } from '@mui/system';
-import { SubTitle } from '@/defaultTheme';
 import Head from 'next/head';
 import axios from 'axios';
 import AccountMarketFlow from '@/components/mypage/AccountMarketFlow';
@@ -53,17 +51,19 @@ export default function Home() {
       <Head>
         <title>마이페이지 - 미스터 크립</title>
       </Head>
-      <div className="w-4/5 h-full mx-auto my-4 p-4 flex gap-8 justify-center items-center max-[1000px]:flex-col">
-        <section>
+      <div className="w-full max-w-6xl mx-auto px-4 py-10 sm:px-6 sm:py-14 flex flex-col md:flex-row gap-8 justify-center items-start">
+        <section className="w-full">
           <div className="h-[4rem]">
-            <SubTitle>내 보유 자산</SubTitle>
+            <span className="font-pretendard text-3xl font-bold text-main">
+              내 보유 자산
+            </span>
           </div>
-          <div className="flex flex-col items-center shadow-lg w-full max-[820px]:text-[0.6rem] max-[700px]:w-full max-[700px]:text-base">
+          <div className="w-full flex flex-col items-center shadow-lg max-[820px]:text-[0.6rem] max-[700px]:text-base">
             <AccountDetailPie balance={balance} />
             <AccountDetailTable balance={balance} />
           </div>
         </section>
-        <section className="h-[100%]">
+        <section className="w-full">
           <div className="h-[4rem]" />
           <article className="flex flex-col max-[1400px]:gap-[3rem]">
             <AccountBalanceFlow

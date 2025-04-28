@@ -61,7 +61,7 @@ export default function KakaoAuth({ KAKAO_CLIENT_ID, KAKAO_CLIENT_SECRET }) {
       if (authCode) {
         const accessToken = await getAccessToken(authCode);
         await getUserData(accessToken);
-        router.push('/mypage');
+        router.push('/trends');
       }
     };
 

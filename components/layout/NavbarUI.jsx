@@ -62,7 +62,6 @@ export default function NavBar({
                   Mr.Cryp
                 </span>
               </div>
-
               <div className="flex items-center gap-1 grow pl-4">
                 {navbarMenu.map(page => (
                   <button
@@ -83,7 +82,7 @@ export default function NavBar({
                     />
                   </button>
                 ))}
-                <div className="hidden select-1120:gap-1 select-1120:flex select-1120:items-center">
+                <div className="hidden lg:flex lg:items-center">
                   <label
                     htmlFor="search"
                     className="font-ng font-bold text-white pr-2 max-[1300px]:hidden"
@@ -103,7 +102,7 @@ export default function NavBar({
                       if (e.key === 'Enter') handleKeywordSearch();
                     }}
                     onChange={e => setNewKeyword(e.target.value)}
-                    className="w-44 h-8 pl-3 rounded-lg text-black"
+                    className="w-44 h-8 pl-3 rounded-lg bg-white text-black placeholder:font-ng font-ng"
                   />
                 </div>
               </div>

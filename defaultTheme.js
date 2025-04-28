@@ -82,21 +82,6 @@ export let theme = createTheme({
 });
 
 /**
- * 서브 타이틀
- * @type {import('@mui/system').StyledComponent<import('@mui/material').TypographyProps>}
- */
-export const SubTitle = styled(Typography)(() => ({
-  fontSize: '2rem',
-  fontFamily: 'pretendard',
-  fontWeight: 'bold',
-  color: theme.palette.primary.main,
-  marginBottom: '0.125rem',
-  '@media (max-width:900px)': {
-    fontSize: '1.5rem',
-  },
-}));
-
-/**
  * 디스크립션
  * @type {import('@mui/system').StyledComponent<import('@mui/material').TypographyProps>}
  */
