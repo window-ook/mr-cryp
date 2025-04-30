@@ -1,5 +1,7 @@
 import { useRouter } from 'next/router';
 import { globalColors } from '@/globalColors';
+import { AnimatePresence } from 'motion/react';
+import * as m from 'motion/react-m';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -106,10 +108,10 @@ const Marquee = () => {
 
   return (
     <div className="flex gap-6">
-      {/* <div className="pt-4 flex gap-6 animate-marqueeX-1 whitespace-nowrap">
-        {[...logos].map(logo => (
+      {/* <div className="pt-4 flex gap-6 animate-marquee01 whitespace-nowrap">
+        {logos.map((logo, i) => (
           <Image
-            key={crypto.randomUUID()}
+            key={`${logo}-${i}`}
             src={`/images/marquee/${logo}`}
             alt="coin logo images"
             width={80}
@@ -118,11 +120,11 @@ const Marquee = () => {
             draggable="false"
           />
         ))}
-      </div> */}
-      {/* <div className="pt-4 flex gap-6 animate-marqueeX-2 whitespace-nowrap">
-        {[...logos].map(logo => (
+      </div>
+      <div className="pt-4 flex gap-6 animate-marquee02 whitespace-nowrap">
+        {logos.map((logo, i) => (
           <Image
-            key={crypto.randomUUID()}
+            key={`${logo}-${i}`}
             src={`/images/marquee/${logo}`}
             alt="coin logo images"
             width={80}
@@ -310,11 +312,11 @@ export default function Home() {
         <Header />
       </section>
       {/* 2nd Section */}
-      <section className="w-full h-auto sm:h-[50rem] bg-gray-50 bg-cover bg-center py-8 sm:py-0">
+      <section className="w-full h-auto bg-gray-50 bg-cover bg-center py-8 sm:py-0">
         <section className="[mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-200px),transparent_100%)]">
           <Marquee />
         </section>
-        <section className="w-full max-w-[75rem] mx-auto px-6 sm:px-16 md:px-20 lg:px-24 xl:px-32 pt-20 sm:pt-60 flex items-center gap-4">
+        <section className="w-full max-w-[75rem] mx-auto px-6 py-20 sm:px-16 md:px-20 lg:px-24 xl:px-32 pt-20 sm:pt-60 flex items-center gap-4">
           <Introduce />
         </section>
       </section>

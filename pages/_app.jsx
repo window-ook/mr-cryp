@@ -5,10 +5,13 @@ import { Provider } from 'react-redux';
 import { useRouter } from 'next/router';
 import { wrapper } from '@/utils/redux/store';
 import { theme } from '@/defaultTheme';
-import Layout from '@/layouts/Layout';
+import { LazyMotion } from 'motion/react';
 import Head from 'next/head';
 import dynamic from 'next/dynamic';
 import localFont from 'next/font/local';
+import Layout from '@/layouts/Layout';
+
+const loadFeatures = () => import('@/utils/motion').then(res => res.default);
 
 const pretendard = localFont({
   src: '../public/fonts/PretendardVariable.woff2',
@@ -30,9 +33,9 @@ export default function MyApp({ Component, pageProps }) {
   const { store } = wrapper.useWrappedStore(pageProps);
 
   const router = useRouter();
-  const isRoot = router.pathname === '/';
-  const isAuth = router.pathname === '/auth';
-  const isKakaoRedirecting = router.pathname === '/oauth';
+  const ROOT_URL = router.pathname === '/';
+  const AUTH_URL = router.pathname === '/auth';
+  const OAUTH_URL = router.pathname === '/oauth';
 
   return (
     <Provider store={store}>
@@ -44,19 +47,21 @@ export default function MyApp({ Component, pageProps }) {
           </Head>
 
           <main className={`${pretendard.variable} font-sans`}>
-            {isAuth || isKakaoRedirecting ? (
-              <Component {...pageProps} />
-            ) : (
-              <Layout>
-                {isRoot ? (
-                  <Component {...pageProps} />
-                ) : (
-                  <ProtectedRoute>
+            <LazyMotion features={loadFeatures}>
+              {AUTH_URL || OAUTH_URL ? (
+                <Component {...pageProps} />
+              ) : (
+                <Layout>
+                  {ROOT_URL ? (
                     <Component {...pageProps} />
-                  </ProtectedRoute>
-                )}
-              </Layout>
-            )}
+                  ) : (
+                    <ProtectedRoute>
+                      <Component {...pageProps} />
+                    </ProtectedRoute>
+                  )}
+                </Layout>
+              )}
+            </LazyMotion>
           </main>
         </QueryClientProvider>
       </ThemeProvider>

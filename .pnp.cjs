@@ -55,6 +55,7 @@ const RAW_RUNTIME_STATE =
           ["highcharts", "npm:11.4.8"],\
           ["highcharts-react-official", "virtual:f7ba88e7e443c955d9ba517c47e233bab9a9f34ca128ceef967a588a13bd89fc5aa1fb8b1b4931808b5fdb2bdcb48468b84b4cc51dbba19a45671cfed4c20e1f#npm:3.2.1"],\
           ["mongodb", "virtual:f7ba88e7e443c955d9ba517c47e233bab9a9f34ca128ceef967a588a13bd89fc5aa1fb8b1b4931808b5fdb2bdcb48468b84b4cc51dbba19a45671cfed4c20e1f#npm:6.15.0"],\
+          ["motion", "virtual:f7ba88e7e443c955d9ba517c47e233bab9a9f34ca128ceef967a588a13bd89fc5aa1fb8b1b4931808b5fdb2bdcb48468b84b4cc51dbba19a45671cfed4c20e1f#npm:12.9.2"],\
           ["mr-cryp-next", "workspace:."],\
           ["next", "virtual:f7ba88e7e443c955d9ba517c47e233bab9a9f34ca128ceef967a588a13bd89fc5aa1fb8b1b4931808b5fdb2bdcb48468b84b4cc51dbba19a45671cfed4c20e1f#npm:15.3.1"],\
           ["next-auth", "virtual:f7ba88e7e443c955d9ba517c47e233bab9a9f34ca128ceef967a588a13bd89fc5aa1fb8b1b4931808b5fdb2bdcb48468b84b4cc51dbba19a45671cfed4c20e1f#npm:4.24.11"],\
@@ -5997,6 +5998,39 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["framer-motion", [\
+      ["npm:12.9.2", {\
+        "packageLocation": "../../../.yarn/berry/cache/framer-motion-npm-12.9.2-1ecd2affdd-10c0.zip/node_modules/framer-motion/",\
+        "packageDependencies": [\
+          ["framer-motion", "npm:12.9.2"]\
+        ],\
+        "linkType": "SOFT"\
+      }],\
+      ["virtual:48b284fd550c69796929d2d24c495e7e737fe3caedc436536f18fe018a83d07bba5c156144a8fcb4f0bcbe5d4382443307a7c0856ba9c566267206fc347eefc4#npm:12.9.2", {\
+        "packageLocation": "./.yarn/__virtual__/framer-motion-virtual-1d1174bda5/4/.yarn/berry/cache/framer-motion-npm-12.9.2-1ecd2affdd-10c0.zip/node_modules/framer-motion/",\
+        "packageDependencies": [\
+          ["@emotion/is-prop-valid", null],\
+          ["@types/emotion__is-prop-valid", null],\
+          ["@types/react", null],\
+          ["@types/react-dom", null],\
+          ["framer-motion", "virtual:48b284fd550c69796929d2d24c495e7e737fe3caedc436536f18fe018a83d07bba5c156144a8fcb4f0bcbe5d4382443307a7c0856ba9c566267206fc347eefc4#npm:12.9.2"],\
+          ["motion-dom", "npm:12.9.1"],\
+          ["motion-utils", "npm:12.8.3"],\
+          ["react", "npm:19.1.0"],\
+          ["react-dom", "virtual:f7ba88e7e443c955d9ba517c47e233bab9a9f34ca128ceef967a588a13bd89fc5aa1fb8b1b4931808b5fdb2bdcb48468b84b4cc51dbba19a45671cfed4c20e1f#npm:19.1.0"],\
+          ["tslib", "npm:2.8.1"]\
+        ],\
+        "packagePeers": [\
+          "@emotion/is-prop-valid",\
+          "@types/emotion__is-prop-valid",\
+          "@types/react-dom",\
+          "@types/react",\
+          "react-dom",\
+          "react"\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["fs.realpath", [\
       ["npm:1.0.0", {\
         "packageLocation": "../../../.yarn/berry/cache/fs.realpath-npm-1.0.0-c8f05d8126-10c0.zip/node_modules/fs.realpath/",\
@@ -7539,6 +7573,57 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["motion", [\
+      ["npm:12.9.2", {\
+        "packageLocation": "../../../.yarn/berry/cache/motion-npm-12.9.2-48c0270960-10c0.zip/node_modules/motion/",\
+        "packageDependencies": [\
+          ["motion", "npm:12.9.2"]\
+        ],\
+        "linkType": "SOFT"\
+      }],\
+      ["virtual:f7ba88e7e443c955d9ba517c47e233bab9a9f34ca128ceef967a588a13bd89fc5aa1fb8b1b4931808b5fdb2bdcb48468b84b4cc51dbba19a45671cfed4c20e1f#npm:12.9.2", {\
+        "packageLocation": "./.yarn/__virtual__/motion-virtual-48b284fd55/4/.yarn/berry/cache/motion-npm-12.9.2-48c0270960-10c0.zip/node_modules/motion/",\
+        "packageDependencies": [\
+          ["@emotion/is-prop-valid", null],\
+          ["@types/emotion__is-prop-valid", null],\
+          ["@types/react", null],\
+          ["@types/react-dom", null],\
+          ["framer-motion", "virtual:48b284fd550c69796929d2d24c495e7e737fe3caedc436536f18fe018a83d07bba5c156144a8fcb4f0bcbe5d4382443307a7c0856ba9c566267206fc347eefc4#npm:12.9.2"],\
+          ["motion", "virtual:f7ba88e7e443c955d9ba517c47e233bab9a9f34ca128ceef967a588a13bd89fc5aa1fb8b1b4931808b5fdb2bdcb48468b84b4cc51dbba19a45671cfed4c20e1f#npm:12.9.2"],\
+          ["react", "npm:19.1.0"],\
+          ["react-dom", "virtual:f7ba88e7e443c955d9ba517c47e233bab9a9f34ca128ceef967a588a13bd89fc5aa1fb8b1b4931808b5fdb2bdcb48468b84b4cc51dbba19a45671cfed4c20e1f#npm:19.1.0"],\
+          ["tslib", "npm:2.8.1"]\
+        ],\
+        "packagePeers": [\
+          "@emotion/is-prop-valid",\
+          "@types/emotion__is-prop-valid",\
+          "@types/react-dom",\
+          "@types/react",\
+          "react-dom",\
+          "react"\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["motion-dom", [\
+      ["npm:12.9.1", {\
+        "packageLocation": "../../../.yarn/berry/cache/motion-dom-npm-12.9.1-89cd9f29b4-10c0.zip/node_modules/motion-dom/",\
+        "packageDependencies": [\
+          ["motion-dom", "npm:12.9.1"],\
+          ["motion-utils", "npm:12.8.3"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["motion-utils", [\
+      ["npm:12.8.3", {\
+        "packageLocation": "../../../.yarn/berry/cache/motion-utils-npm-12.8.3-61080f4165-10c0.zip/node_modules/motion-utils/",\
+        "packageDependencies": [\
+          ["motion-utils", "npm:12.8.3"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["mr-cryp-next", [\
       ["workspace:.", {\
         "packageLocation": "./",\
@@ -7570,6 +7655,7 @@ const RAW_RUNTIME_STATE =
           ["highcharts", "npm:11.4.8"],\
           ["highcharts-react-official", "virtual:f7ba88e7e443c955d9ba517c47e233bab9a9f34ca128ceef967a588a13bd89fc5aa1fb8b1b4931808b5fdb2bdcb48468b84b4cc51dbba19a45671cfed4c20e1f#npm:3.2.1"],\
           ["mongodb", "virtual:f7ba88e7e443c955d9ba517c47e233bab9a9f34ca128ceef967a588a13bd89fc5aa1fb8b1b4931808b5fdb2bdcb48468b84b4cc51dbba19a45671cfed4c20e1f#npm:6.15.0"],\
+          ["motion", "virtual:f7ba88e7e443c955d9ba517c47e233bab9a9f34ca128ceef967a588a13bd89fc5aa1fb8b1b4931808b5fdb2bdcb48468b84b4cc51dbba19a45671cfed4c20e1f#npm:12.9.2"],\
           ["mr-cryp-next", "workspace:."],\
           ["next", "virtual:f7ba88e7e443c955d9ba517c47e233bab9a9f34ca128ceef967a588a13bd89fc5aa1fb8b1b4931808b5fdb2bdcb48468b84b4cc51dbba19a45671cfed4c20e1f#npm:15.3.1"],\
           ["next-auth", "virtual:f7ba88e7e443c955d9ba517c47e233bab9a9f34ca128ceef967a588a13bd89fc5aa1fb8b1b4931808b5fdb2bdcb48468b84b4cc51dbba19a45671cfed4c20e1f#npm:4.24.11"],\
