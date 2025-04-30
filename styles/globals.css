@@ -83,12 +83,10 @@ body {
   /* 박스 그림자 */
   --shadow-main: 0px 3px 10px #07a36c;
 
-  /* 마키 */
-  --animate-marqueeX-1: marqueeX-1 20s linear infinite;
-  --animate-marqueeX-2: marqueeX-2 20s linear infinite;
-  --animate-marqueeY: marqueeY 5s linear infinite;
+  --animate-marquee01: marquee01 25s linear infinite;
+  --animate-marquee02: marquee02 25s linear infinite;
 
-  @keyframes marqueeX-1 {
+  @keyframes marquee01 {
     0% {
       transform: translateX(0);
     }
@@ -106,7 +104,7 @@ body {
     }
   }
 
-  @keyframes marqueeX-2 {
+  @keyframes marquee02 {
     0% {
       transform: translateX(0);
     }
@@ -114,13 +112,6 @@ body {
     100% {
       transform: translateX(-200%);
     }
-  }
-    
-  @keyframes marqueeY {
-      0% { opacity: 0; transform: translateY(20px); }    
-      10% { opacity: 1; transform: translateY(0); }
-      90% { opacity: 1; transform: translateY(0); }
-      100% { opacity: 0; transform: translateY(-20px); }
   }
 
   /* 리니어 프로그레스바 */
