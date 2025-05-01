@@ -19,7 +19,7 @@ const Navbar = () => {
         <div className="flex items-center gap-2">
           <Image
             alt="navbar logo image"
-            src={'/images/logo_mustachetrans.webp'}
+            src={'/images/mustachetrans.webp'}
             width="60"
             height="60"
             className="w-auto h-4"

@@ -23,8 +23,8 @@ export default function SocialLoginButton({
     : `${platform === 'kakao' ? '카카오' : '구글'} 로그인`;
 
   const LOGO_PATH = isTest
-    ? '/images/logo_mustachetrans.webp'
-    : `/images/logo_${platform}.webp`;
+    ? '/images/mustachetrans.webp'
+    : `/images/user-logos/logo_${platform}.webp`;
 
   const handleLogin = async () => {
     if (platform === 'google')

@@ -53,7 +53,7 @@ export default function NavBar({
               <div className="flex">
                 <Image
                   alt="navbar logo image"
-                  src="/images/logo_mustachetrans.webp"
+                  src="/images/mustachetrans.webp"
                   width={60}
                   height={30}
                   className="p-2"
@@ -149,7 +149,7 @@ export default function NavBar({
               </div>
               <Image
                 alt="프로필 이미지"
-                src={imgUrl || '/images/default_profile_img.avif'}
+                src={imgUrl || '/images/user-logos/logo_default_profile.avif'}
                 width={30}
                 height={30}
                 className="rounded-full"
