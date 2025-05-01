@@ -1,8 +1,8 @@
 import { memo, useEffect, useState } from 'react';
 import { useMarketSituationQuery } from '@/hooks/useMarketSituationQuery';
-import { LinearProgress } from '@mui/material';
 import { AnimatePresence } from 'motion/react';
 import * as m from 'motion/react-m';
+import LinearProgress from '@/components/shared/LinearProgress';
 
 function MarketSituation() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -26,7 +26,7 @@ function MarketSituation() {
     return () => clearInterval(interval);
   }, [situations, currentIndex]);
 
-  if (isPending) return <LinearProgress />;
+  if (isPending) return <LinearProgress maxValue={100} height="h-12" />;
 
   const currentNews = situations?.[currentIndex];
 

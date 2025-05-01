@@ -1,6 +1,6 @@
+import CircularProgress from '@/components/shared/CircularProgress';
 import { HeadTypo, NGTypo, PriceTypo } from '@/defaultTheme';
 import { globalColors } from '@/globalColors';
-import { CircularProgress } from '@mui/material';
 
 export default function TradeHistory({ tradeData }) {
   const timestampToTime = timestamp => {
@@ -78,7 +78,7 @@ export default function TradeHistory({ tradeData }) {
           <tbody>
             <tr>
               <td>
-                <CircularProgress color="primary" />
+                <CircularProgress />
               </td>
             </tr>
           </tbody>

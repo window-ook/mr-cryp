@@ -1,41 +1,53 @@
 import { useState, useEffect } from 'react';
 
-export default function LinearProgress({
-  color = 'bg-main',
-  height = 'h-1',
-  className = '',
-  determinate = false,
-  value = 0,
-}) {
-  const [width, setWidth] = useState(determinate ? value : 0);
+export default function LinearProgress({ maxValue = 100, height = 'h-8' }) {
+  const [value, setValue] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
+
+  const percentage = Math.min(100, Math.max(0, (value / maxValue) * 100));
 
   useEffect(() => {
-    if (determinate) {
-      setWidth(value);
-    }
-  }, [determinate, value]);
+    // API 호출을 시뮬레이션 (실제로는 여기서 API 요청을 수행)
+    const fetchData = async () => {
+      setIsLoading(true);
+      try {
+        // API 호출 시뮬레이션 (0.5초 ~ 2초 사이 지연)
+        await new Promise(resolve =>
+          setTimeout(resolve, 500 + Math.random() * 1500),
+        );
+
+        // 랜덤 값으로 시뮬레이션 (실제로는 API 응답 데이터를 사용)
+        const randomValue = Math.floor(Math.random() * 100);
+        setValue(randomValue);
+      } catch (error) {
+        console.error('데이터를 가져오는 중 오류 발생:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   return (
-    <div
-      className={`w-full ${height} bg-gray-200 overflow-hidden ${className}`}
-    >
-      {determinate ? (
-        // 정해진 진행률을 보여주는 determinate 모드
-        <div
-          className={`${color} h-full transition-all duration-300 ease-in-out`}
-          style={{ width: `${width}%` }}
-        />
-      ) : (
-        // 무한 로딩 애니메이션을 보여주는 indeterminate 모드
-        <div className="relative w-full h-full">
-          <div
-            className={`absolute top-0 left-0 ${color} h-full animate-linearProgress1 w-[30%]`}
-          />
-          <div
-            className={`absolute top-0 left-0 ${color} h-full animate-linearProgress2 w-[50%]`}
-          />
-        </div>
-      )}
+    <div className="w-full">
+      {/* 프로그레스바 컨테이너 */}
+      <div
+        className={`${height}w-full overflow-hidden rounded-full bg-gray-200`}
+      >
+        {!isLoading && <div className="h-full bg-blue-500" />}
+      </div>
+
+      {/* 로딩 및 값 표시 */}
+      <div className="mt-2 text-right text-sm">
+        {isLoading ? (
+          <div className="animate-pulse text-gray-500">데이터 로딩 중...</div>
+        ) : (
+          <div className="font-medium text-blue-600">
+            {value} / {maxValue} ({percentage.toFixed(1)}%)
+          </div>
+        )}
+      </div>
     </div>
   );
 }

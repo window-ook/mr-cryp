@@ -1,12 +1,11 @@
 import { useRef } from 'react';
 import { useRouter } from 'next/router';
-import { globalColors } from '@/globalColors';
-import { useInView, AnimatePresence } from 'motion/react';
+import { FaStar } from 'react-icons/fa6';
+import { useInView } from 'motion/react';
 import * as m from 'motion/react-m';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
-import Rating from '@mui/material/Rating';
 
 const Navbar = () => {
   const router = useRouter();
@@ -239,29 +238,22 @@ const AiPortfolioCard = ({
           </div>
           <div className="flex flex-col gap-2">
             {/* 안정성 */}
-            <div className="scale-90 opacity-0 flex gap-2 transition-all duration-150 ease-in group-hover:opacity-100 group-hover:scale-100">
+            <div className="scale-90 opacity-0 flex items-center gap-2 transition-all duration-150 ease-in group-hover:opacity-100 group-hover:scale-100">
               <span className="font-description text-sm lg:text-xl">
                 안정성
               </span>
-              <Rating
-                name="half-rating"
-                defaultValue={stability}
-                precision={0.5}
-                readOnly
-              />
+              {Array.from({ length: stability }).map((_, index) => (
+                <FaStar key={index} className="text-yellow-500" />
+              ))}
             </div>
             {/* 수익성 */}
-            <div className="scale-90 opacity-0 flex gap-2 transition-all duration-150 ease-in group-hover:opacity-100 group-hover:scale-100">
+            <div className="scale-90 opacity-0 flex items-center gap-2 transition-all duration-150 ease-in group-hover:opacity-100 group-hover:scale-100">
               <span className="font-description text-sm lg:text-xl">
                 수익성
               </span>
-              <Rating
-                name="half-rating"
-                defaultValue={profitability}
-                precision={0.5}
-                readOnly
-                sx={{ color: globalColors.hotpink[400] }}
-              />
+              {Array.from({ length: profitability }).map((_, index) => (
+                <FaStar key={index} className="text-main-dark" />
+              ))}
             </div>
             {/* 추천 성향 */}
             <div className="scale-90 opacity-0 flex flex-col transition-all duration-150 ease-in group-hover:opacity-100 group-hover:scale-100">
@@ -298,14 +290,14 @@ export default function Home() {
       title: '요즘 핫한',
       description: '📈 최근 상승율이 높은 코인에 투자해요',
       stability: 4,
-      profitability: 3.5,
+      profitability: 4,
       recommend:
         '단기 트렌드를 빠르게 반영하는 투자 스타일이라면 추천! 안정성과 수익성을 균형 있게 고려하는 투자자에게 적합합니다.',
     },
     {
       title: '잠재력 뿜뿜한',
       description: '🔍 미래 가치를 봅니다',
-      stability: 4.5,
+      stability: 5,
       profitability: 3,
       recommend:
         '장기적인 성장 가능성을 보는 투자자에게 추천! 코인의 본질적인 가치를 분석하고 꾸준히 투자하는 분들에게 적합합니다.',
@@ -313,7 +305,7 @@ export default function Home() {
     {
       title: '크게 한 방',
       description: '⚡️ 하이 리스크 하이 리턴!',
-      stability: 2,
+      stability: 3,
       profitability: 5,
       recommend:
         '단기 고수익을 노리는 공격적인 투자자에게 추천! 변동성이 크지만 큰 수익을 기대하는 분들에게 적합합니다.',

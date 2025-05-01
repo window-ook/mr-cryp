@@ -73,6 +73,10 @@ body {
   --color-main-light: #41fab9;
   --color-main-dark: #07a36c;
 
+  --color-sma-50: '#03fc73';
+  --color-sma-15: '#de0417';
+  --color-market-code: '#8c8b88';
+
   --color-positive: var(--color-red-500);
   --color-negative: var(--color-blue-500);
   --color-market-code: var(--color-gray-400);
@@ -132,6 +136,10 @@ body {
 
   .font-navbar-button {
     @apply font-onetitle font-bold text-xl text-white text-shadow-black
+  }
+
+  .modal-box {
+    @apply absolute p-4 translate-x-[-50%] translate-y-[-50%] top-1/2 left-1/2 border-main border-2 rounded-sm shadow-md bg-white flex justify-between
   }
 }
 
