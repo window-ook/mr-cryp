@@ -57,21 +57,21 @@ body {
 }
 
 @theme {
-  /* 색상 */
-  --color-main: #0ac483;
-  --color-main-light: #41fab9;
-  --color-main-dark: #07a36c2
-
-  --color-pos: #fa0015;
-  --color-neg: #000cfa;
-  --color-market-code: #8c8b88;
-  --color-list-hover: #e1e3e1;
-
   /* 폰트 */
   --font-pretendard: 'Pretendard';
   --font-ng: 'NEXON Lv1 Gothic OTF';
   --font-onetitle: 'ONE-Mobile-Title';
   --font-aggro: 'SBAggroB';
+
+  /* 색상 */
+  --color-main: #0ac483;
+  --color-main-light: #41fab9;
+  --color-main-dark: #07a36c;
+
+  --color-positive: var(--color-red-500);
+  --color-negative: var(--color-blue-500);
+  --color-market-code: var(--color-gray-400);
+  --color-list-hover: var(--color-gray-100);
 
   /* 화면 */
   --select-1120: '1120px';
@@ -81,70 +81,51 @@ body {
   --text-shadow-none: none;
 
   /* 박스 그림자 */
-  --shadow-main: 0px 3px 10px #07a36c;
+  --shadow-main: 0px 3px 10px var(--color-main-dark);
 
-  --animate-marquee01: marquee01 25s linear infinite;
-  --animate-marquee02: marquee02 25s linear infinite;
+  /* 무한 마키 */
+  --animate-marquee: marquee 20s linear infinite;
+  --animate-marquee2: marquee2 20s linear infinite;
 
-  @keyframes marquee01 {
+  @keyframes marquee {
     0% {
       transform: translateX(0);
     }
-
     50% {
       transform: translateX(-100%);
     }
-
     50.01% {
       transform: translateX(100%);
     }
-
     100% {
       transform: translateX(0);
     }
   }
 
-  @keyframes marquee02 {
+  @keyframes marquee2 {
     0% {
-      transform: translateX(0);
+      transform: translateX(0%);
     }
-
     100% {
       transform: translateX(-200%);
     }
   }
+}
 
-  /* 리니어 프로그레스바 */
-  --animate-linearProgress1: linearProgress1 2s infinite ease;
-  --animate-linearProgress2: linearProgress2 2.5s infinite ease;
-  
-  @keyframes linearProgress1 {
-    0% {
-      left: -35%;
-      right: 100%;
-    }
-    60% {
-      left: 100%;
-      right: -35%;
-    }
-    100% {
-      left: 100%;
-      right: -35%;
-    }
+@layer components {
+  .font-title-primary {
+    @apply font-onetitle text-5xl
   }
-  
-  @keyframes linearProgress2 {
-    0% {
-      left: -200%;
-      right: 100%;
-    }
-    60% {
-      left: 107%;
-      right: -8%;
-    }
-    100% {
-      left: 107%;
-      right: -8%;
-    }
+
+  .font-description {
+    @apply font-pretendard font-bold text-sm
+  }
+
+  .font-navbar-mrcryp {
+    @apply font-aggro font-bold italic text-2xl text-white text-shadow-black
+  }
+
+  .font-navbar-button {
+    @apply font-onetitle font-bold text-xl text-white text-shadow-black
   }
 }

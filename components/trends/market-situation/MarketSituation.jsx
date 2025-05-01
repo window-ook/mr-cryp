@@ -33,7 +33,7 @@ function MarketSituation() {
   return (
     <div className="flex flex-col gap-4">
       <header className="flex items-end gap-2">
-        <span className="font-pretendard text-2xl max-[475px]:text-xl font-bold">
+        <span className="font-pretendard text-main-dark text-2xl max-[475px]:text-xl font-bold">
           시황
         </span>
         <span className="text-gray-500 font-ng text-xs">{today}</span>
@@ -51,7 +51,7 @@ function MarketSituation() {
             className="absolute overflow-hidden whitespace-nowrap text-ellipsis inset-0 flex items-center cursor-pointer"
             onClick={() => window.open(currentNews?.url, '_blank')}
           >
-            <span className="font-semibold text-sm sm:text-base">
+            <span className="font-semibold text-sm sm:text-lg">
               {currentNews?.title}
             </span>
           </m.button>

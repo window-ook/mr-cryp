@@ -41,8 +41,8 @@ export default function MarketDetail({ marketCodes }) {
     ticker && ticker.signed_change_rate === 0
       ? 'text-black'
       : ticker && ticker.signed_change_rate > 0
-        ? 'text-pos'
-        : 'text-neg';
+        ? 'text-positive'
+        : 'text-negative';
 
   if (isLoading) return <LinearProgress />;
 

@@ -78,12 +78,15 @@ function TopRisedCoins() {
           </div>
 
           {getSortedCoins().map(coin => (
-            <div key={coin.name} className="grid grid-cols-12 gap-4 px-2">
+            <div
+              key={coin.name}
+              className="grid grid-cols-12 gap-4 px-2 items-center"
+            >
               <span className="col-span-4 font-ng">{coin.name}</span>
-              <span className="col-span-4 font-ng text-gray-400">
+              <span className="col-span-4 font-ng text-xs lg:text-base text-gray-400">
                 {coin.market}
               </span>
-              <span className="col-span-4 text-color-pos text-right">
+              <span className="col-span-4 text-red-500 text-right">
                 {coin.periods[selectedPeriod]}
               </span>
             </div>

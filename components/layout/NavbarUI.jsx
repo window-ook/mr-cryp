@@ -58,9 +58,7 @@ export default function NavBar({
                   height={30}
                   className="p-2"
                 />
-                <span className="font-aggro italic font-bold text-2xl text-white">
-                  Mr.Cryp
-                </span>
+                <span className="font-navbar-mrcryp">Mr.Cryp</span>
               </div>
               <div className="flex items-center gap-1 grow pl-4">
                 {navbarMenu.map(page => (
@@ -70,9 +68,7 @@ export default function NavBar({
                     className="min-w-fit py-6 px-4 whitespace-nowrap inline-flex flex-col shrink-0 items-center text-white cursor-pointer hover:opacity-50 transition-all duration-200 ease-in-out"
                     onClick={() => handleCloseNavMenu(page)}
                   >
-                    <span className="font-aggro text-xl text-shadow-black">
-                      {page}
-                    </span>
+                    <span className="font-navbar-button">{page}</span>
                     <div
                       className={`h-1 w-full rounded-lg ${
                         handleActivePage() === page
@@ -132,9 +128,7 @@ export default function NavBar({
                       className="w-full px-4 py-2 text-left hover:bg-gray-100 cursor-pointer"
                       onClick={() => handleCloseNavMenu(page)}
                     >
-                      <span className="font-bold font-ng text-center text-xl">
-                        {page}
-                      </span>
+                      <span className="font-navbar-button">{page}</span>
                     </button>
                   ))}
                 </div>

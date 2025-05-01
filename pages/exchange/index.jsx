@@ -1,6 +1,5 @@
 import { useDispatch } from 'react-redux';
 import { setOpen } from '@/utils/redux/chartSlice';
-import { HeadTypo } from '@/defaultTheme';
 import Head from 'next/head';
 import Upbit from '@/lib/upbit';
 import dynamic from 'next/dynamic';
@@ -75,7 +74,9 @@ export default function Chart({ marketCodes }) {
                   className="absolute right-2 top-2 bg-main shadow-md p-2 rounded-lg hover:opacity-60 transition duration-200 ease-in"
                   onClick={handleOpen}
                 >
-                  <HeadTypo>주문하기</HeadTypo>
+                  <span className="font-onetitle text-xl text-white">
+                    주문하기
+                  </span>
                 </button>
               </article>
 

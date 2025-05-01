@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import SearchIcon from '@mui/icons-material/Search';
+import { IoSearch } from 'react-icons/io5';
 
 const TableHead = ({ w, py = 'py-[0.25rem]', text }) => {
   return (
@@ -15,15 +15,12 @@ const TableCell = ({
   width = 'w-[4rem]',
   align = 'text-right',
   className = '',
-  changeRate = 0,
+  changeRate,
   children,
 }) => {
-  const color =
-    changeRate > 0 ? 'text-pos' : changeRate < 0 ? 'text-neg' : 'text-black';
-
   return (
     <td
-      className={`table-cell ${width} px-0.5 border-b-[0.063rem] border-b-[#e0e0e0] ${align} ${changeRate !== undefined ? color : ''} ${className}`}
+      className={`table-cell ${width} px-0.5 border-b border-b-gray-100 ${align} ${changeRate < 0 ? 'text-negative' : changeRate > 0 ? 'text-positive' : 'text-black'} ${className}`}
     >
       {children}
     </td>
@@ -62,7 +59,7 @@ export default function MarketList({
           onChange={handleSearchChange}
         />
         <div className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500">
-          <SearchIcon />
+          <IoSearch />
         </div>
       </div>
       <div className="max-w-full h-[calc(58rem-2.7rem)] overflow-y-auto overflow-x-hidden m-0 p-0 bg-white">
