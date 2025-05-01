@@ -44,19 +44,19 @@
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: oklch(0.96 0 0);
 }
 ::-webkit-scrollbar-thumb {
-  background: #888;
+  background: oklch(0.63 0 0);
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #555;
+  background: oklch(0.63 0 0);
 }
 
 body {
   overflow-y: scroll;
   scrollbar-width: thin;
-  scrollbar-color: #888 #f1f1f1;
+  scrollbar-color: oklch(0.63 0 0) oklch(0.96 0 0);
   margin: 0;
   padding: 0;
 }
@@ -69,13 +69,13 @@ body {
   --font-aggro: 'SBAggroB';
 
   /* 색상 */
-  --color-main: #0ac483;
-  --color-main-light: #41fab9;
-  --color-main-dark: #07a36c;
+  --color-main: oklch(0.72 0.1614 160.44);
+  --color-main-light: oklch(0.88 0.1716 164.2);
+  --color-main-dark: oklch(0.63 0.1409 160.35);
 
-  --color-sma-50: '#03fc73';
-  --color-sma-15: '#de0417';
-  --color-market-code: '#8c8b88';
+  --color-sma-50: oklch(0.87 0.2414 149.42);
+  --color-sma-15: oklch(0.57 0.2301 27.32);
+  --color-market-code: oklch(0.64 0.0046 91.47);
 
   --color-positive: var(--color-red-500);
   --color-negative: var(--color-blue-500);

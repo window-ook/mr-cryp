@@ -16,7 +16,7 @@ export default function NotificationModal({ open, handleClose }) {
               <div className={`bg-gray-100 h-1 w-full rounded-3xl`}></div>
               <button
                 onClick={handleClose}
-                className="p-4 rounded-md bg-main text-white cursor-pointer"
+                className="p-4 rounded-md bg-main font-pretendard font-bold text-white cursor-pointer"
               >
                 Close
               </button>

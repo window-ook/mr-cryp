@@ -132,7 +132,7 @@ export default function NavBar({
           <div className="flex items-center gap-2">
             <div className="flex items-center gap-2">
               <div className="relative hidden md:block">
-                <div className="absolute left-4 bottom-6 max-[1200px]:bottom-5 w-3 h-3 max-[1200px]:w-2 max-[1200px]:h-2 rounded-full bg-red-500 flex items-center justify-center" />
+                <div className="absolute left-4 bottom-5 lg:bottom-6 w-1 h-1 lg:w-2 lg:h-2 rounded-full bg-red-500 flex items-center justify-center" />
                 <button
                   className="text-white text-2xl cursor-pointer"
                   onClick={handleOpen}
