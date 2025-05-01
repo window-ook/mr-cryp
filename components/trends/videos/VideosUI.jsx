@@ -1,18 +1,16 @@
-import { NGTypo } from '@/defaultTheme';
-import { Grid, Box } from '@mui/material';
 import Video from './Video';
 
-export default function VideosUI({ videos, theme }) {
+export default function VideosUI({ videos }) {
   return (
     <article className="w-full flex flex-col gap-4">
       <span className="font-pretendard text-2xl max-[475px]:text-xl font-bold text-main-dark">
         트렌드 영상
       </span>
-      <Grid container spacing={2}>
+      <div className="grid grid-cols-12 gap-4">
         {videos?.map(video => (
-          <Grid item xs={12} sm={3} key={video?.id}>
-            <Box>
-              <Box>
+          <div className="col-span-12 sm:col-span-3" key={video?.id}>
+            <div>
+              <div>
                 <Video
                   width={200}
                   height={150}
@@ -20,33 +18,28 @@ export default function VideosUI({ videos, theme }) {
                   title={video?.snippet?.title}
                   linkUrl={`https://youtube.com/watch?v=${video?.id}`}
                 />
-              </Box>
-              <Box sx={{ pr: 2, pt: 2 }}>
-                <NGTypo gutterBottom variant="body2" fontWeight={'bold'}>
+              </div>
+              <div sx={{ pr: 2, pt: 2 }}>
+                <span className="font-ng font-bold">
                   {video?.snippet?.title
                     ?.replace(/&quot;/g, '')
                     ?.replace(/&#39;/g, '')
                     ?.replace(/"/g, '')
                     ?.replace(/'/g, '')
                     ?.slice(0, 25) + '...'}
-                </NGTypo>
-                <NGTypo
-                  display="block"
-                  variant="caption"
-                  fontWeight={'bold'}
-                  color={theme.palette.primary.main}
-                >
+                </span>
+                <span className="font-ng font-bold text-main">
                   {video?.snippet?.channelTitle}
-                </NGTypo>
-                <NGTypo variant="caption" fontWeight={'bold'}>
+                </span>
+                <span className="font-ng font-bold text-main">
                   {video?.snippet?.publishTime.slice(0, 10)}{' '}
                   {video?.snippet?.publishTime.slice(11, 16)}
-                </NGTypo>
-              </Box>
-            </Box>
-          </Grid>
+                </span>
+              </div>
+            </div>
+          </div>
         ))}
-      </Grid>
+      </div>
     </article>
   );
 }

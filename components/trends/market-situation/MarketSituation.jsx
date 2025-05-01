@@ -1,8 +1,8 @@
 import { memo, useEffect, useState } from 'react';
 import { useMarketSituationQuery } from '@/hooks/useMarketSituationQuery';
-import { LinearProgress } from '@mui/material';
 import { AnimatePresence } from 'motion/react';
 import * as m from 'motion/react-m';
+import LinearProgress from '@/components/shared/LinearProgress';
 
 function MarketSituation() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -26,14 +26,14 @@ function MarketSituation() {
     return () => clearInterval(interval);
   }, [situations, currentIndex]);
 
-  if (isPending) return <LinearProgress />;
+  if (isPending) return <LinearProgress maxValue={100} height="h-12" />;
 
   const currentNews = situations?.[currentIndex];
 
   return (
     <div className="flex flex-col gap-4">
       <header className="flex items-end gap-2">
-        <span className="font-pretendard text-2xl max-[475px]:text-xl font-bold">
+        <span className="font-pretendard text-main-dark text-2xl max-[475px]:text-xl font-bold">
           시황
         </span>
         <span className="text-gray-500 font-ng text-xs">{today}</span>
@@ -51,7 +51,7 @@ function MarketSituation() {
             className="absolute overflow-hidden whitespace-nowrap text-ellipsis inset-0 flex items-center cursor-pointer"
             onClick={() => window.open(currentNews?.url, '_blank')}
           >
-            <span className="font-semibold text-sm sm:text-base">
+            <span className="font-semibold text-sm sm:text-lg">
               {currentNews?.title}
             </span>
           </m.button>

@@ -13,9 +13,13 @@ function ExchangeRate({ exchangeRates }) {
           {exchangeRates.map(({ currency, rate }) => {
             return (
               <li key={currency}>
-                <span className="font-ng max-[1100px]:text-xs text-lg">
-                  <span className="font-bold text-main-dark">{currency}</span>{' '}
-                  {rate.toFixed(2)}원
+                <span className="flex flex-col sm:flex-row gap-2 font-ng [1100px]:text-lg">
+                  <span className="text-xs sm:text-base font-bold text-blue-500">
+                    {currency}
+                  </span>
+                  <span className="text-xs sm:text-base">
+                    {rate.toFixed(2)}원
+                  </span>
                 </span>
               </li>
             );

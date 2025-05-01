@@ -15,10 +15,7 @@ function MarketList({ marketCodes }) {
   const [isLoading, setIsLoading] = useState(true);
   const [tickers, setTickers] = useState([]);
 
-  const dispatch = useDispatch();
-
   const intervalTime = useSelector(state => state.chart.intervalTime);
-
   const keyword = useSelector(state => state.chart.keyword);
 
   const codeMap = useMemo(() => {
@@ -29,6 +26,8 @@ function MarketList({ marketCodes }) {
     return map;
   }, [marketCodes]);
 
+  const dispatch = useDispatch();
+
   useEffect(() => {
     if (marketCodes) {
       const fetchTickers = async () => {
@@ -37,9 +36,11 @@ function MarketList({ marketCodes }) {
             .filter(code => code.market.includes('KRW'))
             .map(code => code.market)
             .join(',');
+
           const response = await axios.get(
             `/api/upbit/tickers?markets=${codesString}`,
           );
+
           const data = await response.data;
           setTickers(data);
         } catch (error) {
@@ -50,6 +51,7 @@ function MarketList({ marketCodes }) {
       };
 
       fetchTickers();
+
       const interval = setInterval(fetchTickers, intervalTime);
       return () => clearInterval(interval);
     }

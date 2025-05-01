@@ -2,7 +2,7 @@ import { useState, useCallback, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { globalColors } from '@/globalColors';
 import { PriceTypo, HeadTypo } from '@/defaultTheme';
-import { CircularProgress } from '@mui/material';
+import CircularProgress from '@/components/shared/CircularProgress';
 
 export default function Orderbook({ orderbookData }) {
   const rate = useSelector(state => state.chart.rate);
@@ -156,7 +156,7 @@ export default function Orderbook({ orderbookData }) {
           <tbody>
             <tr>
               <td>
-                <CircularProgress color="primary" />
+                <CircularProgress />
               </td>
             </tr>
           </tbody>

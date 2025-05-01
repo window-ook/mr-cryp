@@ -1,34 +1,9 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
-import { DescriptionTypo, NGTypo, LogoTypo, theme } from '@/defaultTheme';
-import { globalColors } from '@/globalColors';
-import { styled } from '@mui/system';
-import { Avatar, Box, CssBaseline, Grid, Paper } from '@mui/material';
+import { FaUserLock } from 'react-icons/fa';
 import Head from 'next/head';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import SocialLoginButton from '@/components/auth/SocialLoginButton';
 import Image from 'next/image';
-
-const ButtonsBox = styled(Box)(() => ({
-  my: 8,
-  mx: 4,
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
-}));
-
-const LoginTypo = styled(DescriptionTypo)(() => ({
-  fontSize: '2rem',
-}));
-
-const StyledLogoTypo = styled(LogoTypo)(() => ({
-  letterSpacing: '.3rem',
-  color: theme.palette.primary.main,
-  textDecoration: 'none',
-  '@media (max-width: 900px)': {
-    fontSize: '1.5rem',
-  },
-}));
+import SocialLoginButton from '@/components/auth/SocialLoginButton';
 
 export async function getServerSideProps() {
   const KAKAO_CLIENT_ID = process.env.NEXT_KAKAO_CLIENT_ID;
@@ -40,14 +15,13 @@ export async function getServerSideProps() {
   };
 }
 
-function Copyright(props) {
+const Copyright = () => {
   return (
-    <NGTypo variant="body2" color="text.secondary" align="center" {...props}>
-      {'Copyrights All reserved © '}
-      Mr.Cryp 2024
-    </NGTypo>
+    <span className="mt-4 flex items-center text-slate-500">
+      Copyrights All reserved © Mr.Cryp 2024
+    </span>
   );
-}
+};
 
 export default function Signin({ KAKAO_CLIENT_ID }) {
   const KAKAO_REDIRECT_URI = process.env.NEXT_PUBLIC_KAKAO_REDIRECT_URI;
@@ -70,30 +44,16 @@ export default function Signin({ KAKAO_CLIENT_ID }) {
         <title>로그인 - 미스터 크립</title>
       </Head>
       <main>
-        <Grid container component="main" sx={{ height: '100vh' }}>
-          <CssBaseline />
-          {/* 로그인 폼 */}
-          <Grid
-            item
-            xs={12}
-            sm={8}
-            md={5}
-            component={Paper}
-            elevation={6}
-            square
-            display="flex"
-            alignItems="center"
-            justifyContent="center"
-          >
-            <ButtonsBox>
-              <Avatar
-                style={{
-                  backgroundColor: theme.palette.primary.main,
-                }}
-              >
-                <LockOutlinedIcon />
-              </Avatar>
-              <LoginTypo>로그인</LoginTypo>
+        <div className="flex flex-col sm:flex-row h-screen">
+          {/* 왼쪽 */}
+          <div className="w-full h-full sm:w-1/2 flex items-center justify-center">
+            <div className="flex flex-col items-center">
+              <div className="flex flex-col items-center">
+                <FaUserLock className="text-main text-6xl" />
+                <span className="font-pretendard font-bold text-3xl">
+                  로그인
+                </span>
+              </div>
               <SocialLoginButton
                 platform={'google'}
                 bgColor={'bg-blue-600'}
@@ -108,44 +68,25 @@ export default function Signin({ KAKAO_CLIENT_ID }) {
               />
               <SocialLoginButton isTest={true} />
               <Copyright sx={{ mt: 5 }} />
-            </ButtonsBox>
-          </Grid>
-          {/* 포스터 사이드 */}
-          <Grid
-            item
-            xs={false}
-            sm={4}
-            md={7}
-            sx={{
-              display: { xs: 'none', sm: 'block' },
-              backgroundColor: globalColors.auth_background,
-            }}
-          >
-            <Box
-              display={'flex'}
-              alignItems={'center'}
-              justifyContent={'center'}
-              height={'100vh'}
-              gap={2}
-            >
+            </div>
+          </div>
+          {/* 오른쪽 */}
+          <div className="hidden w-1/2 sm:flex justify-center items-center bg-slate-300">
+            <div className="h-full flex items-center justify-center gap-2">
               <Image
                 alt="로고 이미지"
-                src="/images/logo_mustache.avif"
+                src="/images/mustache.avif"
                 width={100}
                 height={30}
                 priority={true}
-                style={{
-                  width: '10%',
-                  height: 'auto',
-                  objectFit: 'contain',
-                }}
+                className=""
               />
-              <StyledLogoTypo noWrap fontWeight="bold" fontSize={'2.5rem'}>
+              <span className="font-aggro font-bold italic text-main text-5xl text-shadow-black">
                 Mr.Cryp
-              </StyledLogoTypo>
-            </Box>
-          </Grid>
-        </Grid>
+              </span>
+            </div>
+          </div>
+        </div>
       </main>
     </>
   );

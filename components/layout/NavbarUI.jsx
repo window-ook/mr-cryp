@@ -1,24 +1,11 @@
-import { globalColors } from '@/globalColors';
-import { styled } from '@mui/system';
-import { Menu, MenuItem } from '@mui/material';
+import { IoSearch, IoNotifications, IoMenu } from 'react-icons/io5';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuTrigger,
+} from '../ui/dropdown-menu';
 import Image from 'next/image';
-import NotificationsNoneIcon from '@mui/icons-material/NotificationsNoneSharp';
 import NotificationModal from './NotificationModal';
-import SearchIcon from '@mui/icons-material/Search';
-import MenuIcon from '@mui/icons-material/Menu';
-
-const NotificationIcon = styled(NotificationsNoneIcon)(() => ({
-  fontSize: '2rem',
-  color: globalColors.white,
-  transition: 'color ease 200ms',
-  '@media (max-width:1220px)': {
-    fontSize: '1.5rem',
-  },
-  '&:hover': {
-    color: globalColors.vanilla[400],
-    cursor: 'pointer',
-  },
-}));
 
 export default function NavBar({
   setNewKeyword,
@@ -26,53 +13,46 @@ export default function NavBar({
   handleOpen,
   handleClose,
   handleSignout,
-  handleCloseSignout,
   handleCloseNavMenu,
   handleToggleSubMenu,
   handleKeywordSearch,
   handleOpenNavMenu,
-  handleOpenSignout,
   navbarMenu,
   subNavbarMenu,
   activePage,
-  activeSubMenu,
-  anchorElNav,
-  anchorSignout,
+  submenuActive,
+  dropdownActive,
   open,
   imgUrl,
   nickname,
-  isOverMd,
   isRoot,
 }) {
   return (
     <nav className="sticky top-0 z-50 bg-main shadow-md">
       <div className="max-w-[75rem] mx-auto flex flex-col justify-center">
         <div className="flex justify-between px-4 py-2">
-          {isOverMd ? (
+          {/* MD 이상 크기 */}
+          <div className="hidden md:block">
             <div className="flex items-center">
               <div className="flex">
                 <Image
                   alt="navbar logo image"
-                  src="/images/logo_mustachetrans.webp"
+                  src="/images/mustachetrans.webp"
                   width={60}
                   height={30}
                   className="p-2"
                 />
-                <span className="font-aggro italic font-bold text-2xl text-white">
-                  Mr.Cryp
-                </span>
+                <span className="font-navbar-mrcryp">Mr.Cryp</span>
               </div>
               <div className="flex items-center gap-1 grow pl-4">
                 {navbarMenu.map(page => (
                   <button
                     type="button"
                     key={page}
-                    className="min-w-fit py-6 px-4 whitespace-nowrap inline-flex flex-col shrink-0 items-center text-white cursor-pointer hover:opacity-50 transition-all duration-200 ease-in-out"
+                    className="min-w-fit py-6 px-4 whitespace-nowrap inline-flex shrink-0 flex-col items-center gap-2 text-white cursor-pointer hover:opacity-50 transition-all duration-200 ease-in-out"
                     onClick={() => handleCloseNavMenu(page)}
                   >
-                    <span className="font-aggro text-xl text-shadow-black">
-                      {page}
-                    </span>
+                    <span className="font-navbar-button">{page}</span>
                     <div
                       className={`h-1 w-full rounded-lg ${
                         handleActivePage() === page
@@ -82,15 +62,17 @@ export default function NavBar({
                     />
                   </button>
                 ))}
-                <div className="hidden lg:flex lg:items-center">
+                <div className="hidden lg:flex lg:items-center gap-2">
                   <label
                     htmlFor="search"
-                    className="font-ng font-bold text-white pr-2 max-[1300px]:hidden"
+                    className="font-ng font-bold text-xl text-white"
                   >
-                    <SearchIcon
-                      className="text-white cursor-pointer"
+                    <button
                       onClick={handleKeywordSearch}
-                    />
+                      className="cursor-pointer"
+                    >
+                      <IoSearch />
+                    </button>
                   </label>
                   <input
                     type="text"
@@ -107,7 +89,9 @@ export default function NavBar({
                 </div>
               </div>
             </div>
-          ) : (
+          </div>
+          {/* MD 이하 크기 */}
+          <div className="block md:hidden">
             <div className="flex justify-center items-center">
               <div className="flex grow">
                 <button
@@ -118,11 +102,11 @@ export default function NavBar({
                   aria-haspopup="true"
                   onClick={handleOpenNavMenu}
                 >
-                  <MenuIcon className="text-2xl" />
+                  <IoMenu className="text-2xl" />
                 </button>
                 <div
                   className={`absolute top-16 left-0 bg-white shadow-lg rounded-md ${
-                    Boolean(anchorElNav) ? 'block' : 'hidden'
+                    Boolean(dropdownActive) ? 'block' : 'hidden'
                   } md:hidden`}
                 >
                   {navbarMenu.map(page => (
@@ -132,9 +116,7 @@ export default function NavBar({
                       className="w-full px-4 py-2 text-left hover:bg-gray-100 cursor-pointer"
                       onClick={() => handleCloseNavMenu(page)}
                     >
-                      <span className="font-bold font-ng text-center text-xl">
-                        {page}
-                      </span>
+                      <span className="font-navbar-button">{page}</span>
                     </button>
                   ))}
                 </div>
@@ -145,61 +127,52 @@ export default function NavBar({
                 </span>
               </div>
             </div>
-          )}
+          </div>
 
-          <div className="flex items-center">
-            <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2">
               <div className="relative hidden md:block">
                 <div className="absolute left-4 bottom-6 max-[1200px]:bottom-5 w-3 h-3 max-[1200px]:w-2 max-[1200px]:h-2 rounded-full bg-red-500 flex items-center justify-center" />
-                <NotificationIcon onClick={handleOpen} />
+                <button
+                  className="text-white text-2xl cursor-pointer"
+                  onClick={handleOpen}
+                >
+                  <IoNotifications />
+                </button>
               </div>
               <Image
                 alt="프로필 이미지"
-                src={imgUrl || '/images/default_profile_img.avif'}
+                src={imgUrl || '/images/user-logos/logo_default_profile.avif'}
                 width={30}
                 height={30}
                 className="rounded-full"
               />
-              <button
-                type="button"
-                className="font-aggro text-xl text-white text-shadow-black max-[1220px]:text-xl max-[500px]:hidden hover:opacity-50 cursor-pointer transition-all duration-200 ease-in-out"
-                onClick={handleOpenSignout}
-              >
-                {nickname || 'TESTER'}, hi!
-              </button>
             </div>
-            <Menu
-              anchorEl={anchorSignout}
-              open={Boolean(anchorSignout)}
-              onClose={handleCloseSignout}
-              anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'right',
-              }}
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-            >
-              <MenuItem
+            <DropdownMenu>
+              <DropdownMenuTrigger className="hover:ring-0">
+                <span className="font-aggro text-xl text-white text-shadow-black max-[1220px]:text-xl max-[500px]:hidden hover:opacity-50 cursor-pointer transition-all duration-200 ease-in-out">
+                  {nickname || 'TESTER'}, hi!
+                </span>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent
                 onClick={() => {
                   handleSignout();
-                  handleCloseSignout();
                 }}
+                className="flex items-center justify-center cursor-pointer"
               >
                 <span className="font-pretendard text-xl">로그아웃</span>
-              </MenuItem>
-            </Menu>
+              </DropdownMenuContent>
+            </DropdownMenu>
           </div>
         </div>
 
         {/* 서브 네브바*/}
         {!isRoot && activePage === '거래소' && (
-          <div className="flex gap-1 pl-[14rem] max-[900px]:justify-center max-[900px]:pl-0">
+          <div className="flex gap-2 pl-[14rem] max-[900px]:justify-center max-[900px]:pl-0">
             {subNavbarMenu.map(page => (
               <button
                 type="button"
-                className="min-w-fit pr-4 whitespace-nowrap inline-flex flex-col shrink-0 items-center text-white cursor-pointer hover:opacity-50 transition-all duration-200 ease-in-out"
+                className="min-w-fit pr-4 whitespace-nowrap inline-flex shrink-0 flex-col items-center gap-2 text-white cursor-pointer hover:opacity-50 transition-all duration-200 ease-in-out"
                 aria-label="서브 네브바 메뉴 버튼"
                 key={page}
                 onClick={() => handleToggleSubMenu(page)}
@@ -208,8 +181,8 @@ export default function NavBar({
                   {page}
                 </span>
                 <div
-                  className={`h-1 w-full rounded-lg ${
-                    activeSubMenu === page
+                  className={`h-1 w-full rounded-lg mb-2 ${
+                    submenuActive === page
                       ? 'bg-white shadow-md'
                       : 'bg-transparent'
                   }`}

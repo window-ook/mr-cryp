@@ -1,29 +1,9 @@
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { Box, Modal, Tab } from '@mui/material';
+import { Tab } from '@mui/material';
 import { TabContext, TabList } from '@mui/lab';
-import { styled } from '@mui/system';
-import { theme } from '@/defaultTheme';
 import History from './History';
 import Panel from './Panel';
-
-const ModalBox = styled(Box)(() => ({
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: 500,
-  '@media (max-width:500px)': {
-    width: '18.75rem',
-  },
-  backgroundColor: '#fff',
-  border: '0.5rem solid',
-  borderColor: theme.palette.primary.main,
-  boxShadow: '1.5rem',
-  padding: '0.25rem',
-  overflowY: 'auto',
-  maxHeight: '90vh',
-}));
 
 export default function ModalProvider({ handleClose }) {
   const [value, setValue] = useState('1'); // 주문수량
@@ -42,16 +22,18 @@ export default function ModalProvider({ handleClose }) {
     .filter(order => order.type === '매수')
     .reduce((acc, order) => acc + parseFloat(order.orderPrice), 0);
 
+  if (!open) return null;
+
   return (
-    <Modal
-      open={open}
-      onClose={handleClose}
-      aria-labelledby="주문하기"
-      aria-describedby="차트에서 주문하기를 누르면 열립니다."
-    >
-      <ModalBox>
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
+      <div
+        className="relative max-sm:w-[18.75rem] max-h-[90vh] w-[500px] p-1 border-[0.5rem] border-main-dark shadow-2xl overflow-y-auto bg-white"
+        role="dialog"
+        aria-labelledby="주문하기"
+        aria-describedby="차트에서 주문하기를 누르면 열립니다."
+      >
         <TabContext value={value}>
-          <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+          <div className="border-b border-divider">
             <TabList onChange={handleChange} aria-label="매수 매도 주문">
               <Tab fontFamily="NEXON Lv1 Gothic OTF" label="매수" value="1" />
               <Tab fontFamily="NEXON Lv1 Gothic OTF" label="매도" value="2" />
@@ -61,12 +43,17 @@ export default function ModalProvider({ handleClose }) {
                 value="3"
               />
             </TabList>
-          </Box>
+          </div>
           <Panel value="1" addOrder={addOrder} />
           <Panel value="2" addOrder={addOrder} askablePrice={askablePrice} />
           <History value="3" orders={orders} removeOrder={removeOrder} />
         </TabContext>
-      </ModalBox>
-    </Modal>
+      </div>
+      <div
+        className="fixed inset-0 z-40"
+        onClick={handleClose}
+        aria-hidden="true"
+      />
+    </div>
   );
 }

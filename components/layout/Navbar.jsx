@@ -2,16 +2,14 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { useDispatch } from 'react-redux';
 import { setKeyword } from '@/utils/redux/chartSlice';
-import { useMediaQuery } from '@mui/system';
 import { logoutGoogle } from '@/utils/firebase';
 import axios from 'axios';
 import NavBarUI from './NavbarUI';
 
 export default function NavBar() {
-  const [anchorElNav, setAnchorElNav] = useState(null);
-  const [anchorSignout, setAnchorSignout] = useState(null);
   const [activePage, setActivePage] = useState('트렌드');
-  const [activeSubMenu, setActiveSubMenu] = useState('');
+  const [dropdownActive, setDropdownActive] = useState(null);
+  const [submenuActive, setSubmenuActive] = useState('');
   const [open, setOpen] = useState(false);
   const [imgUrl, setImgUrl] = useState('');
   const [nickname, setNickname] = useState('');
@@ -20,8 +18,6 @@ export default function NavBar() {
   const router = useRouter();
 
   const dispatch = useDispatch();
-
-  const isOverMd = useMediaQuery('(min-width:900px)');
 
   const navbarMenu = ['트렌드', '거래소', '마이페이지'];
   const subNavbarMenu = ['차트', 'AI 포트폴리오'];
@@ -75,12 +71,8 @@ export default function NavBar() {
     }
   };
 
-  /** 로그아웃 드롭다운 닫기 */
-  const handleCloseSignout = () => setAnchorSignout(null);
-
   /** 페이지 이동 (XS: 메뉴 드롭다운 닫기 추가) */
   const handleCloseNavMenu = page => {
-    setAnchorElNav(null);
     setActivePage(page);
     sessionStorage.setItem('activePage', page);
     if (page === '마이페이지') router.push('/mypage');
@@ -90,7 +82,7 @@ export default function NavBar() {
 
   /** 거래 서브 메뉴 */
   const handleToggleSubMenu = subMenu => {
-    setActiveSubMenu(subMenu);
+    setSubmenuActive(subMenu);
     if (subMenu === '차트') router.push('/exchange');
     if (subMenu === 'AI 포트폴리오') router.push('/exchange/ai-portfoilo');
   };
@@ -103,10 +95,7 @@ export default function NavBar() {
   };
 
   /** XS 메뉴 드롭다운 열기 */
-  const handleOpenNavMenu = event => setAnchorElNav(event.currentTarget);
-
-  /** 로그아웃 드롭다운 열기 */
-  const handleOpenSignout = event => setAnchorSignout(event.currentTarget);
+  const handleOpenNavMenu = event => setDropdownActive(event.currentTarget);
 
   const props = {
     setNewKeyword,
@@ -114,22 +103,18 @@ export default function NavBar() {
     handleOpen,
     handleClose,
     handleSignout,
-    handleCloseSignout,
     handleCloseNavMenu,
     handleToggleSubMenu,
     handleKeywordSearch,
     handleOpenNavMenu,
-    handleOpenSignout,
     navbarMenu,
     subNavbarMenu,
     activePage,
-    activeSubMenu,
-    anchorElNav,
-    anchorSignout,
+    submenuActive,
+    dropdownActive,
     open,
     imgUrl,
     nickname,
-    isOverMd,
     isRoot,
   };
 
