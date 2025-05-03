@@ -26,7 +26,7 @@ function MarketSituation() {
     return () => clearInterval(interval);
   }, [situations, currentIndex]);
 
-  if (isPending) return <LinearProgress maxValue={100} height="h-12" />;
+  if (isPending) return <LinearProgress maxValue={100} height="h-2" />;
 
   const currentNews = situations?.[currentIndex];
 

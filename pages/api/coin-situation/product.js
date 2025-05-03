@@ -8,18 +8,17 @@ export default async function handler(req, res) {
   let browser = null;
 
   try {
-    const executablePath = await chromium.executablePath;
-
     browser = await puppeteerCore.launch({
+      args: chromium.args,
+      executablePath: (await chromium.executablePath()) || '/usr/bin/chromium',
       defaultViewport: { width: 1366, height: 768 },
       headless: true,
-      args: ['--no-sandbox', '--disable-setuid-sandbox'],
-      executablePath,
     });
 
     const page = await browser.newPage();
 
-    await page.setDefaultNavigationTimeout(30000);
+    await page.setDefaultNavigationTimeout(15000);
+    await page.setCacheEnabled(false);
     await page.setRequestInterception(true);
 
     page.on('request', request => {
@@ -48,8 +47,6 @@ export default async function handler(req, res) {
       console.error('페이지 오류:', err);
     });
 
-    console.log('페이지 이동 시작...');
-
     await page.goto('https://www.tokenpost.kr/news/market', {
       waitUntil: 'domcontentloaded',
       timeout: 10000,
@@ -59,8 +56,6 @@ export default async function handler(req, res) {
       visible: true,
       timeout: 10000,
     });
-
-    console.log('선택자 감지됨, 데이터 추출 중...');
 
     const data = await page.evaluate(() => {
       try {
