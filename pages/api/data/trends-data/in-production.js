@@ -18,6 +18,8 @@ export default async function handler(req, res) {
       headless: true,
     });
 
+    await new Promise(resolve => setTimeout(resolve, 1000));
+
     // 병렬로 크롤링 실행
     // const [articlesData, marketData, coinData] = await Promise.all([
     //   crawlArticles(browser),
