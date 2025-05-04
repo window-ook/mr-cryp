@@ -10,7 +10,7 @@ const fetchTrendsData = async () => {
         : '/api/data/trends-data/in-production';
 
     const url = new URL(endpoint, BASE_DOMAIN).toString();
-    console.log('Fetching from URL:', url); // URL 확인용 로그
+    console.log('현재 URL:', url); // URL 확인용 로그
 
     const res = await fetch(url);
 
