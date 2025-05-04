@@ -42,7 +42,6 @@ export default async function handler(req, res) {
       }
     });
 
-    // 페이지 로드 시 오류 처리
     page.on('error', err => {
       console.error('페이지 오류:', err);
     });

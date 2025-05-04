@@ -71,7 +71,7 @@ export default function Signin({ KAKAO_CLIENT_ID }) {
             </div>
           </div>
           {/* 오른쪽 */}
-          <div className="hidden w-1/2 sm:flex justify-center items-center bg-slate-300">
+          <div className="hidden w-1/2 sm:flex justify-center items-center bg-slate-200">
             <div className="h-full flex items-center justify-center gap-2">
               <Image
                 alt="로고 이미지"
@@ -79,7 +79,7 @@ export default function Signin({ KAKAO_CLIENT_ID }) {
                 width={100}
                 height={30}
                 priority={true}
-                className=""
+                className="hover:hidden"
               />
               <span className="font-aggro font-bold italic text-main text-5xl text-shadow-black">
                 Mr.Cryp

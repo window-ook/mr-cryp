@@ -5,7 +5,7 @@ export default function Video({ width, height, src, title, linkUrl }) {
 
   return (
     <button
-      className="relative w-full h-auto overflow-hidden rounded-md cursor-pointer hover:opacity-70 transition-opacity duration-300 ease"
+      className="relative w-full h-auto overflow-hidden rounded-sm cursor-pointer hover:opacity-70 transition-opacity duration-300 ease"
       aria-label="영상 원본으로 이동하기"
       onClick={handleClick}
     >

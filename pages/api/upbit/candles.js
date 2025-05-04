@@ -14,10 +14,8 @@ export default async function handler(req, res) {
       case '1min':
       case '5min':
         if (!unit) {
-          res.status(400).json({ error: 'unit(몇 분)을 입력하세요.' });
-          return;
+          return res.status(400).json({ error: 'unit(몇 분)을 입력하세요.' });
         }
-
         data = await upbit.candleMinutes(unit, ticker, count, to);
         break;
       case 'days':
@@ -33,12 +31,20 @@ export default async function handler(req, res) {
         data = await upbit.candleMonths(ticker, count);
         break;
       default:
-        res.status(400).json({ error: '유효하지 않은 타입입니다.' });
-        return;
+        return res.status(400).json({ error: '유효하지 않은 타입입니다.' });
     }
 
-    res.status(200).json(data);
+    if (!data) {
+      return res.status(404).json({ error: '데이터를 찾을 수 없습니다.' });
+    }
+
+    return res.status(200).json(data);
   } catch (error) {
-    res.status(500).json({ error: '캔들 데이터 요청 실패' });
+    console.error('캔들 데이터 요청 실패:', error);
+    return res.status(500).json({
+      error: '캔들 데이터 요청 실패',
+      message: error.message,
+      details: error.response?.data || error.toString(),
+    });
   }
 }

@@ -3,11 +3,11 @@ import axios from 'axios';
 
 const fetchPosts = async () => {
   try {
-    const baseUrl = process.env.NEXT_PUBLIC_API_URL;
+    const BASE_DOMAIN = process.env.NEXT_PUBLIC_BASE_DOMAIN;
     const endpoint =
-      baseUrl === 'http://localhost:3000'
-        ? '/api/coin-articles'
-        : `/api/coin-articles/product`;
+      BASE_DOMAIN === 'http://localhost:3000'
+        ? '/api/data/articles'
+        : `/api/data/articles/product`;
 
     const response = await axios.get(endpoint);
     return response.data.data;

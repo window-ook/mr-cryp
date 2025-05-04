@@ -18,7 +18,6 @@ export default async function handler(req, res) {
     const page = await browser.newPage();
 
     await page.setDefaultNavigationTimeout(30000);
-    await page.setCacheEnabled(false);
     await page.setRequestInterception(true);
 
     page.on('request', request => {

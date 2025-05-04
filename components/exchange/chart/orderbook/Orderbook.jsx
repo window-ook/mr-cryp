@@ -15,7 +15,7 @@ function Orderbook() {
       if (code !== currentCode) setCurrentCode(code);
       const fetchOrderbookData = async () => {
         try {
-          const response = await axios.get(`/api/orderbook/${code}`);
+          const response = await axios.get(`/api/upbit/orderbook/${code}`);
           const data = response.data;
           setOrderbookData(...data);
         } catch (error) {

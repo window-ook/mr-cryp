@@ -60,7 +60,7 @@ export default function ArticlesUI({ articles }) {
                   alt={title}
                   width={80}
                   height={0}
-                  className="w-[5rem] h-auto object-cover rounded-lg shrink-0"
+                  className="w-[5rem] h-auto object-cover rounded-sm shrink-0"
                   priority
                 />
                 <div className="flex flex-col gap-1 overflow-hidden">
