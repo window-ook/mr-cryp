@@ -25,8 +25,10 @@ export default async function handler(req, res) {
     //   crawlRisedCoins(browser),
     // ]);
 
-    const articlesData = await extractArticles(browser);
-    const marketData = await extractMarketSituation(browser);
+    // const articlesData = await extractArticles(browser);
+    const articlesData = [];
+    // const marketData = await extractMarketSituation(browser);
+    const marketData = [];
     const coinData = await extractRisedCoins(browser);
 
     return res.status(200).json({
