@@ -1,4 +1,5 @@
 import { fetchExchangeRates } from '@/utils/fetchExchangeRates';
+import { useTrendsDataQuery } from '@/hooks/useTrendsData';
 import Head from 'next/head';
 import ExchangeRate from '@/components/trends/exchange-rate/ExchangeRate';
 import TopRisedCoins from '@/components/trends/rised-coin/TopRisedCoins';
@@ -6,7 +7,6 @@ import MarketSituation from '@/components/trends/market-situation/MarketSituatio
 import Articles from '@/components/trends/articles/Articles';
 import Videos from '@/components/trends/videos/Videos';
 import Informations from '@/components/trends/videos/Informations';
-import { useTrendsDataQuery } from '@/hooks/useTrendsData';
 
 export async function getStaticProps() {
   let exchangeRates = [];
@@ -21,8 +21,6 @@ export async function getStaticProps() {
     props: {
       exchangeRates,
     },
-
-    revalidate: 3600,
   };
 }
 

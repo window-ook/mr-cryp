@@ -1,6 +1,6 @@
-import crawlArticles from '@/lib/extractor/local/articles';
-import crawlRisedCoins from '@/lib/extractor/local/rised-coins';
-import crawlMarketSituation from '@/lib/extractor/local/situation';
+import extractArticles from '@/lib/extractor/local/articles';
+import extractRisedCoins from '@/lib/extractor/local/rised-coins';
+import extractMarketSituation from '@/lib/extractor/local/situation';
 import puppeteer from 'puppeteer';
 
 export default async function handler(req, res) {
@@ -17,11 +17,15 @@ export default async function handler(req, res) {
     });
 
     // 병렬로 크롤링 실행
-    const [articlesData, marketData, coinData] = await Promise.all([
-      crawlArticles(browser),
-      crawlMarketSituation(browser),
-      crawlRisedCoins(browser),
-    ]);
+    // const [articlesData, marketData, coinData] = await Promise.all([
+    //   extractArticles(browser),
+    //   extractMarketSituation(browser),
+    //   extractRisedCoins(browser),
+    // ]);
+
+    const articlesData = await extractArticles(browser);
+    const marketData = await extractMarketSituation(browser);
+    const coinData = await extractRisedCoins(browser);
 
     return res.status(200).json({
       status: 200,
