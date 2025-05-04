@@ -46,6 +46,7 @@ export default function SocialLoginButton({
         BASE_STYLES,
         isTest ? 'bg-main text-white' : bgColor,
         !isTest && fontColor,
+        'group',
       )}
     >
       <Image
@@ -56,9 +57,8 @@ export default function SocialLoginButton({
       />
       <span
         className={clsx(
-          'pl-[1rem] font-ng',
-          isTest &&
-            'text-white hover:text-black transition duration-200 ease-in',
+          'pl-[1rem] font-ng group-hover:text-black',
+          isTest && 'text-white transition duration-200 ease-in',
         )}
       >
         {BUTTON_TEXT}

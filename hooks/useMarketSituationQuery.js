@@ -2,11 +2,11 @@ import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 
 const fetchSituations = async () => {
-  const baseUrl = process.env.NEXT_PUBLIC_API_URL;
+  const BASE_DOMAIN = process.env.NEXT_PUBLIC_BASE_DOMAIN;
   const endpoint =
-    baseUrl === 'http://localhost:3000'
-      ? '/api/coin-situation'
-      : `/api/coin-situation/product`;
+    BASE_DOMAIN === 'http://localhost:3000'
+      ? '/api/data/market-situation'
+      : `/api/data/market-situation/product`;
 
   const response = await axios.get(endpoint);
   return response.data.data;

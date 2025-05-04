@@ -2,10 +2,13 @@ import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 
 const fetchVideos = async newKeyword => {
-  const response = await axios.get('/api/videos', {
+  // const response = await axios.get('/api/videos', {
+  //   params: { keyword: newKeyword },
+  // });
+  const response = await axios.get('/data/videos.json', {
     params: { keyword: newKeyword },
   });
-  return response.data;
+  return response.data.items;
 };
 
 export function useVideosQuery(keyword) {
@@ -18,7 +21,7 @@ export function useVideosQuery(keyword) {
         const dateB = new Date(b.snippet.publishTime);
         return dateB - dateA;
       });
-      return data;
+      return data.slice(0, 8);
     },
     staleTime: 1000 * 60 * 10,
     gcTime: 1000 * 60 * 10,

@@ -9,7 +9,7 @@ export async function initializeFirebase() {
     const firebaseConfig = {
       apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
       authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTHDOMAIN,
-      databaseURL: process.env.NEXT_PUBLIC_FIREBASE_DB_URL,
+      dataBASE_DOMAIN: process.env.NEXT_PUBLIC_FIREBASE_DB_URL,
       projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
     };
 

@@ -5,7 +5,7 @@ import Upbit from '@/lib/upbit';
 import dynamic from 'next/dynamic';
 import MarketList from '@/components/exchange/chart/market-list/MarketList';
 import MarketDetailProvider from '@/components/exchange/chart/market-detail/MarketDetail';
-import TradeHistoryProvider from '@/components/exchange/chart/trade-history/TradeHistoryProvider';
+import TradeHistoryProvider from '@/components/exchange/chart/trade-history/TradeHistory';
 import OrderbookProvider from '@/components/exchange/chart/orderbook/Orderbook';
 
 const HighStockChart = dynamic(

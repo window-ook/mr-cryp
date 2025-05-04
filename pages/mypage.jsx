@@ -14,7 +14,7 @@ export default function Home() {
     const getBalance = async () => {
       try {
         const response = await axios.get(
-          `${process.env.NEXT_PUBLIC_API_URL}/data/balance.json`,
+          `${process.env.NEXT_PUBLIC_BASE_DOMAIN}/data/balance.json`,
         );
         let fetched = response.data;
         setBalance(fetched);

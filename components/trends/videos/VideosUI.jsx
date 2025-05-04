@@ -8,7 +8,7 @@ export default function VideosUI({ videos }) {
       </span>
       <div className="grid grid-cols-12 gap-4">
         {videos?.map(video => (
-          <div className="col-span-12 sm:col-span-3" key={video?.id}>
+          <div key={video?.id?.videoId} className="col-span-12 sm:col-span-3">
             <div>
               <div>
                 <Video
@@ -19,7 +19,7 @@ export default function VideosUI({ videos }) {
                   linkUrl={`https://youtube.com/watch?v=${video?.id}`}
                 />
               </div>
-              <div sx={{ pr: 2, pt: 2 }}>
+              <div className="flex flex-col gap-1">
                 <span className="font-ng font-bold">
                   {video?.snippet?.title
                     ?.replace(/&quot;/g, '')
@@ -28,10 +28,11 @@ export default function VideosUI({ videos }) {
                     ?.replace(/'/g, '')
                     ?.slice(0, 25) + '...'}
                 </span>
-                <span className="font-ng font-bold text-main">
+
+                <span className="font-ng font-bold text-main-dark text-sm">
                   {video?.snippet?.channelTitle}
                 </span>
-                <span className="font-ng font-bold text-main">
+                <span className="font-ng font-bold text-main-dark text-sm">
                   {video?.snippet?.publishTime.slice(0, 10)}{' '}
                   {video?.snippet?.publishTime.slice(11, 16)}
                 </span>

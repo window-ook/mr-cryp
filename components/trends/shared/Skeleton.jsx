@@ -1,4 +1,4 @@
-export default function PendingUI() {
+export default function Skeleton() {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
       {Array.from(new Array(4)).map((_, index) => (

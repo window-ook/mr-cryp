@@ -1,16 +1,20 @@
 import { memo } from 'react';
-import { useArticlesQuery } from '@/hooks/useArticlesQuery';
-import PendingUI from '../shared/PendingUI';
+import Skeleton from '../shared/Skeleton';
 import ArticlesUI from './ArticlesUI';
 
-function Articles() {
-  const { data: articles, isPending, error } = useArticlesQuery();
-
-  if (isPending) return <PendingUI />;
-
-  if (error) throw new Error('기사 다운로드 중 에러가 발생했습니다.');
-
-  return <ArticlesUI articles={articles} />;
+function Articles({ articles, isPending }) {
+  if (isPending) return <Skeleton />;
+  return (
+    <>
+      {articles ? (
+        <ArticlesUI articles={articles} />
+      ) : (
+        <div className="font-pretendard font-bold text-lg">
+          글로벌 토픽 다운로드 중 에러가 발생했습니다.
+        </div>
+      )}
+    </>
+  );
 }
 
 export default memo(Articles);
