@@ -13,9 +13,7 @@ export default function Home() {
   useEffect(() => {
     const getBalance = async () => {
       try {
-        const response = await axios.get(
-          `${process.env.NEXT_PUBLIC_BASE_DOMAIN}/data/balance.json`,
-        );
+        const response = await axios.get(`/data/balance.json`);
         let fetched = response.data;
         setBalance(fetched);
       } catch (error) {

@@ -4,11 +4,11 @@ import NavBar from '@/components/layout/Navbar';
 
 export default function Layout({ children }) {
   const router = useRouter();
-  const isHomePage = router.pathname === '/';
+  const HOME_PAGE = router.pathname === '/';
 
   return (
     <div>
-      {!isHomePage && <NavBar />}
+      {!HOME_PAGE && <NavBar />}
       <main>{children}</main>
     </div>
   );

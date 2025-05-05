@@ -2,16 +2,33 @@ import { useQuery } from '@tanstack/react-query';
 
 const fetchTrendsData = async () => {
   try {
-    const BASE_DOMAIN =
-      process.env.NEXT_PUBLIC_BASE_DOMAIN || 'http://localhost:3000';
-    const endpoint =
-      BASE_DOMAIN === 'http://localhost:3000'
-        ? '/api/data/trends-data'
-        : '/api/data/trends-data/in-production';
+    const BASE_DOMAIN = process.env.NEXT_PUBLIC_BASE_DOMAIN;
 
-    const url = new URL(endpoint, BASE_DOMAIN).toString();
-    console.log('현재 URL:', url); // URL 확인용 로그
+    // Vercel
+    if (BASE_DOMAIN !== 'http://localhost:3000') {
+      const [marketSituationRes, topicRes, topRisedCoinsRes] =
+        await Promise.all([
+          fetch('/data/mock/market-situation.json'),
+          fetch('/data/mock/topic.json'),
+          fetch('/data/mock/top-rised-coins.json'),
+        ]);
 
+      const [marketSituation, articles, coins] = await Promise.all([
+        marketSituationRes.json(),
+        topicRes.json(),
+        topRisedCoinsRes.json(),
+      ]);
+
+      return {
+        marketSituation,
+        articles,
+        coins,
+      };
+    }
+
+    // 로컬
+    const END_POINT = '/api/data/trends-data';
+    const url = new URL(END_POINT, BASE_DOMAIN).toString();
     const res = await fetch(url);
 
     if (!res.ok) {

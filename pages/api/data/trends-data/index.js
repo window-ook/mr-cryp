@@ -2,6 +2,8 @@ import extractArticles from '@/lib/extractor/local/articles';
 import extractRisedCoins from '@/lib/extractor/local/rised-coins';
 import extractMarketSituation from '@/lib/extractor/local/situation';
 import puppeteer from 'puppeteer';
+import fs from 'fs';
+import path from 'path';
 
 export default async function handler(req, res) {
   if (req.method !== 'GET')
@@ -16,23 +18,29 @@ export default async function handler(req, res) {
       headless: true,
     });
 
-    // 병렬로 크롤링 실행
-    // const [articlesData, marketData, coinData] = await Promise.all([
-    //   extractArticles(browser),
-    //   extractMarketSituation(browser),
-    //   extractRisedCoins(browser),
-    // ]);
+    const [articlesData, marketData, coinData] = await Promise.all([
+      extractArticles(browser),
+      extractMarketSituation(browser),
+      extractRisedCoins(browser),
+    ]);
 
-    const articlesData = await extractArticles(browser);
-    const marketData = await extractMarketSituation(browser);
-    const coinData = await extractRisedCoins(browser);
+    if (coinData) {
+      const mockDir = path.join(process.cwd(), 'public', 'data', 'mock');
+      if (!fs.existsSync(mockDir)) {
+        fs.mkdirSync(mockDir, { recursive: true });
+      }
+      fs.writeFileSync(
+        path.join(mockDir, 'top-rised-coins.json'),
+        JSON.stringify(coinData, null, 2),
+      );
+    }
 
     return res.status(200).json({
       status: 200,
       data: {
-        articles: Array.isArray(articlesData) ? articlesData : null,
         marketSituation: Array.isArray(marketData) ? marketData : null,
-        coins: Array.isArray(coinData) ? coinData : null,
+        topic: Array.isArray(articlesData) ? articlesData : null,
+        topRisedCoins: Array.isArray(coinData) ? coinData : null,
       },
       timestamp: new Date().toISOString(),
     });
@@ -44,8 +52,6 @@ export default async function handler(req, res) {
       timestamp: new Date().toISOString(),
     });
   } finally {
-    if (browser) {
-      await browser.close();
-    }
+    if (browser) await browser.close();
   }
 }

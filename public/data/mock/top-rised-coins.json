@@ -1,0 +1,1861 @@
+[
+  {
+    "name": "펀디엑스",
+    "marketCode": "PUNDIX/KRW",
+    "periods": {
+      "oneWeek": "+95.67%",
+      "oneMonth": "+121.38%",
+      "threeMonths": "+49.18%",
+      "sixMonths": "+58.16%",
+      "oneYear": "-9.46%"
+    }
+  },
+  {
+    "name": "에스티피",
+    "marketCode": "STPT/KRW",
+    "periods": {
+      "oneWeek": "+25.44%",
+      "oneMonth": "+77.71%",
+      "threeMonths": "+7.68%",
+      "sixMonths": "+72.81%",
+      "oneYear": "+21.90%"
+    }
+  },
+  {
+    "name": "아카시네트워크",
+    "marketCode": "AKT/KRW",
+    "periods": {
+      "oneWeek": "+23.67%",
+      "oneMonth": "+38.62%",
+      "threeMonths": "-33.55%",
+      "sixMonths": "-33.75%",
+      "oneYear": "-67.47%"
+    }
+  },
+  {
+    "name": "버추얼프로토콜",
+    "marketCode": "VIRTUAL/KRW",
+    "periods": {
+      "oneWeek": "+16.82%",
+      "oneMonth": "+193.66%",
+      "threeMonths": "+4.38%",
+      "sixMonths": "-",
+      "oneYear": "-"
+    }
+  },
+  {
+    "name": "드리프트",
+    "marketCode": "DRIFT/KRW",
+    "periods": {
+      "oneWeek": "+11.05%",
+      "oneMonth": "+14.29%",
+      "threeMonths": "-25.69%",
+      "sixMonths": "-",
+      "oneYear": "-"
+    }
+  },
+  {
+    "name": "어드벤처골드",
+    "marketCode": "AGLD/KRW",
+    "periods": {
+      "oneWeek": "+9.29%",
+      "oneMonth": "+15.09%",
+      "threeMonths": "-22.88%",
+      "sixMonths": "-",
+      "oneYear": "-"
+    }
+  },
+  {
+    "name": "솔레이어",
+    "marketCode": "LAYER/KRW",
+    "periods": {
+      "oneWeek": "+8.47%",
+      "oneMonth": "+101.83%",
+      "threeMonths": "-",
+      "sixMonths": "-",
+      "oneYear": "-"
+    }
+  },
+  {
+    "name": "에이브",
+    "marketCode": "AAVE/KRW",
+    "periods": {
+      "oneWeek": "+4.45%",
+      "oneMonth": "+10.73%",
+      "threeMonths": "-41.73%",
+      "sixMonths": "+4.35%",
+      "oneYear": "+97.04%"
+    }
+  },
+  {
+    "name": "블라스트",
+    "marketCode": "BLAST/KRW",
+    "periods": {
+      "oneWeek": "+4.22%",
+      "oneMonth": "+13.06%",
+      "threeMonths": "-25.74%",
+      "sixMonths": "-55.96%",
+      "oneYear": "-"
+    }
+  },
+  {
+    "name": "빔",
+    "marketCode": "BEAM/KRW",
+    "periods": {
+      "oneWeek": "+3.25%",
+      "oneMonth": "+12.10%",
+      "threeMonths": "-37.44%",
+      "sixMonths": "-55.18%",
+      "oneYear": "-"
+    }
+  },
+  {
+    "name": "이오스",
+    "marketCode": "EOS/KRW",
+    "periods": {
+      "oneWeek": "+2.01%",
+      "oneMonth": "-8.57%",
+      "threeMonths": "+4.97%",
+      "sixMonths": "+61.46%",
+      "oneYear": "-12.44%"
+    }
+  },
+  {
+    "name": "스트라티스",
+    "marketCode": "STRAX/KRW",
+    "periods": {
+      "oneWeek": "+1.70%",
+      "oneMonth": "+45.97%",
+      "threeMonths": "-9.74%",
+      "sixMonths": "+30.53%",
+      "oneYear": "-31.21%"
+    }
+  },
+  {
+    "name": "넴",
+    "marketCode": "XEM/KRW",
+    "periods": {
+      "oneWeek": "+0.65%",
+      "oneMonth": "+24.24%",
+      "threeMonths": "-4.84%",
+      "sixMonths": "+28.71%",
+      "oneYear": "-46.95%"
+    }
+  },
+  {
+    "name": "세이프",
+    "marketCode": "SAFE/KRW",
+    "periods": {
+      "oneWeek": "-0.73%",
+      "oneMonth": "-12.50%",
+      "threeMonths": "-31.52%",
+      "sixMonths": "-58.85%",
+      "oneYear": "-"
+    }
+  },
+  {
+    "name": "이더리움",
+    "marketCode": "ETH/KRW",
+    "periods": {
+      "oneWeek": "-0.73%",
+      "oneMonth": "-3.49%",
+      "threeMonths": "-40.21%",
+      "sixMonths": "-31.50%",
+      "oneYear": "-41.68%"
+    }
+  },
+  {
+    "name": "카바",
+    "marketCode": "KAVA/KRW",
+    "periods": {
+      "oneWeek": "-0.79%",
+      "oneMonth": "+10.92%",
+      "threeMonths": "-13.61%",
+      "sixMonths": "+38.77%",
+      "oneYear": "-32.82%"
+    }
+  },
+  {
+    "name": "유에스디코인",
+    "marketCode": "USDC/KRW",
+    "periods": {
+      "oneWeek": "-0.83%",
+      "oneMonth": "-3.18%",
+      "threeMonths": "-9.15%",
+      "sixMonths": "+3.77%",
+      "oneYear": "-"
+    }
+  },
+  {
+    "name": "테더",
+    "marketCode": "USDT/KRW",
+    "periods": {
+      "oneWeek": "-0.83%",
+      "oneMonth": "-3.22%",
+      "threeMonths": "-9.30%",
+      "sixMonths": "+3.66%",
+      "oneYear": "-"
+    }
+  },
+  {
+    "name": "에이셔",
+    "marketCode": "ATH/KRW",
+    "periods": {
+      "oneWeek": "-0.83%",
+      "oneMonth": "-7.46%",
+      "threeMonths": "-31.21%",
+      "sixMonths": "-39.03%",
+      "oneYear": "-"
+    }
+  },
+  {
+    "name": "트론",
+    "marketCode": "TRX/KRW",
+    "periods": {
+      "oneWeek": "-0.84%",
+      "oneMonth": "+1.14%",
+      "threeMonths": "+0.28%",
+      "sixMonths": "+58.48%",
+      "oneYear": "+108.46%"
+    }
+  },
+  {
+    "name": "비트코인",
+    "marketCode": "BTC/KRW",
+    "periods": {
+      "oneWeek": "-1.58%",
+      "oneMonth": "+9.21%",
+      "threeMonths": "-12.63%",
+      "sixMonths": "+29.37%",
+      "oneYear": "+49.51%"
+    }
+  },
+  {
+    "name": "카브",
+    "marketCode": "CARV/KRW",
+    "periods": {
+      "oneWeek": "-1.73%",
+      "oneMonth": "-9.32%",
+      "threeMonths": "-32.02%",
+      "sixMonths": "-58.45%",
+      "oneYear": "-"
+    }
+  },
+  {
+    "name": "보라",
+    "marketCode": "BORA/KRW",
+    "periods": {
+      "oneWeek": "-2.08%",
+      "oneMonth": "+2.17%",
+      "threeMonths": "-17.49%",
+      "sixMonths": "+2.08%",
+      "oneYear": "-41.32%"
+    }
+  },
+  {
+    "name": "솔라나",
+    "marketCode": "SOL/KRW",
+    "periods": {
+      "oneWeek": "-2.96%",
+      "oneMonth": "+16.39%",
+      "threeMonths": "-36.56%",
+      "sixMonths": "-19.70%",
+      "oneYear": "+0.88%"
+    }
+  },
+  {
+    "name": "비트코인캐시",
+    "marketCode": "BCH/KRW",
+    "periods": {
+      "oneWeek": "-3.09%",
+      "oneMonth": "+13.15%",
+      "threeMonths": "-2.33%",
+      "sixMonths": "-2.66%",
+      "oneYear": "-23.02%"
+    }
+  },
+  {
+    "name": "맨틀",
+    "marketCode": "MNT/KRW",
+    "periods": {
+      "oneWeek": "-3.12%",
+      "oneMonth": "-6.13%",
+      "threeMonths": "-42.81%",
+      "sixMonths": "+24.48%",
+      "oneYear": "-31.46%"
+    }
+  },
+  {
+    "name": "렌더토큰",
+    "marketCode": "RENDER/KRW",
+    "periods": {
+      "oneWeek": "-3.20%",
+      "oneMonth": "+33.45%",
+      "threeMonths": "-14.37%",
+      "sixMonths": "-",
+      "oneYear": "-"
+    }
+  },
+  {
+    "name": "셀로",
+    "marketCode": "CELO/KRW",
+    "periods": {
+      "oneWeek": "-3.23%",
+      "oneMonth": "+5.74%",
+      "threeMonths": "-28.40%",
+      "sixMonths": "-45.32%",
+      "oneYear": "-58.42%"
+    }
+  },
+  {
+    "name": "비트토렌트",
+    "marketCode": "BTT/KRW",
+    "periods": {
+      "oneWeek": "-3.24%",
+      "oneMonth": "+8.11%",
+      "threeMonths": "-26.93%",
+      "sixMonths": "-16.32%",
+      "oneYear": "-42.82%"
+    }
+  },
+  {
+    "name": "이더리움네임서비스",
+    "marketCode": "ENS/KRW",
+    "periods": {
+      "oneWeek": "-3.69%",
+      "oneMonth": "+14.06%",
+      "threeMonths": "-39.59%",
+      "sixMonths": "+2.76%",
+      "oneYear": "-"
+    }
+  },
+  {
+    "name": "크로노스",
+    "marketCode": "CRO/KRW",
+    "periods": {
+      "oneWeek": "-3.75%",
+      "oneMonth": "-6.68%",
+      "threeMonths": "-24.87%",
+      "sixMonths": "+6.53%",
+      "oneYear": "-32.74%"
+    }
+  },
+  {
+    "name": "크레딧코인",
+    "marketCode": "CTC/KRW",
+    "periods": {
+      "oneWeek": "-3.78%",
+      "oneMonth": "+10.79%",
+      "threeMonths": "-31.98%",
+      "sixMonths": "+75.54%",
+      "oneYear": "+0.71%"
+    }
+  },
+  {
+    "name": "아하토큰",
+    "marketCode": "AHT/KRW",
+    "periods": {
+      "oneWeek": "-3.93%",
+      "oneMonth": "+5.98%",
+      "threeMonths": "-17.42%",
+      "sixMonths": "-4.52%",
+      "oneYear": "-45.36%"
+    }
+  },
+  {
+    "name": "테조스",
+    "marketCode": "XTZ/KRW",
+    "periods": {
+      "oneWeek": "-4.00%",
+      "oneMonth": "-20.41%",
+      "threeMonths": "-44.66%",
+      "sixMonths": "-14.13%",
+      "oneYear": "-43.48%"
+    }
+  },
+  {
+    "name": "파일코인",
+    "marketCode": "FIL/KRW",
+    "periods": {
+      "oneWeek": "-4.31%",
+      "oneMonth": "-4.19%",
+      "threeMonths": "-",
+      "sixMonths": "-",
+      "oneYear": "-"
+    }
+  },
+  {
+    "name": "메디블록",
+    "marketCode": "MED/KRW",
+    "periods": {
+      "oneWeek": "-4.32%",
+      "oneMonth": "+10.04%",
+      "threeMonths": "-22.35%",
+      "sixMonths": "-9.43%",
+      "oneYear": "-41.56%"
+    }
+  },
+  {
+    "name": "폴리곤에코시스템토큰",
+    "marketCode": "POL/KRW",
+    "periods": {
+      "oneWeek": "-4.64%",
+      "oneMonth": "+18.77%",
+      "threeMonths": "-33.13%",
+      "sixMonths": "-28.48%",
+      "oneYear": "-68.12%"
+    }
+  },
+  {
+    "name": "유엑스링크",
+    "marketCode": "UXLINK/KRW",
+    "periods": {
+      "oneWeek": "-4.79%",
+      "oneMonth": "-15.47%",
+      "threeMonths": "-34.77%",
+      "sixMonths": "-49.37%",
+      "oneYear": "-"
+    }
+  },
+  {
+    "name": "제타체인",
+    "marketCode": "ZETA/KRW",
+    "periods": {
+      "oneWeek": "-4.91%",
+      "oneMonth": "-1.03%",
+      "threeMonths": "-28.03%",
+      "sixMonths": "-61.52%",
+      "oneYear": "-85.29%"
+    }
+  },
+  {
+    "name": "에이다",
+    "marketCode": "ADA/KRW",
+    "periods": {
+      "oneWeek": "-5.01%",
+      "oneMonth": "-0.10%",
+      "threeMonths": "-17.58%",
+      "sixMonths": "+92.81%",
+      "oneYear": "+49.81%"
+    }
+  },
+  {
+    "name": "스타게이트파이낸스",
+    "marketCode": "STG/KRW",
+    "periods": {
+      "oneWeek": "-5.02%",
+      "oneMonth": "+5.19%",
+      "threeMonths": "-34.56%",
+      "sixMonths": "-25.26%",
+      "oneYear": "-"
+    }
+  },
+  {
+    "name": "체인바운티",
+    "marketCode": "BOUNTY/KRW",
+    "periods": {
+      "oneWeek": "-5.14%",
+      "oneMonth": "+15.27%",
+      "threeMonths": "-28.81%",
+      "sixMonths": "-25.05%",
+      "oneYear": "-39.73%"
+    }
+  },
+  {
+    "name": "밀크",
+    "marketCode": "MLK/KRW",
+    "periods": {
+      "oneWeek": "-5.14%",
+      "oneMonth": "+7.39%",
+      "threeMonths": "-25.28%",
+      "sixMonths": "-13.99%",
+      "oneYear": "-45.77%"
+    }
+  },
+  {
+    "name": "매직에덴",
+    "marketCode": "ME/KRW",
+    "periods": {
+      "oneWeek": "-5.16%",
+      "oneMonth": "-1.90%",
+      "threeMonths": "-38.42%",
+      "sixMonths": "-",
+      "oneYear": "-"
+    }
+  },
+  {
+    "name": "애니메코인",
+    "marketCode": "ANIME/KRW",
+    "periods": {
+      "oneWeek": "-5.19%",
+      "oneMonth": "+14.48%",
+      "threeMonths": "-43.74%",
+      "sixMonths": "-",
+      "oneYear": "-"
+    }
+  },
+  {
+    "name": "그래비티",
+    "marketCode": "G/KRW",
+    "periods": {
+      "oneWeek": "-5.22%",
+      "oneMonth": "-1.30%",
+      "threeMonths": "-35.84%",
+      "sixMonths": "-49.68%",
+      "oneYear": "-"
+    }
+  },
+  {
+    "name": "모스코인",
+    "marketCode": "MOC/KRW",
+    "periods": {
+      "oneWeek": "-5.24%",
+      "oneMonth": "+10.53%",
+      "threeMonths": "-18.80%",
+      "sixMonths": "+7.11%",
+      "oneYear": "-30.78%"
+    }
+  },
+  {
+    "name": "펜들",
+    "marketCode": "PENDLE/KRW",
+    "periods": {
+      "oneWeek": "-5.25%",
+      "oneMonth": "+1.86%",
+      "threeMonths": "+4.33%",
+      "sixMonths": "-34.87%",
+      "oneYear": "-"
+    }
+  },
+  {
+    "name": "그로스톨코인",
+    "marketCode": "GRS/KRW",
+    "periods": {
+      "oneWeek": "-5.26%",
+      "oneMonth": "+20.86%",
+      "threeMonths": "-16.56%",
+      "sixMonths": "+10.04%",
+      "oneYear": "-34.12%"
+    }
+  },
+  {
+    "name": "도지코인",
+    "marketCode": "DOGE/KRW",
+    "periods": {
+      "oneWeek": "-5.27%",
+      "oneMonth": "-1.97%",
+      "threeMonths": "-41.09%",
+      "sixMonths": "-9.95%",
+      "oneYear": "+7.95%"
+    }
+  },
+  {
+    "name": "월러스",
+    "marketCode": "WAL/KRW",
+    "periods": {
+      "oneWeek": "-5.39%",
+      "oneMonth": "+8.32%",
+      "threeMonths": "-",
+      "sixMonths": "-",
+      "oneYear": "-"
+    }
+  },
+  {
+    "name": "쎄타퓨엘",
+    "marketCode": "TFUEL/KRW",
+    "periods": {
+      "oneWeek": "-5.40%",
+      "oneMonth": "+3.28%",
+      "threeMonths": "-34.65%",
+      "sixMonths": "-32.44%",
+      "oneYear": "-66.79%"
+    }
+  },
+  {
+    "name": "이더리움클래식",
+    "marketCode": "ETC/KRW",
+    "periods": {
+      "oneWeek": "-5.48%",
+      "oneMonth": "-1.58%",
+      "threeMonths": "-28.86%",
+      "sixMonths": "-14.87%",
+      "oneYear": "-40.63%"
+    }
+  },
+  {
+    "name": "소닉SVM",
+    "marketCode": "SONIC/KRW",
+    "periods": {
+      "oneWeek": "-5.70%",
+      "oneMonth": "+14.97%",
+      "threeMonths": "-24.60%",
+      "sixMonths": "-",
+      "oneYear": "-"
+    }
+  },
+  {
+    "name": "1인치네트워크",
+    "marketCode": "1INCH/KRW",
+    "periods": {
+      "oneWeek": "-5.80%",
+      "oneMonth": "+1.54%",
+      "threeMonths": "-32.64%",
+      "sixMonths": "-23.31%",
+      "oneYear": "-49.57%"
+    }
+  },
+  {
+    "name": "웨이브",
+    "marketCode": "WAVES/KRW",
+    "periods": {
+      "oneWeek": "-5.83%",
+      "oneMonth": "+1.43%",
+      "threeMonths": "-17.59%",
+      "sixMonths": "+14.39%",
+      "oneYear": "-52.35%"
+    }
+  },
+  {
+    "name": "코박토큰",
+    "marketCode": "CBK/KRW",
+    "periods": {
+      "oneWeek": "-5.90%",
+      "oneMonth": "+13.62%",
+      "threeMonths": "-28.50%",
+      "sixMonths": "+3.65%",
+      "oneYear": "-31.99%"
+    }
+  },
+  {
+    "name": "스페이스아이디",
+    "marketCode": "ID/KRW",
+    "periods": {
+      "oneWeek": "-5.94%",
+      "oneMonth": "+1.08%",
+      "threeMonths": "-30.74%",
+      "sixMonths": "-49.63%",
+      "oneYear": "-74.36%"
+    }
+  },
+  {
+    "name": "타이코",
+    "marketCode": "TAIKO/KRW",
+    "periods": {
+      "oneWeek": "-6.11%",
+      "oneMonth": "+7.45%",
+      "threeMonths": "-45.31%",
+      "sixMonths": "-52.66%",
+      "oneYear": "-"
+    }
+  },
+  {
+    "name": "인젝티브",
+    "marketCode": "INJ/KRW",
+    "periods": {
+      "oneWeek": "-6.12%",
+      "oneMonth": "+10.38%",
+      "threeMonths": "-40.29%",
+      "sixMonths": "-53.83%",
+      "oneYear": "-"
+    }
+  },
+  {
+    "name": "마스크네트워크",
+    "marketCode": "MASK/KRW",
+    "periods": {
+      "oneWeek": "-6.20%",
+      "oneMonth": "-7.39%",
+      "threeMonths": "-53.96%",
+      "sixMonths": "-60.85%",
+      "oneYear": "-66.18%"
+    }
+  },
+  {
+    "name": "토카막네트워크",
+    "marketCode": "TOKAMAK/KRW",
+    "periods": {
+      "oneWeek": "-6.22%",
+      "oneMonth": "+12.99%",
+      "threeMonths": "-22.85%",
+      "sixMonths": "+9.56%",
+      "oneYear": "-44.83%"
+    }
+  },
+  {
+    "name": "스텔라루멘",
+    "marketCode": "XLM/KRW",
+    "periods": {
+      "oneWeek": "-6.31%",
+      "oneMonth": "+2.31%",
+      "threeMonths": "-28.86%",
+      "sixMonths": "+184.99%",
+      "oneYear": "+144.46%"
+    }
+  },
+  {
+    "name": "무비블록",
+    "marketCode": "MBL/KRW",
+    "periods": {
+      "oneWeek": "-6.33%",
+      "oneMonth": "+9.38%",
+      "threeMonths": "-19.71%",
+      "sixMonths": "-5.38%",
+      "oneYear": "-47.73%"
+    }
+  },
+  {
+    "name": "오브스",
+    "marketCode": "ORBS/KRW",
+    "periods": {
+      "oneWeek": "-6.41%",
+      "oneMonth": "-0.68%",
+      "threeMonths": "-16.65%",
+      "sixMonths": "-14.58%",
+      "oneYear": "-41.59%"
+    }
+  },
+  {
+    "name": "이뮤터블엑스",
+    "marketCode": "IMX/KRW",
+    "periods": {
+      "oneWeek": "-6.41%",
+      "oneMonth": "+26.49%",
+      "threeMonths": "-39.01%",
+      "sixMonths": "-53.18%",
+      "oneYear": "-74.83%"
+    }
+  },
+  {
+    "name": "스팀",
+    "marketCode": "STEEM/KRW",
+    "periods": {
+      "oneWeek": "-6.46%",
+      "oneMonth": "+13.10%",
+      "threeMonths": "-23.68%",
+      "sixMonths": "-12.83%",
+      "oneYear": "-49.33%"
+    }
+  },
+  {
+    "name": "엠블",
+    "marketCode": "MVL/KRW",
+    "periods": {
+      "oneWeek": "-6.52%",
+      "oneMonth": "+10.62%",
+      "threeMonths": "-22.75%",
+      "sixMonths": "+1.54%",
+      "oneYear": "-39.02%"
+    }
+  },
+  {
+    "name": "엑스알피(리플)",
+    "marketCode": "XRP/KRW",
+    "periods": {
+      "oneWeek": "-6.60%",
+      "oneMonth": "-2.56%",
+      "threeMonths": "-22.57%",
+      "sixMonths": "+313.26%",
+      "oneYear": "+314.09%"
+    }
+  },
+  {
+    "name": "아비트럼",
+    "marketCode": "ARB/KRW",
+    "periods": {
+      "oneWeek": "-6.70%",
+      "oneMonth": "-1.25%",
+      "threeMonths": "-40.02%",
+      "sixMonths": "-40.30%",
+      "oneYear": "-70.08%"
+    }
+  },
+  {
+    "name": "폴카닷",
+    "marketCode": "DOT/KRW",
+    "periods": {
+      "oneWeek": "-6.72%",
+      "oneMonth": "-2.50%",
+      "threeMonths": "-23.72%",
+      "sixMonths": "+0.48%",
+      "oneYear": "-44.53%"
+    }
+  },
+  {
+    "name": "세이",
+    "marketCode": "SEI/KRW",
+    "periods": {
+      "oneWeek": "-6.73%",
+      "oneMonth": "+20.75%",
+      "threeMonths": "-23.82%",
+      "sixMonths": "-48.59%",
+      "oneYear": "-63.09%"
+    }
+  },
+  {
+    "name": "피르마체인",
+    "marketCode": "FCT2/KRW",
+    "periods": {
+      "oneWeek": "-6.74%",
+      "oneMonth": "+12.43%",
+      "threeMonths": "-26.83%",
+      "sixMonths": "-3.85%",
+      "oneYear": "-41.46%"
+    }
+  },
+  {
+    "name": "수이",
+    "marketCode": "SUI/KRW",
+    "periods": {
+      "oneWeek": "-6.77%",
+      "oneMonth": "+44.77%",
+      "threeMonths": "-16.34%",
+      "sixMonths": "+49.24%",
+      "oneYear": "+207.00%"
+    }
+  },
+  {
+    "name": "스트라이크",
+    "marketCode": "STRIKE/KRW",
+    "periods": {
+      "oneWeek": "-6.77%",
+      "oneMonth": "+9.31%",
+      "threeMonths": "-22.98%",
+      "sixMonths": "+12.10%",
+      "oneYear": "-31.33%"
+    }
+  },
+  {
+    "name": "퀀텀",
+    "marketCode": "QTUM/KRW",
+    "periods": {
+      "oneWeek": "-6.81%",
+      "oneMonth": "+7.15%",
+      "threeMonths": "-45.93%",
+      "sixMonths": "-8.27%",
+      "oneYear": "-43.67%"
+    }
+  },
+  {
+    "name": "이캐시",
+    "marketCode": "XEC/KRW",
+    "periods": {
+      "oneWeek": "-6.90%",
+      "oneMonth": "+6.73%",
+      "threeMonths": "-25.99%",
+      "sixMonths": "-37.56%",
+      "oneYear": "-56.88%"
+    }
+  },
+  {
+    "name": "카이버네트워크",
+    "marketCode": "KNC/KRW",
+    "periods": {
+      "oneWeek": "-6.93%",
+      "oneMonth": "+7.04%",
+      "threeMonths": "-25.02%",
+      "sixMonths": "-19.14%",
+      "oneYear": "-40.98%"
+    }
+  },
+  {
+    "name": "알파쿼크",
+    "marketCode": "AQT/KRW",
+    "periods": {
+      "oneWeek": "-6.99%",
+      "oneMonth": "+16.20%",
+      "threeMonths": "-31.02%",
+      "sixMonths": "+41.03%",
+      "oneYear": "-12.84%"
+    }
+  },
+  {
+    "name": "디카르고",
+    "marketCode": "DKA/KRW",
+    "periods": {
+      "oneWeek": "-7.00%",
+      "oneMonth": "+8.71%",
+      "threeMonths": "-17.76%",
+      "sixMonths": "-9.18%",
+      "oneYear": "-42.59%"
+    }
+  },
+  {
+    "name": "골렘",
+    "marketCode": "GLM/KRW",
+    "periods": {
+      "oneWeek": "-7.00%",
+      "oneMonth": "+3.57%",
+      "threeMonths": "-6.04%",
+      "sixMonths": "-11.69%",
+      "oneYear": "-57.12%"
+    }
+  },
+  {
+    "name": "시바이누",
+    "marketCode": "SHIB/KRW",
+    "periods": {
+      "oneWeek": "-7.18%",
+      "oneMonth": "+0.77%",
+      "threeMonths": "-25.87%",
+      "sixMonths": "-30.21%",
+      "oneYear": "-47.15%"
+    }
+  },
+  {
+    "name": "디센트럴랜드",
+    "marketCode": "MANA/KRW",
+    "periods": {
+      "oneWeek": "-7.19%",
+      "oneMonth": "+17.68%",
+      "threeMonths": "-17.60%",
+      "sixMonths": "+3.40%",
+      "oneYear": "-32.35%"
+    }
+  },
+  {
+    "name": "썬더코어",
+    "marketCode": "TT/KRW",
+    "periods": {
+      "oneWeek": "-7.25%",
+      "oneMonth": "+14.57%",
+      "threeMonths": "-9.99%",
+      "sixMonths": "-1.11%",
+      "oneYear": "-31.89%"
+    }
+  },
+  {
+    "name": "메탈",
+    "marketCode": "MTL/KRW",
+    "periods": {
+      "oneWeek": "-7.25%",
+      "oneMonth": "+12.77%",
+      "threeMonths": "-21.45%",
+      "sixMonths": "-11.64%",
+      "oneYear": "-52.24%"
+    }
+  },
+  {
+    "name": "칠리즈",
+    "marketCode": "CHZ/KRW",
+    "periods": {
+      "oneWeek": "-7.25%",
+      "oneMonth": "-7.70%",
+      "threeMonths": "-38.22%",
+      "sixMonths": "-33.36%",
+      "oneYear": "-66.72%"
+    }
+  },
+  {
+    "name": "아이오타",
+    "marketCode": "IOTA/KRW",
+    "periods": {
+      "oneWeek": "-7.28%",
+      "oneMonth": "+21.13%",
+      "threeMonths": "-17.85%",
+      "sixMonths": "+83.50%",
+      "oneYear": "-7.33%"
+    }
+  },
+  {
+    "name": "컴파운드",
+    "marketCode": "COMP/KRW",
+    "periods": {
+      "oneWeek": "-7.37%",
+      "oneMonth": "-13.57%",
+      "threeMonths": "-",
+      "sixMonths": "-",
+      "oneYear": "-"
+    }
+  },
+  {
+    "name": "아스타",
+    "marketCode": "ASTR/KRW",
+    "periods": {
+      "oneWeek": "-7.38%",
+      "oneMonth": "-0.87%",
+      "threeMonths": "-37.01%",
+      "sixMonths": "-49.99%",
+      "oneYear": "-71.96%"
+    }
+  },
+  {
+    "name": "쓰레스홀드",
+    "marketCode": "T/KRW",
+    "periods": {
+      "oneWeek": "-7.40%",
+      "oneMonth": "+13.08%",
+      "threeMonths": "-31.24%",
+      "sixMonths": "-18.65%",
+      "oneYear": "-54.80%"
+    }
+  },
+  {
+    "name": "코스모스",
+    "marketCode": "ATOM/KRW",
+    "periods": {
+      "oneWeek": "-7.40%",
+      "oneMonth": "-16.11%",
+      "threeMonths": "-19.42%",
+      "sixMonths": "-4.54%",
+      "oneYear": "-54.67%"
+    }
+  },
+  {
+    "name": "쿼크체인",
+    "marketCode": "QKC/KRW",
+    "periods": {
+      "oneWeek": "-7.47%",
+      "oneMonth": "+21.06%",
+      "threeMonths": "-19.32%",
+      "sixMonths": "-5.30%",
+      "oneYear": "-38.07%"
+    }
+  },
+  {
+    "name": "앱토스",
+    "marketCode": "APT/KRW",
+    "periods": {
+      "oneWeek": "-7.52%",
+      "oneMonth": "+1.97%",
+      "threeMonths": "-23.00%",
+      "sixMonths": "-44.17%",
+      "oneYear": "-43.35%"
+    }
+  },
+  {
+    "name": "하이브",
+    "marketCode": "HIVE/KRW",
+    "periods": {
+      "oneWeek": "-7.53%",
+      "oneMonth": "+8.12%",
+      "threeMonths": "-32.62%",
+      "sixMonths": "+34.36%",
+      "oneYear": "-23.71%"
+    }
+  },
+  {
+    "name": "온톨로지가스",
+    "marketCode": "ONG/KRW",
+    "periods": {
+      "oneWeek": "-7.57%",
+      "oneMonth": "+10.67%",
+      "threeMonths": "-33.06%",
+      "sixMonths": "-29.10%",
+      "oneYear": "-66.65%"
+    }
+  },
+  {
+    "name": "메타디움",
+    "marketCode": "META/KRW",
+    "periods": {
+      "oneWeek": "-7.59%",
+      "oneMonth": "+12.69%",
+      "threeMonths": "-17.33%",
+      "sixMonths": "-3.92%",
+      "oneYear": "-42.97%"
+    }
+  },
+  {
+    "name": "베이직어텐션토큰",
+    "marketCode": "BAT/KRW",
+    "periods": {
+      "oneWeek": "-7.71%",
+      "oneMonth": "+3.11%",
+      "threeMonths": "-29.94%",
+      "sixMonths": "-14.06%",
+      "oneYear": "-42.39%"
+    }
+  },
+  {
+    "name": "체인링크",
+    "marketCode": "LINK/KRW",
+    "periods": {
+      "oneWeek": "-7.76%",
+      "oneMonth": "+5.38%",
+      "threeMonths": "-36.47%",
+      "sixMonths": "+19.14%",
+      "oneYear": "-1.19%"
+    }
+  },
+  {
+    "name": "스테이터스네트워크토큰",
+    "marketCode": "SNT/KRW",
+    "periods": {
+      "oneWeek": "-7.80%",
+      "oneMonth": "-2.63%",
+      "threeMonths": "-36.72%",
+      "sixMonths": "-11.56%",
+      "oneYear": "-46.04%"
+    }
+  },
+  {
+    "name": "스톰엑스",
+    "marketCode": "STMX/KRW",
+    "periods": {
+      "oneWeek": "-7.83%",
+      "oneMonth": "+4.19%",
+      "threeMonths": "-27.05%",
+      "sixMonths": "-30.09%",
+      "oneYear": "-52.58%"
+    }
+  },
+  {
+    "name": "리스크",
+    "marketCode": "LSK/KRW",
+    "periods": {
+      "oneWeek": "-7.86%",
+      "oneMonth": "+0.56%",
+      "threeMonths": "-36.52%",
+      "sixMonths": "-35.61%",
+      "oneYear": "-73.39%"
+    }
+  },
+  {
+    "name": "샌드박스",
+    "marketCode": "SAND/KRW",
+    "periods": {
+      "oneWeek": "-7.87%",
+      "oneMonth": "+2.58%",
+      "threeMonths": "-37.03%",
+      "sixMonths": "+12.75%",
+      "oneYear": "-37.32%"
+    }
+  },
+  {
+    "name": "비트코인에스브이",
+    "marketCode": "BSV/KRW",
+    "periods": {
+      "oneWeek": "-7.94%",
+      "oneMonth": "+16.64%",
+      "threeMonths": "-17.67%",
+      "sixMonths": "-25.50%",
+      "oneYear": "-41.53%"
+    }
+  },
+  {
+    "name": "쎄타토큰",
+    "marketCode": "THETA/KRW",
+    "periods": {
+      "oneWeek": "-7.99%",
+      "oneMonth": "-13.19%",
+      "threeMonths": "-55.92%",
+      "sixMonths": "-40.33%",
+      "oneYear": "-68.43%"
+    }
+  },
+  {
+    "name": "비체인",
+    "marketCode": "VET/KRW",
+    "periods": {
+      "oneWeek": "-8.01%",
+      "oneMonth": "+12.64%",
+      "threeMonths": "-36.20%",
+      "sixMonths": "+20.64%",
+      "oneYear": "-31.09%"
+    }
+  },
+  {
+    "name": "스테픈",
+    "marketCode": "GMT/KRW",
+    "periods": {
+      "oneWeek": "-8.09%",
+      "oneMonth": "+13.94%",
+      "threeMonths": "-34.54%",
+      "sixMonths": "-58.69%",
+      "oneYear": "-76.30%"
+    }
+  },
+  {
+    "name": "엘프",
+    "marketCode": "ELF/KRW",
+    "periods": {
+      "oneWeek": "-8.10%",
+      "oneMonth": "-13.19%",
+      "threeMonths": "-28.94%",
+      "sixMonths": "-32.58%",
+      "oneYear": "-58.49%"
+    }
+  },
+  {
+    "name": "헌트",
+    "marketCode": "HUNT/KRW",
+    "periods": {
+      "oneWeek": "-8.11%",
+      "oneMonth": "+8.08%",
+      "threeMonths": "-24.22%",
+      "sixMonths": "-7.73%",
+      "oneYear": "-39.73%"
+    }
+  },
+  {
+    "name": "유니스왑",
+    "marketCode": "UNI/KRW",
+    "periods": {
+      "oneWeek": "-8.30%",
+      "oneMonth": "-16.95%",
+      "threeMonths": "-49.66%",
+      "sixMonths": "-43.79%",
+      "oneYear": "-"
+    }
+  },
+  {
+    "name": "솔라",
+    "marketCode": "SXP/KRW",
+    "periods": {
+      "oneWeek": "-8.33%",
+      "oneMonth": "+6.20%",
+      "threeMonths": "-22.28%",
+      "sixMonths": "-29.45%",
+      "oneYear": "-43.05%"
+    }
+  },
+  {
+    "name": "헤데라",
+    "marketCode": "HBAR/KRW",
+    "periods": {
+      "oneWeek": "-8.33%",
+      "oneMonth": "+5.18%",
+      "threeMonths": "-35.96%",
+      "sixMonths": "+272.73%",
+      "oneYear": "+62.48%"
+    }
+  },
+  {
+    "name": "게임빌드",
+    "marketCode": "GAME2/KRW",
+    "periods": {
+      "oneWeek": "-8.38%",
+      "oneMonth": "+6.14%",
+      "threeMonths": "-34.96%",
+      "sixMonths": "+21.47%",
+      "oneYear": "-36.38%"
+    }
+  },
+  {
+    "name": "제로엑스",
+    "marketCode": "ZRX/KRW",
+    "periods": {
+      "oneWeek": "-8.39%",
+      "oneMonth": "+4.78%",
+      "threeMonths": "-28.97%",
+      "sixMonths": "-19.31%",
+      "oneYear": "-49.07%"
+    }
+  },
+  {
+    "name": "더그래프",
+    "marketCode": "GRT/KRW",
+    "periods": {
+      "oneWeek": "-8.39%",
+      "oneMonth": "+8.26%",
+      "threeMonths": "-40.45%",
+      "sixMonths": "-38.50%",
+      "oneYear": "-68.34%"
+    }
+  },
+  {
+    "name": "아발란체",
+    "marketCode": "AVAX/KRW",
+    "periods": {
+      "oneWeek": "-8.41%",
+      "oneMonth": "+9.07%",
+      "threeMonths": "-30.78%",
+      "sixMonths": "-22.43%",
+      "oneYear": "-45.12%"
+    }
+  },
+  {
+    "name": "미나",
+    "marketCode": "MINA/KRW",
+    "periods": {
+      "oneWeek": "-8.55%",
+      "oneMonth": "-4.46%",
+      "threeMonths": "-41.85%",
+      "sixMonths": "-56.21%",
+      "oneYear": "-73.21%"
+    }
+  },
+  {
+    "name": "너보스",
+    "marketCode": "CKB/KRW",
+    "periods": {
+      "oneWeek": "-8.75%",
+      "oneMonth": "+0.02%",
+      "threeMonths": "-36.55%",
+      "sixMonths": "-64.34%",
+      "oneYear": "-"
+    }
+  },
+  {
+    "name": "아이큐",
+    "marketCode": "IQ/KRW",
+    "periods": {
+      "oneWeek": "-8.78%",
+      "oneMonth": "+4.89%",
+      "threeMonths": "-31.34%",
+      "sixMonths": "-29.38%",
+      "oneYear": "-59.04%"
+    }
+  },
+  {
+    "name": "주피터",
+    "marketCode": "JUP/KRW",
+    "periods": {
+      "oneWeek": "-8.86%",
+      "oneMonth": "+8.53%",
+      "threeMonths": "-59.21%",
+      "sixMonths": "-56.73%",
+      "oneYear": "-"
+    }
+  },
+  {
+    "name": "카우프로토콜",
+    "marketCode": "COW/KRW",
+    "periods": {
+      "oneWeek": "-8.88%",
+      "oneMonth": "+8.90%",
+      "threeMonths": "-",
+      "sixMonths": "-",
+      "oneYear": "-"
+    }
+  },
+  {
+    "name": "질리카",
+    "marketCode": "ZIL/KRW",
+    "periods": {
+      "oneWeek": "-8.92%",
+      "oneMonth": "+4.76%",
+      "threeMonths": "-25.04%",
+      "sixMonths": "-14.16%",
+      "oneYear": "-50.97%"
+    }
+  },
+  {
+    "name": "바운스토큰",
+    "marketCode": "AUCTION/KRW",
+    "periods": {
+      "oneWeek": "-9.07%",
+      "oneMonth": "-28.26%",
+      "threeMonths": "+12.56%",
+      "sixMonths": "-11.67%",
+      "oneYear": "-"
+    }
+  },
+  {
+    "name": "캣인어독스월드",
+    "marketCode": "MEW/KRW",
+    "periods": {
+      "oneWeek": "-9.14%",
+      "oneMonth": "-3.81%",
+      "threeMonths": "-24.58%",
+      "sixMonths": "-70.90%",
+      "oneYear": "-"
+    }
+  },
+  {
+    "name": "플로우",
+    "marketCode": "FLOW/KRW",
+    "periods": {
+      "oneWeek": "-9.16%",
+      "oneMonth": "-2.25%",
+      "threeMonths": "-31.72%",
+      "sixMonths": "-28.47%",
+      "oneYear": "-58.50%"
+    }
+  },
+  {
+    "name": "히포크랏",
+    "marketCode": "HPO/KRW",
+    "periods": {
+      "oneWeek": "-9.19%",
+      "oneMonth": "+11.85%",
+      "threeMonths": "-18.98%",
+      "sixMonths": "-2.26%",
+      "oneYear": "-37.72%"
+    }
+  },
+  {
+    "name": "파워렛저",
+    "marketCode": "POWR/KRW",
+    "periods": {
+      "oneWeek": "-9.34%",
+      "oneMonth": "+9.44%",
+      "threeMonths": "-28.36%",
+      "sixMonths": "-15.27%",
+      "oneYear": "-43.37%"
+    }
+  },
+  {
+    "name": "비토르토큰",
+    "marketCode": "VTHO/KRW",
+    "periods": {
+      "oneWeek": "-9.57%",
+      "oneMonth": "+15.36%",
+      "threeMonths": "-55.57%",
+      "sixMonths": "-",
+      "oneYear": "-"
+    }
+  },
+  {
+    "name": "아이오에스티",
+    "marketCode": "IOST/KRW",
+    "periods": {
+      "oneWeek": "-9.59%",
+      "oneMonth": "-1.06%",
+      "threeMonths": "-32.19%",
+      "sixMonths": "-21.60%",
+      "oneYear": "-60.21%"
+    }
+  },
+  {
+    "name": "페페",
+    "marketCode": "PEPE/KRW",
+    "periods": {
+      "oneWeek": "-9.60%",
+      "oneMonth": "+12.09%",
+      "threeMonths": "-27.00%",
+      "sixMonths": "-",
+      "oneYear": "-"
+    }
+  },
+  {
+    "name": "엑시인피니티",
+    "marketCode": "AXS/KRW",
+    "periods": {
+      "oneWeek": "-9.71%",
+      "oneMonth": "-16.52%",
+      "threeMonths": "-47.97%",
+      "sixMonths": "-49.84%",
+      "oneYear": "-68.06%"
+    }
+  },
+  {
+    "name": "가스",
+    "marketCode": "GAS/KRW",
+    "periods": {
+      "oneWeek": "-9.72%",
+      "oneMonth": "+48.21%",
+      "threeMonths": "-25.95%",
+      "sixMonths": "-15.18%",
+      "oneYear": "-37.93%"
+    }
+  },
+  {
+    "name": "니어프로토콜",
+    "marketCode": "NEAR/KRW",
+    "periods": {
+      "oneWeek": "-9.79%",
+      "oneMonth": "-6.84%",
+      "threeMonths": "-37.11%",
+      "sixMonths": "-42.38%",
+      "oneYear": "-68.07%"
+    }
+  },
+  {
+    "name": "아이콘",
+    "marketCode": "ICX/KRW",
+    "periods": {
+      "oneWeek": "-9.87%",
+      "oneMonth": "+9.60%",
+      "threeMonths": "-33.17%",
+      "sixMonths": "-25.14%",
+      "oneYear": "-57.47%"
+    }
+  },
+  {
+    "name": "시빅",
+    "marketCode": "CVC/KRW",
+    "periods": {
+      "oneWeek": "-9.96%",
+      "oneMonth": "+16.42%",
+      "threeMonths": "-18.84%",
+      "sixMonths": "-15.51%",
+      "oneYear": "-37.02%"
+    }
+  },
+  {
+    "name": "멀티버스엑스",
+    "marketCode": "EGLD/KRW",
+    "periods": {
+      "oneWeek": "-10.14%",
+      "oneMonth": "+8.86%",
+      "threeMonths": "-37.27%",
+      "sixMonths": "-36.84%",
+      "oneYear": "-61.35%"
+    }
+  },
+  {
+    "name": "왁스",
+    "marketCode": "WAXP/KRW",
+    "periods": {
+      "oneWeek": "-10.30%",
+      "oneMonth": "+10.70%",
+      "threeMonths": "-34.43%",
+      "sixMonths": "-25.81%",
+      "oneYear": "-64.67%"
+    }
+  },
+  {
+    "name": "앵커",
+    "marketCode": "ANKR/KRW",
+    "periods": {
+      "oneWeek": "-10.31%",
+      "oneMonth": "+7.77%",
+      "threeMonths": "-28.21%",
+      "sixMonths": "-26.34%",
+      "oneYear": "-62.44%"
+    }
+  },
+  {
+    "name": "네오",
+    "marketCode": "NEO/KRW",
+    "periods": {
+      "oneWeek": "-10.39%",
+      "oneMonth": "+16.07%",
+      "threeMonths": "-53.32%",
+      "sixMonths": "-41.14%",
+      "oneYear": "-65.38%"
+    }
+  },
+  {
+    "name": "월렛커넥트",
+    "marketCode": "WCT/KRW",
+    "periods": {
+      "oneWeek": "-10.53%",
+      "oneMonth": "-",
+      "threeMonths": "-",
+      "sixMonths": "-",
+      "oneYear": "-"
+    }
+  },
+  {
+    "name": "시아코인",
+    "marketCode": "SC/KRW",
+    "periods": {
+      "oneWeek": "-10.61%",
+      "oneMonth": "+4.16%",
+      "threeMonths": "-32.44%",
+      "sixMonths": "-27.73%",
+      "oneYear": "-55.65%"
+    }
+  },
+  {
+    "name": "아크",
+    "marketCode": "ARK/KRW",
+    "periods": {
+      "oneWeek": "-10.67%",
+      "oneMonth": "+30.21%",
+      "threeMonths": "-6.81%",
+      "sixMonths": "-20.23%",
+      "oneYear": "-49.40%"
+    }
+  },
+  {
+    "name": "폴리매쉬",
+    "marketCode": "POLYX/KRW",
+    "periods": {
+      "oneWeek": "-10.75%",
+      "oneMonth": "+8.44%",
+      "threeMonths": "-26.70%",
+      "sixMonths": "-34.47%",
+      "oneYear": "-62.90%"
+    }
+  },
+  {
+    "name": "하이파이",
+    "marketCode": "HIFI/KRW",
+    "periods": {
+      "oneWeek": "-10.85%",
+      "oneMonth": "+15.08%",
+      "threeMonths": "-41.79%",
+      "sixMonths": "-42.93%",
+      "oneYear": "-66.36%"
+    }
+  },
+  {
+    "name": "스토리지",
+    "marketCode": "STORJ/KRW",
+    "periods": {
+      "oneWeek": "-10.86%",
+      "oneMonth": "+9.20%",
+      "threeMonths": "-24.12%",
+      "sixMonths": "-37.28%",
+      "oneYear": "-47.18%"
+    }
+  },
+  {
+    "name": "온톨로지",
+    "marketCode": "ONT/KRW",
+    "periods": {
+      "oneWeek": "-10.91%",
+      "oneMonth": "+2.86%",
+      "threeMonths": "-33.31%",
+      "sixMonths": "-19.10%",
+      "oneYear": "-61.36%"
+    }
+  },
+  {
+    "name": "스택스",
+    "marketCode": "STX/KRW",
+    "periods": {
+      "oneWeek": "-11.00%",
+      "oneMonth": "+23.31%",
+      "threeMonths": "-31.66%",
+      "sixMonths": "-53.92%",
+      "oneYear": "-66.30%"
+    }
+  },
+  {
+    "name": "저스트",
+    "marketCode": "JST/KRW",
+    "periods": {
+      "oneWeek": "-11.66%",
+      "oneMonth": "+10.20%",
+      "threeMonths": "-7.99%",
+      "sixMonths": "+28.15%",
+      "oneYear": "+11.12%"
+    }
+  },
+  {
+    "name": "웜홀",
+    "marketCode": "W/KRW",
+    "periods": {
+      "oneWeek": "-11.68%",
+      "oneMonth": "-6.09%",
+      "threeMonths": "-59.89%",
+      "sixMonths": "-64.72%",
+      "oneYear": "-"
+    }
+  },
+  {
+    "name": "온도파이낸스",
+    "marketCode": "ONDO/KRW",
+    "periods": {
+      "oneWeek": "-11.76%",
+      "oneMonth": "+3.60%",
+      "threeMonths": "-42.01%",
+      "sixMonths": "+21.73%",
+      "oneYear": "-"
+    }
+  },
+  {
+    "name": "지토",
+    "marketCode": "JTO/KRW",
+    "periods": {
+      "oneWeek": "-11.96%",
+      "oneMonth": "-11.99%",
+      "threeMonths": "-",
+      "sixMonths": "-",
+      "oneYear": "-"
+    }
+  },
+  {
+    "name": "아더",
+    "marketCode": "ARDR/KRW",
+    "periods": {
+      "oneWeek": "-12.05%",
+      "oneMonth": "+162.95%",
+      "threeMonths": "+52.38%",
+      "sixMonths": "+39.03%",
+      "oneYear": "+10.70%"
+    }
+  },
+  {
+    "name": "블러",
+    "marketCode": "BLUR/KRW",
+    "periods": {
+      "oneWeek": "-12.42%",
+      "oneMonth": "-4.73%",
+      "threeMonths": "-35.32%",
+      "sixMonths": "-53.62%",
+      "oneYear": "-75.42%"
+    }
+  },
+  {
+    "name": "아르고",
+    "marketCode": "AERGO/KRW",
+    "periods": {
+      "oneWeek": "-12.58%",
+      "oneMonth": "+221.95%",
+      "threeMonths": "+82.90%",
+      "sixMonths": "+79.96%",
+      "oneYear": "+32.12%"
+    }
+  },
+  {
+    "name": "오르카",
+    "marketCode": "ORCA/KRW",
+    "periods": {
+      "oneWeek": "-12.94%",
+      "oneMonth": "+17.61%",
+      "threeMonths": "-",
+      "sixMonths": "-",
+      "oneYear": "-"
+    }
+  },
+  {
+    "name": "알고랜드",
+    "marketCode": "ALGO/KRW",
+    "periods": {
+      "oneWeek": "-12.95%",
+      "oneMonth": "+6.64%",
+      "threeMonths": "-36.90%",
+      "sixMonths": "+72.02%",
+      "oneYear": "+4.41%"
+    }
+  },
+  {
+    "name": "바나",
+    "marketCode": "VANA/KRW",
+    "periods": {
+      "oneWeek": "-13.42%",
+      "oneMonth": "-8.74%",
+      "threeMonths": "-24.38%",
+      "sixMonths": "-",
+      "oneYear": "-"
+    }
+  },
+  {
+    "name": "카이토",
+    "marketCode": "KAITO/KRW",
+    "periods": {
+      "oneWeek": "-14.40%",
+      "oneMonth": "-20.15%",
+      "threeMonths": "-",
+      "sixMonths": "-",
+      "oneYear": "-"
+    }
+  },
+  {
+    "name": "피스네트워크",
+    "marketCode": "PYTH/KRW",
+    "periods": {
+      "oneWeek": "-14.49%",
+      "oneMonth": "+0.87%",
+      "threeMonths": "-38.66%",
+      "sixMonths": "-62.71%",
+      "oneYear": "-74.81%"
+    }
+  },
+  {
+    "name": "아캄",
+    "marketCode": "ARKM/KRW",
+    "periods": {
+      "oneWeek": "-14.78%",
+      "oneMonth": "+4.08%",
+      "threeMonths": "-",
+      "sixMonths": "-",
+      "oneYear": "-"
+    }
+  },
+  {
+    "name": "룸네트워크",
+    "marketCode": "LOOM/KRW",
+    "periods": {
+      "oneWeek": "-15.31%",
+      "oneMonth": "-13.64%",
+      "threeMonths": "-35.60%",
+      "sixMonths": "-34.60%",
+      "oneYear": "-60.07%"
+    }
+  },
+  {
+    "name": "빅타임",
+    "marketCode": "BIGTIME/KRW",
+    "periods": {
+      "oneWeek": "-15.79%",
+      "oneMonth": "+0.80%",
+      "threeMonths": "-1.17%",
+      "sixMonths": "-60.84%",
+      "oneYear": "-"
+    }
+  },
+  {
+    "name": "레이어제로",
+    "marketCode": "ZRO/KRW",
+    "periods": {
+      "oneWeek": "-17.97%",
+      "oneMonth": "-20.55%",
+      "threeMonths": "-19.87%",
+      "sixMonths": "-26.85%",
+      "oneYear": "-"
+    }
+  },
+  {
+    "name": "딥북",
+    "marketCode": "DEEP/KRW",
+    "periods": {
+      "oneWeek": "-18.01%",
+      "oneMonth": "-",
+      "threeMonths": "-",
+      "sixMonths": "-",
+      "oneYear": "-"
+    }
+  },
+  {
+    "name": "모카네트워크",
+    "marketCode": "MOCA/KRW",
+    "periods": {
+      "oneWeek": "-18.04%",
+      "oneMonth": "+6.62%",
+      "threeMonths": "-46.83%",
+      "sixMonths": "-",
+      "oneYear": "-"
+    }
+  },
+  {
+    "name": "봉크",
+    "marketCode": "BONK/KRW",
+    "periods": {
+      "oneWeek": "-19.60%",
+      "oneMonth": "+46.38%",
+      "threeMonths": "-16.79%",
+      "sixMonths": "-",
+      "oneYear": "-"
+    }
+  },
+  {
+    "name": "베라체인",
+    "marketCode": "BERA/KRW",
+    "periods": {
+      "oneWeek": "-21.51%",
+      "oneMonth": "-51.60%",
+      "threeMonths": "-",
+      "sixMonths": "-",
+      "oneYear": "-"
+    }
+  },
+  {
+    "name": "오피셜트럼프",
+    "marketCode": "TRUMP/KRW",
+    "periods": {
+      "oneWeek": "-24.86%",
+      "oneMonth": "+16.74%",
+      "threeMonths": "-",
+      "sixMonths": "-",
+      "oneYear": "-"
+    }
+  },
+  {
+    "name": "무브먼트",
+    "marketCode": "MOVE/KRW",
+    "periods": {
+      "oneWeek": "-30.69%",
+      "oneMonth": "-56.32%",
+      "threeMonths": "-75.02%",
+      "sixMonths": "-",
+      "oneYear": "-"
+    }
+  },
+  {
+    "name": "사인",
+    "marketCode": "SIGN/KRW",
+    "periods": {
+      "oneWeek": "-",
+      "oneMonth": "-",
+      "threeMonths": "-",
+      "sixMonths": "-",
+      "oneYear": "-"
+    }
+  }
+]

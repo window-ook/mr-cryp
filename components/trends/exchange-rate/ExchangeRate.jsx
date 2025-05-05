@@ -29,4 +29,5 @@ function ExchangeRate({ exchangeRates }) {
     </div>
   );
 }
+
 export default memo(ExchangeRate);

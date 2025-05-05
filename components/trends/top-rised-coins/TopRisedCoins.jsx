@@ -1,8 +1,9 @@
-import { memo, useState } from 'react';
+import { memo, useEffect, useState } from 'react';
 import Skeleton from '../shared/Skeleton';
 
-function TopRisedCoins({ risedCoins, isPending }) {
+function TopRisedCoins({ risedCoins }) {
   const [selectedPeriod, setSelectedPeriod] = useState('oneWeek');
+  const [isLoading, setIsLoading] = useState(true);
 
   const PERIODS = [
     { label: '1주일', value: 'oneWeek' },
@@ -13,7 +14,7 @@ function TopRisedCoins({ risedCoins, isPending }) {
   ];
 
   const getSortedCoins = () => {
-    if (!risedCoins) return [];
+    if (!risedCoins) return;
 
     return [...risedCoins]
       .sort((a, b) => {
@@ -26,7 +27,12 @@ function TopRisedCoins({ risedCoins, isPending }) {
       .slice(0, 15);
   };
 
-  if (isPending) return <Skeleton />;
+  useEffect(() => {
+    if (!risedCoins) return;
+    setIsLoading(false);
+  }, [risedCoins]);
+
+  if (isLoading) return <Skeleton />;
 
   return (
     <>
