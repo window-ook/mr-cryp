@@ -13,7 +13,7 @@ const fetchTrendsData = async () => {
           fetch('/data/mock/top-rised-coins.json'),
         ]);
 
-      const [marketSituation, articles, coins] = await Promise.all([
+      const [marketSituation, topic, topRisedCoins] = await Promise.all([
         marketSituationRes.json(),
         topicRes.json(),
         topRisedCoinsRes.json(),
@@ -21,8 +21,8 @@ const fetchTrendsData = async () => {
 
       return {
         marketSituation,
-        articles,
-        coins,
+        topic,
+        topRisedCoins,
       };
     }
 
