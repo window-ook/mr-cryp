@@ -2,9 +2,9 @@ import { fetchExchangeRates } from '@/utils/fetchExchangeRates';
 import { useTrendsDataQuery } from '@/hooks/useTrendsData';
 import Head from 'next/head';
 import ExchangeRate from '@/components/trends/exchange-rate/ExchangeRate';
-import TopRisedCoins from '@/components/trends/rised-coin/TopRisedCoins';
+import TopRisedCoins from '@/components/trends/top-rised-coins/TopRisedCoins';
 import MarketSituation from '@/components/trends/market-situation/MarketSituation';
-import Articles from '@/components/trends/articles/Articles';
+import GlobalTopic from '@/components/trends/topic/GlobalTopic';
 import Videos from '@/components/trends/videos/Videos';
 import Informations from '@/components/trends/videos/Informations';
 
@@ -14,7 +14,7 @@ export async function getStaticProps() {
   try {
     exchangeRates = (await fetchExchangeRates()) || [];
   } catch (error) {
-    console.error('🚨 데이터 요청 실패:', error);
+    console.error('환율 데이터 요청 중 에러:', error);
   }
 
   return {
@@ -25,7 +25,7 @@ export async function getStaticProps() {
 }
 
 export default function Trends({ exchangeRates }) {
-  const { data, isPending } = useTrendsDataQuery();
+  const { data } = useTrendsDataQuery();
 
   return (
     <>
@@ -40,19 +40,16 @@ export default function Trends({ exchangeRates }) {
 
           <section className="col-start-2 max-[900px]:col-start-1 row-span-2 h-full gap-4 ">
             <article className="p-4 bg-gray-100 rounded-lg shadow-sm h-full">
-              <TopRisedCoins risedCoins={data?.coins} isPending={isPending} />
+              <TopRisedCoins risedCoins={data?.topRisedCoins} />
             </article>
           </section>
 
           <section className="col-start-1 grid grid-rows-[auto, 1fr] gap-4 h-full">
             <article className="p-4 bg-emerald-200 rounded-lg shadow-sm">
-              <MarketSituation
-                situations={data?.marketSituation}
-                isPending={isPending}
-              />
+              <MarketSituation situations={data?.marketSituation} />
             </article>
             <article className="p-4 bg-gray-100 rounded-lg shadow-sm h-full">
-              <Articles articles={data?.articles} isPending={isPending} />
+              <GlobalTopic articles={data?.topic} />
             </article>
           </section>
 

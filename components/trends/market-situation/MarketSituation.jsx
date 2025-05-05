@@ -3,8 +3,9 @@ import { AnimatePresence } from 'motion/react';
 import * as m from 'motion/react-m';
 import LinearProgress from '@/components/shared/LinearProgress';
 
-function MarketSituation({ situations, isPending }) {
+function MarketSituation({ situations }) {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
 
   const formatDate = pubDate => {
     const date = new Date(pubDate);
@@ -14,7 +15,9 @@ function MarketSituation({ situations, isPending }) {
   const today = formatDate(new Date());
 
   useEffect(() => {
-    if (!situations || situations.length === 0) return;
+    if (!situations) return;
+
+    setIsLoading(false);
 
     const interval = setInterval(() => {
       setCurrentIndex(prevIndex => (prevIndex + 1) % situations.length);
@@ -25,7 +28,7 @@ function MarketSituation({ situations, isPending }) {
 
   const currentNews = situations?.[currentIndex];
 
-  if (isPending) return <LinearProgress />;
+  if (isLoading) return <LinearProgress />;
 
   return (
     <>

@@ -33,9 +33,9 @@ export default function MyApp({ Component, pageProps }) {
   const { store } = wrapper.useWrappedStore(pageProps);
 
   const router = useRouter();
-  const ROOT_URL = router.pathname === '/';
-  const AUTH_URL = router.pathname === '/auth';
-  const OAUTH_URL = router.pathname === '/oauth';
+  const ROOT_PAGE = router.pathname === '/';
+  const AUTH_PAGE = router.pathname === '/auth';
+  const OAUTH_PAGE = router.pathname === '/oauth';
 
   return (
     <Provider store={store}>
@@ -48,11 +48,11 @@ export default function MyApp({ Component, pageProps }) {
 
           <main className={`${pretendard.variable} font-sans`}>
             <LazyMotion features={loadFeatures}>
-              {AUTH_URL || OAUTH_URL ? (
+              {AUTH_PAGE || OAUTH_PAGE ? (
                 <Component {...pageProps} />
               ) : (
                 <Layout>
-                  {ROOT_URL ? (
+                  {ROOT_PAGE ? (
                     <Component {...pageProps} />
                   ) : (
                     <ProtectedRoute>

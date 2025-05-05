@@ -5,7 +5,7 @@ const fetchVideos = async newKeyword => {
   // const response = await axios.get('/api/videos', {
   //   params: { keyword: newKeyword },
   // });
-  const response = await axios.get('/data/videos.json', {
+  const response = await axios.get('/data/mock/videos.json', {
     params: { keyword: newKeyword },
   });
   return response.data.items;
