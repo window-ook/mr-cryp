@@ -1,9 +1,8 @@
 import { memo, useEffect, useState } from 'react';
 import Skeleton from '../shared/Skeleton';
 
-function TopRisedCoins({ risedCoins }) {
+function TopRisedCoins({ risedCoins, isError, isPending }) {
   const [selectedPeriod, setSelectedPeriod] = useState('oneWeek');
-  const [isLoading, setIsLoading] = useState(true);
 
   const PERIODS = [
     { label: '1주일', value: 'oneWeek' },
@@ -27,15 +26,19 @@ function TopRisedCoins({ risedCoins }) {
       .slice(0, 15);
   };
 
-  useEffect(() => {
-    if (Array.isArray(risedCoins)) setIsLoading(false);
-  }, [risedCoins]);
+  if (isPending) return <Skeleton />;
 
-  if (isLoading) return <Skeleton />;
+  if (isError) {
+    return (
+      <div className="font-pretendard font-bold text-lg">
+        기간별 상승률 다운로드 중 에러가 발생했습니다.
+      </div>
+    );
+  }
 
   return (
     <>
-      {risedCoins ? (
+      {risedCoins && risedCoins.length > 0 ? (
         <div className="w-full flex flex-col gap-4">
           <p className="mb-2 text-2xl max-[475px]:text-xl font-pretendard font-bold text-main-dark">
             기간별 상승률 TOP
