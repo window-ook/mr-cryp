@@ -1,6 +1,5 @@
 import { useState, useEffect, useCallback, useMemo } from 'react';
 import { useSelector } from 'react-redux';
-import { globalColors } from '@/globalColors';
 import axios from 'axios';
 import Highcharts from 'highcharts/highstock';
 import HighchartsReact from 'highcharts-react-official';
@@ -16,7 +15,7 @@ Highcharts.setOptions({
   },
 });
 
-// Format date to 'YYYY-MM-DD HH:mm:ss'
+// YYYY-MM-DD HH:mm:ss
 const formatDate = date => {
   const year = date.getFullYear();
   const month = String(date.getMonth() + 1).padStart(2, '0');
@@ -83,8 +82,8 @@ const initialOptions = {
 
   plotOptions: {
     candlestick: {
-      color: globalColors.color_neg['400'], // 음봉
-      upColor: globalColors.color_pos['400'], // 양봉
+      color: 'oklch(0.44 0.293689 264.162)', // 음봉
+      upColor: 'oklch(0.6 0.2461 29.23)', // 양봉
     },
     sma: {
       linkedTo: 'upbit', // 이동평균선 연결
@@ -106,8 +105,8 @@ const initialOptions = {
         if (point.series.type === 'candlestick') {
           const color =
             point?.point?.close > point?.point?.open
-              ? globalColors.color_pos
-              : globalColors.color_neg;
+              ? 'oklch(0.6 0.2461 29.23)'
+              : 'oklch(0.44 0.293689 264.162)';
 
           tooltipText += `
             <span style="color:${color[400]}">●</span> <b>${point.series.name}</b><br/>
@@ -128,7 +127,7 @@ const initialOptions = {
       fontSize: '0.75rem', // 툴팁의 폰트 크기
     },
 
-    backgroundColor: globalColors.tooltip_bgColor,
+    backgroundColor: 'oklch(0.99 0 0)',
     borderRadius: 4,
     borderWidth: 1,
     shadow: false,
@@ -225,8 +224,8 @@ export default function HighCharts() {
         y: candle.candle_acc_trade_volume,
         color:
           candle.opening_price <= candle.trade_price
-            ? globalColors.hotpink['200']
-            : globalColors.skyblue['200'],
+            ? 'oklch(0.76 0.1467 351.66)'
+            : 'oklch(0.93 0.0805 197.79)',
       }));
 
       setOptions(prevOptions => ({
@@ -253,7 +252,7 @@ export default function HighCharts() {
             params: {
               period: 15,
             },
-            color: globalColors.sma_15,
+            color: 'oklch(0.57 0.2301 27.32)',
           },
           // 이동평균선 50
           {
@@ -261,7 +260,7 @@ export default function HighCharts() {
             params: {
               period: 50,
             },
-            color: globalColors.sma_50,
+            color: 'oklch(0.87 0.2414 149.42)',
           },
           // 누적 거래량 막대 그래프
           {

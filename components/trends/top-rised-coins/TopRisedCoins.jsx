@@ -1,7 +1,7 @@
-import { memo, useEffect, useState } from 'react';
+import { memo, useState } from 'react';
 import Skeleton from '../shared/Skeleton';
 
-function TopRisedCoins({ risedCoins, isError, isPending }) {
+function TopRisedCoins({ topRisedCoins, isError, isPending }) {
   const [selectedPeriod, setSelectedPeriod] = useState('oneWeek');
 
   const PERIODS = [
@@ -13,9 +13,9 @@ function TopRisedCoins({ risedCoins, isError, isPending }) {
   ];
 
   const getSortedCoins = () => {
-    if (!risedCoins) return;
+    if (!topRisedCoins) return;
 
-    return [...risedCoins]
+    return [...topRisedCoins]
       .sort((a, b) => {
         const aValue =
           parseFloat(a.periods[selectedPeriod]?.replace('%', '')) || -Infinity;
@@ -38,20 +38,20 @@ function TopRisedCoins({ risedCoins, isError, isPending }) {
 
   return (
     <>
-      {risedCoins && risedCoins.length > 0 ? (
+      {topRisedCoins && topRisedCoins.length > 0 ? (
         <div className="w-full flex flex-col gap-4">
-          <p className="mb-2 text-2xl max-[475px]:text-xl font-pretendard font-bold text-main-dark">
+          <p className="mb-2 text-xl sm:text-2xl font-pretendard font-bold text-main-dark">
             기간별 상승률 TOP
           </p>
 
           <div className="w-full flex flex-col gap-4 mb-4">
-            {/* 기간 선택 셀렉터(476px 이상) */}
+            {/* 기간 선택 셀렉터(475px 초과) */}
             <div className="flex gap-2 bg-gray-100 rounded-lg max-[475px]:hidden">
               {PERIODS?.map(period => (
                 <button
                   key={period.value}
                   onClick={() => setSelectedPeriod(period.value)}
-                  className={`px-4 py-2 rounded-md max-[530px]:text-xs transition-all duration-200 ${
+                  className={`px-4 py-2 rounded-md text-xs sm:text-base transition-all duration-200 ${
                     selectedPeriod === period.value
                       ? 'bg-main text-white font-medium shadow-xs'
                       : 'bg-white text-gray-600 hover:bg-gray-50'

@@ -4,9 +4,9 @@ import Head from 'next/head';
 import Upbit from '@/lib/upbit';
 import dynamic from 'next/dynamic';
 import MarketList from '@/components/exchange/chart/market-list/MarketList';
-import MarketDetailProvider from '@/components/exchange/chart/market-detail/MarketDetail';
-import TradeHistoryProvider from '@/components/exchange/chart/trade-history/TradeHistory';
-import OrderbookProvider from '@/components/exchange/chart/orderbook/Orderbook';
+import MarketDetail from '@/components/exchange/chart/market-detail/MarketDetail';
+import TradeHistory from '@/components/exchange/chart/trade-history/TradeHistory';
+import Orderbook from '@/components/exchange/chart/orderbook/Orderbook';
 
 const HighStockChart = dynamic(
   () => import('@/components/exchange/chart/high-charts/HighCharts'),
@@ -15,12 +15,9 @@ const HighStockChart = dynamic(
   },
 );
 
-const ModalProvider = dynamic(
-  () => import('@/components/exchange/chart/order/Modal'),
-  {
-    ssr: false,
-  },
-);
+const Modal = dynamic(() => import('@/components/exchange/chart/order/Modal'), {
+  ssr: false,
+});
 
 function HighChartProvider() {
   return <HighStockChart />;
@@ -65,7 +62,7 @@ export default function Chart({ marketCodes }) {
 
             {/* 2열 */}
             <section className="w-full md:w-9/12">
-              <MarketDetailProvider marketCodes={marketCodes} />
+              <MarketDetail marketCodes={marketCodes} />
 
               <article className="relative">
                 <HighChartProvider />
@@ -82,16 +79,16 @@ export default function Chart({ marketCodes }) {
 
               <div className="flex flex-wrap">
                 <article className="w-full md:w-7/12">
-                  <TradeHistoryProvider />
+                  <TradeHistory />
                 </article>
                 <article className="w-full md:w-5/12">
-                  <OrderbookProvider />
+                  <Orderbook />
                 </article>
               </div>
             </section>
           </div>
         </div>
-        <ModalProvider handleClose={handleClose} />
+        <Modal handleClose={handleClose} />
       </main>
     </>
   );

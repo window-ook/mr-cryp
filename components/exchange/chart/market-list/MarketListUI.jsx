@@ -4,7 +4,7 @@ import { IoSearch } from 'react-icons/io5';
 const TableHead = ({ w, py = 'py-[0.25rem]', text }) => {
   return (
     <th className={`${w} ${py}`}>
-      <span className="font-ng font-bold text-white text-xs max-[900px]:text-[0.5rem]">
+      <span className="font-ng font-bold text-white text-[0.5rem] lg:text-xs">
         {text}
       </span>
     </th>

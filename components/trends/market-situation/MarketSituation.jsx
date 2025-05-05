@@ -40,7 +40,7 @@ function MarketSituation({ situations, isError, isPending }) {
       {situations ? (
         <div className="flex flex-col gap-4">
           <header className="flex items-end gap-2">
-            <span className="font-pretendard text-main-dark text-2xl max-[475px]:text-xl font-bold">
+            <span className="font-pretendard text-main-dark text-xl sm:text-2xl font-bold">
               시황
             </span>
             <span className="text-gray-500 font-ng text-xs">{today}</span>

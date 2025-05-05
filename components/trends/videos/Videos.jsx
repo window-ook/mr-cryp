@@ -12,7 +12,7 @@ function Videos() {
 
   return (
     <article className="w-full flex flex-col gap-4">
-      <span className="font-pretendard text-2xl max-[475px]:text-xl font-bold text-main-dark">
+      <span className="font-pretendard sm:text-2xl text-xl font-bold text-main-dark">
         트렌드 영상
       </span>
       <div className="grid grid-cols-12 gap-4">

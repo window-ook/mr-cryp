@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import Head from 'next/head';
-import axios from 'axios';
-import AccountMarketFlow from '@/components/mypage/AccountMarketFlow';
+import AccountMarketFlow from '@/components/mypage/AccountCoinsFlow';
 import AccountBalanceFlow from '@/components/mypage/AccountBalanceFlow';
 import AccountDetailTable from '@/components/mypage/AccountDetailTable';
 import AccountDetailPie from '@/components/mypage/AccountDetailPie';
@@ -13,8 +12,8 @@ export default function Home() {
   useEffect(() => {
     const getBalance = async () => {
       try {
-        const response = await axios.get(`/data/balance.json`);
-        let fetched = response.data;
+        const response = await fetch(`/data/mock/balance.json`);
+        const fetched = await response.json();
         setBalance(fetched);
       } catch (error) {
         console.error('계좌 현황 다운로드 에러: ', error);
@@ -56,20 +55,11 @@ export default function Home() {
               내 보유 자산
             </span>
           </div>
-          <div className="w-full flex flex-col items-center shadow-lg max-[820px]:text-[0.6rem] max-[700px]:text-base">
-            <AccountDetailPie balance={balance} />
-            <AccountDetailTable balance={balance} />
-          </div>
+          <div className="w-full flex flex-col items-center shadow-lg text-[0.6rem] md:text-base"></div>
         </section>
         <section className="w-full">
           <div className="h-[4rem]" />
-          <article className="flex flex-col max-[1400px]:gap-[3rem]">
-            <AccountBalanceFlow
-              totalBalance={totalBalance}
-              flowSize={flowSize}
-            />
-            <AccountMarketFlow flowSize={flowSize} />
-          </article>
+          <article className="flex flex-col xl:gap-[3rem]"></article>
         </section>
       </div>
     </>

@@ -1,37 +1,8 @@
 import { useState, Fragment } from 'react';
-import { TabPanel } from '@mui/lab';
-import { FlexCenterBox, NGTypo, theme } from '@/defaultTheme';
-import { globalColors } from '@/globalColors';
-import {
-  Alert,
-  Radio,
-  Box,
-  Button,
-  Snackbar,
-  Table,
-  TableHead,
-  TableBody,
-  TableRow,
-  TableCell,
-} from '@mui/material';
-import { styled } from '@mui/system';
-
-const CellTypo = styled(NGTypo)(() => ({
-  textAlign: 'center',
-  '@media (max-width: 500px)': { fontSize: '0.625rem' },
-}));
-
-const CancelButton = styled(Button)(() => ({
-  backgroundColor: globalColors.white_retro,
-  color: theme.palette.primary.light,
-  '&:hover': {
-    color: theme.palette.secondary.main,
-  },
-}));
 
 export default function History({ value, orders, removeOrder }) {
   const [selectedValue, setSelectedValue] = useState('a');
-  const [open, setOpen] = useState(false); // 좌측 하단 알림 오픈
+  const [open, setOpen] = useState(false);
 
   const handleRadio = event => setSelectedValue(event.target.value);
 
@@ -48,123 +19,150 @@ export default function History({ value, orders, removeOrder }) {
   };
 
   return (
-    <TabPanel value={value}>
-      <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-        <FlexCenterBox sx={{ justifyContent: 'start' }}>
-          <Radio
-            checked={selectedValue === 'a'}
-            onChange={handleRadio}
-            value="a"
-            name="radio-buttons"
-            inputProps={{ 'aria-label': '미체결' }}
-          />
-          <NGTypo>미체결</NGTypo>
-          <Radio
-            checked={selectedValue === 'b'}
-            onChange={handleRadio}
-            value="b"
-            name="radio-buttons"
-            inputProps={{ 'aria-label': '체결' }}
-          />
-          <NGTypo>체결</NGTypo>
-        </FlexCenterBox>
-        <Box sx={{ overflowX: 'auto' }}>
-          <Table>
-            <TableHead>
-              <TableRow>
-                <TableCell rowSpan={2}>
-                  <CellTypo>주문시간</CellTypo>
-                </TableCell>
-                <TableCell>
-                  <CellTypo>마켓명</CellTypo>
-                </TableCell>
-                <TableCell>
-                  <CellTypo>단위가격</CellTypo>
-                </TableCell>
-                <TableCell>
-                  <CellTypo>주문량</CellTypo>
-                </TableCell>
-                <TableCell rowSpan={2}>
-                  <CellTypo>취소</CellTypo>
-                </TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell>
-                  <CellTypo>구분</CellTypo>
-                </TableCell>
-                <TableCell>
-                  <CellTypo>주문가격</CellTypo>
-                </TableCell>
-                <TableCell>
-                  <CellTypo>미체결량</CellTypo>
-                </TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
+    <div
+      role="tabpanel"
+      id={`panel-${value}`}
+      aria-labelledby={`tab-${value}`}
+      className={`${value === '3' ? 'block' : 'hidden'}`}
+    >
+      <div className="flex flex-col">
+        <div className="flex items-center">
+          <label className="flex items-center cursor-pointer mr-4">
+            <input
+              type="radio"
+              checked={selectedValue === 'a'}
+              onChange={handleRadio}
+              value="a"
+              name="radio-buttons"
+              aria-label="미체결"
+              className="mr-2"
+            />
+            <span className="font-ng">미체결</span>
+          </label>
+          <label className="flex items-center cursor-pointer">
+            <input
+              type="radio"
+              checked={selectedValue === 'b'}
+              onChange={handleRadio}
+              value="b"
+              name="radio-buttons"
+              aria-label="체결"
+              className="mr-2"
+            />
+            <span className="font-ng">체결</span>
+          </label>
+        </div>
+        <div className="overflow-x-auto">
+          <table className="w-full">
+            <thead>
+              <tr>
+                <th
+                  rowSpan={2}
+                  className="text-center p-2 border font-ng max-sm:text-xs"
+                >
+                  주문시간
+                </th>
+                <th className="text-center p-2 border font-ng max-sm:text-xs">
+                  마켓명
+                </th>
+                <th className="text-center p-2 border font-ng max-sm:text-xs">
+                  단위가격
+                </th>
+                <th className="text-center p-2 border font-ng max-sm:text-xs">
+                  주문량
+                </th>
+                <th
+                  rowSpan={2}
+                  className="text-center p-2 border font-ng max-sm:text-xs"
+                >
+                  취소
+                </th>
+              </tr>
+              <tr>
+                <th className="text-center p-2 border font-ng max-sm:text-xs">
+                  구분
+                </th>
+                <th className="text-center p-2 border font-ng max-sm:text-xs">
+                  주문가격
+                </th>
+                <th className="text-center p-2 border font-ng max-sm:text-xs">
+                  미체결량
+                </th>
+              </tr>
+            </thead>
+            <tbody>
               {orders.map((order, index) => {
                 const spliting = order.orderTime.indexOf('오');
                 const date = order.orderTime.substring(0, spliting - 1);
                 const time = order.orderTime.substring(spliting);
                 return (
                   <Fragment key={index}>
-                    <TableRow>
-                      <TableCell rowSpan={2}>
-                        <CellTypo>
-                          {date}
-                          <br />
-                          {time}
-                        </CellTypo>
-                      </TableCell>
-                      <TableCell>
-                        <CellTypo>{order.marketName}</CellTypo>
-                      </TableCell>
-                      <TableCell>
-                        <CellTypo>{order.unitPrice}</CellTypo>
-                      </TableCell>
-                      <TableCell>
-                        <CellTypo>{order.orderQuantity}</CellTypo>
-                      </TableCell>
-                      <TableCell rowSpan={2}>
-                        <CancelButton
+                    <tr>
+                      <td
+                        rowSpan={2}
+                        className="text-center p-2 border font-ng max-sm:text-xs"
+                      >
+                        {date}
+                        <br />
+                        {time}
+                      </td>
+                      <td className="text-center p-2 border font-ng max-sm:text-xs">
+                        {order.marketName}
+                      </td>
+                      <td className="text-center p-2 border font-ng max-sm:text-xs">
+                        {order.unitPrice}
+                      </td>
+                      <td className="text-center p-2 border font-ng max-sm:text-xs">
+                        {order.orderQuantity}
+                      </td>
+                      <td rowSpan={2} className="text-center p-2 border">
+                        <button
+                          className="px-4 py-2 bg-white text-main-dark hover:text-secondary-main rounded transition-colors font-ng"
                           aria-label="주문하기:거래내역 취소 버튼"
                           onClick={() => handleCancel(index)}
                         >
                           취소
-                        </CancelButton>
-                      </TableCell>
-                    </TableRow>
-                    <TableRow>
-                      <TableCell>
-                        <CellTypo
-                          sx={{
-                            color:
-                              order.type === '매도'
-                                ? globalColors.color_neg['400']
-                                : globalColors.color_pos['400'],
-                          }}
-                        >
-                          {order.type}
-                        </CellTypo>
-                      </TableCell>
-                      <TableCell>
-                        <CellTypo>{order.orderPrice}</CellTypo>
-                      </TableCell>
-                      <TableCell>
-                        <CellTypo>{order.unfilledQuantity}</CellTypo>
-                      </TableCell>
-                    </TableRow>
+                        </button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td
+                        className={`text-center p-2 border font-ng max-sm:text-xs ${
+                          order.type === '매도'
+                            ? 'text-neg-400'
+                            : 'text-pos-400'
+                        }`}
+                      >
+                        {order.type}
+                      </td>
+                      <td className="text-center p-2 border font-ng max-sm:text-xs">
+                        {order.orderPrice}
+                      </td>
+                      <td className="text-center p-2 border font-ng max-sm:text-xs">
+                        {order.unfilledQuantity}
+                      </td>
+                    </tr>
                   </Fragment>
                 );
               })}
-            </TableBody>
-          </Table>
-        </Box>
-        <Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
-          <Alert onClose={handleClose} severity="success" variant="filled">
-            주문을 취소했습니다
-          </Alert>
-        </Snackbar>
-      </Box>
-    </TabPanel>
+            </tbody>
+          </table>
+        </div>
+        {open && (
+          <div className="fixed bottom-4 left-4 z-50">
+            <div className="bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg flex items-center">
+              <span className="font-ng">주문을 취소했습니다</span>
+              <button
+                onClick={handleClose}
+                className="ml-4 text-white hover:text-gray-200"
+                aria-label="닫기"
+              >
+                ✕
+              </button>
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
   );
 }

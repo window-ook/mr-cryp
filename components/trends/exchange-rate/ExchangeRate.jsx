@@ -4,7 +4,7 @@ function ExchangeRate({ exchangeRates }) {
   return (
     <div className="flex flex-col gap-8">
       <header>
-        <span className="font-pretendard text-2xl max-[475px]:text-xl font-bold text-main-dark">
+        <span className="font-pretendard text-xl sm:text-2xl font-bold text-main-dark">
           오늘 환율
         </span>
       </header>
@@ -13,7 +13,7 @@ function ExchangeRate({ exchangeRates }) {
           {exchangeRates.map(({ currency, rate }) => {
             return (
               <li key={currency}>
-                <span className="flex flex-col sm:flex-row gap-2 font-ng [1100px]:text-lg">
+                <span className="flex flex-col sm:flex-row gap-2 font-ng">
                   <span className="text-xs sm:text-lg font-bold text-blue-500">
                     {currency}
                   </span>

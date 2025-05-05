@@ -150,7 +150,7 @@ export default function NavBar({
             </div>
             <DropdownMenu>
               <DropdownMenuTrigger className="hover:ring-0">
-                <span className="font-aggro text-xl text-white text-shadow-black max-[1220px]:text-xl max-[500px]:hidden hover:opacity-50 cursor-pointer transition-all duration-200 ease-in-out">
+                <span className="font-aggro text-xl text-white text-shadow-black hidden sm:block hover:opacity-50 cursor-pointer transition-all duration-200 ease-in-out">
                   {nickname || 'TESTER'}, hi!
                 </span>
               </DropdownMenuTrigger>
@@ -168,7 +168,7 @@ export default function NavBar({
 
         {/* 서브 네브바*/}
         {!isRoot && activePage === '거래소' && (
-          <div className="flex gap-2 pl-[14rem] max-[900px]:justify-center max-[900px]:pl-0">
+          <div className="flex gap-2 pl-0 lg:pl-[14rem] justify-center lg:justify-start">
             {subNavbarMenu.map(page => (
               <button
                 type="button"
