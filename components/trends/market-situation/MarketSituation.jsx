@@ -3,9 +3,8 @@ import { AnimatePresence } from 'motion/react';
 import * as m from 'motion/react-m';
 import LinearProgress from '@/components/shared/LinearProgress';
 
-function MarketSituation({ situations }) {
+function MarketSituation({ situations, isError, isPending }) {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isLoading, setIsLoading] = useState(true);
 
   const formatDate = pubDate => {
     const date = new Date(pubDate);
@@ -17,8 +16,6 @@ function MarketSituation({ situations }) {
   useEffect(() => {
     if (!situations) return;
 
-    setIsLoading(false);
-
     const interval = setInterval(() => {
       setCurrentIndex(prevIndex => (prevIndex + 1) % situations.length);
     }, 5000);
@@ -28,7 +25,15 @@ function MarketSituation({ situations }) {
 
   const currentNews = situations?.[currentIndex];
 
-  if (isLoading) return <LinearProgress />;
+  if (isPending) return <LinearProgress />;
+
+  if (isError) {
+    return (
+      <div className="font-pretendard font-bold text-lg">
+        시황 다운로드 중 에러가 발생했습니다.
+      </div>
+    );
+  }
 
   return (
     <>

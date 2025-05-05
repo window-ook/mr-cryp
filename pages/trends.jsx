@@ -25,7 +25,7 @@ export async function getStaticProps() {
 }
 
 export default function Trends({ exchangeRates }) {
-  const { data } = useTrendsDataQuery();
+  const { data, isError, isPending } = useTrendsDataQuery();
 
   return (
     <>
@@ -40,16 +40,28 @@ export default function Trends({ exchangeRates }) {
 
           <section className="col-start-2 max-[900px]:col-start-1 row-span-2 h-full gap-4 ">
             <article className="p-4 bg-gray-100 rounded-lg shadow-sm h-full">
-              <TopRisedCoins risedCoins={data?.topRisedCoins} />
+              <TopRisedCoins
+                risedCoins={data?.topRisedCoins}
+                isError={isError}
+                isPending={isPending}
+              />
             </article>
           </section>
 
           <section className="col-start-1 grid grid-rows-[auto, 1fr] gap-4 h-full">
             <article className="p-4 bg-emerald-200 rounded-lg shadow-sm">
-              <MarketSituation situations={data?.marketSituation} />
+              <MarketSituation
+                situations={data?.marketSituation}
+                isError={isError}
+                isPending={isPending}
+              />
             </article>
             <article className="p-4 bg-gray-100 rounded-lg shadow-sm h-full">
-              <GlobalTopic articles={data?.topic} />
+              <GlobalTopic
+                articles={data?.topic}
+                isError={isError}
+                isPending={isPending}
+              />
             </article>
           </section>
 
