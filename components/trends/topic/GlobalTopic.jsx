@@ -6,8 +6,7 @@ function GlobalTopic({ articles }) {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    if (!articles) return;
-    setIsLoading(false);
+    if (Array.isArray(articles)) setIsLoading(false);
   }, [articles]);
 
   if (isLoading) return <Skeleton />;

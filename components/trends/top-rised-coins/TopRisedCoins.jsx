@@ -28,8 +28,7 @@ function TopRisedCoins({ risedCoins }) {
   };
 
   useEffect(() => {
-    if (!risedCoins) return;
-    setIsLoading(false);
+    if (Array.isArray(risedCoins)) setIsLoading(false);
   }, [risedCoins]);
 
   if (isLoading) return <Skeleton />;
