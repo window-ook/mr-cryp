@@ -24,16 +24,16 @@ export default async function handler(req, res) {
       extractRisedCoins(browser),
     ]);
 
-    if (coinData) {
-      const mockDir = path.join(process.cwd(), 'public', 'data', 'mock');
-      if (!fs.existsSync(mockDir)) {
-        fs.mkdirSync(mockDir, { recursive: true });
-      }
-      fs.writeFileSync(
-        path.join(mockDir, 'top-rised-coins.json'),
-        JSON.stringify(coinData, null, 2),
-      );
-    }
+    // if (coinData) {
+    //   const mockDir = path.join(process.cwd(), 'public', 'data', 'mock');
+    //   if (!fs.existsSync(mockDir)) {
+    //     fs.mkdirSync(mockDir, { recursive: true });
+    //   }
+    //   fs.writeFileSync(
+    //     path.join(mockDir, 'top-rised-coins.json'),
+    //     JSON.stringify(coinData, null, 2),
+    //   );
+    // }
 
     return res.status(200).json({
       status: 200,
