@@ -18,7 +18,6 @@ export default function NavBar({
   handleKeywordSearch,
   handleOpenNavMenu,
   navbarMenu,
-  subNavbarMenu,
   activePage,
   submenuActive,
   dropdownActive,
@@ -77,9 +76,9 @@ export default function NavBar({
                   <input
                     type="text"
                     id="search"
-                    alt="마켓 검색하기"
-                    aria-label="마켓 검색하기"
-                    placeholder="마켓 검색"
+                    alt="코인명 검색하기"
+                    aria-label="코인명 검색하기"
+                    placeholder="코인명/심볼 검색"
                     onKeyDown={e => {
                       if (e.key === 'Enter') handleKeywordSearch();
                     }}
@@ -165,32 +164,6 @@ export default function NavBar({
             </DropdownMenu>
           </div>
         </div>
-
-        {/* 서브 네브바*/}
-        {!isRoot && activePage === '거래소' && (
-          <div className="flex gap-2 pl-0 lg:pl-[14rem] justify-center lg:justify-start">
-            {subNavbarMenu.map(page => (
-              <button
-                type="button"
-                className="min-w-fit pr-4 whitespace-nowrap inline-flex shrink-0 flex-col items-center gap-2 text-white cursor-pointer hover:opacity-50 transition-all duration-200 ease-in-out"
-                aria-label="서브 네브바 메뉴 버튼"
-                key={page}
-                onClick={() => handleToggleSubMenu(page)}
-              >
-                <span className="font-aggro text-xl text-shadow-black">
-                  {page}
-                </span>
-                <div
-                  className={`h-1 w-full rounded-lg mb-2 ${
-                    submenuActive === page
-                      ? 'bg-white shadow-md'
-                      : 'bg-transparent'
-                  }`}
-                />
-              </button>
-            ))}
-          </div>
-        )}
       </div>
       <NotificationModal open={open} handleClose={handleClose} />
     </nav>

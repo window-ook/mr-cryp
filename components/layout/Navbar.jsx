@@ -20,7 +20,6 @@ export default function NavBar() {
   const dispatch = useDispatch();
 
   const navbarMenu = ['트렌드', '거래소', '마이페이지'];
-  const subNavbarMenu = ['차트', 'AI 포트폴리오'];
 
   const isRoot = router.pathname === '/';
 
@@ -84,7 +83,6 @@ export default function NavBar() {
   const handleToggleSubMenu = subMenu => {
     setSubmenuActive(subMenu);
     if (subMenu === '차트') router.push('/exchange');
-    if (subMenu === 'AI 포트폴리오') router.push('/exchange/ai-portfoilo');
   };
 
   /** 키워드 검색 */
@@ -108,7 +106,6 @@ export default function NavBar() {
     handleKeywordSearch,
     handleOpenNavMenu,
     navbarMenu,
-    subNavbarMenu,
     activePage,
     submenuActive,
     dropdownActive,
