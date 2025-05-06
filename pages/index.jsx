@@ -208,7 +208,7 @@ const AiInvestIntroduce = () => {
         </div>
       </div>
       <Link
-        href="/exchange/ai-portfoilo"
+        href="/exchange"
         className="w-[8rem] h-[2rem] rounded-md opacity-100 flex items-center hover:opacity-60 transition-all duration-100 ease-in"
       >
         <span className="font-ng font-bold text-lg text-blue-500">

@@ -1,66 +1,17 @@
 import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { FlexCenterBox, NGTypo, theme } from '@/defaultTheme';
-import { globalColors } from '@/globalColors';
-import {
-  Alert,
-  Radio,
-  Box,
-  Button,
-  IconButton,
-  Snackbar,
-  TextField,
-  Tooltip,
-  Typography,
-} from '@mui/material';
-import { TabPanel } from '@mui/lab';
-import { styled } from '@mui/system';
-import RestoreIcon from '@mui/icons-material/Restore';
+import { IoRefreshCircle } from 'react-icons/io5';
 
-const MobileModalTypo = styled(Typography)(() => ({
-  fontFamily: 'NEXON Lv1 Gothic OTF',
-  '@media (max-width:500px)': {
-    fontSize: '0.813rem',
-  },
-}));
-
-const StyledTextField = styled(TextField)(() => ({
-  width: '9.375rem',
-  '@media (max-width:500px)': {
-    width: '5rem',
-  },
-}));
-
-const InformationBox = styled(Box)(() => ({
-  display: 'flex',
-  alignItems: 'flex-end',
-  justifyContent: 'flex-end',
-  gap: 3,
-}));
-
-const ResetButton = styled(Button)(() => ({
-  width: '6.25rem',
-  '@media (max-width:500px)': {
-    width: '5rem',
-  },
-  color: theme.palette.primary.main,
-  backgroundColor: globalColors.white_retro,
-  '&:hover': {
-    backgroundColor: theme.palette.primary.main,
-    color: theme.palette.secondary.light,
-  },
-}));
-
-export default function Panel({ value, addOrder, askablePrice }) {
+export default function Panel({ value, createOrder }) {
   const code = useSelector(state => state.chart.code);
-  const currPrice = useSelector(state => state.chart.currPrice); // 선택한 마켓의 현재가
+  const currPrice = useSelector(state => state.chart.currPrice);
 
   const [selectedValue, setSelectedValue] = useState('a');
   const [bidableCash, setBidableCash] = useState(3000000);
-  const [price, setPrice] = useState(currPrice || 0); // 지정가 가격
-  const [balance, setBalance] = useState(1); // 주문수량
-  const [accPrice, setAccPrice] = useState(0); // 가격 * 주문수량
-  const [open, setOpen] = useState(false); // 좌측 하단 알림 오픈
+  const [price, setPrice] = useState(currPrice || 0);
+  const [balance, setBalance] = useState(1);
+  const [accPrice, setAccPrice] = useState(0);
+  const [open, setOpen] = useState(false);
   const [success, setSuccess] = useState('');
 
   const handleRadio = event => setSelectedValue(event.target.value);
@@ -135,7 +86,7 @@ export default function Panel({ value, addOrder, askablePrice }) {
           orderQuantity: balance,
           unfilledQuantity: balance,
         };
-        addOrder(newOrder);
+        createOrder(newOrder);
       }
     } catch (error) {
       console.error(error);
@@ -154,206 +105,236 @@ export default function Panel({ value, addOrder, askablePrice }) {
   }, [price, balance]);
 
   return (
-    <>
-      <TabPanel value={value}>
-        <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
-          {/* 모바일 주문유형 */}
-          <Box
-            sx={{
-              display: 'none',
-              '@media (max-width:500px)': {
-                display: 'block',
-              },
-            }}
-          >
-            <FlexCenterBox sx={{ flexDirection: 'column' }}>
-              <FlexCenterBox sx={{ gap: 2 }}>
-                <MobileModalTypo>지정가</MobileModalTypo>
-                <MobileModalTypo>시장가</MobileModalTypo>
-                <MobileModalTypo>예약-지정가</MobileModalTypo>
-              </FlexCenterBox>
-              <FlexCenterBox sx={{ gap: 2 }}>
-                <Radio
+    <div
+      role="tabpanel"
+      id={`panel-${value}`}
+      aria-labelledby={`tab-${value}`}
+      className={`${value === '1' || value === '2' ? 'block' : 'hidden'}`}
+    >
+      <div className="flex flex-col gap-3">
+        {/* 모바일 주문유형 */}
+        <div className="hidden max-sm:block">
+          <div className="flex flex-col items-center">
+            <div className="flex gap-2">
+              <span className="font-ng text-sm">지정가</span>
+              <span className="font-ng text-sm">시장가</span>
+              <span className="font-ng text-sm">예약-지정가</span>
+            </div>
+            <div className="flex gap-2">
+              <label className="flex items-center">
+                <input
+                  type="radio"
                   checked={selectedValue === 'a'}
                   onChange={handleRadio}
                   value="a"
                   name="radio-buttons"
-                  inputProps={{ 'aria-label': '지정가' }}
+                  aria-label="지정가"
+                  className="mr-2"
                 />
-                <Radio
+              </label>
+              <label className="flex items-center">
+                <input
+                  type="radio"
                   checked={selectedValue === 'b'}
                   onChange={handleRadio}
                   value="b"
                   name="radio-buttons"
-                  inputProps={{ 'aria-label': '시장가' }}
+                  aria-label="시장가"
+                  className="mr-2"
                 />
-                <Radio
+              </label>
+              <label className="flex items-center">
+                <input
+                  type="radio"
                   checked={selectedValue === 'c'}
                   onChange={handleRadio}
                   value="c"
                   name="radio-buttons"
-                  inputProps={{ 'aria-label': '예약-지정가' }}
+                  aria-label="예약-지정가"
+                  className="mr-2"
                 />
-              </FlexCenterBox>
-            </FlexCenterBox>
-          </Box>
-          {/* 데스크탑 주문유형 */}
-          <FlexCenterBox
-            sx={{
-              gap: 2,
-              '@media (max-width:500px)': {
-                display: 'none',
-              },
-            }}
-          >
-            <NGTypo>주문유형</NGTypo>
-            <FlexCenterBox>
-              <Radio
+              </label>
+            </div>
+          </div>
+        </div>
+
+        {/* 데스크탑 주문유형 */}
+        <div className="flex gap-2 items-center max-sm:hidden">
+          <span className="font-ng text-sm">주문유형</span>
+          <div className="flex items-center">
+            <label className="flex items-center mr-4">
+              <input
+                type="radio"
                 checked={selectedValue === 'a'}
                 onChange={handleRadio}
                 value="a"
                 name="radio-buttons"
-                inputProps={{ 'aria-label': '지정가' }}
+                aria-label="지정가"
+                className="mr-2"
               />
-              <NGTypo>지정가</NGTypo>
-              <Radio
+              <span className="font-ng text-sm">지정가</span>
+            </label>
+            <label className="flex items-center mr-4">
+              <input
+                type="radio"
                 checked={selectedValue === 'b'}
                 onChange={handleRadio}
                 value="b"
                 name="radio-buttons"
-                inputProps={{ 'aria-label': '시장가' }}
+                aria-label="시장가"
+                className="mr-2"
               />
-              <NGTypo>시장가</NGTypo>
-              <Radio
+              <span className="font-ng">시장가</span>
+            </label>
+            <label className="flex items-center">
+              <input
+                type="radio"
                 checked={selectedValue === 'c'}
                 onChange={handleRadio}
                 value="c"
                 name="radio-buttons"
-                inputProps={{ 'aria-label': '예약-지정가' }}
+                aria-label="예약-지정가"
+                className="mr-2"
               />
-              <NGTypo>예약-지정가</NGTypo>
-            </FlexCenterBox>
-          </FlexCenterBox>
-          {/* 주문가능 금액 */}
-          <FlexCenterBox>
-            <MobileModalTypo>주문가능</MobileModalTypo>
-            <MobileModalTypo>
-              {value === '1' ? parseFloat(bidableCash).toLocaleString() : 0} KRW
-            </MobileModalTypo>
-          </FlexCenterBox>
-          {/* 매수가격 / 매도가격 */}
-          <FlexCenterBox>
-            <Box>
-              <MobileModalTypo>
-                {value === '1' ? '매수가격' : '매도가격'}
-              </MobileModalTypo>
-              <MobileModalTypo>(KRW)</MobileModalTypo>
-            </Box>
-            <FlexCenterBox>
-              <StyledTextField value={price} onChange={handlePriceChange} />
-              <IconButton
-                aria-label="주문하기: 가격 줄이기"
-                onClick={handlePriceDecrement}
-              >
-                -
-              </IconButton>
-              <IconButton
-                aria-label="주문하기: 가격 늘리기"
-                onClick={handlePriceIncrement}
-              >
-                +
-              </IconButton>
-            </FlexCenterBox>
-          </FlexCenterBox>
-          {/* 주문수량 */}
-          <FlexCenterBox>
-            <Box>
-              <MobileModalTypo>주문수량</MobileModalTypo>
-              <MobileModalTypo>({code})</MobileModalTypo>
-            </Box>
-            <FlexCenterBox>
-              <StyledTextField value={balance} onChange={handleBalanceChange} />
-              <IconButton
-                aria-label="주문하기: 주문수량 줄이기"
-                onClick={handleBalanceDecrement}
-              >
-                -
-              </IconButton>
-              <IconButton
-                aria-label="주문하기: 주문수량 늘리기"
-                onClick={handleBalanceIncrement}
-              >
-                +
-              </IconButton>
-            </FlexCenterBox>
-          </FlexCenterBox>
-          {/* 주문총액 */}
-          <FlexCenterBox>
-            <Box>
-              <MobileModalTypo>주문총액</MobileModalTypo>
-              <MobileModalTypo>(KRW)</MobileModalTypo>
-            </Box>
-            <TextField
-              sx={{
-                width: '12.5rem',
-                '@media (max-width:500px)': {
-                  width: '7.5rem',
-                },
-              }}
-              value={accPrice}
+              <span className="font-ng">예약-지정가</span>
+            </label>
+          </div>
+        </div>
+
+        {/* 주문가능 금액 */}
+        <div className="flex items-center justify-between">
+          <span className="font-ng text-sm">주문가능</span>
+          <span className="font-ng text-sm">
+            {value === '1' ? parseFloat(bidableCash).toLocaleString() : 0} KRW
+          </span>
+        </div>
+
+        {/* 매수가격 / 매도가격 */}
+        <div className="flex items-center justify-between">
+          <div>
+            <span className="font-ng text-sm">
+              {value === '1' ? '매수가격' : '매도가격'}
+            </span>
+            <span className="font-ng text-sm">(KRW)</span>
+          </div>
+          <div className="flex items-center">
+            <input
+              type="text"
+              value={price}
+              onChange={handlePriceChange}
+              className="w-[9.375rem] max-sm:w-20 px-3 py-2 border rounded"
             />
-          </FlexCenterBox>
-          {/* 안내문 */}
-          <InformationBox>
-            <NGTypo fontSize={12}>최소주문 금액: 5,000 KRW</NGTypo>
-            <NGTypo fontSize={12}>수수료(부가세 포함): 0.05%</NGTypo>
-          </InformationBox>
-          {/* 버튼 */}
-          <FlexCenterBox>
-            <Tooltip title="초기화">
-              <ResetButton
-                aria-label="주문하기: 폼 초기화"
-                onClick={handleReset}
-              >
-                <RestoreIcon />
-              </ResetButton>
-            </Tooltip>
-            <Tooltip title="주문">
-              <Button
-                aria-label="주문하기: 주문 완료"
-                sx={{
-                  width: '15.625rem',
-                  '@media (max-width:500px)': {
-                    width: '5rem',
-                  },
-                }}
-                onClick={handleSubmit}
-              >
-                {value === '1' ? (
-                  <NGTypo fontWeight={'bold'}>매수</NGTypo>
-                ) : (
-                  <NGTypo fontWeight={'bold'}>매도</NGTypo>
-                )}
-              </Button>
-            </Tooltip>
-          </FlexCenterBox>
-          <Snackbar
-            open={open}
-            autoHideDuration={3000}
-            onClose={handleAlertClose}
-          >
-            <Alert
-              onClose={handleAlertClose}
-              severity={success}
-              variant="filled"
+            <button
+              aria-label="주문하기: 가격 줄이기"
+              onClick={handlePriceDecrement}
+              className="px-3 py-2 ml-1 hover:bg-gray-100 rounded"
             >
-              {success === 'success'
-                ? '주문했습니다'
-                : '주문총액을 다시 확인해주세요'}
-            </Alert>
-          </Snackbar>
-        </Box>
-      </TabPanel>
-    </>
+              -
+            </button>
+            <button
+              aria-label="주문하기: 가격 늘리기"
+              onClick={handlePriceIncrement}
+              className="px-3 py-2 hover:bg-gray-100 rounded"
+            >
+              +
+            </button>
+          </div>
+        </div>
+
+        {/* 주문수량 */}
+        <div className="flex items-center justify-between">
+          <div>
+            <span className="font-ng text-sm">주문수량</span>
+            <span className="font-ng text-sm">({code})</span>
+          </div>
+          <div className="flex items-center">
+            <input
+              type="text"
+              value={balance}
+              onChange={handleBalanceChange}
+              className="w-[9.375rem] max-sm:w-20 px-3 py-2 border rounded"
+            />
+            <button
+              aria-label="주문하기: 주문수량 줄이기"
+              onClick={handleBalanceDecrement}
+              className="px-3 py-2 ml-1 hover:bg-gray-100 rounded"
+            >
+              -
+            </button>
+            <button
+              aria-label="주문하기: 주문수량 늘리기"
+              onClick={handleBalanceIncrement}
+              className="px-3 py-2 hover:bg-gray-100 rounded"
+            >
+              +
+            </button>
+          </div>
+        </div>
+
+        {/* 주문총액 */}
+        <div className="flex items-center justify-between">
+          <div>
+            <span className="font-ng text-sm">주문총액</span>
+            <span className="font-ng text-sm">(KRW)</span>
+          </div>
+          <input
+            type="text"
+            value={accPrice}
+            readOnly
+            className="w-[7.5rem] sm:w-[12.5rem] px-3 py-2 border rounded bg-gray-50"
+          />
+        </div>
+
+        {/* 안내문 */}
+        <div className="flex justify-end gap-3">
+          <span className="font-ng text-xs">최소주문 금액: 5,000 KRW</span>
+          <span className="font-ng text-xs">수수료(부가세 포함): 0.05%</span>
+        </div>
+
+        {/* 버튼 */}
+        <div className="flex items-center justify-between gap-2">
+          <button
+            className="w-20 sm:w-[6.25rem] px-4 py-3 rounded bg-main-dark hover:bg-main-light flex justify-center text-white transition-colors duration-200"
+            aria-label="주문하기: 폼 초기화"
+            onClick={handleReset}
+          >
+            <IoRefreshCircle />
+          </button>
+          <button
+            className="w-20 sm:w-[15.625rem] px-4 py-2 rounded bg-main-dark hover:bg-main-light flex justify-center text-white transition-colors duration-200"
+            aria-label="주문하기: 주문 완료"
+            onClick={handleSubmit}
+          >
+            <span className="font-ng font-bold">
+              {value === '1' ? '매수' : '매도'}
+            </span>
+          </button>
+        </div>
+
+        {/* 알림 */}
+        {open && (
+          <div className="fixed bottom-4 left-4 z-50">
+            <div
+              className={`${
+                success === 'success' ? 'bg-green-500' : 'bg-red-500'
+              } text-white px-6 py-3 rounded-lg shadow-lg flex items-center`}
+            >
+              <span className="font-ng">
+                {success === 'success'
+                  ? '주문했습니다'
+                  : '주문총액을 다시 확인해주세요'}
+              </span>
+              <button
+                onClick={handleAlertClose}
+                className="ml-4 text-white hover:text-gray-200"
+                aria-label="닫기"
+              >
+                ✕
+              </button>
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
   );
 }

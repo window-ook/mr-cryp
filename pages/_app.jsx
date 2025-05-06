@@ -1,10 +1,8 @@
 import '@/styles/globals.css';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { CssBaseline, ThemeProvider } from '@mui/material';
 import { Provider } from 'react-redux';
 import { useRouter } from 'next/router';
 import { wrapper } from '@/utils/redux/store';
-import { theme } from '@/defaultTheme';
 import { LazyMotion } from 'motion/react';
 import Head from 'next/head';
 import dynamic from 'next/dynamic';
@@ -39,32 +37,29 @@ export default function MyApp({ Component, pageProps }) {
 
   return (
     <Provider store={store}>
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <QueryClientProvider client={queryClient}>
-          <Head>
-            <title>미스터 크립 Mr.cryp</title>
-          </Head>
+      <QueryClientProvider client={queryClient}>
+        <Head>
+          <title>미스터 크립 Mr.cryp</title>
+        </Head>
 
-          <main className={`${pretendard.variable} font-sans`}>
-            <LazyMotion features={loadFeatures}>
-              {AUTH_PAGE || OAUTH_PAGE ? (
-                <Component {...pageProps} />
-              ) : (
-                <Layout>
-                  {ROOT_PAGE ? (
+        <main className={`${pretendard.variable} font-sans`}>
+          <LazyMotion features={loadFeatures}>
+            {AUTH_PAGE || OAUTH_PAGE ? (
+              <Component {...pageProps} />
+            ) : (
+              <Layout>
+                {ROOT_PAGE ? (
+                  <Component {...pageProps} />
+                ) : (
+                  <ProtectedRoute>
                     <Component {...pageProps} />
-                  ) : (
-                    <ProtectedRoute>
-                      <Component {...pageProps} />
-                    </ProtectedRoute>
-                  )}
-                </Layout>
-              )}
-            </LazyMotion>
-          </main>
-        </QueryClientProvider>
-      </ThemeProvider>
+                  </ProtectedRoute>
+                )}
+              </Layout>
+            )}
+          </LazyMotion>
+        </main>
+      </QueryClientProvider>
     </Provider>
   );
 }

@@ -25,7 +25,7 @@ export default function AccountDetailTable({ balance }) {
   );
 
   return (
-    <div className="w-full h-full m-0 rounded-t-none bg-white shadow-md max-[700px]:w-full max-[500px]:w-full">
+    <div className="w-full h-full m-0 rounded-t-none bg-white shadow-md">
       <table className="w-full">
         <thead>
           <tr className="bg-main text-left">
@@ -65,7 +65,7 @@ export default function AccountDetailTable({ balance }) {
                   )}
                 </td>
                 <td className="text-left">
-                  <span className="font-ng font-bold" color="primary">
+                  <span className="font-ng font-bold text-main">
                     {item.currency}
                   </span>
                 </td>
@@ -96,7 +96,7 @@ export default function AccountDetailTable({ balance }) {
             <td />
             <td className="text-left">
               <span className="font-pretendard font-bold">
-                {parseFloat(totalBalance).toLocaleString()} {' KRW'}
+                {parseFloat(totalBalance).toLocaleString()} {'KRW'}
               </span>
             </td>
           </tr>

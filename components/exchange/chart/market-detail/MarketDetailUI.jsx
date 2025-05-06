@@ -1,8 +1,8 @@
 const SubIndicator = ({ label, value, valueStyle }) => {
   return (
     <>
-      <div className="flex justify-between w-[12.5rem] max-[1180px]:w-[9.375rem]">
-        <span className="font-ng text-[0.75rem] max-[1180px]:text-[0.5rem] self-end">
+      <div className="flex justify-between w-[9.375rem] lg:w-[12.5rem]">
+        <span className="font-ng text-[0.5rem] lg:text-[0.75rem] self-end">
           {label}
         </span>
         <span
@@ -58,7 +58,7 @@ export default function MarketDetailUI({ codeMap, ticker, numColor }) {
           </div>
         </section>
 
-        <section className="flex gap-2 mr-2 max-[500px]:hidden">
+        <section className="hidden sm:flex gap-2 mr-2">
           <div className="flex flex-col justify-center shrink grow basis-full">
             <SubIndicator
               label="고가"

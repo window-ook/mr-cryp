@@ -68,6 +68,9 @@ body {
   --font-onetitle: 'ONE-Mobile-Title';
   --font-aggro: 'SBAggroB';
 
+  /* 폰크 크기 */
+  --text-3xs: 0.5rem;
+
   /* 색상 */
   --color-main: oklch(0.72 0.1614 160.44);
   --color-main-light: oklch(0.88 0.1716 164.2);
@@ -76,9 +79,10 @@ body {
   --color-sma-50: oklch(0.87 0.2414 149.42);
   --color-sma-15: oklch(0.57 0.2301 27.32);
   --color-market-code: oklch(0.64 0.0046 91.47);
-
-  --color-positive: var(--color-red-500);
-  --color-negative: var(--color-blue-500);
+  --color-hotpink: oklch(0.76 0.1467 351.66);
+  --color-skyblue: oklch(0.93 0.0805 197.79);
+  --color-positive: var(--color-red-600);
+  --color-negative: var(--color-blue-600);
   --color-market-code: var(--color-gray-400);
   --color-list-hover: var(--color-gray-100);
 
@@ -127,7 +131,7 @@ body {
   }
 
   .font-description {
-    @apply font-pretendard font-bold text-sm
+    @apply font-pretendard font-bold text-sm sm:text-base
   }
 
   .font-navbar-mrcryp {
@@ -136,6 +140,14 @@ body {
 
   .font-navbar-button {
     @apply font-onetitle font-bold text-xl text-white text-shadow-black
+  }
+
+  .font-price {
+    @apply font-onetitle
+  }
+
+  .font-head {
+    @apply font-ng font-bold text-lg sm:text-xl text-white text-shadow-black
   }
 
   .modal-box {

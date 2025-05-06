@@ -4,7 +4,7 @@ import { IoSearch } from 'react-icons/io5';
 const TableHead = ({ w, py = 'py-[0.25rem]', text }) => {
   return (
     <th className={`${w} ${py}`}>
-      <span className="font-ng font-bold text-white text-xs max-[900px]:text-[0.5rem]">
+      <span className="font-ng font-bold text-white text-[0.5rem] lg:text-xs">
         {text}
       </span>
     </th>
@@ -20,7 +20,7 @@ const TableCell = ({
 }) => {
   return (
     <td
-      className={`table-cell ${width} px-0.5 border-b border-b-gray-100 ${align} ${changeRate < 0 ? 'text-negative' : changeRate > 0 ? 'text-positive' : 'text-black'} ${className}`}
+      className={`table-cell ${width} py-1 px-0.5 border-b border-b-gray-100 ${align} ${changeRate < 0 ? 'text-negative' : changeRate > 0 ? 'text-positive' : 'text-black'} ${className}`}
     >
       {children}
     </td>
@@ -51,10 +51,10 @@ export default function MarketList({
     <div className="flex flex-col h-full">
       <div className="relative w-full">
         <input
-          aria-label="마켓 검색"
+          aria-label="코인명 검색"
           type="text"
           className="w-full h-[2.5rem] px-1 bg-white border border-none font-ng placeholder:font-ng focus:outline-none focus:ring-1 focus:ring-main-dark"
-          placeholder="마켓 검색"
+          placeholder="코인명/심볼 검색"
           value={keyword}
           onChange={handleSearchChange}
         />

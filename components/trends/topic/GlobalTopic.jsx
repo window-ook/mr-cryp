@@ -2,7 +2,7 @@ import { memo } from 'react';
 import Skeleton from '../shared/Skeleton';
 import Image from 'next/image';
 
-function GlobalTopic({ articles, isError, isPending }) {
+function GlobalTopic({ topic, isError, isPending }) {
   if (isPending) return <Skeleton />;
 
   if (isError) {
@@ -15,15 +15,15 @@ function GlobalTopic({ articles, isError, isPending }) {
 
   return (
     <>
-      {articles && articles.length > 0 ? (
+      {topic && topic.length > 0 ? (
         <div className="flex flex-col gap-4">
           <header>
-            <span className="font-pretendard text-2xl max-[475px]:text-xl font-bold text-main-dark">
+            <span className="font-pretendard text-xl sm:text-2xl font-bold text-main-dark">
               글로벌 토픽
             </span>
           </header>
           <article className="grid grid-cols-2 gap-8">
-            {articles.slice(0, 6).map(article => {
+            {topic.slice(0, 6).map(article => {
               const title = article.title
                 .replace(/<b>|<\/b>/g, '')
                 .replace(/&quot;/g, '');
@@ -45,7 +45,7 @@ function GlobalTopic({ articles, isError, isPending }) {
                       priority
                     />
                     <div className="flex flex-col gap-1 overflow-hidden">
-                      <span className="font-ng max-[1100px]:text-xs text-left line-clamp-2">
+                      <span className="font-ng text-xs lg:text-base text-left line-clamp-2">
                         {article.title}
                       </span>
                     </div>
@@ -54,7 +54,7 @@ function GlobalTopic({ articles, isError, isPending }) {
               );
             })}
 
-            {articles.slice(6).map(article => {
+            {topic.slice(6).map(article => {
               const title = article.title
                 .replace(/<b>|<\/b>/g, '')
                 .replace(/&quot;/g, '');
@@ -75,7 +75,7 @@ function GlobalTopic({ articles, isError, isPending }) {
                       priority
                     />
                     <div className="flex flex-col gap-1 overflow-hidden">
-                      <span className="font-ng max-[1100px]:text-xs text-left line-clamp-2">
+                      <span className="line-clamp-2 font-ng text-xs lg:text-base text-left">
                         {article.title}
                       </span>
                     </div>
