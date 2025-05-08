@@ -1,6 +1,6 @@
 import { useState, useCallback, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import CircularProgress from '@/components/shared/CircularProgress';
+import CircularProgress from '@/components/shared/ui/CircularProgress';
 
 export default function Orderbook({ orderbookData }) {
   const rate = useSelector(state => state.chart.rate);
@@ -34,7 +34,7 @@ export default function Orderbook({ orderbookData }) {
   }, [getMaxSize, orderbookData]);
 
   return (
-    <section className="w-full h-[28.1rem] overflow-y-scroll bg-white">
+    <section className="w-full h-[26rem] overflow-y-scroll bg-white shadow-main">
       <table className="w-full border-collapse">
         <thead className="h-[2.5rem] sticky top-0 z-10 bg-main">
           <tr>

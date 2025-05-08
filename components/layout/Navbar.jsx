@@ -2,8 +2,6 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { useDispatch } from 'react-redux';
 import { setKeyword } from '@/utils/redux/chartSlice';
-import { logoutGoogle } from '@/utils/firebase';
-import axios from 'axios';
 import NavBarUI from './NavbarUI';
 
 export default function NavBar() {
@@ -21,7 +19,7 @@ export default function NavBar() {
 
   const navbarMenu = ['트렌드', '거래소', '마이페이지'];
 
-  const isRoot = router.pathname === '/';
+  const HOME_PAGE = router.pathname === '/';
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -39,38 +37,13 @@ export default function NavBar() {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  const handleSignout = async () => {
-    try {
-      const socialType = localStorage.getItem('socialType');
-      const accessToken = localStorage.getItem('accessToken');
-
-      if (socialType === 'Google') logoutGoogle();
-      if (socialType === 'Kakao') {
-        await axios.post(
-          'https://kapi.kakao.com/v1/user/logout',
-          {},
-          {
-            headers: {
-              'Content-Type': 'application/x-www-form-urlencoded',
-              Authorization: `Bearer ${accessToken}`,
-            },
-          },
-        );
-      }
-
-      localStorage.removeItem('accessToken');
-      localStorage.removeItem('socialType');
-      localStorage.removeItem('userId');
-      localStorage.removeItem('imgUrl');
-      localStorage.removeItem('nickname');
-      sessionStorage.removeItem('activePage');
-      router.replace('/auth');
-    } catch (error) {
-      console.error('로그아웃 에러');
-    }
+  const handleSignout = () => {
+    localStorage.removeItem('userId');
+    sessionStorage.removeItem('activePage');
+    router.replace('/auth');
   };
 
-  /** 페이지 이동 (XS: 메뉴 드롭다운 닫기 추가) */
+  /** 페이지 이동 (MD 미만: 메뉴 드롭다운 닫기 추가) */
   const handleCloseNavMenu = page => {
     setActivePage(page);
     sessionStorage.setItem('activePage', page);
@@ -92,7 +65,7 @@ export default function NavBar() {
     router.push('/exchange');
   };
 
-  /** XS 메뉴 드롭다운 열기 */
+  /** MD 미만 화면 드롭다운 열기 */
   const handleOpenNavMenu = event => setDropdownActive(event.currentTarget);
 
   const props = {
@@ -112,7 +85,7 @@ export default function NavBar() {
     open,
     imgUrl,
     nickname,
-    isRoot,
+    HOME_PAGE,
   };
 
   return <NavBarUI {...props} />;

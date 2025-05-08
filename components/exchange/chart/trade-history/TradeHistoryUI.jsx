@@ -1,4 +1,4 @@
-import CircularProgress from '@/components/shared/CircularProgress';
+import CircularProgress from '@/components/shared/ui/CircularProgress';
 
 export default function TradeHistory({ tradeData }) {
   const timestampToTime = timestamp => {
@@ -8,7 +8,7 @@ export default function TradeHistory({ tradeData }) {
   };
 
   return (
-    <section className="max-w-[62.5rem] h-[28.1rem] overflow-y-scroll bg-white">
+    <section className="max-w-[62.5rem] h-[26rem] overflow-y-scroll bg-white">
       <table className="w-full">
         <thead className="h-[2.5rem] sticky top-0 z-10 bg-main">
           <tr>

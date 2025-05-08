@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import { useRouter } from 'next/router';
 import { wrapper } from '@/utils/redux/store';
 import { LazyMotion } from 'motion/react';
+import { SessionProvider } from 'next-auth/react';
 import Head from 'next/head';
 import dynamic from 'next/dynamic';
 import localFont from 'next/font/local';
@@ -27,13 +28,16 @@ const ProtectedRoute = dynamic(
 
 const queryClient = new QueryClient();
 
-export default function MyApp({ Component, pageProps }) {
+export default function App({
+  Component,
+  pageProps: { session, ...pageProps },
+}) {
   const { store } = wrapper.useWrappedStore(pageProps);
 
   const router = useRouter();
-  const ROOT_PAGE = router.pathname === '/';
-  const AUTH_PAGE = router.pathname === '/auth';
-  const OAUTH_PAGE = router.pathname === '/oauth';
+  const HOME_PAGE = router.pathname === '/';
+  const KAKAO_OAUTH_PAGE = router.pathname === '/auth';
+  const GOOGLE_OAUTH_PAGE = router.pathname === '/oauth';
 
   return (
     <Provider store={store}>
@@ -41,19 +45,20 @@ export default function MyApp({ Component, pageProps }) {
         <Head>
           <title>미스터 크립 Mr.cryp</title>
         </Head>
-
         <main className={`${pretendard.variable} font-sans`}>
           <LazyMotion features={loadFeatures}>
-            {AUTH_PAGE || OAUTH_PAGE ? (
+            {KAKAO_OAUTH_PAGE || GOOGLE_OAUTH_PAGE ? (
               <Component {...pageProps} />
             ) : (
               <Layout>
-                {ROOT_PAGE ? (
+                {HOME_PAGE ? (
                   <Component {...pageProps} />
                 ) : (
-                  <ProtectedRoute>
-                    <Component {...pageProps} />
-                  </ProtectedRoute>
+                  <SessionProvider session={session}>
+                    <ProtectedRoute>
+                      <Component {...pageProps} />
+                    </ProtectedRoute>
+                  </SessionProvider>
                 )}
               </Layout>
             )}

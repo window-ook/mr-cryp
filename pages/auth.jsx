@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import { FaUserLock } from 'react-icons/fa';
 import Head from 'next/head';
 import Image from 'next/image';
-import SocialLoginButton from '@/components/auth/SocialLoginButton';
+import SigninButton from '@/components/auth/SigninButton';
 
 export async function getServerSideProps() {
   const KAKAO_CLIENT_ID = process.env.NEXT_KAKAO_CLIENT_ID;
@@ -45,7 +45,7 @@ export default function Signin({ KAKAO_CLIENT_ID }) {
       </Head>
       <main>
         <div className="flex flex-col sm:flex-row h-screen">
-          {/* 왼쪽 */}
+          {/* Left */}
           <div className="w-full h-full sm:w-1/2 flex items-center justify-center">
             <div className="flex flex-col items-center">
               <div className="flex flex-col items-center">
@@ -54,23 +54,23 @@ export default function Signin({ KAKAO_CLIENT_ID }) {
                   로그인
                 </span>
               </div>
-              <SocialLoginButton
+              <SigninButton
                 platform={'google'}
                 bgColor={'bg-blue-600'}
                 fontColor={'text-white'}
               />
-              <SocialLoginButton
+              <SigninButton
                 CLIENT_ID={KAKAO_CLIENT_ID}
                 REDIRECT_URI={KAKAO_REDIRECT_URI}
                 platform={'kakao'}
                 bgColor={'bg-yellow-300'}
                 fontColor={'text-black'}
               />
-              <SocialLoginButton isTest={true} />
+              <SigninButton isTest={true} />
               <Copyright sx={{ mt: 5 }} />
             </div>
           </div>
-          {/* 오른쪽 */}
+          {/* Right */}
           <div className="hidden w-1/2 sm:flex justify-center items-center bg-slate-200">
             <div className="h-full flex items-center justify-center gap-2">
               <Image
@@ -79,7 +79,6 @@ export default function Signin({ KAKAO_CLIENT_ID }) {
                 width={100}
                 height={30}
                 priority={true}
-                className="hover:hidden"
               />
               <span className="font-aggro font-bold italic text-main text-5xl text-shadow-black">
                 Mr.Cryp

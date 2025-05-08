@@ -10,16 +10,21 @@ const nextConfig = {
   images: {
     remotePatterns: [
       {
+        protocol: 'http',
+        hostname: 'img1.kakaocdn.net',
+        pathname: '/**',
+      },
+      {
         protocol: 'https',
         hostname: 'www.youtube.com',
-        port: '',
-        pathname: '/embed/**',
+
+        pathname: '/**',
       },
       {
         protocol: 'https',
         hostname: 'i.ytimg.com',
         port: '',
-        pathname: '/vi/**',
+        pathname: '/**',
       },
       {
         protocol: 'https',
