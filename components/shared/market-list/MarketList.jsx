@@ -9,7 +9,7 @@ import {
 } from '@/utils/redux/chartSlice';
 import axios from 'axios';
 import MarketListUI from './MarketListUI';
-import LinearProgress from '@/components/shared/LinearProgress';
+import LinearProgress from '@/components/shared/ui/LinearProgress';
 
 function MarketList({ marketCodes }) {
   const [isLoading, setIsLoading] = useState(true);

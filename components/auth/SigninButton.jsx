@@ -1,9 +1,8 @@
 import { useRouter } from 'next/router';
-import { loginGoogle } from '@/utils/firebase';
 import Image from 'next/image';
 import clsx from 'clsx';
 
-export default function SocialLoginButton({
+export default function SigninButton({
   CLIENT_ID,
   REDIRECT_URI,
   platform,
@@ -12,8 +11,6 @@ export default function SocialLoginButton({
   isTest = false,
 }) {
   const router = useRouter();
-
-  const KAKAO_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=code`;
 
   const BASE_STYLES =
     'w-[12rem] mt-[1rem] px-[1rem] py-[0.4rem] rounded-md shadow-md hover:bg-white flex gap-[1rem] items-center cursor-pointer transition duration-200 ease-in';
@@ -27,10 +24,8 @@ export default function SocialLoginButton({
     : `/images/user-logos/logo_${platform}.webp`;
 
   const handleLogin = async () => {
-    if (platform === 'google')
-      await loginGoogle().then(() => router.push('/mypage'));
-    else if (platform === 'kakao') window.location.href = KAKAO_URL;
-    else {
+    if (platform === 'kakao') {
+    } else {
       localStorage.setItem('userId', 'test-user');
       router.push('/mypage');
       return;

@@ -2,7 +2,7 @@ import { useMemo, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import axios from 'axios';
 import MarketDetailUI from './MarketDetailUI';
-import LinearProgress from '@/components/shared/LinearProgress';
+import LinearProgress from '@/components/shared/ui/LinearProgress';
 
 export default function MarketDetail({ marketCodes }) {
   const [isLoading, setIsLoading] = useState(true);

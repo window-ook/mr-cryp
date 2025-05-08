@@ -24,7 +24,7 @@ export default function NavBar({
   open,
   imgUrl,
   nickname,
-  isRoot,
+  HOME_PAGE,
 }) {
   return (
     <nav className="sticky top-0 z-50 bg-main shadow-md">

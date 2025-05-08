@@ -1,7 +1,7 @@
 import { memo, useEffect, useState } from 'react';
 import { AnimatePresence } from 'motion/react';
 import * as m from 'motion/react-m';
-import LinearProgress from '@/components/shared/LinearProgress';
+import LinearProgress from '@/components/shared/ui/LinearProgress';
 
 function MarketSituation({ situations, isError, isPending }) {
   const [currentIndex, setCurrentIndex] = useState(0);
