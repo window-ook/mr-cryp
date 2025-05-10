@@ -1,9 +1,7 @@
-/* 폰트 소스 경로  */
-@import url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF.woff');
-@import url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/ONE-Mobile-Title.woff');
-@import url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/SBAggroB.woff');
+@import 'tailwindcss';
+@import "tw-animate-css";
 
-/* 넥슨 Lv.1 고딕 - 기본 폰트 */
+/* 넥슨 고딕 */
 @font-face {
   font-family: 'NEXON Lv1 Gothic OTF';
   src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF.woff') format('woff');
@@ -12,7 +10,7 @@
   font-display: swap;
 }
 
-/* 원모바일 - 가격 폰트 */
+/* 원모바일 타이틀 */
 @font-face {
   font-family: 'ONE-Mobile-Title';
   src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/ONE-Mobile-Title.woff') format('woff');
@@ -21,7 +19,7 @@
   font-display: swap;
 }
 
-/* 어그로체 - 로고 폰트 */
+/* 어그로체 */
 @font-face {
   font-family: 'SBAggroB';
   src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/SBAggroB.woff') format('woff');
@@ -29,9 +27,6 @@
   font-style: normal;
   font-display: swap;
 }
-
-@import 'tailwindcss';
-@import "tw-animate-css";
 
 /* ---break---  */
 
@@ -139,7 +134,7 @@ body {
   }
 
   .font-navbar-mrcryp {
-    @apply font-aggro font-bold italic text-2xl text-white text-shadow-black
+    @apply font-aggro font-bold italic text-2xl text-white
   }
 
   .font-navbar-button {

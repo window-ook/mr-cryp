@@ -1,10 +1,9 @@
 import { useRouter } from 'next/router';
+import { signIn } from 'next-auth/react';
 import Image from 'next/image';
 import clsx from 'clsx';
 
 export default function SigninButton({
-  CLIENT_ID,
-  REDIRECT_URI,
   platform,
   bgColor = 'bg-main',
   fontColor = 'text-white',
@@ -25,9 +24,23 @@ export default function SigninButton({
 
   const handleLogin = async () => {
     if (platform === 'kakao') {
-    } else {
+      await signIn('kakao', {
+        redirect: true,
+        callbackUrl: '/trends',
+      });
+    }
+
+    if (platform === 'google') {
+      await signIn('google', {
+        redirect: true,
+        callbackUrl: '/trends',
+      });
+    }
+
+    // Mongo Atlas에 테스트 계정 생성하면 그 계정으로 로그인하게 만들고 로직 수정하기
+    if (isTest) {
       localStorage.setItem('userId', 'test-user');
-      router.push('/mypage');
+      router.replace('/trends');
       return;
     }
   };
@@ -49,6 +62,7 @@ export default function SigninButton({
         alt={isTest ? '테스트 로그인 버튼 이미지' : platform}
         width="20"
         height="20"
+        className="w-auto h-auto"
       />
       <span
         className={clsx(

@@ -1,11 +1,13 @@
 import NextAuth from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import KakaoProvider from 'next-auth/providers/kakao';
+import GoogleProvider from 'next-auth/providers/google';
 
 export default NextAuth({
   providers: [
     CredentialsProvider({
-      name: 'Credentials',
+      id: 'credentials',
+      name: '이메일 로그인',
       credentials: {
         username: {
           label: '이메일',
@@ -31,9 +33,8 @@ export default NextAuth({
           }),
         });
         const user = await res.json();
-        console.log(user);
 
-        if (user) {
+        if (res.ok && user) {
           return user;
         } else {
           return null;
@@ -41,20 +42,22 @@ export default NextAuth({
       },
     }),
 
+    GoogleProvider({
+      clientId: process.env.GOOGLE_CLIENT_ID,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+    }),
+
     KakaoProvider({
-      clientId: process.env.NEXT_KAKAO_CLIENT_ID,
-      clientSecret: process.env.NEXT_KAKAO_CLIENT_SECRET,
+      clientId: process.env.KAKAO_CLIENT_ID,
+      clientSecret: process.env.KAKAO_CLIENT_SECRET,
     }),
   ],
 
-  callbacks: {
-    async jwt({ token, user }) {
-      return { ...token, ...user };
-    },
+  callbacks: {},
 
-    async session({ session, token }) {
-      session.user = token;
-      return session;
-    },
+  secret: process.env.NEXTAUTH_SECRET,
+
+  pages: {
+    signIn: '/signin',
   },
 });

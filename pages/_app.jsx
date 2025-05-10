@@ -6,7 +6,6 @@ import { wrapper } from '@/utils/redux/store';
 import { LazyMotion } from 'motion/react';
 import { SessionProvider } from 'next-auth/react';
 import Head from 'next/head';
-import dynamic from 'next/dynamic';
 import localFont from 'next/font/local';
 import Layout from '@/layouts/Layout';
 
@@ -18,13 +17,6 @@ const pretendard = localFont({
   weight: '45 920',
   variable: '--font-pretendard',
 });
-
-const ProtectedRoute = dynamic(
-  () => import('@/components/layout/ProtectedRoute'),
-  {
-    ssr: false,
-  },
-);
 
 const queryClient = new QueryClient();
 
@@ -55,9 +47,7 @@ export default function App({
                   <Component {...pageProps} />
                 ) : (
                   <SessionProvider session={session}>
-                    <ProtectedRoute>
-                      <Component {...pageProps} />
-                    </ProtectedRoute>
+                    <Component {...pageProps} />
                   </SessionProvider>
                 )}
               </Layout>

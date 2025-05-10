@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { useDispatch } from 'react-redux';
 import { setKeyword } from '@/utils/redux/chartSlice';
+import { signOut } from 'next-auth/react';
 import NavBarUI from './NavbarUI';
 
 export default function NavBar() {
@@ -37,10 +38,11 @@ export default function NavBar() {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  const handleSignout = () => {
+  const handleSignout = async () => {
+    await signOut({ callbackUrl: '/auth' });
+    // 테스트 계정 생성 후에는 아래 로직 삭제
     localStorage.removeItem('userId');
     sessionStorage.removeItem('activePage');
-    router.replace('/auth');
   };
 
   /** 페이지 이동 (MD 미만: 메뉴 드롭다운 닫기 추가) */
