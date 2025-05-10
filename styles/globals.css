@@ -81,9 +81,6 @@ body {
   --color-market-code: var(--color-gray-400);
   --color-list-hover: var(--color-gray-100);
 
-  /* 화면 */
-  --select-1120: '1120px';
-
   /* 텍스트 그림자 */
   --text-shadow-black: 0 2px 4px rgba(0, 0, 0, 0.8);
   --text-shadow-none: none;

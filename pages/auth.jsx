@@ -2,6 +2,7 @@ import { FaUserLock } from 'react-icons/fa';
 import Head from 'next/head';
 import Image from 'next/image';
 import SigninButton from '@/components/auth/SigninButton';
+import LoginForm from '@/components/auth/LoginForm';
 
 export default function Signin() {
   return (
@@ -20,6 +21,8 @@ export default function Signin() {
                   로그인
                 </span>
               </div>
+              <LoginForm />
+              <SigninButton isTest={true} />
               <SigninButton
                 platform={'google'}
                 bgColor={'bg-blue-600'}
@@ -30,7 +33,6 @@ export default function Signin() {
                 bgColor={'bg-yellow-300'}
                 fontColor={'text-black'}
               />
-              <SigninButton isTest={true} />
               <span className="mt-4 flex items-center text-slate-500">
                 Copyrights All reserved © Mr.Cryp 2024
               </span>

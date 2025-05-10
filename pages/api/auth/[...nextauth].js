@@ -6,7 +6,6 @@ import GoogleProvider from 'next-auth/providers/google';
 export default NextAuth({
   providers: [
     CredentialsProvider({
-      id: 'credentials',
       name: '이메일 로그인',
       credentials: {
         username: {
@@ -19,26 +18,6 @@ export default NextAuth({
           type: 'password',
           placeholder: '비밀번호 입력',
         },
-      },
-
-      async authorize(credentials, req) {
-        const res = await fetch(`${process.env.NEXTAUTH_URL}/api/signin`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            username: credentials?.username,
-            password: credentials?.password,
-          }),
-        });
-        const user = await res.json();
-
-        if (res.ok && user) {
-          return user;
-        } else {
-          return null;
-        }
       },
     }),
 
@@ -53,11 +32,40 @@ export default NextAuth({
     }),
   ],
 
-  callbacks: {},
+  callbacks: {
+    async authorize(credentials, req) {
+      try {
+        const res = await fetch(`${process.env.NEXTAUTH_URL}/api/login`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            username: credentials?.username,
+            password: credentials?.password,
+          }),
+        });
+
+        const user = await res.json();
+        return user || null;
+      } catch (error) {
+        throw new Error(error.response);
+      }
+    },
+
+    async jwt({ token, user }) {
+      if (user) token.user = user;
+      return token;
+    },
+
+    async session({ session, token, user }) {
+      return session;
+    },
+  },
 
   secret: process.env.NEXTAUTH_SECRET,
 
   pages: {
-    signIn: '/signin',
+    signIn: '/auth',
   },
 });

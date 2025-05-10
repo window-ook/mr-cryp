@@ -12,15 +12,13 @@ export default function SigninButton({
   const router = useRouter();
 
   const BASE_STYLES =
-    'w-[12rem] mt-[1rem] px-[1rem] py-[0.4rem] rounded-md shadow-md hover:bg-white flex gap-[1rem] items-center cursor-pointer transition duration-200 ease-in';
+    'w-[12rem] mt-[1rem] py-[0.4rem] rounded-md shadow-md hover:bg-white flex gap-[1rem] items-center cursor-pointer transition duration-200 ease-in';
 
   const BUTTON_TEXT = isTest
     ? '체험하기'
     : `${platform === 'kakao' ? '카카오' : '구글'} 로그인`;
 
-  const LOGO_PATH = isTest
-    ? '/images/mustachetrans.webp'
-    : `/images/user-logos/logo_${platform}.webp`;
+  const LOGO_PATH = `/images/user-logos/logo_${platform}.webp`;
 
   const handleLogin = async () => {
     if (platform === 'kakao') {
@@ -52,21 +50,24 @@ export default function SigninButton({
       onClick={handleLogin}
       className={clsx(
         BASE_STYLES,
-        isTest ? 'bg-main text-white' : bgColor,
+        isTest ? 'bg-main-dark text-white justify-center' : bgColor,
         !isTest && fontColor,
+        !isTest && 'pl-[1rem]',
         'group',
       )}
     >
-      <Image
-        src={LOGO_PATH}
-        alt={isTest ? '테스트 로그인 버튼 이미지' : platform}
-        width="20"
-        height="20"
-        className="w-auto h-auto"
-      />
+      {!isTest && (
+        <Image
+          src={LOGO_PATH}
+          alt={isTest ? '테스트 로그인 버튼 이미지' : platform}
+          width="20"
+          height="20"
+          className="w-auto h-auto"
+        />
+      )}
       <span
         className={clsx(
-          'pl-[1rem] font-ng group-hover:text-black',
+          isTest ? 'font-ng' : 'pl-[1rem] font-ng group-hover:text-black',
           isTest && 'text-white transition duration-200 ease-in',
         )}
       >
