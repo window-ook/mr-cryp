@@ -1,43 +1,10 @@
-import { useEffect } from 'react';
-import { useRouter } from 'next/router';
 import { FaUserLock } from 'react-icons/fa';
 import Head from 'next/head';
 import Image from 'next/image';
 import SigninButton from '@/components/auth/SigninButton';
+import LoginForm from '@/components/auth/LoginForm';
 
-export async function getServerSideProps() {
-  const KAKAO_CLIENT_ID = process.env.NEXT_KAKAO_CLIENT_ID;
-
-  return {
-    props: {
-      KAKAO_CLIENT_ID,
-    },
-  };
-}
-
-const Copyright = () => {
-  return (
-    <span className="mt-4 flex items-center text-slate-500">
-      Copyrights All reserved © Mr.Cryp 2024
-    </span>
-  );
-};
-
-export default function Signin({ KAKAO_CLIENT_ID }) {
-  const KAKAO_REDIRECT_URI = process.env.NEXT_PUBLIC_KAKAO_REDIRECT_URI;
-
-  const router = useRouter();
-
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const userId = localStorage.getItem('userId');
-      if (userId) {
-        alert('이미 로그인 되어있습니다.');
-        router.push('/trends');
-      }
-    }
-  }, [router]);
-
+export default function Signin() {
   return (
     <>
       <Head>
@@ -54,20 +21,21 @@ export default function Signin({ KAKAO_CLIENT_ID }) {
                   로그인
                 </span>
               </div>
+              <LoginForm />
+              <SigninButton isTest={true} />
               <SigninButton
                 platform={'google'}
                 bgColor={'bg-blue-600'}
                 fontColor={'text-white'}
               />
               <SigninButton
-                CLIENT_ID={KAKAO_CLIENT_ID}
-                REDIRECT_URI={KAKAO_REDIRECT_URI}
                 platform={'kakao'}
                 bgColor={'bg-yellow-300'}
                 fontColor={'text-black'}
               />
-              <SigninButton isTest={true} />
-              <Copyright sx={{ mt: 5 }} />
+              <span className="mt-4 flex items-center text-slate-500">
+                Copyrights All reserved © Mr.Cryp 2024
+              </span>
             </div>
           </div>
           {/* Right */}
@@ -79,6 +47,7 @@ export default function Signin({ KAKAO_CLIENT_ID }) {
                 width={100}
                 height={30}
                 priority={true}
+                className="hidden md:block w-auto h-auto"
               />
               <span className="font-aggro font-bold italic text-main text-5xl text-shadow-black">
                 Mr.Cryp

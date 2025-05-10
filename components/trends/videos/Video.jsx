@@ -10,7 +10,7 @@ export default function Video({ width, height, src, title, linkUrl }) {
       onClick={handleClick}
     >
       <Image
-        alt={title}
+        alt={title || '트렌드 영상 썸네일'}
         src={src}
         width={width}
         height={height}

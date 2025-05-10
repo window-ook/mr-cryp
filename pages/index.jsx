@@ -23,7 +23,7 @@ const Navbar = () => {
             height="60"
             className="w-auto h-4"
           />
-          <span className="font-navbar-mrcryp">Mr.cryp</span>
+          <span className="font-navbar-mrcryp text-shadow-black">Mr.cryp</span>
         </div>
 
         <div className="flex gap-6">

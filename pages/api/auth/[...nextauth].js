@@ -1,11 +1,12 @@
 import NextAuth from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import KakaoProvider from 'next-auth/providers/kakao';
+import GoogleProvider from 'next-auth/providers/google';
 
 export default NextAuth({
   providers: [
     CredentialsProvider({
-      name: 'Credentials',
+      name: '이메일 로그인',
       credentials: {
         username: {
           label: '이메일',
@@ -18,9 +19,23 @@ export default NextAuth({
           placeholder: '비밀번호 입력',
         },
       },
+    }),
 
-      async authorize(credentials, req) {
-        const res = await fetch(`${process.env.NEXTAUTH_URL}/api/signin`, {
+    GoogleProvider({
+      clientId: process.env.GOOGLE_CLIENT_ID,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+    }),
+
+    KakaoProvider({
+      clientId: process.env.KAKAO_CLIENT_ID,
+      clientSecret: process.env.KAKAO_CLIENT_SECRET,
+    }),
+  ],
+
+  callbacks: {
+    async authorize(credentials, req) {
+      try {
+        const res = await fetch(`${process.env.NEXTAUTH_URL}/api/login`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -30,31 +45,27 @@ export default NextAuth({
             password: credentials?.password,
           }),
         });
+
         const user = await res.json();
-        console.log(user);
-
-        if (user) {
-          return user;
-        } else {
-          return null;
-        }
-      },
-    }),
-
-    KakaoProvider({
-      clientId: process.env.NEXT_KAKAO_CLIENT_ID,
-      clientSecret: process.env.NEXT_KAKAO_CLIENT_SECRET,
-    }),
-  ],
-
-  callbacks: {
-    async jwt({ token, user }) {
-      return { ...token, ...user };
+        return user || null;
+      } catch (error) {
+        throw new Error(error.response);
+      }
     },
 
-    async session({ session, token }) {
-      session.user = token;
+    async jwt({ token, user }) {
+      if (user) token.user = user;
+      return token;
+    },
+
+    async session({ session, token, user }) {
       return session;
     },
+  },
+
+  secret: process.env.NEXTAUTH_SECRET,
+
+  pages: {
+    signIn: '/auth',
   },
 });

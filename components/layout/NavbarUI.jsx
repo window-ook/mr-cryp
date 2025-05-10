@@ -33,15 +33,17 @@ export default function NavBar({
           {/* MD 이상 크기 */}
           <div className="hidden md:block">
             <div className="flex items-center">
-              <div className="flex">
+              <div className="flex items-center gap-2">
                 <Image
                   alt="navbar logo image"
                   src="/images/mustachetrans.webp"
                   width={60}
                   height={30}
-                  className="p-2"
+                  className="w-auto h-auto"
                 />
-                <span className="font-navbar-mrcryp">Mr.Cryp</span>
+                <span className="font-navbar-mrcryp text-shadow-black">
+                  Mr.Cryp
+                </span>
               </div>
               <div className="flex items-center gap-1 grow pl-4">
                 {navbarMenu.map(page => (
@@ -121,7 +123,7 @@ export default function NavBar({
                 </div>
               </div>
               <div className="flex items-center">
-                <span className="font-aggro italic font-bold text-2xl text-white">
+                <span className="font-navbar-mrcryp text-shadow-black">
                   Mr.Cryp
                 </span>
               </div>
@@ -154,9 +156,7 @@ export default function NavBar({
                 </span>
               </DropdownMenuTrigger>
               <DropdownMenuContent
-                onClick={() => {
-                  handleSignout();
-                }}
+                onClick={() => handleSignout()}
                 className="flex items-center justify-center cursor-pointer"
               >
                 <span className="font-pretendard text-xl">로그아웃</span>
